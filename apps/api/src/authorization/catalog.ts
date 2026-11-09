@@ -19,6 +19,55 @@ type ModuleDefinition = {
 
 export const authorizationModules = [
   {
+    code: "activity-categories", name: "Activity Categories", active: true,
+    permissions: [
+      { code: "view-activity-categories", name: "View Activity Categories", description: "View activity categories.", targetType: "global", active: true },
+      { code: "create-activity-categories", name: "Create Activity Categories", description: "Create activity categories.", targetType: "global", active: true },
+      { code: "update-activity-categories", name: "Update Activity Categories", description: "Update activity categories.", targetType: "global", active: true },
+      { code: "delete-activity-categories", name: "Delete Activity Categories", description: "Delete activity categories.", targetType: "global", active: true },
+    ],
+  },
+
+  {
+    code: "activities", name: "Activities", active: true,
+    permissions: [
+      { code: "view-activities", name: "View Activities", description: "View activities.", targetType: "global", active: true },
+      { code: "create-activities", name: "Create Activities", description: "Create activities.", targetType: "global", active: true },
+      { code: "update-activities", name: "Update Activities", description: "Update activities.", targetType: "global", active: true },
+    ],
+  },
+  {
+    code: "recurring-plans", name: "Recurring Plans", active: true,
+    permissions: [
+      { code: "view-recurring-plans", name: "View Recurring Plans", description: "View recurring plans.", targetType: "global", active: true },
+      { code: "create-recurring-plans", name: "Create Recurring Plans", description: "Create recurring plans.", targetType: "global", active: true },
+      { code: "update-recurring-plans", name: "Update Recurring Plans", description: "Update recurring plans.", targetType: "global", active: true },
+    ],
+  },
+
+  {
+    code: "room-types", name: "Room Types", active: true,
+    permissions: [
+      { code: "view-room-types", name: "View Room Types", description: "View room types.", targetType: "global", active: true },
+      { code: "create-room-types", name: "Create Room Types", description: "Create room types.", targetType: "global", active: true },
+      { code: "update-room-types", name: "Update Room Types", description: "Update room types.", targetType: "global", active: true },
+      { code: "delete-room-types", name: "Delete Room Types", description: "Delete room types.", targetType: "global", active: true },
+    ],
+  },
+
+  {
+    code: "rooms",
+    name: "Rooms",
+    active: true,
+    permissions: [
+      { code: "view-rooms", name: "View Rooms", description: "View rooms.", targetType: "global", active: true },
+      { code: "create-rooms", name: "Create Rooms", description: "Create rooms.", targetType: "global", active: true },
+      { code: "update-rooms", name: "Update Rooms", description: "Update rooms.", targetType: "global", active: true },
+      { code: "delete-rooms", name: "Delete Rooms", description: "Delete rooms.", targetType: "global", active: true },
+    ],
+  },
+
+  {
     code: "users",
     name: "Users",
     active: true,

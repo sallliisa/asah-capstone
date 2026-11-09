@@ -82,6 +82,8 @@ coordinate the same dialog.
 
 ## Controls and values
 
+Use radio controls for small fixed sets of options, such as financial kind, work status, payment status, and repeat units. Use selects for large or remotely loaded choices. Optional radio filters include an All option.
+
 Use shared controls and keep their standard designs. Customize only for an
 explicit user request or a required interaction they cannot support. Change
 wording through label configuration. Import components from public exports or

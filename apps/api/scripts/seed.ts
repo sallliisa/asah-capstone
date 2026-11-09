@@ -1,8 +1,10 @@
+import { seedBoardingHouse } from './seed-boarding-house'
 import { closeDb } from '../src/db'
 import { pathToFileURL } from 'node:url'
 import { seedAuthorization, seedRoleGroups, seedAdministrator, seedPublicIntakeUser } from './seed-shared'
 
 export async function seedDatabase() {
+  await seedBoardingHouse()
   await seedRoleGroups()
   await seedAuthorization()
   await seedPublicIntakeUser()

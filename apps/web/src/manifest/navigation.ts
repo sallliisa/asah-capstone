@@ -1,7 +1,38 @@
 import { defineNavigation, type NavigationIcon, type NavigationModule } from './contract'
 
 export const navigation = defineNavigation([
-  { kind: 'standalone', name: 'dashboard', title: 'Dashboard', icon: 'home', description: 'Dashboard', routes: [{ to: { name: 'dashboard' }, permission: null, title: 'Dashboard', icon: 'home' }] },
+  {
+    kind: 'standalone',
+    name: 'dashboard',
+    title: 'Dashboard',
+    icon: 'home',
+    description: 'Dashboard',
+    routes: [{ to: { name: 'dashboard' }, permission: 'view-rooms', title: 'Dashboard', icon: 'home' }],
+  },
+  {
+    kind: 'group',
+    name: 'master-data',
+    title: 'Master Data',
+    icon: 'database-2',
+    description: 'Rooms and activity setup',
+    routes: [
+      { to: { name: 'rooms' }, permission: 'view-rooms', title: 'Rooms', icon: 'door-open' },
+      { to: { name: 'room-types' }, permission: 'view-room-types', title: 'Room Types', icon: 'hotel' },
+      { to: { name: 'activity-categories' }, permission: 'view-activity-categories', title: 'Activity Categories', icon: 'price-tag-3' },
+    ],
+  },
+  {
+    kind: 'group',
+    name: 'operations',
+    title: 'Operations',
+    icon: 'briefcase-4',
+    description: 'Activities and finances',
+    routes: [
+      { to: { name: 'activities' }, permission: 'view-activities', title: 'Activities', icon: 'calendar-event' },
+      { to: { name: 'income-expenses' }, permission: 'view-activities', title: 'Income & Expenses', icon: 'wallet-3' },
+      { to: { name: 'recurring-plans' }, permission: 'view-recurring-plans', title: 'Recurring Plans', icon: 'repeat' },
+    ],
+  },
   {
     kind: 'module',
     name: 'settings',
@@ -9,9 +40,9 @@ export const navigation = defineNavigation([
     icon: 'settings',
     description: 'Settings',
     routes: [
-      { to: { name: 'settings-users' }, permission: 'view-users', title: 'Users', icon: 'folder' },
-      { to: { name: 'settings-roles' }, permission: 'view-roles', title: 'Roles', icon: 'folder' },
-      { to: { name: 'settings-permissions' }, permission: 'view-permissions', title: 'Permissions', icon: 'folder' },
+      { to: { name: 'settings-users' }, permission: 'view-users', title: 'Users', icon: 'user-3' },
+      { to: { name: 'settings-roles' }, permission: 'view-roles', title: 'Roles', icon: 'shield-user' },
+      { to: { name: 'settings-permissions' }, permission: 'view-permissions', title: 'Permissions', icon: 'key-2' },
     ],
   },
 ] as const satisfies readonly NavigationModule[])

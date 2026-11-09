@@ -33,9 +33,9 @@ describe('navigation entrypoints', () => {
 
   it('keeps dashboard and settings entrypoints with their grants', () => {
     const settings = navigation.find((module) => module.name === 'settings')!
-    expect(settings.routes).toContainEqual({ to: { name: 'settings-users' }, permission: 'view-users', title: 'Users', icon: 'folder' })
-    expect(settings.routes).toContainEqual({ to: { name: 'settings-roles' }, permission: 'view-roles', title: 'Roles', icon: 'folder' })
-    expect(settings.routes).toContainEqual({ to: { name: 'settings-permissions' }, permission: 'view-permissions', title: 'Permissions', icon: 'folder' })
+    expect(settings.routes).toContainEqual({ to: { name: 'settings-users' }, permission: 'view-users', title: 'Users', icon: 'user-3' })
+    expect(settings.routes).toContainEqual({ to: { name: 'settings-roles' }, permission: 'view-roles', title: 'Roles', icon: 'shield-user' })
+    expect(settings.routes).toContainEqual({ to: { name: 'settings-permissions' }, permission: 'view-permissions', title: 'Permissions', icon: 'key-2' })
   })
 
   it('matches entrypoint subtrees at segment boundaries and prefers longest target', () => {

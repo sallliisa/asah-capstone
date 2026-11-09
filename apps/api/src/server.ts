@@ -31,10 +31,14 @@ log("Database ready. Binding route entities...");
 bindRouteEntities(routeManifest, getDomainSchema().entities);
 assertRouteEntitiesBound(routeManifest);
 log("Routes bound. Starting HTTP server...");
+const { startRecurringActivityWorker } = await import("./routes/(authenticated)/recurring-plans/generate");
+const stopRecurringActivityWorker = startRecurringActivityWorker();
 
-serve({
+const server = serve({
   fetch: app.fetch,
   port,
 });
+
+server.on("close", stopRecurringActivityWorker);
 
 console.log(`Listening on port ${port} (+${Date.now() - bootStarted}ms)`);
