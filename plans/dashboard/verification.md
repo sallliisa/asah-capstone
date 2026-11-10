@@ -12,3 +12,7 @@ Date: 2026-11-09
 - No application database migration or development data write was needed. Focused database tests used the guarded local carta_api_test database.
 
 Local full check logs are in `.local/verification/dashboard/`.
+
+## Viewport fit update, 2026-11-11
+
+Removed the five-rem minimum row height. The dashboard uses the available shell height and zero-minimum grid tracks. Cash charts use two columns and two rows with flexible canvas heights. Cards use default filled surfaces. Long card content scrolls inside its card; the dashboard page does not scroll. Web type check and focused lint passed. Browser rendering remains unverified.

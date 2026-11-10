@@ -70,7 +70,7 @@ onBeforeUnmount(() => clearInterval(interval))
 
 <template>
   <div class="dashboard-grid">
-    <Card variant="outlined" color="surfaceContainerLowest" class="rooms-panel min-w-0 gap-4 p-4">
+    <Card class="rooms-panel min-h-0 min-w-0 gap-2 overflow-auto p-3">
       <h2 class="text-base font-semibold">Rooms</h2>
       <div class="flex justify-center">
         <p v-if="!can('list')" role="alert">You do not have permission to view rooms.</p>
@@ -96,7 +96,7 @@ onBeforeUnmount(() => clearInterval(interval))
         </ul>
       </div>
     </Card>
-    <Card variant="outlined" color="surfaceContainerLowest" class="attention-panel min-w-0 gap-4 p-4">
+    <Card class="attention-panel min-h-0 min-w-0 gap-2 overflow-auto p-3">
       <h2 class="text-base font-semibold">
         Needs attention <span v-if="snapshot" class="text-sm font-normal text-on-surface-variant">({{ snapshot.attention.total }})</span>
       </h2>
@@ -126,7 +126,7 @@ onBeforeUnmount(() => clearInterval(interval))
         <RouterLink v-if="snapshot.attention.total > snapshot.attention.items.length" :to="{ name: 'activities' }" class="text-sm text-primary underline">View all activities</RouterLink>
       </template>
     </Card>
-    <Card variant="outlined" color="surfaceContainerLowest" class="plans-panel min-w-0 gap-4 p-4">
+    <Card class="plans-panel min-h-0 min-w-0 gap-2 overflow-auto p-3">
       <h2 class="text-base font-semibold">
         Upcoming plans <span v-if="!plansLoading && !plansError && canPlans('list')" class="text-sm font-normal text-on-surface-variant">({{ upcomingTotal }})</span>
       </h2>
@@ -150,7 +150,7 @@ onBeforeUnmount(() => clearInterval(interval))
         <RouterLink v-if="upcomingTotal > upcoming.length" :to="{ name: 'recurring-plans' }" class="text-sm text-primary underline">View all recurring plans</RouterLink>
       </template>
     </Card>
-    <Card variant="outlined" color="surfaceContainerLowest" class="cash-panel min-w-0 gap-4 p-4">
+    <Card class="cash-panel min-h-0 min-w-0 gap-2 overflow-auto p-3">
       <h2 class="text-base font-semibold">This month's cash</h2>
       <p v-if="!canActivities('list')" role="alert">You do not have permission to view activities.</p>
       <p v-else-if="cashLoading" role="status">Loading cash summary…</p>
@@ -164,15 +164,36 @@ onBeforeUnmount(() => clearInterval(interval))
 </template>
 
 <style scoped>
+:global(div:has(> main .dashboard-grid)) {
+  height: 100dvh;
+  min-height: 0;
+}
+:global(main:has(.dashboard-grid)) {
+  overflow: hidden;
+}
+:global(main:has(.dashboard-grid) > div) {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+}
 .dashboard-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 1rem;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 3fr);
+  gap: 0.75rem;
+}
+.rooms-panel,
+.cash-panel {
+  grid-column: 1 / -1;
 }
 @media (min-width: 1280px) {
   .dashboard-grid {
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    grid-template-rows: repeat(12, minmax(5rem, 1fr));
+    grid-template-rows: repeat(12, minmax(0, 1fr));
   }
   .rooms-panel {
     grid-column: 1 / 7;

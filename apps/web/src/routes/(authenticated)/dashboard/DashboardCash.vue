@@ -102,10 +102,12 @@ function financeLink(kind?: 'income' | 'expense'): RouteLocationRaw {
       </dd>
     </div>
   </dl>
-  <div class="grid min-w-0 grid-cols-1 gap-6">
-    <section v-for="chart in charts" :key="chart.title" class="min-w-0 space-y-2">
+  <div class="grid min-h-0 flex-1 grid-cols-2 grid-rows-2 gap-3">
+    <section v-for="chart in charts" :key="chart.title" class="flex min-h-0 min-w-0 flex-col gap-2">
       <h3 class="text-sm font-semibold">{{ chart.title }}</h3>
-      <p v-if="chart.empty" class="flex h-52 items-center justify-center text-sm text-on-surface-variant">No settled {{ chart.title.startsWith('Expenses') ? 'expenses' : 'payments' }} this month.</p>
+      <p v-if="chart.empty" class="flex min-h-0 flex-1 items-center justify-center text-sm text-on-surface-variant">
+        No settled {{ chart.title.startsWith('Expenses') ? 'expenses' : 'payments' }} this month.
+      </p>
       <DashboardChart v-else :configuration="chart.configuration" :label="chart.title" />
     </section>
   </div>
