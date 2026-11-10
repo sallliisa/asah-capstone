@@ -22,8 +22,8 @@ type PresignedUploadInput = {
 
 let storage: Storage | undefined
 
-function requiredEnv(name: 'S3_ENDPOINT' | 'S3_BUCKET' | 'S3_ACCESS_KEY' | 'S3_SECRET_KEY') {
-  const value = process.env[name]?.trim()
+function requiredEnv(name: 'AWS_ENDPOINT_URL_S3' | 'AWS_ACCESS_KEY_ID' | 'AWS_SECRET_ACCESS_KEY' | 'S3_ENDPOINT' | 'S3_BUCKET' | 'S3_ACCESS_KEY' | 'S3_SECRET_KEY', fallback?: 'S3_ENDPOINT' | 'S3_ACCESS_KEY' | 'S3_SECRET_KEY') {
+  const value = process.env[name]?.trim() || (fallback ? process.env[fallback]?.trim() : undefined)
   if (!value) throw new Error(`${name} is required.`)
   return value
 }
@@ -31,7 +31,7 @@ function requiredEnv(name: 'S3_ENDPOINT' | 'S3_BUCKET' | 'S3_ACCESS_KEY' | 'S3_S
 function getStorage(): Storage {
   if (storage) return storage
 
-  const endpoint = requiredEnv('S3_ENDPOINT')
+  const endpoint = requiredEnv('AWS_ENDPOINT_URL_S3', 'S3_ENDPOINT')
   const parsedEndpoint = new URL(endpoint)
   if (!['http:', 'https:'].includes(parsedEndpoint.protocol)) {
     throw new Error('S3_ENDPOINT must use http or https.')
@@ -42,10 +42,10 @@ function getStorage(): Storage {
     client: new S3Client({
       endpoint,
       forcePathStyle: true,
-      region: 'us-east-1',
+      region: process.env.AWS_REGION?.trim() || 'us-east-1',
       credentials: {
-        accessKeyId: requiredEnv('S3_ACCESS_KEY'),
-        secretAccessKey: requiredEnv('S3_SECRET_KEY'),
+        accessKeyId: requiredEnv('AWS_ACCESS_KEY_ID', 'S3_ACCESS_KEY'),
+        secretAccessKey: requiredEnv('AWS_SECRET_ACCESS_KEY', 'S3_SECRET_KEY'),
       },
     }),
   }

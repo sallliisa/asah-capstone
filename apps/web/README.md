@@ -36,6 +36,21 @@ Legacy `/#/path` URLs are normalized to their history-mode equivalent on boot,
 and legacy roles query-state URLs (`?roles_view=...`) redirect to the matching
 route.
 
+## API routing
+
+Browser API requests use the current origin and the `/api` prefix. The shared
+transport in `src/framework/rpc.ts` applies the prefix to RPC and service calls.
+Do not add the prefix to each route or send API calls with a separate `fetch`.
+Direct uploads still use the signed storage URL.
+
+The root `vercel.json` forwards `/api/:path*` to the API service and all other
+paths to the web service. The API entry point applies the prefix to the compiled
+route manifest, including new routes. Auth routes already have this prefix.
+
+For local development, `VITE_API_URL` selects the API server used by the Vite
+proxy. Browser requests still use `/api`. Production uses the Vercel forwarding
+rule and does not use `VITE_API_URL`.
+
 ## Acceptance fixture
 
 `src/framework/acceptance/QueryOwnershipFixture.vue` is a permanent contract

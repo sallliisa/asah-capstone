@@ -24,6 +24,15 @@ export default defineConfig(({ command, mode }) => {
     server: {
       port: validPort,
       strictPort: true,
+      proxy: env.VITE_API_URL
+        ? {
+            '/api': {
+              target: env.VITE_API_URL,
+              changeOrigin: true,
+              rewrite: (path) => (path === '/api/auth' || path.startsWith('/api/auth/') ? path : path.replace(/^\/api(?=\/|$)/, '') || '/'),
+            },
+          }
+        : undefined,
     },
     preview: {
       port: validPort,

@@ -60,3 +60,7 @@ BaseCRUD (Postmodern).vue
 /advisor-plans/
 /.commandcode/
 /docs/superpowers/specs/
+.neon
+.neon.env
+.vercel
+.env*

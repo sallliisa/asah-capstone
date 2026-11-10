@@ -1,6 +1,10 @@
 import { defineConfig } from 'drizzle-kit'
 
-if (!process.env.DATABASE_URL) {
+const connectionString = process.env.CARTA_DATABASE_PURPOSE === 'test'
+  ? process.env.DATABASE_URL
+  : process.env.DATABASE_URL_UNPOOLED ?? process.env.DATABASE_URL
+
+if (!connectionString) {
   throw new Error('DATABASE_URL is required for Drizzle commands.')
 }
 
@@ -9,6 +13,6 @@ export default defineConfig({
   out: './drizzle',
   dialect: 'postgresql',
   dbCredentials: {
-    url: process.env.DATABASE_URL,
+    url: connectionString,
   },
 })
