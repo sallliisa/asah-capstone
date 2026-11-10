@@ -21,7 +21,7 @@ export const GET = defineRoute({
     const needsAttention = or(openWork, draftMoney)
     const overdue = sql<boolean>`coalesce(${activities.occurrenceDate} < ${today} and ((${activities.financialKind} = 'none' and ${openWork}) or (${draftMoney})), false)`
     const [cash, pending, counts] = await Promise.all([
-      getDb().select({ date: activities.paymentDate, kind: activities.financialKind, amount: activities.amount, categoryId: activities.categoryId, categoryName: activityCategories.name, roomId: activities.roomId, roomName: rooms.roomCode }).from(activities)
+      getDb().select({ id: activities.id, name: activities.name, date: activities.paymentDate, kind: activities.financialKind, amount: activities.amount, categoryId: activities.categoryId, categoryName: activityCategories.name, roomId: activities.roomId, roomName: rooms.roomCode }).from(activities)
         .innerJoin(activityCategories, eq(activities.categoryId, activityCategories.id)).leftJoin(rooms, eq(activities.roomId, rooms.id))
         .where(and(eq(activities.paymentStatus, 'settled'), gte(activities.paymentDate, monthStart), lte(activities.paymentDate, today))),
       getDb().select({ id: activities.id, name: activities.name, roomName: rooms.roomCode, categoryName: activityCategories.name, financialKind: activities.financialKind, workStatus: activities.workStatus, paymentStatus: activities.paymentStatus, expectedDate: activities.occurrenceDate, amount: activities.amount }).from(activities)
@@ -31,7 +31,7 @@ export const GET = defineRoute({
     ])
     const daily = Array.from({ length: Number(today.slice(8)) }, (_, index) => ({ date: `${today.slice(0, 7)}-${String(index + 1).padStart(2, '0')}`, income: 0, expenses: 0, net: 0, cumulativeNet: 0 }))
     const categories = new Map<string, { id: string; name: string; amount: number }>()
-    const roomGroups = new Map<string | null, { id: string | null; name: string; amount: number }>()
+    const roomGroups = new Map<string | null, { id: string | null; name: string; amount: number; activities: { id: string; name: string; amount: number }[] }>()
     let income = 0
     let expenses = 0
     for (const row of cash) {
@@ -47,7 +47,8 @@ export const GET = defineRoute({
         const category = categories.get(row.categoryId) ?? { id: row.categoryId, name: row.categoryName, amount: 0 }
         category.amount += row.amount
         categories.set(row.categoryId, category)
-        const room = roomGroups.get(row.roomId) ?? { id: row.roomId, name: row.roomName ?? 'Shared', amount: 0 }
+        const room = roomGroups.get(row.roomId) ?? { id: row.roomId, name: row.roomName ?? 'Shared', amount: 0, activities: [] }
+        room.activities.push({ id: row.id, name: row.name, amount: row.amount })
         room.amount += row.amount
         roomGroups.set(row.roomId, room)
       }

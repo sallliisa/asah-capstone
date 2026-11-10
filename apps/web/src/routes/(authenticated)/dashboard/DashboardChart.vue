@@ -53,6 +53,6 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="relative min-h-0 min-w-0 flex-1">
-    <canvas ref="canvas" role="img" :aria-label="label">{{ label }}. See chart data below.</canvas>
+    <canvas ref="canvas" role="img" :aria-label="label">{{ label }}</canvas>
   </div>
 </template>

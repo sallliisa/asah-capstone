@@ -16,3 +16,15 @@ Local full check logs are in `.local/verification/dashboard/`.
 ## Viewport fit update, 2026-11-11
 
 Removed the five-rem minimum row height. The dashboard uses the available shell height and zero-minimum grid tracks. Cash charts use two columns and two rows with flexible canvas heights. Cards use default filled surfaces. Long card content scrolls inside its card; the dashboard page does not scroll. Web type check and focused lint passed. Browser rendering remains unverified.
+
+## Separate cash cards, 2026-11-11
+
+Removed the outer cash card. Each cash total and chart has its own default filled card. Chart heights are bounded from 10 to 15 rem instead of growing to fill the panel. The chart data disclosure has a separate card. Occupied rooms use surface-container-high. Focused lint passed. Browser rendering remains unverified.
+
+## Remove chart data section, 2026-11-11
+
+Removed the visible chart data disclosure at the user’s request. Cash totals retain links to financial records. Removed the canvas fallback reference to the deleted section.
+
+## Ranked room costs, 2026-11-11
+
+Kept the room expense chart and added a separate card below the four charts for the three rooms with the highest settled expenses this month through today. Each total lists linked activities and their amounts. Shared expenses remain in cash totals and category charts but are excluded from the room ranking. The existing cash query supplies the activity details, so both use the same date and payment filters. API, SDK, and web type checks and scoped lint passed. Database route tests and browser rendering were not verified for this update.

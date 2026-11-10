@@ -142,7 +142,7 @@ export const activityDashboardSchema = z.object({
   net: z.number(),
   daily: z.array(z.object({ date: z.iso.date(), income: z.number(), expenses: z.number(), net: z.number(), cumulativeNet: z.number() })),
   expensesByCategory: z.array(z.object({ id: z.string(), name: z.string(), amount: z.number() })),
-  expensesByRoom: z.array(z.object({ id: z.string().nullable(), name: z.string(), amount: z.number() })),
+  expensesByRoom: z.array(z.object({ id: z.string().nullable(), name: z.string(), amount: z.number(), activities: z.array(z.object({ id: z.string(), name: z.string(), amount: z.number() })) })),
   attention: z.object({
     total: z.number().int().nonnegative(),
     items: z.array(z.object({

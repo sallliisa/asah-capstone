@@ -88,7 +88,7 @@ onBeforeUnmount(() => clearInterval(interval))
             <RouterLink
               :to="{ name: 'rooms-detail', params: { roomId: room.id } }"
               :aria-label="`${room.roomCode}: ${room.name}, ${room.occupantId ? 'Occupied' : 'Unoccupied'}`"
-              :class="room.occupantId ? 'bg-surface-container hover:bg-surface-container-high' : 'bg-transparent'"
+              :class="room.occupantId ? 'bg-surface-container-high hover:bg-surface-container-highest' : 'bg-transparent'"
               class="flex h-full w-full items-center justify-center rounded border border-outline-variant overflow-hidden p-1 text-center text-xs font-medium text-on-surface focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               ><span class="truncate">{{ room.roomCode }}</span></RouterLink
             >
@@ -150,8 +150,7 @@ onBeforeUnmount(() => clearInterval(interval))
         <RouterLink v-if="upcomingTotal > upcoming.length" :to="{ name: 'recurring-plans' }" class="text-sm text-primary underline">View all recurring plans</RouterLink>
       </template>
     </Card>
-    <Card class="cash-panel min-h-0 min-w-0 gap-2 overflow-auto p-3">
-      <h2 class="text-base font-semibold">This month's cash</h2>
+    <section aria-label="Cash overview" class="cash-panel flex min-h-0 min-w-0 flex-col gap-3 overflow-auto">
       <p v-if="!canActivities('list')" role="alert">You do not have permission to view activities.</p>
       <p v-else-if="cashLoading" role="status">Loading cash summary…</p>
       <div v-else-if="cashError" role="alert">
@@ -159,7 +158,7 @@ onBeforeUnmount(() => clearInterval(interval))
         <Button type="button" variant="text" @click="refreshCash">Retry</Button>
       </div>
       <DashboardCash v-else-if="snapshot" :snapshot="snapshot" />
-    </Card>
+    </section>
   </div>
 </template>
 
