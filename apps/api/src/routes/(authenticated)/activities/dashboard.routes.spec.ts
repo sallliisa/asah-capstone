@@ -7,10 +7,12 @@ import { createSystemSession } from '../../../testing/session'
 import { recurringPlans } from '../recurring-plans/recurring-plans.table'
 import { upcomingPlanSchema } from '../recurring-plans/schema'
 import { activities } from './activities.table'
+import { rooms } from '../rooms/rooms.table'
 import { activityDashboardSchema, activityPublicSchema } from './schema'
 
 const activityIds: string[] = []
 const planIds: string[] = []
+const roomIds: string[] = []
 const prefix = `dashboard-${crypto.randomUUID()}`
 function request(path: string, cookie?: string, body?: object, method = body ? 'POST' : 'GET') {
   return app.request(path, { method, headers: { 'Content-Type': 'application/json', ...(cookie ? { cookie } : {}) }, ...(body ? { body: JSON.stringify(body) } : {}) })
@@ -25,6 +27,7 @@ async function create(cookie: string, body: object) {
 afterAll(async () => {
   if (activityIds.length) await getDb().delete(activities).where(inArray(activities.id, activityIds))
   if (planIds.length) await getDb().delete(recurringPlans).where(inArray(recurringPlans.id, planIds))
+  if (roomIds.length) await getDb().delete(rooms).where(inArray(rooms.id, roomIds))
   await closeDb()
 })
 it('reports actual month cash, fills days, and keeps work and payment follow-up independent', async () => {
@@ -52,7 +55,7 @@ it('reports actual month cash, fills days, and keeps work and payment follow-up 
     ]).returning()
     activityIds.push(...scheduled.map((row) => row.id))
     const after = await read()
-    expect(after).toMatchObject({ today: '2026-11-10', monthStart: '2026-11-01', monthEnd: '2026-11-30', income: before.income + 1300, expenses: before.expenses + 200, net: before.net + 1100 })
+    expect(after).toMatchObject({ today: '2026-11-10', periodStart: '2026-11-01', periodEnd: '2026-11-10', income: before.income + 1300, expenses: before.expenses + 200, net: before.net + 1100 })
     expect(after.daily).toHaveLength(10)
     expect(after.daily[0]!.income - before.daily[0]!.income).toBe(1000)
     expect(after.daily[9]!.expenses - before.daily[9]!.expenses).toBe(200)
@@ -101,4 +104,36 @@ it('requires each dashboard read permission', async () => {
     expect((await request(path)).status).toBe(401)
     expect((await request(path, outsider.cookie)).status).toBe(403)
   }
+})
+
+it('filters every cash projection by actual dates and room without filtering operational attention', async () => {
+  const manager = await createSystemSession(['view-activities', 'create-activities'], 'dashboard-filters')
+  vi.useFakeTimers({ toFake: ['Date'] })
+  try {
+    vi.setSystemTime(new Date('2026-11-10T01:00:00.000Z'))
+    const roomA = (await getDb().insert(rooms).values({ roomCode: crypto.randomUUID().slice(0, 20), name: 'Cash A' }).returning())[0]
+    const roomB = (await getDb().insert(rooms).values({ roomCode: crypto.randomUUID().slice(0, 20), name: 'Cash B' }).returning())[0]
+    roomIds.push(roomA.id, roomB.id)
+    const read = async (query: string) => z.object({ data: z.array(activityDashboardSchema) }).parse(await (await request(`/activities/dashboard?${query}`, manager.cookie)).json()).data[0]
+    const before = await read('period=last-month')
+    await create(manager.cookie, { financialKind: 'income', amount: 40, paymentDate: '2026-10-01', roomId: roomA.id })
+    await create(manager.cookie, { financialKind: 'expense', amount: 20, paymentDate: '2026-10-31', roomId: roomA.id })
+    await create(manager.cookie, { financialKind: 'expense', amount: 70, paymentDate: '2026-10-15', roomId: roomB.id })
+    await create(manager.cookie, { financialKind: 'expense', amount: 100, paymentDate: '2026-10-15' })
+    await create(manager.cookie, { financialKind: 'expense', amount: 900, paymentDate: '2026-11-11', roomId: roomA.id })
+    const all = await read('period=last-month')
+    expect(all.income - before.income).toBe(40)
+    expect(all.expenses - before.expenses).toBe(190)
+    const filtered = await read(`period=custom&from=2026-10-01&to=2026-10-31&roomId=${roomA.id}`)
+    expect(filtered).toMatchObject({ periodStart: '2026-10-01', periodEnd: '2026-10-31', income: 40, expenses: 20, net: 20 })
+    expect(filtered.daily).toHaveLength(31)
+    expect(filtered.daily[0].income).toBe(40)
+    expect(filtered.daily[30]).toMatchObject({ expenses: 20, cumulativeNet: 20 })
+    expect(filtered.expensesByCategory.map((group) => group.amount)).toEqual([20])
+    expect(filtered.expensesByRoom.map((group) => ({ id: group.id, amount: group.amount }))).toEqual([{ id: roomA.id, amount: 20 }])
+    const threeMonths = await read(`period=last-three-months&roomId=${roomA.id}`)
+    expect(threeMonths).toMatchObject({ periodStart: '2026-09-01', periodEnd: '2026-11-10', income: 40, expenses: 20 })
+    expect(threeMonths.attention).toEqual(all.attention)
+    expect(filtered.attention).toEqual(all.attention)
+  } finally { vi.useRealTimers() }
 })

@@ -1,0 +1,398 @@
+{
+  "synthetic": true,
+  "periodStart": "2026-06-01",
+  "periodEnd": "2026-06-30",
+  "pending": 10477,
+  "overdueRentOccurrences": 36,
+  "cash": {
+    "2025-01": {
+      "income": 174600000,
+      "expenses": 100320000,
+      "net": 74280000
+    },
+    "2025-02": {
+      "income": 430700000,
+      "expenses": 136450000,
+      "net": 294250000
+    },
+    "2025-03": {
+      "income": 725200000,
+      "expenses": 256820000,
+      "net": 468380000
+    },
+    "2025-04": {
+      "income": 994100000,
+      "expenses": 320950000,
+      "net": 673150000
+    },
+    "2025-05": {
+      "income": 1063200000,
+      "expenses": 612320000,
+      "net": 450880000
+    },
+    "2025-06": {
+      "income": 1078300000,
+      "expenses": 384790000,
+      "net": 693510000
+    },
+    "2025-07": {
+      "income": 1077200000,
+      "expenses": 377070000,
+      "net": 700130000
+    },
+    "2025-08": {
+      "income": 1087500000,
+      "expenses": 400940000,
+      "net": 686560000
+    },
+    "2025-09": {
+      "income": 1086000000,
+      "expenses": 624460000,
+      "net": 461540000
+    },
+    "2025-10": {
+      "income": 1121800000,
+      "expenses": 391950000,
+      "net": 729850000
+    },
+    "2025-11": {
+      "income": 1084100000,
+      "expenses": 390890000,
+      "net": 693210000
+    },
+    "2025-12": {
+      "income": 1085400000,
+      "expenses": 384500000,
+      "net": 700900000
+    },
+    "2026-01": {
+      "income": 1084500000,
+      "expenses": 615240000,
+      "net": 469260000
+    },
+    "2026-02": {
+      "income": 1083200000,
+      "expenses": 365940000,
+      "net": 717260000
+    },
+    "2026-03": {
+      "income": 1105800000,
+      "expenses": 390900000,
+      "net": 714900000
+    },
+    "2026-04": {
+      "income": 1098500000,
+      "expenses": 382450000,
+      "net": 716050000
+    },
+    "2026-05": {
+      "income": 1088600000,
+      "expenses": 611800000,
+      "net": 476800000
+    },
+    "2026-06": {
+      "income": 1092600000,
+      "expenses": 394250000,
+      "net": 698350000
+    }
+  },
+  "change": {
+    "income": 4000000,
+    "expenses": -217550000,
+    "net": 221550000
+  },
+  "modelVersion": "tenant-if-v2-8c4f592682da",
+  "priorities": [
+    {
+      "tenantId": "synthetic-0116",
+      "grade": "C",
+      "score": 0.7869665487150374,
+      "windowStart": "2025-07-01",
+      "facts": [
+        {
+          "kind": "repairs90",
+          "value": 12,
+          "activityIds": [
+            "synthetic-0116-activity-90",
+            "synthetic-0116-activity-91",
+            "synthetic-0116-activity-92",
+            "synthetic-0116-activity-93",
+            "synthetic-0116-activity-101",
+            "synthetic-0116-activity-102",
+            "synthetic-0116-activity-103",
+            "synthetic-0116-activity-104",
+            "synthetic-0116-activity-113",
+            "synthetic-0116-activity-114",
+            "synthetic-0116-activity-115",
+            "synthetic-0116-activity-116"
+          ]
+        },
+        {
+          "kind": "extraCleaning90",
+          "value": 9,
+          "activityIds": [
+            "synthetic-0116-activity-94",
+            "synthetic-0116-activity-95",
+            "synthetic-0116-activity-96",
+            "synthetic-0116-activity-97",
+            "synthetic-0116-activity-105",
+            "synthetic-0116-activity-106",
+            "synthetic-0116-activity-107",
+            "synthetic-0116-activity-117",
+            "synthetic-0116-activity-118"
+          ]
+        },
+        {
+          "kind": "oldestUnpaidDays",
+          "value": 16,
+          "activityIds": [
+            "synthetic-0116-activity-112",
+            "synthetic-0116-activity-112-second"
+          ]
+        }
+      ]
+    },
+    {
+      "tenantId": "synthetic-0264",
+      "grade": "C",
+      "score": 0.7841576450321789,
+      "windowStart": "2025-07-01",
+      "facts": [
+        {
+          "kind": "repairs90",
+          "value": 10,
+          "activityIds": [
+            "synthetic-0264-activity-97",
+            "synthetic-0264-activity-98",
+            "synthetic-0264-activity-99",
+            "synthetic-0264-activity-104",
+            "synthetic-0264-activity-105",
+            "synthetic-0264-activity-106",
+            "synthetic-0264-activity-107",
+            "synthetic-0264-activity-114",
+            "synthetic-0264-activity-115",
+            "synthetic-0264-activity-116"
+          ]
+        },
+        {
+          "kind": "extraCleaning90",
+          "value": 7,
+          "activityIds": [
+            "synthetic-0264-activity-100",
+            "synthetic-0264-activity-101",
+            "synthetic-0264-activity-108",
+            "synthetic-0264-activity-109",
+            "synthetic-0264-activity-117",
+            "synthetic-0264-activity-118",
+            "synthetic-0264-activity-119"
+          ]
+        },
+        {
+          "kind": "oldestUnpaidDays",
+          "value": 14,
+          "activityIds": [
+            "synthetic-0264-activity-113"
+          ]
+        }
+      ]
+    },
+    {
+      "tenantId": "synthetic-0027",
+      "grade": "C",
+      "score": 0.7606484653253143,
+      "windowStart": "2025-07-01",
+      "facts": [
+        {
+          "kind": "repairs90",
+          "value": 0,
+          "activityIds": []
+        },
+        {
+          "kind": "extraCleaning90",
+          "value": 0,
+          "activityIds": []
+        },
+        {
+          "kind": "oldestUnpaidDays",
+          "value": 289,
+          "activityIds": [
+            "synthetic-0027-activity-23",
+            "synthetic-0027-activity-28",
+            "synthetic-0027-activity-32",
+            "synthetic-0027-activity-34",
+            "synthetic-0027-activity-38",
+            "synthetic-0027-activity-42",
+            "synthetic-0027-activity-48",
+            "synthetic-0027-activity-50",
+            "synthetic-0027-activity-55"
+          ]
+        }
+      ]
+    },
+    {
+      "tenantId": "synthetic-0190",
+      "grade": "C",
+      "score": 0.6804697629355831,
+      "windowStart": "2025-07-01",
+      "facts": [
+        {
+          "kind": "repairs90",
+          "value": 4,
+          "activityIds": [
+            "synthetic-0190-activity-72",
+            "synthetic-0190-activity-76",
+            "synthetic-0190-activity-77",
+            "synthetic-0190-activity-82"
+          ]
+        },
+        {
+          "kind": "extraCleaning90",
+          "value": 3,
+          "activityIds": [
+            "synthetic-0190-activity-78",
+            "synthetic-0190-activity-83",
+            "synthetic-0190-activity-84"
+          ]
+        },
+        {
+          "kind": "oldestUnpaidDays",
+          "value": 0,
+          "activityIds": []
+        }
+      ]
+    },
+    {
+      "tenantId": "synthetic-0309",
+      "grade": "C",
+      "score": 0.6735160991883684,
+      "windowStart": "2025-07-01",
+      "facts": [
+        {
+          "kind": "repairs90",
+          "value": 0,
+          "activityIds": []
+        },
+        {
+          "kind": "extraCleaning90",
+          "value": 9,
+          "activityIds": [
+            "synthetic-0309-activity-63",
+            "synthetic-0309-activity-64",
+            "synthetic-0309-activity-65",
+            "synthetic-0309-activity-69",
+            "synthetic-0309-activity-70",
+            "synthetic-0309-activity-71",
+            "synthetic-0309-activity-77",
+            "synthetic-0309-activity-78",
+            "synthetic-0309-activity-79"
+          ]
+        },
+        {
+          "kind": "oldestUnpaidDays",
+          "value": 0,
+          "activityIds": []
+        }
+      ]
+    },
+    {
+      "tenantId": "synthetic-0407",
+      "grade": "C",
+      "score": 0.6713308017392964,
+      "windowStart": "2025-07-01",
+      "facts": [
+        {
+          "kind": "repairs90",
+          "value": 0,
+          "activityIds": []
+        },
+        {
+          "kind": "extraCleaning90",
+          "value": 9,
+          "activityIds": [
+            "synthetic-0407-activity-62",
+            "synthetic-0407-activity-63",
+            "synthetic-0407-activity-64",
+            "synthetic-0407-activity-68",
+            "synthetic-0407-activity-69",
+            "synthetic-0407-activity-74",
+            "synthetic-0407-activity-75",
+            "synthetic-0407-activity-76",
+            "synthetic-0407-activity-77"
+          ]
+        },
+        {
+          "kind": "oldestUnpaidDays",
+          "value": 0,
+          "activityIds": []
+        }
+      ]
+    },
+    {
+      "tenantId": "synthetic-0512",
+      "grade": "C",
+      "score": 0.668776149004287,
+      "windowStart": "2025-07-01",
+      "facts": [
+        {
+          "kind": "repairs90",
+          "value": 0,
+          "activityIds": []
+        },
+        {
+          "kind": "extraCleaning90",
+          "value": 1,
+          "activityIds": [
+            "synthetic-0512-activity-50"
+          ]
+        },
+        {
+          "kind": "oldestUnpaidDays",
+          "value": 311,
+          "activityIds": [
+            "synthetic-0512-activity-21",
+            "synthetic-0512-activity-24",
+            "synthetic-0512-activity-21-second",
+            "synthetic-0512-activity-24-second"
+          ]
+        }
+      ]
+    },
+    {
+      "tenantId": "synthetic-0478",
+      "grade": "C",
+      "score": 0.6672301260598874,
+      "windowStart": "2025-07-01",
+      "facts": [
+        {
+          "kind": "repairs90",
+          "value": 3,
+          "activityIds": [
+            "synthetic-0478-activity-52",
+            "synthetic-0478-activity-53",
+            "synthetic-0478-activity-64"
+          ]
+        },
+        {
+          "kind": "extraCleaning90",
+          "value": 4,
+          "activityIds": [
+            "synthetic-0478-activity-54",
+            "synthetic-0478-activity-55",
+            "synthetic-0478-activity-65",
+            "synthetic-0478-activity-66"
+          ]
+        },
+        {
+          "kind": "oldestUnpaidDays",
+          "value": 0,
+          "activityIds": []
+        }
+      ]
+    }
+  ],
+  "recommendations": [
+    "Review 36 overdue rent occurrences as of 2026-06-30; inspect the source records before follow-up.",
+    "Inspect activity-category-routine-cleaning, the largest recorded expense category in 2026-06-01 through 2026-06-30: Rp 338,390,000.",
+    "Review the first eight saved tenant priorities with their facts. The model is experimental; do not infer tenant fault from the grade."
+  ]
+}

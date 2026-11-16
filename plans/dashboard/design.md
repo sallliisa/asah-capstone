@@ -1,7 +1,7 @@
 # Operational dashboard
 
 Design: Approved
-Implementation: Needs update
+Implementation: In progress
 
 The user approved financial period/room filters and tenant-grade presentation
 during the capstone discussion. These additions are not implemented. Existing

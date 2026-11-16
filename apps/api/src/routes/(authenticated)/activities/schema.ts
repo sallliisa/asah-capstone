@@ -139,8 +139,9 @@ export type ActivityRecord = z.output<typeof activitySelectSchema>
 
 export const activityDashboardSchema = z.object({
   today: z.iso.date(),
-  monthStart: z.iso.date(),
-  monthEnd: z.iso.date(),
+  periodStart: z.iso.date(),
+  periodEnd: z.iso.date(),
+  roomId: z.string().nullable(),
   income: z.number(),
   expenses: z.number(),
   net: z.number(),
@@ -158,3 +159,10 @@ export const activityDashboardSchema = z.object({
 })
 
 export const activityAttributionSchema = z.object({ tenantId: z.string().min(1).nullable(), reason: z.string().trim().min(1).max(1000) }).strict()
+
+export const activityDashboardQuerySchema = z.object({
+  period: z.enum(['this-month', 'last-month', 'last-three-months', 'custom']).default('this-month'),
+  from: z.iso.date().optional(),
+  to: z.iso.date().optional(),
+  roomId: z.string().min(1).optional(),
+})

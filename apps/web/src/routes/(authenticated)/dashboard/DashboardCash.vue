@@ -22,7 +22,7 @@ const charts = computed(() => {
       configuration: {
         type: 'bar',
         data: {
-          labels: snapshot.daily.map((day) => day.date.slice(8)),
+          labels: snapshot.daily.map((day) => day.date.slice(5)),
           datasets: [
             { label: 'Income', data: snapshot.daily.map((day) => day.income), backgroundColor: palette[0] },
             { label: 'Expenses', data: snapshot.daily.map((day) => day.expenses), backgroundColor: palette[1] },
@@ -37,7 +37,7 @@ const charts = computed(() => {
       configuration: {
         type: 'line',
         data: {
-          labels: snapshot.daily.map((day) => day.date.slice(8)),
+          labels: snapshot.daily.map((day) => day.date.slice(5)),
           datasets: [{ label: 'Net cash', data: snapshot.daily.map((day) => day.cumulativeNet), borderColor: palette[0], pointRadius: 2, tension: 0.15 }],
         },
         options,
@@ -72,8 +72,9 @@ function financeLink(kind?: 'income' | 'expense'): RouteLocationRaw {
   return {
     name: 'income-expenses',
     query: {
-      'activities.paymentFrom': props.snapshot.monthStart,
-      'activities.paymentTo': props.snapshot.today,
+      'activities.paymentFrom': props.snapshot.periodStart,
+      'activities.paymentTo': props.snapshot.periodEnd,
+      ...(props.snapshot.roomId ? { 'activities.roomId': props.snapshot.roomId } : {}),
       'activities.paymentStatus': 'settled',
       ...(kind ? { 'activities.financialKind': kind } : {}),
     },
@@ -84,8 +85,8 @@ function financeLink(kind?: 'income' | 'expense'): RouteLocationRaw {
 <template>
   <div class="grid min-h-0 min-w-0 flex-1 grid-cols-6 grid-rows-[auto_auto_auto_minmax(0,1fr)] gap-3">
     <Card class="col-span-6 min-w-0 gap-3 p-3">
-      <h2 class="text-base font-semibold">This month's cash</h2>
-      <p class="text-sm text-on-surface-variant">{{ snapshot.monthStart }} to {{ snapshot.today }}. Settled payments only.</p>
+      <h2 class="text-base font-semibold">Settled cash</h2>
+      <p class="text-sm text-on-surface-variant">{{ snapshot.periodStart }} to {{ snapshot.periodEnd }}. Settled payments only.</p>
       <div class="grid grid-cols-3 gap-3">
         <Card
           v-for="metric in [
@@ -105,13 +106,13 @@ function financeLink(kind?: 'income' | 'expense'): RouteLocationRaw {
     <Card v-for="chart in charts" :key="chart.title" class="col-span-3 min-h-0 min-w-0 gap-2 p-3" style="height: clamp(10rem, 24dvh, 15rem)">
       <h3 class="text-sm font-semibold">{{ chart.title }}</h3>
       <p v-if="chart.empty" class="flex min-h-0 flex-1 items-center justify-center text-sm text-on-surface-variant">
-        No settled {{ chart.title.startsWith('Expenses') ? 'expenses' : 'payments' }} this month.
+        No settled {{ chart.title.startsWith('Expenses') ? 'expenses' : 'payments' }} in this period.
       </p>
       <DashboardChart v-else :configuration="chart.configuration" :label="chart.title" />
     </Card>
     <Card class="col-span-6 min-h-0 min-w-0 gap-2 overflow-auto p-3">
-      <h3 class="text-sm font-semibold">Room costs this month</h3>
-      <p v-if="!topRooms.length" class="text-sm text-on-surface-variant">No settled room expenses this month.</p>
+      <h3 class="text-sm font-semibold">Room costs in this period</h3>
+      <p v-if="!topRooms.length" class="text-sm text-on-surface-variant">No settled room expenses in this period.</p>
       <ol v-else class="divide-y divide-outline-variant">
         <li v-for="(room, index) in topRooms" :key="room.id ?? 'shared'" class="py-2 first:pt-0">
           <div class="flex items-baseline justify-between gap-2 text-sm font-semibold">

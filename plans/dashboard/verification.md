@@ -32,3 +32,27 @@ Kept the room expense chart and added a separate card below the four charts for 
 ## Mobile dashboard scrolling, 2026-11-11
 
 The dashboard uses page scrolling below the desktop breakpoint. At 390 and 900 pixels in Chromium, the previous layout stopped scrolling with the final card out of view. The running dashboard now scrolls the full final card above the fixed navigation pill. The desktop check confirmed the viewport layout at 1440 pixels. Evidence is in `.local/verification/dashboard-pill-scroll/`.
+
+## Financial filters and tenant results, 17 November 2026
+
+Added This month, Last month, Last three months, custom dates, and an optional
+room filter. All rooms includes shared expenses. The effective date bounds and
+room travel with links to financial records. The API fills dates across month
+boundaries and excludes future money dates. Its operational attention query is
+independent of the financial filters. Saved tenant grades use their own window.
+
+Four real API/database tests passed, including a distinguishing two-room/shared
+expense case and custom/three-month periods. API, SDK, and web type checks,
+focused API/web lint, formatting, and the production web build passed. Existing
+large-chunk and plugin-time build warnings remain. No database migration was
+needed. Authenticated browser acceptance for these additions remains unverified.
+
+The Hono custom-route type does not declare query fields. A local dashboard
+action supplies its validated financial query and parses the result. No shared
+adapter or framework package was changed.
+
+analysis/notebooks/operations-analysis.ipynb executed against the same synthetic
+histories as the model. It covers pending work, settled cash changes, and saved
+model priorities. A separate SQLite query matched the June cash totals. Findings
+and recommendations include their period and source IDs in analysis/report.json.
+No synthetic totals are presented as current app facts.

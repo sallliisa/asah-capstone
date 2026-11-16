@@ -1,4 +1,4 @@
-import { defineRoute } from '@southneuhof/sprindle'
+import { defineRoute, validationError } from '@southneuhof/sprindle'
 import { and, asc, desc, eq, gte, lte, or, sql } from 'drizzle-orm'
 import { getDb } from '../../../../db'
 import { requirePermission } from '../../../../identity'
@@ -6,16 +6,29 @@ import { activityCategories } from '../../activity-categories/activity-categorie
 import { rooms } from '../../rooms/rooms.table'
 import { activities } from '../activities.table'
 import { businessDate } from '../dates'
-import { activityDashboardSchema } from '../schema'
+import { activityDashboardSchema, activityDashboardQuerySchema } from '../schema'
 
 export const GET = defineRoute({
   authorize: requirePermission('view-activities'),
-  action: async () => {
+  action: async ({ c }) => {
     const today = businessDate()
-    const monthStart = `${today.slice(0, 7)}-01`
-    const end = new Date(`${monthStart}T00:00:00.000Z`)
-    end.setUTCMonth(end.getUTCMonth() + 1, 0)
-    const monthEnd = end.toISOString().slice(0, 10)
+    const query = activityDashboardQuerySchema.parse(c.req.query())
+    const anchor = new Date(`${today.slice(0, 7)}-01T00:00:00.000Z`)
+    let periodStart = `${today.slice(0, 7)}-01`
+    let periodEnd = today
+    if (query.period === 'last-month') {
+      anchor.setUTCDate(0)
+      periodEnd = anchor.toISOString().slice(0, 10)
+      periodStart = `${periodEnd.slice(0, 7)}-01`
+    } else if (query.period === 'last-three-months') {
+      anchor.setUTCMonth(anchor.getUTCMonth() - 2)
+      periodStart = anchor.toISOString().slice(0, 10)
+    } else if (query.period === 'custom') {
+      if (!query.from || !query.to) throw validationError('Select both custom dates.')
+      periodStart = query.from
+      periodEnd = query.to > today ? today : query.to
+      if (periodStart > periodEnd) throw validationError('The start date must be on or before the end date and today.')
+    }
     const openWork = or(eq(activities.workStatus, 'planned'), eq(activities.workStatus, 'in_progress'))
     const draftMoney = and(sql`${activities.financialKind} <> 'none'`, eq(activities.paymentStatus, 'draft'))
     const needsAttention = or(openWork, draftMoney)
@@ -23,20 +36,23 @@ export const GET = defineRoute({
     const [cash, pending, counts] = await Promise.all([
       getDb().select({ id: activities.id, name: activities.name, date: activities.paymentDate, kind: activities.financialKind, amount: activities.amount, categoryId: activities.categoryId, categoryName: activityCategories.name, roomId: activities.roomId, roomName: rooms.roomCode }).from(activities)
         .innerJoin(activityCategories, eq(activities.categoryId, activityCategories.id)).leftJoin(rooms, eq(activities.roomId, rooms.id))
-        .where(and(eq(activities.paymentStatus, 'settled'), gte(activities.paymentDate, monthStart), lte(activities.paymentDate, today))),
+        .where(and(eq(activities.paymentStatus, 'settled'), gte(activities.paymentDate, periodStart), lte(activities.paymentDate, periodEnd), query.roomId ? eq(activities.roomId, query.roomId) : undefined)),
       getDb().select({ id: activities.id, name: activities.name, roomName: rooms.roomCode, categoryName: activityCategories.name, financialKind: activities.financialKind, workStatus: activities.workStatus, paymentStatus: activities.paymentStatus, expectedDate: activities.occurrenceDate, amount: activities.amount }).from(activities)
         .innerJoin(activityCategories, eq(activities.categoryId, activityCategories.id)).leftJoin(rooms, eq(activities.roomId, rooms.id))
         .where(needsAttention).orderBy(desc(overdue), asc(sql`coalesce(${activities.occurrenceDate}, '9999-12-31'::date)`), asc(activities.id)).limit(8),
       getDb().select({ total: sql<number>`count(*)::int` }).from(activities).where(needsAttention),
     ])
-    const daily = Array.from({ length: Number(today.slice(8)) }, (_, index) => ({ date: `${today.slice(0, 7)}-${String(index + 1).padStart(2, '0')}`, income: 0, expenses: 0, net: 0, cumulativeNet: 0 }))
+    const firstDay = new Date(`${periodStart}T00:00:00.000Z`).getTime()
+    const finalDay = new Date(`${periodEnd}T00:00:00.000Z`).getTime()
+    const daily = Array.from({ length: Math.round((finalDay - firstDay) / 86400000) + 1 }, (_, index) => ({ date: new Date(firstDay + index * 86400000).toISOString().slice(0, 10), income: 0, expenses: 0, net: 0, cumulativeNet: 0 }))
+    const dailyByDate = new Map(daily.map((day) => [day.date, day]))
     const categories = new Map<string, { id: string; name: string; amount: number }>()
     const roomGroups = new Map<string | null, { id: string | null; name: string; amount: number; activities: { id: string; name: string; amount: number }[] }>()
     let income = 0
     let expenses = 0
     for (const row of cash) {
       if (!row.date || row.amount === null) continue
-      const day = daily[Number(row.date.slice(8)) - 1]
+      const day = dailyByDate.get(row.date)
       if (!day) continue
       if (row.kind === 'income') {
         income += row.amount
@@ -62,7 +78,7 @@ export const GET = defineRoute({
     const attention = pending.map((row) => ({ ...row, overdue: row.expectedDate !== null && row.expectedDate < today && (row.financialKind === 'none' ? row.workStatus === 'planned' || row.workStatus === 'in_progress' : row.paymentStatus === 'draft') }))
       .sort((a, b) => Number(b.overdue) - Number(a.overdue) || (a.expectedDate ?? '9999').localeCompare(b.expectedDate ?? '9999') || a.id.localeCompare(b.id))
     const byAmount = (a: { amount: number; name: string }, b: { amount: number; name: string }) => b.amount - a.amount || a.name.localeCompare(b.name)
-    const snapshot = activityDashboardSchema.parse({ today, monthStart, monthEnd, income, expenses, net: income - expenses, daily, expensesByCategory: [...categories.values()].sort(byAmount), expensesByRoom: [...roomGroups.values()].sort(byAmount), attention: { total: counts[0]?.total ?? 0, items: attention } })
+    const snapshot = activityDashboardSchema.parse({ today, periodStart, periodEnd, roomId: query.roomId ?? null, income, expenses, net: income - expenses, daily, expensesByCategory: [...categories.values()].sort(byAmount), expensesByRoom: [...roomGroups.values()].sort(byAmount), attention: { total: counts[0]?.total ?? 0, items: attention } })
     return { data: [snapshot], total: 1 }
   },
 })

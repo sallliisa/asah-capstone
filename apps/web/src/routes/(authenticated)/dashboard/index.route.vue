@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { z } from 'zod/v4'
+import { activityDashboardQuerySchema } from '@southneuhof/api/src/routes/(authenticated)/activities/schema.ts'
 import { RouterLink } from 'vue-router'
 import Button from '@southneuhof/loom/components/base/Button.vue'
 import Card from '@southneuhof/loom/components/base/Card.vue'
-import { useCollection, type CollectionLoadContext } from '@southneuhof/loom'
+import { defineForm, Form, useCollection, type CollectionLoadContext } from '@southneuhof/loom'
 import { resourceCan } from '@/framework/access'
 import { rooms } from '../rooms/rooms.resource'
 import { roomsActions } from '../rooms/rooms.actions'
@@ -12,6 +14,7 @@ import { activitiesActions } from '../activities/activities.actions'
 import { recurringPlans } from '../recurring-plans/recurring-plans.resource'
 import { recurringPlansActions } from '../recurring-plans/recurring-plans.actions'
 import DashboardCash from './DashboardCash.vue'
+import { loadDashboardCash } from './dashboard.actions'
 import { permissions } from '@/stores/permissions'
 import { loadTenantPriorities } from '../tenant-detector/tenant-detector.actions'
 
@@ -43,6 +46,41 @@ const { records, loading, error, refresh } = useCollection(() => ({
   namespace: 'room-map',
 }))
 const canActivities = resourceCan(activities)
+const financialFilters = ref<(typeof activityDashboardQuerySchema)['_output']>({ period: 'this-month' })
+const cashFilterSchema = z
+  .object({ period: activityDashboardQuerySchema.shape.period, from: z.iso.date().nullish(), to: z.iso.date().nullish(), roomId: z.string().nullish() })
+  .superRefine((input, context) => {
+    if (input.period === 'custom' && (!input.from || !input.to || input.from > input.to)) context.addIssue({ code: 'custom', path: ['from'], message: 'Select a valid start and end date.' })
+  })
+  .transform((input) => activityDashboardQuerySchema.parse({ ...input, from: input.from ?? undefined, to: input.to ?? undefined, roomId: input.roomId || undefined }))
+const cashFilters = defineForm({
+  schema: cashFilterSchema,
+  fields: {
+    period: {
+      label: 'Cash period',
+      renderer: 'select',
+      initialValue: 'this-month',
+      props: {
+        data: [
+          { id: 'this-month', name: 'This month' },
+          { id: 'last-month', name: 'Last month' },
+          { id: 'last-three-months', name: 'Last three months' },
+          { id: 'custom', name: 'Custom dates' },
+        ],
+        pick: 'id',
+        view: 'name',
+        clearable: false,
+      },
+    },
+    from: ({ draft }) => ({ label: 'From', renderer: 'date', visible: draft.period === 'custom' }),
+    to: ({ draft }) => ({ label: 'To', renderer: 'date', visible: draft.period === 'custom' }),
+    roomId: { label: 'Room (empty means all rooms)', renderer: 'select', props: { load: activitiesActions.rooms, pick: 'id', view: 'name', clearable: true } },
+  },
+})
+async function applyCashFilters(input: (typeof cashFilterSchema)['_output']) {
+  financialFilters.value = input
+}
+
 const canPlans = resourceCan(recurringPlans)
 const {
   records: snapshots,
@@ -50,10 +88,10 @@ const {
   error: cashError,
   refresh: refreshCash,
 } = useCollection(() => ({
-  ...(canActivities('list') ? { load: activitiesActions.dashboard } : { data: [] }),
+  ...(canActivities('list') ? { load: loadDashboardCash } : { data: [] }),
   resource: 'activities',
   namespace: 'operational-dashboard',
-  query: {},
+  query: financialFilters.value,
 }))
 const snapshot = computed(() => snapshots.value[0])
 const {
@@ -181,6 +219,7 @@ onBeforeUnmount(() => clearInterval(interval))
       </template>
     </Card>
     <section aria-label="Cash overview" class="cash-panel flex min-h-0 min-w-0 flex-col gap-3 lg:overflow-auto">
+      <Form v-if="canActivities('list')" v-bind="cashFilters" :submit="applyCashFilters" />
       <p v-if="!canActivities('list')" role="alert">You do not have permission to view activities.</p>
       <p v-else-if="cashLoading" role="status">Loading cash summary…</p>
       <div v-else-if="cashError" role="alert">
