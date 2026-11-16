@@ -74,3 +74,21 @@ The focused API suite passed 10 tests across Activities, Recurring Plans, and Ac
 Category options use the activity-categories cache owner. Master saves invalidate the related Activity and Recurring Plan reads and have an explicit saved-record navigation target. Standard Views and controls are used. Browser interaction remains unverified under the existing connector limitation.
 
 Evidence is in .local/verification/activity-categories/, .local/verification/categories/, and .local/verification/category-api-*.log.
+
+## Detector category seed — 17 November 2026
+
+The configured development database had seven migrations whose hashes matched
+the local SQL files. General was its only activity category. The existing
+boarding-house seed added Corrective Repairs, Scheduled Servicing, Routine
+Cleaning, Extra Cleaning, and Room Rent. A fresh database read returned all six
+categories. A second seed run left category IDs, names, and audit dates unchanged.
+The existing General record was preserved. No sample activities were inserted.
+
+The API preflight, focused seed lint, API route generation/check, and API type
+check passed. No test files were added or changed. The change adds seed values
+and uses conflict handling for both unique names and IDs. Seed execution and
+database read evidence is in
+`.local/verification/activity-category-seed-20261117/seed.log`.
+
+The master UI was not checked in a browser for this seed change. Earlier browser
+verification limits remain open.

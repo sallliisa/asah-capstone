@@ -28,3 +28,7 @@ Removed the visible chart data disclosure at the user’s request. Cash totals r
 ## Ranked room costs, 2026-11-11
 
 Kept the room expense chart and added a separate card below the four charts for the three rooms with the highest settled expenses this month through today. Each total lists linked activities and their amounts. Shared expenses remain in cash totals and category charts but are excluded from the room ranking. The existing cash query supplies the activity details, so both use the same date and payment filters. API, SDK, and web type checks and scoped lint passed. Database route tests and browser rendering were not verified for this update.
+
+## Mobile dashboard scrolling, 2026-11-11
+
+The dashboard uses page scrolling below the desktop breakpoint. At 390 and 900 pixels in Chromium, the previous layout stopped scrolling with the final card out of view. The running dashboard now scrolls the full final card above the fixed navigation pill. The desktop check confirmed the viewport layout at 1440 pixels. Evidence is in `.local/verification/dashboard-pill-scroll/`.

@@ -1,7 +1,15 @@
 # Activities and recurring plans
 
 Design: Approved
-Implementation: In progress
+Implementation: Needs update
+
+Existing behavior and the tenant-history direction retain approval. Attribution
+and rent-plan details below are the proposed contract for this workstream.
+The [tenant assessment](../room-detector/design.md) consumes these records.
+No tenant-attribution implementation is present yet.
+
+The user approved this document and authorized implementation at the checkpoint.
+Earlier draft labels describe proposals now included in that approval.
 
 ## 1. Purpose and scope
 
@@ -13,6 +21,8 @@ Included:
 - Income & Expenses as a filtered view of the same activity records, with totals and filters.
 - Recurring Plans list, create, detail, edit, and automatic due generation.
 - Optional room and receipt links. Separate work and payment states for follow-up.
+- A historical tenant reference alongside the room, without a duplicate activity.
+- Tenant-bound rent plans, stable past associations, and audited corrections.
 - Activity Categories master data for all activities and recurring plans.
 - Management permissions through the existing authorization catalog.
 
@@ -22,7 +32,8 @@ Excluded:
 - Rent charges, unpaid rent balances, payment allocations, multiple payments per activity, financial statements, and external accounting integration.
 - New room or occupant workflows.
 
-The user approved this structure in the conversation and authorized delivery. No further design approval is required.
+The earlier Activity scope retains its approval. The new historical tenant
+contract remains Draft for review. This document does not start implementation.
 
 ## 2. Functional requirements
 
@@ -44,6 +55,7 @@ The user approved this structure in the conversation and authorized delivery. No
 | Name | Activity name | Required; trimmed; bounded text. |
 | Description | Additional details | Optional; bounded text. |
 | Room | Related room | Optional existing room. Only the activity owns this link. Public records show a room name. |
+| Tenant | Historical association | Optional tenant account reference. Preserved across room moves and deactivation. Changing a saved association requires an audited correction. |
 | Work status | Work progress | Set to Completed for manual creation. Existing activities can be Planned, In progress, Completed, or Cancelled through follow-up. Create accepts no work-status input. |
 | Expected date | Due date from a recurring plan | Stored as occurrenceDate. Read-only. For a non-financial activity, work is expected then. For an expense, payment is expected then. For income, receipt of money is expected then. Ad-hoc activities have no expected date. |
 | Completion date | Work completion date | Set to today in Asia/Jakarta when work becomes Completed. Retained on unrelated edits, cleared on reopening, and refreshed on a later completion. Read-only. |
@@ -64,11 +76,63 @@ Existing work and payment states remain independent during follow-up. Manual cre
 
 Settled income and expense totals use recorded payments. Drafts are counted separately. Filters apply before aggregation. Payment date filters apply to payment dates; drafts without dates do not match a payment date range. Lists and totals do not infer payments from Room Type cost.
 
-The Create form keeps Name, Category, Room, and Description first. Financial details comes after these fields, followed only by its conditional amount, actual date, and receipt fields. Selecting a financial kind expands the bottom of the form without moving the preceding activity fields. Edit places follow-up status controls after those stable fields.
+The Create form keeps Name, Category, Room, Tenant, and Description first. Financial details comes after these fields, followed only by its conditional amount, actual date, and receipt fields. Selecting a financial kind expands the bottom of the form without moving the preceding activity fields. Edit places follow-up status controls after those stable fields.
 
 Small fixed-choice inputs use radio controls. Room lookups remain selects. Optional radio filters include All to clear the filter.
 
 Records are edited through the shared Activity pages. Deletion of financial history is not included.
+
+### Tenant attribution
+
+Add nullable tenantId to an activity, referencing the existing tenant account.
+This is the associated tenant, not the owner who entered the activity and not
+a declaration of proven responsibility. Do not use createdBy for attribution.
+One record supplies both histories and counts once in financial summaries.
+
+For a new current event, suggest the room's current occupant, with an explicit
+tenant choice or None. Preserve the selected tenant when the room assignment
+changes. A historical or late-entered event needs the correct tenant selected
+by the owner. Do not backfill existing events from today's occupant. Unknown
+historical attribution stays unassigned and outside tenant-model inputs.
+
+An explicit attribution correction records who changed it and why. It refreshes
+both affected tenant results. Changes to an activity's amount or payment state
+appear in both histories. Preserve earlier saved prediction inputs and the
+attribution correction history.
+
+Rent plans carry the intended tenant reference. Generated rent keeps that
+reference even if generation is late. Moving a tenant closes or replaces the
+relevant rent plan for future obligations. Existing unpaid rent stays with the
+original tenant. Catch up due rent before retiring an old plan. Check the new
+plan's start date to avoid missing or duplicate obligations. No-finance or
+shared activities can remain unassigned.
+
+Deactivation preserves the tenant's activity and prediction history. Restrict
+hard deletion of an account referenced by these records. A tenant moving rooms
+does not create a new assessment identity or restart evidence collection.
+
+Attribution changes require Activity update permission and tenant read access.
+The tenant selector includes existing historical tenant accounts, including
+inactive accounts. Do not require that a historical tenant is today's occupant.
+Normal creation can suggest the current occupant, but the owner confirms the
+selection. A shared activity can remain unassigned.
+
+Propose activity_tenant_attribution_changes with activityId, previousTenantId,
+newTenantId, changedBy, changedAt, and reason. A change to saved attribution
+requires a reason and writes its audit record in the same transaction. Initial
+creation uses ordinary create audit. Later room assignment changes never
+rewrite these references. Restrict hard deletion of referenced tenant accounts.
+
+A rent plan's tenant can be set explicitly while it has no generated history.
+After generation starts, replace the plan to change its tenant. Deactivation
+preserves every generated payment. Do not reactivate a former tenant's rent
+plan as the new tenant's plan. Existing unassigned activities remain unassigned
+until the owner explicitly corrects them with an audit reason.
+
+Tenant profiles show their authorized associated activity history across rooms.
+Room history shows the same records with their historical tenant labels. These
+views do not create another income/expense record. Current room assignment
+continues to be owned by Rooms.
 
 ### Recurring plan
 
@@ -77,6 +141,7 @@ Records are edited through the shared Activity pages. Deletion of financial hist
 | ID | Plan identity | Generated; read-only. |
 | Name and description | Activity template | Name required; description optional. |
 | Room | Activity room template | Optional existing room. |
+| Tenant | Historical tenant template | Optional tenant reference copied to new occurrences. Required for newly configured tenant rent plans. Existing generated rows are not reassigned when a plan changes. |
 | Start date | First occurrence date | Required calendar date. |
 | Interval count | Repeat interval | Positive integer up to 366. |
 | Interval unit | Calendar unit | Day, Week, or Month. |
@@ -97,9 +162,9 @@ The server checks due plans at startup and periodically while the API runs. It u
 3. Submit once. The activity and expense are one record.
 4. Open that record from either list.
 
-### Schedule and complete cleaning
+### Schedule and complete recurring work
 
-1. Create a recurring plan with no financial details, a room, a start date, and an interval of two weeks.
+1. For work with an explicit schedule, create a no-finance recurring plan with a room, optional tenant, start date, and owner-selected interval. Routine cleaning has no mandatory fixed interval.
 2. The server creates a Planned activity when each occurrence is due.
 3. Open the activity, set Completed, and submit. The server records its completion date automatically.
 4. Cleaning remains absent from Income & Expenses.
@@ -118,6 +183,7 @@ The server checks due plans at startup and periodically while the API runs. It u
 3. Category choices are available to users who can read Activities or Recurring Plans, without granting category management access.
 4. Existing activities show renamed category names. Referenced categories cannot be deleted. The default General category cannot be deleted because it is used by create defaults.
 5. Repeat seeds preserve category renames. Migration preserves existing free-text category names and assigns General to unclassified records.
+6. The boarding-house seed adds Corrective Repairs, Scheduled Servicing, Routine Cleaning, Extra Cleaning, and Room Rent. General remains the default. Conflicts on an ID or name leave the existing record unchanged. These categories do not create activities or recurring plans.
 
 | Condition | Result | Next step |
 |---|---|---|
