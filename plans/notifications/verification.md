@@ -25,3 +25,14 @@ real iPhone permission, delivery, notification taps, authenticated inbox renderi
 or the production scheduler. These checks need the device and deployment access.
 The inbox remains available when push fails. No reminder send time, age limit,
 or repeated overdue push policy was added.
+
+## Due batch correction
+
+A six-notification regression found that the initial sender stopped after five
+pending deliveries. The case failed before the correction with five sent
+instead of six. The sender now drains pending work with five concurrent workers.
+Each claimed delivery still uses row locking and a saved terminal state. The
+two notification tests pass after the fix, including all six persisted sends,
+no duplicate second pass, natural session expiry, and explicit logout cleanup.
+The external push service remains mocked. No age window or send-time policy was
+added. Real iPhone delivery still needs the device.
