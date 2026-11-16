@@ -11,8 +11,17 @@ import Icon from '@southneuhof/loom/components/base/Icon.vue'
 import Spinner from '@southneuhof/loom/components/base/Spinner.vue'
 import { reloadPage } from './reload'
 import { errorMessage as getErrorMessage } from './framework/adapters/data/normalize'
+import { clearPiSession } from './routes/(authenticated)/pi/session'
 import { identityError, identityStatus } from './framework/identity'
 import { setPageReadinessError } from '@southneuhof/loom'
+
+watch(
+  identityStatus,
+  (status) => {
+    if (status === 'anonymous') void clearPiSession()
+  },
+  { immediate: true }
+)
 
 const error = ref<Error | null>(null)
 const identityFailed = computed(() => identityStatus.value === 'failed')

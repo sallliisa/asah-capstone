@@ -19,7 +19,7 @@ retains approval; draft details are not automatically approved by this index.
 | 2 | Notifications and PWA | [Notifications](notifications/design.md). | Implemented locally. Real iPhone delivery and VPS scheduler checks remain. |
 | 3 | Tenant attention model | [Tenant assessment](room-detector/design.md), with its [delivery plan](room-detector/implementation-plan.md). | Implemented as an experimental model with saved results and app views. Repair-burst ordering and C recall limits are published; VPS/browser checks remain. |
 | 4 | Dashboard and DS analysis | [Dashboard](dashboard/design.md). | Financial filters, tenant projections, and executed analysis notebook are implemented. Authenticated browser checks remain. |
-| 5 | Pi through Wisp | [Pi chat](pi-chat/design.md). | Not started. Connection credentials supplied; login unverified. |
+| 5 | Pi through Wisp | [Pi chat](pi-chat/design.md). | Wisp host and server session handoff implemented. Live login and native session acceptance passed. Shared account has no workspace; owner setup and browser/chat proof remain. |
 | 6 | Intent classifier and RAG | [Intent classifier](intent-classifier/design.md) and [RAG](rag/design.md). | Not started. Separate designs within one workstream. |
 
 ## Dependencies

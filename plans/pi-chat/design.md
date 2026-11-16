@@ -1,7 +1,7 @@
 # Pi through Wisp
 
 Design: Approved
-Implementation: Not started
+Implementation: In progress
 
 CloudflareOS, Wisp, one shared account, and read-only Pi are approved. Session,
 tool, history, and failure details below remain draft recommendations.

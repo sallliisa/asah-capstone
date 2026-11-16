@@ -74,7 +74,7 @@ async function submitCoverage(input: (typeof detectorCoverageSchema)['_output'])
     <p v-else-if="error" role="alert">Could not load this assessment.</p>
     <template v-else-if="record">
       <p class="font-semibold">{{ record.prediction?.grade ? gradeLabels[record.prediction.grade] : record.prediction ? 'Not enough data' : 'Not assessed yet' }}</p>
-      <p>Review priority from associated records. This does not establish tenant fault.</p>
+      <p>Experimental model trained with synthetic data. Review the source records; the grade does not establish tenant fault.</p>
       <p v-if="record.prediction">{{ record.prediction.windowStart }} – {{ record.prediction.asOfDate }} · Saved {{ new Date(record.prediction.generatedAt).toLocaleString('id-ID') }}</p>
       <p v-if="record.stale">This result needs a refresh.</p>
       <p v-if="record.state?.error">The model service could not finish the assessment. The last result is retained.</p>

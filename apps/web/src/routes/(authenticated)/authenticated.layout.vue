@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { watch } from 'vue'
+import { defineAsyncComponent, watch } from 'vue'
+const PiHost = defineAsyncComponent(() => import('./pi/PiHost.vue'))
 import { identity } from '@/framework/identity'
 import { reconcilePushOwner } from './notifications/push'
 
@@ -30,6 +31,7 @@ import Logo from '@/assets/corporate/common/Logo.vue'
     <GlobalToolbar class="lg:col-start-2 lg:row-start-1" />
     <Sidebar class="lg:col-start-1 lg:row-start-1 lg:row-end-3" />
     <MobileNavigation />
+    <PiHost />
     <div class="col-start-1 row-start-1 min-h-0 min-w-0 max-h-full overflow-x-hidden overflow-y-auto bg-surface-container-lowest lg:contents">
       <main
         tabindex="-1"

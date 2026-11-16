@@ -1,4 +1,5 @@
 import router from '../router'
+import { clearPiSession } from '@/routes/(authenticated)/pi/session'
 import { disablePush } from '@/routes/(authenticated)/notifications/push'
 import { storage } from '@southneuhof/utilities/storage'
 import { clearIdentity } from '@/framework/identity'
@@ -149,6 +150,7 @@ class AppServices {
     if (notifyServer) await disablePush().catch(() => {})
     if (notifyServer) void notifyLogoutToServer()
 
+    await clearPiSession()
     clearIdentity()
     storage.cookie.clear()
     router.push({ name: 'auth-login', force: true })
