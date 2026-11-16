@@ -143,6 +143,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    'location-input-preview': RouteRecordInfo<
+      'location-input-preview',
+      '/location-input-preview',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
   }
 
   /**
@@ -318,6 +325,14 @@ declare module 'vue-router/auto-routes' {
     'src/routes/not-found.route.vue': {
       routes:
         | 'not-found'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/routes/location-input-preview.route.vue': {
+      routes:
+        | 'location-input-preview'
       views:
         | never
       pathParamNames:
