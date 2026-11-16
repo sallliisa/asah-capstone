@@ -8,6 +8,7 @@ import { fileManagerOptions } from './framework/adapters/fileManager'
 import { appDisplayRenderers } from './framework/display/renderers'
 import { dictionary } from '@/configs/dictionary'
 import App from './App.vue'
+import { registerWorker } from './routes/(authenticated)/notifications/push'
 import router from './router'
 import '@vuepic/vue-datepicker/dist/main.css'
 import './assets/main.css'
@@ -60,4 +61,5 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   await router.isReady()
   app.mount('#app')
+  if ('serviceWorker' in navigator) void registerWorker().catch(() => {})
 })

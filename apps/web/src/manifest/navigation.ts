@@ -28,6 +28,7 @@ export const navigation = defineNavigation([
     icon: 'briefcase-4',
     description: 'Activities and finances',
     routes: [
+      { to: { name: 'notifications' }, permission: 'view-activities', title: 'Notifications', icon: 'inbox' },
       { to: { name: 'activities' }, permission: 'view-activities', title: 'Activities', icon: 'calendar-event' },
       { to: { name: 'income-expenses' }, permission: 'view-activities', title: 'Income & Expenses', icon: 'wallet-3' },
       { to: { name: 'recurring-plans' }, permission: 'view-recurring-plans', title: 'Recurring Plans', icon: 'repeat' },

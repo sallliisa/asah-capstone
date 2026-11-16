@@ -1,4 +1,5 @@
 import router from '../router'
+import { disablePush } from '@/routes/(authenticated)/notifications/push'
 import { storage } from '@southneuhof/utilities/storage'
 import { clearIdentity } from '@/framework/identity'
 import { toast } from 'vue-sonner'
@@ -144,7 +145,8 @@ class AppServices {
     return this.request(method.toUpperCase(), path, payload, undefined, options)
   }
 
-  signOut(notifyServer: boolean = true) {
+  async signOut(notifyServer: boolean = true) {
+    if (notifyServer) await disablePush().catch(() => {})
     if (notifyServer) void notifyLogoutToServer()
 
     clearIdentity()

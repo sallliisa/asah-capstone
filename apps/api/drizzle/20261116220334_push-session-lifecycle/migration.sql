@@ -1,0 +1,1 @@
+ALTER TABLE "push_subscriptions" DROP CONSTRAINT "push_subscriptions_session_id_sessions_id_fkey";

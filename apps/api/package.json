@@ -34,7 +34,8 @@
     "e2e:clear": "node --env-file=.env --env-file=.env.e2e --import tsx scripts/clear-e2e-storage.ts",
     "e2e:cleanup-incident-reports": "node --env-file=.env --env-file=.env.e2e --import tsx scripts/cleanup-e2e-incident-reports.ts",
     "e2e:prepare": "pnpm run e2e:reset && pnpm run e2e:migrate && pnpm run e2e:clear && pnpm run e2e:seed",
-    "test:dev-routes": "node --test --test-concurrency=1 scripts/dev-route-reload.proof.mjs scripts/dev-runtime-reload.proof.mjs scripts/dev-source-contract.proof.mjs"
+    "test:dev-routes": "node --test --test-concurrency=1 scripts/dev-route-reload.proof.mjs scripts/dev-runtime-reload.proof.mjs scripts/dev-source-contract.proof.mjs",
+    "jobs:run": "node --env-file-if-exists=.env --import tsx scripts/run-jobs.ts"
   },
   "exports": {
     ".": "./src/index.ts",
@@ -55,6 +56,7 @@
     "pdf-lib": "^1.17.1",
     "pg": "^8.22.0",
     "qrcode": "^1.5.4",
+    "web-push": "^4.0.0",
     "xlsx-js-style": "^1.2.0",
     "zod": "^4.5.0"
   },
@@ -62,6 +64,7 @@
     "@types/node": "^24.0.0",
     "@types/pg": "^8.20.0",
     "@types/qrcode": "^1.5.6",
+    "@types/web-push": "^3.6.4",
     "chokidar": "3.6.0",
     "drizzle-kit": "1.0.0-rc.4",
     "esbuild": "^0.25.12",

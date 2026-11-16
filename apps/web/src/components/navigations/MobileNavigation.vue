@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import NotificationCount from '@/routes/(authenticated)/notifications/NotificationCount.vue'
 import { computed, nextTick, ref, watch } from 'vue'
 import { RouterLink, useRoute, useRouter } from 'vue-router'
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
@@ -92,7 +93,8 @@ watch([() => route.fullPath, wide], () => {
                             :aria-current="current?.entry.name === entry.name ? (route.name === entry.name ? 'page' : 'location') : undefined"
                             @click="open = false"
                           >
-                            <span aria-hidden="true" class="inline-flex shrink-0"><Icon :name="entry.icon" /></span><span class="min-w-0 flex-1 truncate">{{ entry.title }}</span>
+                            <span aria-hidden="true" class="inline-flex shrink-0"><Icon :name="entry.icon" /></span><span class="min-w-0 flex-1 truncate">{{ entry.title }}</span
+                            ><NotificationCount v-if="entry.to.name === 'notifications'" />
                             <span v-if="current?.entry.name === entry.name" aria-hidden="true" class="inline-flex"><Icon name="check" size="sm" /></span>
                           </RouterLink>
                         </template>

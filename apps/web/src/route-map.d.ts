@@ -115,6 +115,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    'notifications': RouteRecordInfo<
+      'notifications',
+      '/notifications',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     'recurring-plans': RouteRecordInfo<
       'recurring-plans',
       '/recurring-plans',
@@ -331,6 +338,7 @@ declare module 'vue-router/auto-routes' {
         | 'dashboard'
         | 'income-expenses'
         | 'map-preview'
+        | 'notifications'
         | 'recurring-plans'
         | 'recurring-plans-create'
         | 'recurring-plans-detail'
@@ -452,6 +460,14 @@ declare module 'vue-router/auto-routes' {
     'src/routes/(authenticated)/map-preview/index.route.vue': {
       routes:
         | 'map-preview'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/routes/(authenticated)/notifications/index.route.vue': {
+      routes:
+        | 'notifications'
       views:
         | never
       pathParamNames:

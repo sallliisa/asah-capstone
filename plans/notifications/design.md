@@ -1,7 +1,7 @@
 # Notifications and iPhone PWA
 
 Design: Approved
-Implementation: Not started
+Implementation: In progress
 
 Inbox, iPhone Web Push, and push on notification creation are approved.
 Storage and integration details below remain draft recommendations. No app

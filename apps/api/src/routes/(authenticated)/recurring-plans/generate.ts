@@ -1,3 +1,4 @@
+import { processNotifications } from '../notifications/deliver'
 import { and, asc, eq, lte } from 'drizzle-orm'
 import { z } from 'zod/v4'
 import { getDb } from '../../../db'
@@ -67,6 +68,7 @@ export function startRecurringActivityWorker() {
     running = true
     try {
       await generateDueActivities()
+      await processNotifications()
     } catch (error) {
       console.error('Recurring activity generation failed.', error)
     } finally {

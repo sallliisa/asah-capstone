@@ -1,3 +1,4 @@
+import { domain as notifications } from './routes/(authenticated)/notifications/notifications'
 import { domain as activityCategories } from './routes/(authenticated)/activity-categories/activity-categories'
 import { domain as activities } from './routes/(authenticated)/activities/activities'
 import { domain as recurringPlans } from './routes/(authenticated)/recurring-plans/recurring-plans'
@@ -8,4 +9,4 @@ import { domain as permissions } from './routes/(authenticated)/permissions/perm
 import { domain as roles } from './routes/(authenticated)/roles/roles'
 import { domain as users } from './routes/(authenticated)/users/users'
 
-export const domains = [auth, permissions, roles, users, roomTypes, rooms, activityCategories, recurringPlans, activities] as const
+export const domains = [auth, permissions, roles, users, roomTypes, rooms, activityCategories, recurringPlans, activities, notifications] as const

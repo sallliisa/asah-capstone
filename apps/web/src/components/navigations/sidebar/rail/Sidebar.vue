@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import NotificationCount from '@/routes/(authenticated)/notifications/NotificationCount.vue'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { RouterLink, useRoute, useRouter } from 'vue-router'
 import { activeNavigationModule, matchesNavigationPath, visibleNavigation, type VisibleNavigationModule, type VisibleNavigationRoute } from '@/manifest'
@@ -155,7 +156,8 @@ onBeforeUnmount(() => window.removeEventListener('resize', updateScrollFades))
                     "
                   >
                     <Icon :name="entry.icon" size="lg" class="shrink-0" />
-                    <span class="min-w-0 truncate">{{ entry.title }}</span>
+                    <span class="min-w-0 truncate">{{ entry.title }}</span
+                    ><NotificationCount v-if="entry.to.name === 'notifications'" />
                   </RouterLink>
                 </template>
               </div>

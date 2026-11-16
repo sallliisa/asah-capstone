@@ -1,7 +1,7 @@
 # Capstone workstream index
 
 Designs: Approved by the user.
-Implementation: Workstream 1 in progress after checkpoint 9cd4c5c.
+Implementation: Tenant history and notification checkpoints are saved. Tenant model work is in progress.
 
 The user approved this delivery order. Work proceeds through one main workstream
 at a time. Missing external access can move an independent workstream forward.
@@ -16,8 +16,8 @@ retains approval; draft details are not automatically approved by this index.
 | Order | Workstream | Owning designs | New work status |
 |---|---|---|---|
 | 1 | Tenant activity history | [Activities and recurring plans](activities/design.md). Existing [Rooms](rooms/design.md) owns occupant assignment. | Implemented with API/database checks. Authenticated browser acceptance remains. |
-| 2 | Notifications and PWA | [Notifications](notifications/design.md). | In progress. Notification storage, delivery, and PWA. |
-| 3 | Tenant attention model | [Tenant assessment](room-detector/design.md), with its [delivery plan](room-detector/implementation-plan.md). | Not started. Draft technical details. |
+| 2 | Notifications and PWA | [Notifications](notifications/design.md). | Implemented locally. Real iPhone delivery and VPS scheduler checks remain. |
+| 3 | Tenant attention model | [Tenant assessment](room-detector/design.md), with its [delivery plan](room-detector/implementation-plan.md). | In progress. Dataset, feature calculation, and model comparison. |
 | 4 | Dashboard and DS analysis | [Dashboard](dashboard/design.md). | Not started for the approved additions. Existing panels and prior proof remain. |
 | 5 | Pi through Wisp | [Pi chat](pi-chat/design.md). | Not started. Connection credentials supplied; login unverified. |
 | 6 | Intent classifier and RAG | [Intent classifier](intent-classifier/design.md) and [RAG](rag/design.md). | Not started. Separate designs within one workstream. |

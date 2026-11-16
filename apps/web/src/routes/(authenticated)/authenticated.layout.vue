@@ -1,4 +1,16 @@
 <script setup lang="ts">
+import { watch } from 'vue'
+import { identity } from '@/framework/identity'
+import { reconcilePushOwner } from './notifications/push'
+
+watch(
+  () => identity.value?.user?.id,
+  (userId) => {
+    if (userId) void reconcilePushOwner(userId).catch(() => {})
+  },
+  { immediate: true }
+)
+
 import Sidebar from '@/components/navigations/sidebar/rail/Sidebar.vue'
 import MobileNavigation from '@/components/navigations/MobileNavigation.vue'
 import AppRouterView from '@/components/routing/AppRouterView.vue'
