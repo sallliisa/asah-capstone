@@ -1,7 +1,7 @@
 # Activities and recurring plans
 
 Design: Approved
-Implementation: Needs update
+Implementation: In progress
 
 Existing behavior and the tenant-history direction retain approval. Attribution
 and rent-plan details below are the proposed contract for this workstream.

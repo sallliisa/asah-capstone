@@ -7,8 +7,10 @@ import { activityQuerySchema, activityWhere } from '../query'
 
 export const GET = defineRoute({
   authorize: requirePermission('view-activities'),
-  action: async ({ c }) => {
+  action: async (args) => {
+    const { c } = args
     const query = activityQuerySchema.parse(c.req.query())
+    if (query.tenantId) await requirePermission('view-users')(args)
     const rows = await getDb().select({
       income: sql<string>`coalesce(sum(case when ${activities.financialKind} = 'income' and ${activities.paymentStatus} = 'settled' then ${activities.amount} else 0 end), 0)`,
       expenses: sql<string>`coalesce(sum(case when ${activities.financialKind} = 'expense' and ${activities.paymentStatus} = 'settled' then ${activities.amount} else 0 end), 0)`,

@@ -8,6 +8,7 @@ const route = useRoute('settings-users-detail')
 const userId = route.params.userId
 
 const tabs = [
+  { permission: 'view-activities', to: { name: 'settings-users-detail-activities', params: { userId: String(userId) } }, label: 'Activity History' },
   { permission: 'view-role-assignments', to: { name: 'settings-users-detail-role-assignments', params: { userId: String(userId) } }, label: 'Role Assignments' },
 ] satisfies readonly RoutedTabItem[]
 </script>

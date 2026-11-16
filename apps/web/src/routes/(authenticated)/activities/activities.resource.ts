@@ -37,6 +37,8 @@ const labels = {
   name: 'Activity name',
   description: 'Description',
   roomId: 'Room',
+  tenantId: 'Tenant',
+  tenantName: 'Tenant',
   roomName: 'Room',
   workStatus: 'Work status',
   completedDate: 'Completion date',
@@ -57,6 +59,7 @@ const table = defineTable({
   columns: {
     name: { sortable: true },
     roomName: {},
+    tenantName: {},
     workStatus: workDisplay,
     financialKind: financeDisplay,
     categoryName: {},
@@ -73,6 +76,7 @@ const detail = defineDetail({
     name: {},
     description: {},
     roomName: {},
+    tenantName: {},
     workStatus: workDisplay,
     completedDate: { format: 'date' },
     financialKind: financeDisplay,
@@ -96,6 +100,7 @@ const activityFields = {
     props: { load: activitiesActions.categories, resource: 'activity-categories', pick: 'id', view: 'name', clearable: false },
   },
   roomId: { renderer: 'select', props: { load: activitiesActions.rooms, pick: 'id', view: 'name', clearable: true } },
+  tenantId: { renderer: 'select', props: { load: activitiesActions.tenants, resource: 'users', pick: 'id', view: 'name', clearable: true } },
   description: { renderer: 'textarea' },
 } as const
 const financialKindField = { renderer: 'radio', initialValue: 'none', props: { data: financialKinds, pick: 'id', view: 'name', direction: 'column' } } as const
@@ -109,6 +114,7 @@ const createFields = {
 } as const
 const updateFields = {
   ...activityFields,
+  tenantId: { ...activityFields.tenantId, props: { ...activityFields.tenantId.props, disabled: true } },
   workStatus: { renderer: 'radio', props: { data: workStates, pick: 'id', view: 'name', direction: 'column' } },
   financialKind: financialKindField,
   paymentStatus: ({ draft }: FormFieldContext<UpdateInput, {}>) =>
@@ -158,6 +164,7 @@ const activityUpdateForm = ({ id, record }: { id: string; record: Readonly<Activ
     name: record.name,
     description: record.description,
     roomId: record.roomId,
+    tenantId: record.tenantId,
     workStatus: record.workStatus,
     financialKind: record.financialKind,
     categoryId: record.categoryId,
@@ -171,7 +178,7 @@ const activityUpdateForm = ({ id, record }: { id: string; record: Readonly<Activ
 export const activities = defineResource({
   key: 'activities',
   identity: (record: { id: string }) => record.id,
-  actions: { rooms: activitiesActions.rooms, summary: activitiesActions.summary },
+  actions: { tenants: activitiesActions.tenants, rooms: activitiesActions.rooms, summary: activitiesActions.summary },
   list: { permission: 'view-activities', route: { name: 'activities' }, table: { ...table, load: activitiesActions.list } },
   create: { permission: 'create-activities', route: { name: 'activities-create' }, form: { ...createForm, submit: saveNewActivity } },
   detail: { permission: 'view-activities', route: { name: 'activities-detail', params: activityParams }, title: 'Activity', detail: activityDetail },

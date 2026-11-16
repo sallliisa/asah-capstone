@@ -10,6 +10,7 @@ const draft = z
     name: recurringPlanCreateSchema.shape.name,
     description: recurringPlanCreateSchema.shape.description,
     roomId: recurringPlanCreateSchema.shape.roomId,
+    tenantId: recurringPlanCreateSchema.shape.tenantId,
     startDate: recurringPlanCreateSchema.shape.startDate,
     intervalCount: recurringPlanCreateSchema.shape.intervalCount,
     intervalUnit: recurringPlanCreateSchema.shape.intervalUnit,

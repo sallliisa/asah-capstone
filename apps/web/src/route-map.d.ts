@@ -52,6 +52,13 @@ declare module 'vue-router/auto-routes' {
       { activityId: ParamValue<false> },
       | never
     >,
+    'activities-tenant': RouteRecordInfo<
+      'activities-tenant',
+      '/activities/:activityId/tenant',
+      { activityId: ParamValue<true> },
+      { activityId: ParamValue<false> },
+      | never
+    >,
     'activities-create': RouteRecordInfo<
       'activities-create',
       '/activities/create',
@@ -255,6 +262,13 @@ declare module 'vue-router/auto-routes' {
       { userId: ParamValue<false> },
       | never
     >,
+    'settings-users-detail-activities': RouteRecordInfo<
+      'settings-users-detail-activities',
+      '/settings/users/:userId/detail/activities',
+      { userId: ParamValue<true> },
+      { userId: ParamValue<false> },
+      | never
+    >,
     'settings-users-detail-role-assignments': RouteRecordInfo<
       'settings-users-detail-role-assignments',
       '/settings/users/:userId/detail/role-assignments',
@@ -309,6 +323,7 @@ declare module 'vue-router/auto-routes' {
         | 'activities-create'
         | 'activities-detail'
         | 'activities-edit'
+        | 'activities-tenant'
         | 'activity-categories'
         | 'activity-categories-create'
         | 'activity-categories-detail'
@@ -338,6 +353,7 @@ declare module 'vue-router/auto-routes' {
         | 'settings-users'
         | 'settings-users-create'
         | 'settings-users-detail'
+        | 'settings-users-detail-activities'
         | 'settings-users-detail-role-assignments'
         | 'settings-users-edit'
       views:
@@ -364,6 +380,14 @@ declare module 'vue-router/auto-routes' {
     'src/routes/(authenticated)/activities/[activityId]/edit.route.vue': {
       routes:
         | 'activities-edit'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/routes/(authenticated)/activities/[activityId]/tenant.route.vue': {
+      routes:
+        | 'activities-tenant'
       views:
         | never
       pathParamNames:
@@ -597,6 +621,7 @@ declare module 'vue-router/auto-routes' {
     'src/routes/(authenticated)/settings/users/[userId]/detail.route.vue': {
       routes:
         | 'settings-users-detail'
+        | 'settings-users-detail-activities'
         | 'settings-users-detail-role-assignments'
       views:
         | 'default'
@@ -606,6 +631,14 @@ declare module 'vue-router/auto-routes' {
     'src/routes/(authenticated)/settings/users/[userId]/detail/index.route.vue': {
       routes:
         | 'settings-users-detail'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/routes/(authenticated)/settings/users/[userId]/detail/activities/index.route.vue': {
+      routes:
+        | 'settings-users-detail-activities'
       views:
         | never
       pathParamNames:

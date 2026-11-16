@@ -8,6 +8,7 @@ import { useResourceRuntime } from '@southneuhof/loom'
 definePage({
   beforeEnter: (to) => {
     if (to.name !== 'settings-users-detail') return true
+    if (useResourceRuntime().adapters.access.allows({ operation: 'detail', permission: 'view-activities' })) return { name: 'settings-users-detail-activities', params: { userId: to.params.userId } }
     if (!useResourceRuntime().adapters.access.allows({ operation: 'detail', permission: 'view-role-assignments' })) return true
     return {
       name: 'settings-users-detail-role-assignments',

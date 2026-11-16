@@ -1,7 +1,7 @@
 # Capstone workstream index
 
 Designs: Approved by the user.
-Implementation: Not started at the checkpoint.
+Implementation: Workstream 1 in progress after checkpoint 9cd4c5c.
 
 The user approved this delivery order. Work proceeds through one main workstream
 at a time. Missing external access can move an independent workstream forward.
@@ -15,8 +15,8 @@ retains approval; draft details are not automatically approved by this index.
 
 | Order | Workstream | Owning designs | New work status |
 |---|---|---|---|
-| 1 | Tenant activity history | [Activities and recurring plans](activities/design.md). Existing [Rooms](rooms/design.md) owns occupant assignment. | Not started. Activity contract needs update. |
-| 2 | Notifications and PWA | [Notifications](notifications/design.md). | Not started. Draft details. |
+| 1 | Tenant activity history | [Activities and recurring plans](activities/design.md). Existing [Rooms](rooms/design.md) owns occupant assignment. | Implemented with API/database checks. Authenticated browser acceptance remains. |
+| 2 | Notifications and PWA | [Notifications](notifications/design.md). | In progress. Notification storage, delivery, and PWA. |
 | 3 | Tenant attention model | [Tenant assessment](room-detector/design.md), with its [delivery plan](room-detector/implementation-plan.md). | Not started. Draft technical details. |
 | 4 | Dashboard and DS analysis | [Dashboard](dashboard/design.md). | Not started for the approved additions. Existing panels and prior proof remain. |
 | 5 | Pi through Wisp | [Pi chat](pi-chat/design.md). | Not started. Connection credentials supplied; login unverified. |
@@ -60,3 +60,7 @@ reports remain optional. Implementation waits for the user's start instruction.
 
 The user approved all documents, requested a checkpoint commit including the
 Carta update, and instructed implementation to begin with workstream 1.
+
+Tenant-history checkpoint includes schema, writes, forms, tenant history,
+correction audit, tested rent ownership, and development migration. Browser
+acceptance is pending. Workstream 2 proceeds independently.

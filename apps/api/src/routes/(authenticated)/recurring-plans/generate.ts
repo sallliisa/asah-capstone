@@ -38,6 +38,7 @@ export async function generateDueActivities(asOfDate = businessDate()) {
           name: plan.name,
           description: plan.description,
           roomId: plan.roomId,
+          tenantId: plan.tenantId,
           workStatus: 'planned',
           financialKind: plan.financialKind,
           categoryId: plan.categoryId,

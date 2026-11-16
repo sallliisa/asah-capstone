@@ -1,5 +1,5 @@
 import { defineDomainPart } from '@southneuhof/sprindle/model'
 import { activity } from './activities.entity'
-import { activities } from './activities.table'
+import { activities, activityTenantAttributionChanges } from './activities.table'
 
-export const domain = defineDomainPart({ tables: { activities }, entities: [activity] })
+export const domain = defineDomainPart({ tables: { activities, activityTenantAttributionChanges }, entities: [activity] })

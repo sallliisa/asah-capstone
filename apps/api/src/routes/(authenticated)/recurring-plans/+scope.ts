@@ -1,3 +1,4 @@
+import { users } from '../users/users.table'
 import { defineScope } from '@southneuhof/sprindle'
 import { getDb } from '../../../db'
 import { rooms } from '../rooms/rooms.table'
@@ -6,11 +7,12 @@ import { recurringPlan } from './recurring-plans.entity'
 import { recurringPlanPublicSchema } from './schema'
 
 async function readLabels() {
-  const [roomRows, categoryRows] = await Promise.all([
+  const [roomRows, categoryRows, tenantRows] = await Promise.all([
     getDb().select({ id: rooms.id, name: rooms.roomCode }).from(rooms),
     getDb().select({ id: activityCategories.id, name: activityCategories.name }).from(activityCategories),
+    getDb().select({ id: users.id, name: users.name }).from(users),
   ])
-  return { rooms: new Map(roomRows.map((row) => [row.id, row.name])), categories: new Map(categoryRows.map((row) => [row.id, row.name])) }
+  return { tenants: new Map(tenantRows.map((row) => [row.id, row.name])), rooms: new Map(roomRows.map((row) => [row.id, row.name])), categories: new Map(categoryRows.map((row) => [row.id, row.name])) }
 }
 
 export default defineScope({
@@ -23,7 +25,7 @@ export default defineScope({
     schema: recurringPlanPublicSchema,
     run: async (record, { context }) => {
       const labels = await context.planLabels()
-      return recurringPlanPublicSchema.parse({ ...record, roomName: record.roomId ? labels.rooms.get(record.roomId) ?? null : null, categoryName: labels.categories.get(record.categoryId) })
+      return recurringPlanPublicSchema.parse({ ...record, tenantName: record.tenantId ? labels.tenants.get(record.tenantId) ?? null : null, roomName: record.roomId ? labels.rooms.get(record.roomId) ?? null : null, categoryName: labels.categories.get(record.categoryId) })
     },
   },
 })

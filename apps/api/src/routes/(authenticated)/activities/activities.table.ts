@@ -1,6 +1,7 @@
+import { users } from '../users/users.table'
 import { activityCategories } from '../activity-categories/activity-categories.table'
 import { sql } from 'drizzle-orm'
-import { check, date, integer, pgTable, text, uniqueIndex, varchar } from 'drizzle-orm/pg-core'
+import { check, date, integer, pgTable, text, timestamp, uniqueIndex, varchar } from 'drizzle-orm/pg-core'
 import { auditFields } from '../roles/roles.table'
 import { rooms } from '../rooms/rooms.table'
 import { recurringPlans } from '../recurring-plans/recurring-plans.table'
@@ -9,6 +10,7 @@ export const activities = pgTable('activities', {
   id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
   name: varchar('name', { length: 160 }).notNull(),
   description: text('description'),
+  tenantId: text('tenant_id').references(() => users.id, { onDelete: 'restrict' }),
   roomId: text('room_id').references(() => rooms.id, { onDelete: 'restrict' }),
   workStatus: text('work_status').notNull().default('planned'),
   completedDate: date('completed_date'),
@@ -28,3 +30,13 @@ export const activities = pgTable('activities', {
   check('activities_finance', sql`(${table.financialKind} = 'none' and ${table.amount} is null and ${table.paymentStatus} is null and ${table.paymentDate} is null and ${table.receipt} is null) or (${table.financialKind} in ('income','expense') and ${table.paymentStatus} is not null and (${table.amount} is null or ${table.amount} > 0) and ((${table.paymentStatus} = 'draft' and ${table.paymentDate} is null) or (${table.paymentStatus} = 'settled' and ${table.amount} is not null and ${table.paymentDate} is not null)))`),
   check('activities_occurrence', sql`(${table.recurringPlanId} is null and ${table.occurrenceDate} is null) or (${table.recurringPlanId} is not null and ${table.occurrenceDate} is not null)`),
 ])
+
+export const activityTenantAttributionChanges = pgTable('activity_tenant_attribution_changes', {
+  id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
+  activityId: text('activity_id').notNull().references(() => activities.id, { onDelete: 'restrict' }),
+  previousTenantId: text('previous_tenant_id').references(() => users.id, { onDelete: 'restrict' }),
+  newTenantId: text('new_tenant_id').references(() => users.id, { onDelete: 'restrict' }),
+  changedBy: text('changed_by').notNull().references(() => users.id, { onDelete: 'restrict' }),
+  changedAt: timestamp('changed_at', { withTimezone: true, mode: 'string' }).notNull().defaultNow(),
+  reason: text('reason').notNull(),
+})

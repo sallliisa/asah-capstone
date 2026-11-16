@@ -67,3 +67,27 @@ The user requests Activity Categories for all activities, a completed/settled ma
 - Smallest safe decomposition. Category is one master reference on an activity and one template reference on a plan. Create and edit use separate command/schema shapes so status controls are absent from create without hidden workflow state.
 
 Selected proof covers real CRUD/reference guards, renamed labels, category filtering, recurrence template copying, authoritative create defaults, and independent edit states. The exact migration was executed against a rolled-back isolated schema with legacy data to prove preservation. Normal owner type checks, lint, and schema conversion tests cover the standard Views and input ordering. Browser interaction remains unverified under the existing connector limit.
+
+## Tenant history implementation
+
+Checkpoint: 9cd4c5c. The user approved all designs and authorized workstream 1.
+Work proceeds sequentially without framework changes.
+
+1. Check API/web baseline after the Carta update.
+2. Add historical tenant references and transactional correction audit.
+3. Carry tenant identity through rent plans and generated occurrences.
+4. Add authorized tenant lookup and associated history in existing views.
+5. Prove move/assignment stability, explicit correction, and old-rent ownership.
+6. Apply reviewed migration to development and record checks and limits.
+
+Baseline API and web type checks passed. Source tracing confirms that manual
+Activity creation, Activity update, and recurring generation are separate write
+owners. Each must retain historical attribution. Next step: storage references
+and correction audit, followed by those write paths. No new feature behavior is
+claimed complete. Read-only Pi and later workstreams are outside this slice.
+
+Checkpoint implementation is in place. Route/database proof, development
+migration, API/web types, SDK contract, and focused lint are complete. Remaining
+acceptance is authenticated browser interaction. Continue independent approved
+workstream 2 while keeping that limit visible. The model refresh invalidation
+hook is added when its owning model workstream exists.

@@ -92,3 +92,44 @@ database read evidence is in
 
 The master UI was not checked in a browser for this seed change. Earlier browser
 verification limits remain open.
+
+## Tenant history baseline
+
+Checkpoint 9cd4c5c includes the user-supplied Carta updates and approved designs.
+Before tenant-history code changes, normal API and web type checks both passed.
+This is baseline evidence only. Tenant attribution, correction audit, generated
+rent ownership, historical profile views, and their migration are not delivered
+or verified yet. No framework source was changed after the checkpoint.
+
+## Tenant history checkpoint
+
+Historical tenant references now persist on Activities and Recurring Plans.
+Generated occurrences copy the plan tenant. Room reassignment and account
+inactivation do not transfer existing history. Tenant profiles have an Activity
+History tab. Activity detail exposes an audited Change tenant operation and its
+history. Ordinary edits cannot silently replace attribution. Generated plans
+must be replaced to change tenant ownership.
+
+The separate correction operation is required because Sprindle entity schemas
+accept persisted fields and relations, not command-only audit reasons. It uses
+existing request-body parsing, permissions, and a database transaction. No
+framework source was changed after checkpoint 9cd4c5c.
+
+Ten focused API tests passed across Activities, tenant history, and recurrence.
+They include fresh database reads after room changes, rejected unaudited or
+unauthorized correction, committed audit, and delayed rent generation. API and
+web type checks and scoped API/web lint passed. SDK contract checking passed.
+The initial entity-schema attempt failed the route tests; moving the audit
+command to a local custom operation resolved that failure.
+
+Migration 20261116214137_tenant-attribution was reviewed and applied to the
+configured development database after seven matching migration hashes. A fresh
+read confirmed eight migrations, one preserved Activity, no attributed legacy
+Activity, zero plans, and zero audit corrections. No tenant was guessed or
+sample business record inserted into development.
+
+Evidence is under .local/verification/tenant-history/. Browser inventory had
+no connected browser. Launching installed Helium succeeded and the app sign-in
+page rendered. Authenticated form interaction and visual acceptance are not yet
+verified. The implementation remains In progress for that acceptance boundary.
+Local PostgreSQL was initially stopped and was started for the isolated tests.

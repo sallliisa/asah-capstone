@@ -7,6 +7,7 @@ const financialKindSchema = z.enum(['none', 'income', 'expense'])
 const fields = {
   name: z.string().trim().min(1).max(160),
   description: z.string().trim().max(4000).nullable().default(null),
+  tenantId: z.string().min(1).nullable().default(null),
   roomId: z.string().min(1).nullable().default(null),
   startDate: z.iso.date(),
   intervalCount: z.number().int().min(1).max(366).default(1),
@@ -24,10 +25,10 @@ function validatePlan(value: { financialKind: string; categoryId: string; amount
 }
 
 export const recurringPlanCreateSchema = createInsertSchema(recurringPlans).omit(omitted).extend(fields).superRefine(validatePlan)
-export const recurringPlanUpdateSchema = createUpdateSchema(recurringPlans).omit(omitted).extend({ name: fields.name, startDate: fields.startDate, description: fields.description.removeDefault(), roomId: fields.roomId.removeDefault(), intervalCount: fields.intervalCount.removeDefault(), intervalUnit: fields.intervalUnit.removeDefault(), active: fields.active.removeDefault(), financialKind: fields.financialKind.removeDefault(), categoryId: fields.categoryId.removeDefault(), amount: fields.amount.removeDefault() }).partial()
+export const recurringPlanUpdateSchema = createUpdateSchema(recurringPlans).omit(omitted).extend({ name: fields.name, startDate: fields.startDate, description: fields.description.removeDefault(), roomId: fields.roomId.removeDefault(), tenantId: fields.tenantId.removeDefault(), intervalCount: fields.intervalCount.removeDefault(), intervalUnit: fields.intervalUnit.removeDefault(), active: fields.active.removeDefault(), financialKind: fields.financialKind.removeDefault(), categoryId: fields.categoryId.removeDefault(), amount: fields.amount.removeDefault() }).partial()
 export const recurringPlanSelectSchema = createSelectSchema(recurringPlans).extend({ intervalUnit: intervalUnitSchema, financialKind: financialKindSchema })
 export const recurringPlanStateSchema = recurringPlanSelectSchema.superRefine(validatePlan)
-export const recurringPlanPublicSchema = recurringPlanSelectSchema.extend({ roomName: z.string().nullable(), categoryName: z.string() })
+export const recurringPlanPublicSchema = recurringPlanSelectSchema.extend({ tenantName: z.string().nullable(), roomName: z.string().nullable(), categoryName: z.string() })
 
 export const upcomingPlanSchema = z.object({
   planId: z.string(), name: z.string(), roomName: z.string().nullable(), categoryName: z.string(),

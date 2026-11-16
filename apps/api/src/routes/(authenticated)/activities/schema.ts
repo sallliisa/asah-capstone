@@ -11,6 +11,7 @@ const text = z.string().trim().max(4000).nullable()
 const write = {
   name: z.string().trim().min(1).max(160),
   description: text.default(null),
+  tenantId: z.string().min(1).nullable().default(null),
   roomId: z.string().min(1).nullable().default(null),
   workStatus: workStatusSchema.default('planned'),
   financialKind: financialKindSchema.default('none'),
@@ -75,6 +76,7 @@ export const activityInsertSchema = createInsertSchema(activities)
 export const activityCreateSchema = activityInsertSchema.omit({ ...omitted, workStatus: true, paymentStatus: true }).extend({
   name: write.name,
   description: write.description,
+  tenantId: write.tenantId,
   roomId: write.roomId,
   categoryId: write.categoryId,
   financialKind: write.financialKind,
@@ -89,6 +91,7 @@ export const activityUpdateSchema = createUpdateSchema(activities)
   .extend({
     name: write.name,
     description: write.description.removeDefault(),
+    tenantId: write.tenantId.removeDefault(),
     roomId: write.roomId.removeDefault(),
     workStatus: write.workStatus.removeDefault(),
     financialKind: write.financialKind.removeDefault(),
@@ -127,6 +130,7 @@ export const activityStateSchema = activitySelectSchema.superRefine((value, cont
     })
 })
 export const activityPublicSchema = activitySelectSchema.extend({
+  tenantName: z.string().nullable(),
   roomName: z.string().nullable(), categoryName: z.string(),
   receipt: storedAssetSchema.nullable(),
   planName: z.string().nullable(),
@@ -152,3 +156,5 @@ export const activityDashboardSchema = z.object({
     })),
   }),
 })
+
+export const activityAttributionSchema = z.object({ tenantId: z.string().min(1).nullable(), reason: z.string().trim().min(1).max(1000) }).strict()

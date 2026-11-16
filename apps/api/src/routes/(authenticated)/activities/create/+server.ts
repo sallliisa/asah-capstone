@@ -1,3 +1,4 @@
+import { validateTenant } from '../../../../tenant-reference'
 import { validateActivityCategory } from '../../activity-categories/references'
 import { create } from '@southneuhof/sprindle'
 import { getDb } from '../../../../db'
@@ -9,8 +10,10 @@ import { activityInsertSchema, activityStateSchema } from '../schema'
 
 export const POST = create({
   authorize: requirePermission('create-activities'),
-  validate: [({ state }) => validateRoom(state.input.roomId), ({ state }) => validateActivityCategory(state.input.categoryId)],
-  run: async ({ state }) => {
+  validate: [({ state }) => validateTenant(state.input.tenantId), ({ state }) => validateRoom(state.input.roomId), ({ state }) => validateActivityCategory(state.input.categoryId)],
+  run: async (args) => {
+    const { state } = args
+    if (state.input.tenantId) await requirePermission('view-users')(args)
     const values = { ...state.input, ...state.values }
     const today = businessDate()
     const paymentStatus = values.financialKind === 'none' ? null : 'settled'

@@ -1,3 +1,4 @@
+import { users } from '../users/users.table'
 import { activityCategories } from '../activity-categories/activity-categories.table'
 import { sql } from 'drizzle-orm'
 import { boolean, check, date, integer, pgTable, text, varchar } from 'drizzle-orm/pg-core'
@@ -8,6 +9,7 @@ export const recurringPlans = pgTable('recurring_plans', {
   id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
   name: varchar('name', { length: 160 }).notNull(),
   description: text('description'),
+  tenantId: text('tenant_id').references(() => users.id, { onDelete: 'restrict' }),
   roomId: text('room_id').references(() => rooms.id, { onDelete: 'restrict' }),
   startDate: date('start_date').notNull(),
   intervalCount: integer('interval_count').notNull().default(1),
