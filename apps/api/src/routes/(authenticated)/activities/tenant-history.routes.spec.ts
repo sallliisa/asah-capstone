@@ -1,5 +1,5 @@
 import { afterAll, expect, it } from 'vitest'
-import { eq, inArray } from 'drizzle-orm'
+import { and, eq, inArray } from 'drizzle-orm'
 import { z } from 'zod/v4'
 import { app } from '../../../app'
 import { closeDb, getDb } from '../../../db'
@@ -55,6 +55,10 @@ it('retains the historical tenant through room changes and audits explicit corre
   activityIds.push(record.id)
   expect((await request(`/rooms/update/${room.id}`, 'PATCH', owner.cookie, { occupantId: second.userId })).status).toBe(200)
   await getDb().update(users).set({ statusCode: 'non_active' }).where(eq(users.id, first.userId))
+  await getDb().delete(roleAssignments).where(and(eq(roleAssignments.userId, first.userId), eq(roleAssignments.roleId, 'role-occupant')))
+  const historicalChoices = await request('/activities/tenants', 'GET', owner.cookie)
+  const choices = z.object({ data: z.array(z.object({ id: z.string() })) }).parse(await historicalChoices.json())
+  expect(choices.data.some((choice) => choice.id === first.userId)).toBe(true)
   const history = await request(`/activities/list?tenantId=${first.userId}`, 'GET', owner.cookie)
   expect(history.status).toBe(200)
   const rows = z.object({ data: z.array(activityPublicSchema) }).parse(await history.json()).data

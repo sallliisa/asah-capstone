@@ -133,3 +133,12 @@ no connected browser. Launching installed Helium succeeded and the app sign-in
 page rendered. Authenticated form interaction and visual acceptance are not yet
 verified. The implementation remains In progress for that acceptance boundary.
 Local PostgreSQL was initially stopped and was started for the isolated tests.
+
+## Former tenant selection
+
+A regression removed the occupant role after move-out. It failed because the
+historical tenant disappeared from activity choices. Tenant references now also
+recognize saved historical Activity and rent-plan associations. The same route
+case passes after the correction, including retained history and audited
+reattribution. Users without a tenant role or historical association remain
+outside the selector. No migration or copied financial row was added.
