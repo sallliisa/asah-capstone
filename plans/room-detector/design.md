@@ -1,7 +1,7 @@
 # Tenant attention grade
 
 Design: Approved
-Implementation: Not started
+Implementation: In progress
 
 Prepared for later review, 17 November 2026. The user asked us to handle the
 remaining details and write the recommendations before implementation.

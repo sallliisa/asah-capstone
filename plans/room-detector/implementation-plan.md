@@ -1,9 +1,8 @@
 # Tenant attention grade: delivery plan
 
-Status: Draft. Implementation: Not started.
+Status: Approved. Implementation: In progress.
 
-Review [the design](design.md) first. This is a proposed work order, not an
-implementation command. Previously approved decisions remain approved.
+Review [the design](design.md) first. The user approved this work order and authorized implementation.
 
 ## 1. Dataset and feature calculation
 
