@@ -56,3 +56,22 @@ current-tenant room summaries, room-map grades, and a unique-tenant priority
 list. API, SDK, and web type checks and focused lint passed. The real model
 batch is bounded to 25 tenants and one service request. The last result remains
 available while a refresh is pending. Authenticated browser proof remains open.
+
+## Version 2 and retained limits
+
+The next generator uses seed 2992027 and includes short incident bursts. A new
+90-tenant final partition was generated before training. The original report,
+card, and scenario outputs are retained in services/models/evaluations. The v1
+source can be reproduced from checkpoint b2b4ae8.
+
+The selected v2 candidate uses 200 trees and 512 samples. Binary F1 is 0.9212.
+C recall is 0.8427, below the proposed 0.85 target. Ordinary false positives meet
+the target. Eight of the ten known scenario cases now match their expected
+grade. The two repair bursts remain under-ranked. These known regressions are
+not new held-out proof. No manual grade override or hidden estimator change
+was added. The model card explains the limit and a possible future supervised
+comparison. This workstream has a functioning experimental model, with a
+published quality gap. It is not a claim that every release target passed.
+
+The updated notebook executed, Ruff passed, and four feature tests passed.
+The app production build passed with existing large-chunk/plugin-time warnings.

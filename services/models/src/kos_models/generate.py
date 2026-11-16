@@ -8,7 +8,7 @@ from pathlib import Path
 
 from kos_models.features import TenantInput, calculate
 
-SEED = 2992026
+SEED = 2992027
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "data"
 
@@ -61,16 +61,20 @@ def generate():
         )
         anchor = rng.randrange(1, 29)
         review = []
+        scenario_start = rng.randrange(4, 14)
+        scenario_end = min(18, scenario_start + rng.choice([2, 3, 6, 14]))
+        intensity = rng.choice([1, 2])
         for index in range(18):
             room = rooms[1] if moves and index >= 9 else rooms[0]
             severity = (
-                rng.choice([1, 2])
+                intensity
                 if family in ("repairs", "cleaning", "late", "unpaid", "mixed")
                 else 0
             )
+            active = scenario_start <= index < scenario_end and severity > 0
             if family == "recovered":
                 severity = 2 if 4 <= index <= 8 else 0
-            active = index >= 4 and severity > 0
+                active = severity > 0
 
             def add(
                 category, when, amount=None, payment=None, due=None, financial="expense"
@@ -281,6 +285,7 @@ def generate():
         )
     manifest = {
         "seed": SEED,
+        "datasetVersion": "tenant-history-v2",
         "tenants": len(histories),
         "snapshots": len(snapshots),
         "splits": dict(Counter(h["split"] for h in histories)),

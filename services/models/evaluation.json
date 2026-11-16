@@ -1,10 +1,11 @@
 {
-  "modelVersion": "tenant-if-v1-95579f6d6314",
-  "artifactSha256": "82731f9b20e37330065795b80ae74c629a4b5f64ffe0f09c2fe599b4c7b5333e",
-  "selected": "tuned-200-128-1.0",
+  "modelVersion": "tenant-if-v2-8c4f592682da",
+  "artifactSha256": "db4f96271ff6e776d6f9ec7dcf0d13c8e558329340ca2adf8316ee5902f8e8ce",
+  "selected": "tuned-200-512-1.0",
   "selection": "Validation macro-F1, then C recall, then tree node count. Test rows excluded from selection.",
   "dataset": {
-    "seed": 2992026,
+    "seed": 2992027,
+    "datasetVersion": "tenant-history-v2",
     "tenants": 600,
     "snapshots": 10800,
     "splits": {
@@ -13,22 +14,22 @@
       "test": 90
     },
     "eligibleLabels": {
-      "A": 6467,
-      "B": 500,
-      "C": 1081
+      "A": 7082,
+      "B": 382,
+      "C": 417
     },
     "sha256": {
-      "histories.jsonl": "b25c0830b88d694d0d1a56f49627d51250f09c33e620f830118d7da42c23e8b4",
-      "snapshots.jsonl": "95579f6d6314878896259d90868bbae1be5db170d7b2b9b50d41853a07912e1e",
-      "plans.jsonl": "a679a3b14c9d7912bd798463c878e98356128218c8fd478d688055002aca215e"
+      "histories.jsonl": "0a7bbfd5e085f8b5d6201e76c1f92ffecc29184ad27267b3d7cb7f06aa31552c",
+      "snapshots.jsonl": "8c4f592682da5c28c03744e72c12f3f6a6a9de676b37a1153c3a78aaaba97112",
+      "plans.jsonl": "a1e0ee9f5c59abb81debf61f804ecddde1e6d13927399458e3f44cb99701094c"
     }
   },
   "eligibleCounts": {
-    "train": 5633,
-    "validation": 1215,
-    "test": 1200
+    "train": 5560,
+    "validation": 1157,
+    "test": 1164
   },
-  "ineligibleCount": 2752,
+  "ineligibleCount": 2919,
   "experiments": [
     {
       "name": "baseline",
@@ -46,206 +47,206 @@
         "fraction": 1.0
       },
       "boundaries": [
-        0.4652936712314002,
-        0.606510123682464
+        0.47511812534270853,
+        0.619079128924842
       ],
-      "treeNodes": 7652,
+      "treeNodes": 6820,
       "validation": {
-        "macroF1": 0.7358837721974556,
-        "binaryPrecision": 0.9912280701754386,
-        "binaryRecall": 0.8432835820895522,
-        "binaryF1": 0.9112903225806451,
-        "ordinaryFalsePositiveRate": 0.0021119324181626186,
+        "macroF1": 0.7570661370350188,
+        "binaryPrecision": 0.9312977099236641,
+        "binaryRecall": 0.9242424242424242,
+        "binaryF1": 0.9277566539923955,
+        "ordinaryFalsePositiveRate": 0.00878048780487805,
         "perGrade": {
           "A": {
-            "precision": 0.9574468085106383,
-            "recall": 0.9978880675818373,
-            "f1-score": 0.9772492244053774,
-            "support": 947.0
+            "precision": 0.9902534113060428,
+            "recall": 0.9912195121951219,
+            "f1-score": 0.9907362262311068,
+            "support": 1025.0
           },
           "B": {
-            "precision": 0.5,
-            "recall": 0.723404255319149,
-            "f1-score": 0.591304347826087,
-            "support": 94.0
+            "precision": 0.5172413793103449,
+            "recall": 0.7894736842105263,
+            "f1-score": 0.625,
+            "support": 57.0
           },
           "C": {
-            "precision": 0.9239130434782609,
-            "recall": 0.4885057471264368,
-            "f1-score": 0.6390977443609023,
-            "support": 174.0
+            "precision": 0.8863636363636364,
+            "recall": 0.52,
+            "f1-score": 0.6554621848739496,
+            "support": 75.0
           },
-          "accuracy": 0.9037037037037037,
+          "accuracy": 0.9507346585998271,
           "macro avg": {
-            "precision": 0.7937866173296331,
-            "recall": 0.7365993566758077,
-            "f1-score": 0.7358837721974556,
-            "support": 1215.0
+            "precision": 0.7979528089933413,
+            "recall": 0.7668977321352161,
+            "f1-score": 0.7570661370350188,
+            "support": 1157.0
           },
           "weighted avg": {
-            "precision": 0.917253495658265,
-            "recall": 0.9037037037037037,
-            "f1-score": 0.8989634829023389,
-            "support": 1215.0
+            "precision": 0.9602158841284842,
+            "recall": 0.9507346585998271,
+            "f1-score": 0.9509846981438468,
+            "support": 1157.0
           }
         },
         "confusionMatrix": [
           [
-            945,
-            2,
-            0
+            1016,
+            6,
+            3
           ],
           [
-            19,
-            68,
-            7
+            10,
+            45,
+            2
           ],
           [
-            23,
-            66,
-            85
+            0,
+            36,
+            39
           ]
         ],
         "examples": [
           {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2025-07-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-05-31",
-            "expected": "B",
-            "predicted": "A",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-06-30",
-            "expected": "B",
-            "predicted": "A",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-07-31",
-            "expected": "B",
-            "predicted": "A",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-08-31",
-            "expected": "B",
-            "predicted": "A",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-09-30",
-            "expected": "C",
-            "predicted": "A",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-10-31",
-            "expected": "C",
-            "predicted": "A",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-12-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
+            "tenantId": "synthetic-0421",
             "asOfDate": "2026-01-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2026-02-28",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2026-03-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2026-04-30",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2026-05-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2026-06-30",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0428",
-            "asOfDate": "2025-07-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "mixed"
-          },
-          {
-            "tenantId": "synthetic-0439",
-            "asOfDate": "2025-08-31",
             "expected": "C",
             "predicted": "B",
             "family": "unpaid"
           },
           {
-            "tenantId": "synthetic-0444",
-            "asOfDate": "2025-05-31",
+            "tenantId": "synthetic-0421",
+            "asOfDate": "2026-02-28",
+            "expected": "C",
+            "predicted": "B",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0421",
+            "asOfDate": "2026-03-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0425",
+            "asOfDate": "2026-06-30",
             "expected": "B",
             "predicted": "A",
-            "family": "cleaning"
+            "family": "ordinary"
           },
           {
-            "tenantId": "synthetic-0444",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2025-06-30",
             "expected": "C",
-            "predicted": "A",
-            "family": "cleaning"
+            "predicted": "B",
+            "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0444",
-            "asOfDate": "2025-07-31",
+            "tenantId": "synthetic-0433",
+            "asOfDate": "2025-09-30",
             "expected": "C",
-            "predicted": "A",
-            "family": "cleaning"
+            "predicted": "B",
+            "family": "unpaid"
           },
           {
-            "tenantId": "synthetic-0444",
+            "tenantId": "synthetic-0433",
+            "asOfDate": "2025-10-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2025-06-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0450",
+            "asOfDate": "2025-10-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "mixed"
+          },
+          {
+            "tenantId": "synthetic-0456",
+            "asOfDate": "2026-03-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "repairs"
+          },
+          {
+            "tenantId": "synthetic-0456",
+            "asOfDate": "2026-04-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "repairs"
+          },
+          {
+            "tenantId": "synthetic-0456",
+            "asOfDate": "2026-05-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "repairs"
+          },
+          {
+            "tenantId": "synthetic-0457",
             "asOfDate": "2025-08-31",
-            "expected": "C",
+            "expected": "B",
             "predicted": "A",
-            "family": "cleaning"
+            "family": "repairs"
+          },
+          {
+            "tenantId": "synthetic-0457",
+            "asOfDate": "2025-09-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "repairs"
+          },
+          {
+            "tenantId": "synthetic-0457",
+            "asOfDate": "2025-10-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "repairs"
+          },
+          {
+            "tenantId": "synthetic-0457",
+            "asOfDate": "2025-11-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "repairs"
+          },
+          {
+            "tenantId": "synthetic-0457",
+            "asOfDate": "2025-12-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "repairs"
+          },
+          {
+            "tenantId": "synthetic-0457",
+            "asOfDate": "2026-02-28",
+            "expected": "B",
+            "predicted": "C",
+            "family": "repairs"
+          },
+          {
+            "tenantId": "synthetic-0457",
+            "asOfDate": "2026-03-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "repairs"
+          },
+          {
+            "tenantId": "synthetic-0457",
+            "asOfDate": "2026-04-30",
+            "expected": "A",
+            "predicted": "C",
+            "family": "repairs"
           }
         ]
       }
@@ -269,206 +270,206 @@
         "fraction": 1.0
       },
       "boundaries": [
-        0.4355836088249688,
-        0.5445892057105572
+        0.4607829313417666,
+        0.576909619492203
       ],
-      "treeNodes": 9558,
+      "treeNodes": 7942,
       "validation": {
-        "macroF1": 0.7490721243833182,
-        "binaryPrecision": 0.9273356401384083,
-        "binaryRecall": 1.0,
-        "binaryF1": 0.9622980251346499,
-        "ordinaryFalsePositiveRate": 0.022175290390707498,
+        "macroF1": 0.7295037955175184,
+        "binaryPrecision": 0.7471264367816092,
+        "binaryRecall": 0.9848484848484849,
+        "binaryF1": 0.8496732026143791,
+        "ordinaryFalsePositiveRate": 0.042926829268292686,
         "perGrade": {
           "A": {
-            "precision": 1.0,
-            "recall": 0.9778247096092925,
-            "f1-score": 0.9887880405766151,
-            "support": 947.0
+            "precision": 0.9979654120040692,
+            "recall": 0.9570731707317073,
+            "f1-score": 0.9770916334661355,
+            "support": 1025.0
           },
           "B": {
-            "precision": 0.5,
-            "recall": 0.40425531914893614,
-            "f1-score": 0.4470588235294118,
-            "support": 94.0
+            "precision": 0.3793103448275862,
+            "recall": 0.5789473684210527,
+            "f1-score": 0.4583333333333333,
+            "support": 57.0
           },
           "C": {
-            "precision": 0.7370892018779343,
-            "recall": 0.9022988505747126,
-            "f1-score": 0.8113695090439277,
-            "support": 174.0
+            "precision": 0.7011494252873564,
+            "recall": 0.8133333333333334,
+            "f1-score": 0.7530864197530864,
+            "support": 75.0
           },
-          "accuracy": 0.922633744855967,
+          "accuracy": 0.9291270527225584,
           "macro avg": {
-            "precision": 0.745696400625978,
-            "recall": 0.7614596264443138,
-            "f1-score": 0.7490721243833182,
-            "support": 1215.0
+            "precision": 0.6928083940396705,
+            "recall": 0.7831179574953645,
+            "f1-score": 0.7295037955175184,
+            "support": 1157.0
           },
           "weighted avg": {
-            "precision": 0.9236654494870457,
-            "recall": 0.922633744855967,
-            "f1-score": 0.9214683937542901,
-            "support": 1215.0
+            "precision": 0.9482467103335307,
+            "recall": 0.9291270527225584,
+            "f1-score": 0.9370141795888249,
+            "support": 1157.0
           }
         },
         "confusionMatrix": [
           [
-            926,
-            21,
-            0
+            981,
+            40,
+            4
+          ],
+          [
+            2,
+            33,
+            22
           ],
           [
             0,
-            38,
-            56
-          ],
-          [
-            0,
-            17,
-            157
+            14,
+            61
           ]
         ],
         "examples": [
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0421",
+            "asOfDate": "2025-12-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0425",
+            "asOfDate": "2026-06-30",
+            "expected": "B",
+            "predicted": "A",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0426",
+            "asOfDate": "2025-10-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0426",
             "asOfDate": "2025-11-30",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2025-12-31",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2026-01-31",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-02-28",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-03-31",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-04-30",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-05-31",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-06-30",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0423",
-            "asOfDate": "2025-06-30",
+            "tenantId": "synthetic-0430",
+            "asOfDate": "2025-05-31",
             "expected": "A",
             "predicted": "B",
             "family": "ordinary"
           },
           {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-04-30",
-            "expected": "A",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
+            "tenantId": "synthetic-0433",
             "asOfDate": "2025-09-30",
             "expected": "C",
             "predicted": "B",
-            "family": "cleaning"
+            "family": "unpaid"
           },
           {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-10-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2025-11-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0424",
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2025-12-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0435",
             "asOfDate": "2026-01-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0425",
+            "tenantId": "synthetic-0437",
             "asOfDate": "2025-06-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "planned"
+          },
+          {
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-09-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "planned"
+          },
+          {
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-10-31",
+            "expected": "A",
+            "predicted": "B",
+            "family": "planned"
+          },
+          {
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-11-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "planned"
+          },
+          {
+            "tenantId": "synthetic-0443",
+            "asOfDate": "2026-05-31",
             "expected": "A",
             "predicted": "B",
             "family": "ordinary"
           },
           {
-            "tenantId": "synthetic-0426",
-            "asOfDate": "2025-06-30",
+            "tenantId": "synthetic-0443",
+            "asOfDate": "2026-06-30",
             "expected": "A",
             "predicted": "B",
             "family": "ordinary"
           },
           {
-            "tenantId": "synthetic-0426",
+            "tenantId": "synthetic-0446",
             "asOfDate": "2025-07-31",
             "expected": "A",
             "predicted": "B",
             "family": "ordinary"
           },
           {
-            "tenantId": "synthetic-0428",
+            "tenantId": "synthetic-0449",
             "asOfDate": "2025-06-30",
-            "expected": "B",
-            "predicted": "C",
-            "family": "mixed"
+            "expected": "A",
+            "predicted": "B",
+            "family": "ordinary"
           },
           {
-            "tenantId": "synthetic-0439",
-            "asOfDate": "2025-06-30",
-            "expected": "B",
-            "predicted": "C",
-            "family": "unpaid"
-          },
-          {
-            "tenantId": "synthetic-0439",
-            "asOfDate": "2025-07-31",
-            "expected": "B",
-            "predicted": "C",
-            "family": "unpaid"
-          },
-          {
-            "tenantId": "synthetic-0444",
-            "asOfDate": "2025-06-30",
+            "tenantId": "synthetic-0456",
+            "asOfDate": "2026-05-31",
             "expected": "C",
             "predicted": "B",
-            "family": "cleaning"
+            "family": "repairs"
           }
         ]
       }
@@ -492,206 +493,206 @@
         "fraction": 0.75
       },
       "boundaries": [
-        0.4728848879354843,
-        0.5483448730936386
+        0.594582842259429,
+        0.6402310276069484
       ],
-      "treeNodes": 5634,
+      "treeNodes": 5382,
       "validation": {
-        "macroF1": 0.7258141437976932,
-        "binaryPrecision": 0.9708029197080292,
-        "binaryRecall": 0.9925373134328358,
-        "binaryF1": 0.981549815498155,
-        "ordinaryFalsePositiveRate": 0.008447729672650475,
+        "macroF1": 0.6614084321223457,
+        "binaryPrecision": 0.9452054794520548,
+        "binaryRecall": 0.5227272727272727,
+        "binaryF1": 0.6731707317073171,
+        "ordinaryFalsePositiveRate": 0.003902439024390244,
         "perGrade": {
           "A": {
-            "precision": 0.997874601487779,
-            "recall": 0.9915522703273495,
-            "f1-score": 0.9947033898305084,
-            "support": 947.0
+            "precision": 0.9418819188191881,
+            "recall": 0.9960975609756098,
+            "f1-score": 0.9682313892840209,
+            "support": 1025.0
           },
           "B": {
-            "precision": 0.45054945054945056,
-            "recall": 0.43617021276595747,
-            "f1-score": 0.44324324324324327,
-            "support": 94.0
+            "precision": 0.6363636363636364,
+            "recall": 0.49122807017543857,
+            "f1-score": 0.5544554455445545,
+            "support": 57.0
           },
           "C": {
-            "precision": 0.7213114754098361,
-            "recall": 0.7586206896551724,
-            "f1-score": 0.7394957983193278,
-            "support": 174.0
+            "precision": 0.8275862068965517,
+            "recall": 0.32,
+            "f1-score": 0.46153846153846156,
+            "support": 75.0
           },
-          "accuracy": 0.9152263374485596,
+          "accuracy": 0.9273984442523768,
           "macro avg": {
-            "precision": 0.7232451758156886,
-            "recall": 0.7287810575828265,
-            "f1-score": 0.7258141437976932,
-            "support": 1215.0
+            "precision": 0.8019439206931254,
+            "recall": 0.6024418770503495,
+            "f1-score": 0.6614084321223457,
+            "support": 1157.0
           },
           "weighted avg": {
-            "precision": 0.9159235330715114,
-            "recall": 0.9152263374485596,
-            "f1-score": 0.9154907357546662,
-            "support": 1215.0
+            "precision": 0.9194214862399623,
+            "recall": 0.9273984442523768,
+            "f1-score": 0.9150013129019409,
+            "support": 1157.0
           }
         },
         "confusionMatrix": [
           [
-            939,
-            8,
+            1021,
+            4,
             0
           ],
           [
-            2,
-            41,
-            51
+            24,
+            28,
+            5
           ],
           [
-            0,
-            42,
-            132
+            39,
+            12,
+            24
           ]
         ],
         "examples": [
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0421",
+            "asOfDate": "2025-11-30",
+            "expected": "B",
+            "predicted": "A",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0421",
+            "asOfDate": "2026-01-31",
+            "expected": "C",
+            "predicted": "A",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0421",
+            "asOfDate": "2026-02-28",
+            "expected": "C",
+            "predicted": "A",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0421",
+            "asOfDate": "2026-03-31",
+            "expected": "C",
+            "predicted": "A",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0421",
+            "asOfDate": "2026-04-30",
+            "expected": "C",
+            "predicted": "A",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0421",
+            "asOfDate": "2026-05-31",
+            "expected": "C",
+            "predicted": "A",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0421",
+            "asOfDate": "2026-06-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0425",
+            "asOfDate": "2026-06-30",
+            "expected": "B",
+            "predicted": "A",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0426",
+            "asOfDate": "2025-10-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0426",
             "asOfDate": "2025-11-30",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2025-12-31",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-01-31",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-02-28",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-03-31",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-04-30",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-05-31",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-06-30",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-05-31",
-            "expected": "B",
-            "predicted": "A",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-06-30",
-            "expected": "B",
-            "predicted": "A",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-09-30",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-10-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-12-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2026-01-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2026-02-28",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0428",
-            "asOfDate": "2025-06-30",
-            "expected": "B",
-            "predicted": "C",
-            "family": "mixed"
-          },
-          {
-            "tenantId": "synthetic-0439",
+            "tenantId": "synthetic-0433",
             "asOfDate": "2025-07-31",
             "expected": "B",
-            "predicted": "C",
+            "predicted": "A",
             "family": "unpaid"
           },
           {
-            "tenantId": "synthetic-0444",
-            "asOfDate": "2025-06-30",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0444",
+            "tenantId": "synthetic-0433",
             "asOfDate": "2025-08-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
+            "expected": "B",
+            "predicted": "A",
+            "family": "unpaid"
           },
           {
-            "tenantId": "synthetic-0444",
+            "tenantId": "synthetic-0433",
+            "asOfDate": "2025-09-30",
+            "expected": "C",
+            "predicted": "A",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0433",
             "asOfDate": "2025-10-31",
-            "expected": "A",
-            "predicted": "B",
-            "family": "cleaning"
+            "expected": "C",
+            "predicted": "A",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0433",
+            "asOfDate": "2025-11-30",
+            "expected": "C",
+            "predicted": "A",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0433",
+            "asOfDate": "2025-12-31",
+            "expected": "C",
+            "predicted": "A",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0433",
+            "asOfDate": "2026-01-31",
+            "expected": "C",
+            "predicted": "A",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0433",
+            "asOfDate": "2026-02-28",
+            "expected": "C",
+            "predicted": "A",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0433",
+            "asOfDate": "2026-03-31",
+            "expected": "C",
+            "predicted": "A",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0433",
+            "asOfDate": "2026-04-30",
+            "expected": "C",
+            "predicted": "A",
+            "family": "unpaid"
           }
         ]
       }
@@ -715,206 +716,206 @@
         "fraction": 1.0
       },
       "boundaries": [
-        0.4470685389421257,
-        0.5626497014867351
+        0.4970996131534552,
+        0.5479191819506043
       ],
-      "treeNodes": 5510,
+      "treeNodes": 5368,
       "validation": {
-        "macroF1": 0.7538226993474874,
-        "binaryPrecision": 0.9209621993127147,
-        "binaryRecall": 1.0,
-        "binaryF1": 0.9588550983899821,
-        "ordinaryFalsePositiveRate": 0.024287222808870117,
+        "macroF1": 0.6579328127925023,
+        "binaryPrecision": 0.8050314465408805,
+        "binaryRecall": 0.9696969696969697,
+        "binaryF1": 0.8797250859106529,
+        "ordinaryFalsePositiveRate": 0.03024390243902439,
         "perGrade": {
           "A": {
-            "precision": 1.0,
-            "recall": 0.9757127771911299,
-            "f1-score": 0.9877071084981294,
-            "support": 947.0
+            "precision": 0.9959919839679359,
+            "recall": 0.9697560975609756,
+            "f1-score": 0.9826989619377162,
+            "support": 1025.0
           },
           "B": {
-            "precision": 0.46296296296296297,
-            "recall": 0.5319148936170213,
-            "f1-score": 0.49504950495049505,
-            "support": 94.0
+            "precision": 0.3488372093023256,
+            "recall": 0.2631578947368421,
+            "f1-score": 0.3,
+            "support": 57.0
           },
           "C": {
-            "precision": 0.7595628415300546,
-            "recall": 0.7988505747126436,
-            "f1-score": 0.7787114845938375,
-            "support": 174.0
+            "precision": 0.5689655172413793,
+            "recall": 0.88,
+            "f1-score": 0.6910994764397905,
+            "support": 75.0
           },
-          "accuracy": 0.9160493827160494,
+          "accuracy": 0.9291270527225584,
           "macro avg": {
-            "precision": 0.7408419348310059,
-            "recall": 0.7688260818402649,
-            "f1-score": 0.7538226993474874,
-            "support": 1215.0
+            "precision": 0.6379315701705469,
+            "recall": 0.7043046640992725,
+            "f1-score": 0.6579328127925023,
+            "support": 1157.0
           },
           "weighted avg": {
-            "precision": 0.9240184797899161,
-            "recall": 0.9160493827160494,
-            "f1-score": 0.9196617971460105,
-            "support": 1215.0
+            "precision": 0.9364286242787123,
+            "recall": 0.9291270527225584,
+            "f1-score": 0.9301632642343505,
+            "support": 1157.0
           }
         },
         "confusionMatrix": [
           [
-            924,
-            23,
-            0
+            994,
+            19,
+            12
+          ],
+          [
+            4,
+            15,
+            38
           ],
           [
             0,
-            50,
-            44
-          ],
-          [
-            0,
-            35,
-            139
+            9,
+            66
           ]
         ],
         "examples": [
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0421",
+            "asOfDate": "2025-12-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0425",
+            "asOfDate": "2026-06-30",
+            "expected": "B",
+            "predicted": "A",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0426",
+            "asOfDate": "2025-10-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0426",
             "asOfDate": "2025-11-30",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2025-12-31",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2026-01-31",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2026-02-28",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2026-03-31",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2026-04-30",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2026-05-31",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2026-06-30",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0423",
+            "tenantId": "synthetic-0430",
             "asOfDate": "2025-06-30",
             "expected": "A",
             "predicted": "B",
             "family": "ordinary"
           },
           {
-            "tenantId": "synthetic-0424",
+            "tenantId": "synthetic-0433",
             "asOfDate": "2025-09-30",
             "expected": "C",
             "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-10-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-12-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2026-01-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2026-02-28",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0425",
-            "asOfDate": "2025-06-30",
-            "expected": "A",
-            "predicted": "B",
-            "family": "ordinary"
-          },
-          {
-            "tenantId": "synthetic-0426",
-            "asOfDate": "2025-07-31",
-            "expected": "A",
-            "predicted": "B",
-            "family": "ordinary"
-          },
-          {
-            "tenantId": "synthetic-0428",
-            "asOfDate": "2025-06-30",
-            "expected": "B",
-            "predicted": "C",
-            "family": "mixed"
-          },
-          {
-            "tenantId": "synthetic-0439",
-            "asOfDate": "2025-07-31",
-            "expected": "B",
-            "predicted": "C",
             "family": "unpaid"
           },
           {
-            "tenantId": "synthetic-0444",
-            "asOfDate": "2025-06-30",
+            "tenantId": "synthetic-0433",
+            "asOfDate": "2025-10-31",
             "expected": "C",
             "predicted": "B",
-            "family": "cleaning"
+            "family": "unpaid"
           },
           {
-            "tenantId": "synthetic-0444",
-            "asOfDate": "2025-08-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2025-11-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2025-12-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2026-01-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2026-02-28",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2026-03-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2026-04-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
           }
         ]
       }
@@ -938,206 +939,206 @@
         "fraction": 0.75
       },
       "boundaries": [
-        0.4650864700012367,
-        0.546882598282292
+        0.5012041833758576,
+        0.6124877291279316
       ],
-      "treeNodes": 9442,
+      "treeNodes": 7952,
       "validation": {
-        "macroF1": 0.7365127687193208,
-        "binaryPrecision": 0.9708029197080292,
-        "binaryRecall": 0.9925373134328358,
-        "binaryF1": 0.981549815498155,
-        "ordinaryFalsePositiveRate": 0.008447729672650475,
+        "macroF1": 0.680790669847732,
+        "binaryPrecision": 0.8344827586206897,
+        "binaryRecall": 0.9166666666666666,
+        "binaryF1": 0.8736462093862816,
+        "ordinaryFalsePositiveRate": 0.023414634146341463,
         "perGrade": {
           "A": {
-            "precision": 0.997874601487779,
-            "recall": 0.9915522703273495,
-            "f1-score": 0.9947033898305084,
-            "support": 947.0
+            "precision": 0.9891304347826086,
+            "recall": 0.9765853658536585,
+            "f1-score": 0.9828178694158075,
+            "support": 1025.0
           },
           "B": {
-            "precision": 0.45794392523364486,
-            "recall": 0.5212765957446809,
-            "f1-score": 0.48756218905472637,
-            "support": 94.0
+            "precision": 0.4,
+            "recall": 0.7017543859649122,
+            "f1-score": 0.5095541401273885,
+            "support": 57.0
           },
           "C": {
-            "precision": 0.7425149700598802,
-            "recall": 0.7126436781609196,
-            "f1-score": 0.7272727272727273,
-            "support": 174.0
+            "precision": 0.7333333333333333,
+            "recall": 0.44,
+            "f1-score": 0.55,
+            "support": 75.0
           },
-          "accuracy": 0.9152263374485596,
+          "accuracy": 0.9282627484874676,
           "macro avg": {
-            "precision": 0.7327778322604347,
-            "recall": 0.7418241814109834,
-            "f1-score": 0.7365127687193208,
-            "support": 1215.0
+            "precision": 0.707487922705314,
+            "recall": 0.7061132506061902,
+            "f1-score": 0.680790669847732,
+            "support": 1157.0
           },
           "weighted avg": {
-            "precision": 0.9195321657377022,
-            "recall": 0.9152263374485596,
-            "f1-score": 0.9171690621284694,
-            "support": 1215.0
+            "precision": 0.9435252339258202,
+            "recall": 0.9282627484874676,
+            "f1-score": 0.9314458964031668,
+            "support": 1157.0
           }
         },
         "confusionMatrix": [
           [
-            939,
+            1001,
+            21,
+            3
+          ],
+          [
             8,
-            0
+            40,
+            9
           ],
           [
-            2,
-            49,
-            43
-          ],
-          [
-            0,
-            50,
-            124
+            3,
+            39,
+            33
           ]
         ],
         "examples": [
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0425",
+            "asOfDate": "2026-06-30",
+            "expected": "B",
+            "predicted": "A",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0426",
+            "asOfDate": "2025-10-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0426",
             "asOfDate": "2025-11-30",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2025-12-31",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-01-31",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-02-28",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-03-31",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-04-30",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-05-31",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-06-30",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-05-31",
-            "expected": "B",
-            "predicted": "A",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-06-30",
-            "expected": "B",
-            "predicted": "A",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
+            "tenantId": "synthetic-0433",
             "asOfDate": "2025-09-30",
             "expected": "C",
             "predicted": "B",
-            "family": "cleaning"
+            "family": "unpaid"
           },
           {
-            "tenantId": "synthetic-0424",
+            "tenantId": "synthetic-0433",
             "asOfDate": "2025-10-31",
             "expected": "C",
             "predicted": "B",
-            "family": "cleaning"
+            "family": "unpaid"
           },
           {
-            "tenantId": "synthetic-0424",
+            "tenantId": "synthetic-0433",
+            "asOfDate": "2025-11-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0433",
             "asOfDate": "2025-12-31",
             "expected": "C",
             "predicted": "B",
-            "family": "cleaning"
+            "family": "unpaid"
           },
           {
-            "tenantId": "synthetic-0424",
+            "tenantId": "synthetic-0433",
             "asOfDate": "2026-01-31",
             "expected": "C",
             "predicted": "B",
-            "family": "cleaning"
+            "family": "unpaid"
           },
           {
-            "tenantId": "synthetic-0424",
+            "tenantId": "synthetic-0433",
             "asOfDate": "2026-02-28",
             "expected": "C",
             "predicted": "B",
-            "family": "cleaning"
+            "family": "unpaid"
           },
           {
-            "tenantId": "synthetic-0424",
+            "tenantId": "synthetic-0433",
             "asOfDate": "2026-03-31",
             "expected": "C",
             "predicted": "B",
-            "family": "cleaning"
+            "family": "unpaid"
           },
           {
-            "tenantId": "synthetic-0425",
+            "tenantId": "synthetic-0433",
+            "asOfDate": "2026-04-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0433",
+            "asOfDate": "2026-05-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0433",
+            "asOfDate": "2026-06-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2025-11-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-10-31",
+            "expected": "A",
+            "predicted": "B",
+            "family": "planned"
+          },
+          {
+            "tenantId": "synthetic-0449",
             "asOfDate": "2025-06-30",
             "expected": "A",
             "predicted": "B",
             "family": "ordinary"
           },
           {
-            "tenantId": "synthetic-0428",
-            "asOfDate": "2025-06-30",
-            "expected": "B",
-            "predicted": "C",
+            "tenantId": "synthetic-0450",
+            "asOfDate": "2026-04-30",
+            "expected": "C",
+            "predicted": "B",
             "family": "mixed"
           },
           {
-            "tenantId": "synthetic-0439",
-            "asOfDate": "2025-06-30",
-            "expected": "B",
-            "predicted": "C",
-            "family": "unpaid"
+            "tenantId": "synthetic-0450",
+            "asOfDate": "2026-05-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "mixed"
           },
           {
-            "tenantId": "synthetic-0439",
-            "asOfDate": "2025-07-31",
-            "expected": "B",
-            "predicted": "C",
-            "family": "unpaid"
+            "tenantId": "synthetic-0450",
+            "asOfDate": "2026-06-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "mixed"
+          },
+          {
+            "tenantId": "synthetic-0456",
+            "asOfDate": "2026-03-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "repairs"
           }
         ]
       }
@@ -1161,206 +1162,206 @@
         "fraction": 1.0
       },
       "boundaries": [
-        0.4355836088249688,
-        0.5445892057105572
+        0.4607829313417666,
+        0.576909619492203
       ],
-      "treeNodes": 9558,
+      "treeNodes": 7942,
       "validation": {
-        "macroF1": 0.7490721243833182,
-        "binaryPrecision": 0.9273356401384083,
-        "binaryRecall": 1.0,
-        "binaryF1": 0.9622980251346499,
-        "ordinaryFalsePositiveRate": 0.022175290390707498,
+        "macroF1": 0.7295037955175184,
+        "binaryPrecision": 0.7471264367816092,
+        "binaryRecall": 0.9848484848484849,
+        "binaryF1": 0.8496732026143791,
+        "ordinaryFalsePositiveRate": 0.042926829268292686,
         "perGrade": {
           "A": {
-            "precision": 1.0,
-            "recall": 0.9778247096092925,
-            "f1-score": 0.9887880405766151,
-            "support": 947.0
+            "precision": 0.9979654120040692,
+            "recall": 0.9570731707317073,
+            "f1-score": 0.9770916334661355,
+            "support": 1025.0
           },
           "B": {
-            "precision": 0.5,
-            "recall": 0.40425531914893614,
-            "f1-score": 0.4470588235294118,
-            "support": 94.0
+            "precision": 0.3793103448275862,
+            "recall": 0.5789473684210527,
+            "f1-score": 0.4583333333333333,
+            "support": 57.0
           },
           "C": {
-            "precision": 0.7370892018779343,
-            "recall": 0.9022988505747126,
-            "f1-score": 0.8113695090439277,
-            "support": 174.0
+            "precision": 0.7011494252873564,
+            "recall": 0.8133333333333334,
+            "f1-score": 0.7530864197530864,
+            "support": 75.0
           },
-          "accuracy": 0.922633744855967,
+          "accuracy": 0.9291270527225584,
           "macro avg": {
-            "precision": 0.745696400625978,
-            "recall": 0.7614596264443138,
-            "f1-score": 0.7490721243833182,
-            "support": 1215.0
+            "precision": 0.6928083940396705,
+            "recall": 0.7831179574953645,
+            "f1-score": 0.7295037955175184,
+            "support": 1157.0
           },
           "weighted avg": {
-            "precision": 0.9236654494870457,
-            "recall": 0.922633744855967,
-            "f1-score": 0.9214683937542901,
-            "support": 1215.0
+            "precision": 0.9482467103335307,
+            "recall": 0.9291270527225584,
+            "f1-score": 0.9370141795888249,
+            "support": 1157.0
           }
         },
         "confusionMatrix": [
           [
-            926,
-            21,
-            0
+            981,
+            40,
+            4
+          ],
+          [
+            2,
+            33,
+            22
           ],
           [
             0,
-            38,
-            56
-          ],
-          [
-            0,
-            17,
-            157
+            14,
+            61
           ]
         ],
         "examples": [
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0421",
+            "asOfDate": "2025-12-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0425",
+            "asOfDate": "2026-06-30",
+            "expected": "B",
+            "predicted": "A",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0426",
+            "asOfDate": "2025-10-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0426",
             "asOfDate": "2025-11-30",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2025-12-31",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2026-01-31",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-02-28",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-03-31",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-04-30",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-05-31",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-06-30",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0423",
-            "asOfDate": "2025-06-30",
+            "tenantId": "synthetic-0430",
+            "asOfDate": "2025-05-31",
             "expected": "A",
             "predicted": "B",
             "family": "ordinary"
           },
           {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-04-30",
-            "expected": "A",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
+            "tenantId": "synthetic-0433",
             "asOfDate": "2025-09-30",
             "expected": "C",
             "predicted": "B",
-            "family": "cleaning"
+            "family": "unpaid"
           },
           {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-10-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2025-11-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0424",
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2025-12-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0435",
             "asOfDate": "2026-01-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0425",
+            "tenantId": "synthetic-0437",
             "asOfDate": "2025-06-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "planned"
+          },
+          {
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-09-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "planned"
+          },
+          {
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-10-31",
+            "expected": "A",
+            "predicted": "B",
+            "family": "planned"
+          },
+          {
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-11-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "planned"
+          },
+          {
+            "tenantId": "synthetic-0443",
+            "asOfDate": "2026-05-31",
             "expected": "A",
             "predicted": "B",
             "family": "ordinary"
           },
           {
-            "tenantId": "synthetic-0426",
-            "asOfDate": "2025-06-30",
+            "tenantId": "synthetic-0443",
+            "asOfDate": "2026-06-30",
             "expected": "A",
             "predicted": "B",
             "family": "ordinary"
           },
           {
-            "tenantId": "synthetic-0426",
+            "tenantId": "synthetic-0446",
             "asOfDate": "2025-07-31",
             "expected": "A",
             "predicted": "B",
             "family": "ordinary"
           },
           {
-            "tenantId": "synthetic-0428",
+            "tenantId": "synthetic-0449",
             "asOfDate": "2025-06-30",
-            "expected": "B",
-            "predicted": "C",
-            "family": "mixed"
+            "expected": "A",
+            "predicted": "B",
+            "family": "ordinary"
           },
           {
-            "tenantId": "synthetic-0439",
-            "asOfDate": "2025-06-30",
-            "expected": "B",
-            "predicted": "C",
-            "family": "unpaid"
-          },
-          {
-            "tenantId": "synthetic-0439",
-            "asOfDate": "2025-07-31",
-            "expected": "B",
-            "predicted": "C",
-            "family": "unpaid"
-          },
-          {
-            "tenantId": "synthetic-0444",
-            "asOfDate": "2025-06-30",
+            "tenantId": "synthetic-0456",
+            "asOfDate": "2026-05-31",
             "expected": "C",
             "predicted": "B",
-            "family": "cleaning"
+            "family": "repairs"
           }
         ]
       }
@@ -1384,206 +1385,206 @@
         "fraction": 0.75
       },
       "boundaries": [
-        0.4563177488811044,
-        0.5315987230178365
+        0.4767904587763542,
+        0.5519767706432038
       ],
-      "treeNodes": 15750,
+      "treeNodes": 12006,
       "validation": {
-        "macroF1": 0.7222993441922716,
-        "binaryPrecision": 0.9671532846715328,
-        "binaryRecall": 0.9888059701492538,
-        "binaryF1": 0.977859778597786,
-        "ordinaryFalsePositiveRate": 0.009503695881731784,
+        "macroF1": 0.7272620942101327,
+        "binaryPrecision": 0.8413793103448276,
+        "binaryRecall": 0.9242424242424242,
+        "binaryF1": 0.8808664259927798,
+        "ordinaryFalsePositiveRate": 0.0224390243902439,
         "perGrade": {
           "A": {
-            "precision": 0.9968119022316685,
-            "recall": 0.9904963041182682,
-            "f1-score": 0.9936440677966102,
-            "support": 947.0
+            "precision": 0.9901185770750988,
+            "recall": 0.9775609756097561,
+            "f1-score": 0.9837997054491899,
+            "support": 1025.0
           },
           "B": {
-            "precision": 0.42990654205607476,
-            "recall": 0.48936170212765956,
-            "f1-score": 0.4577114427860697,
-            "support": 94.0
+            "precision": 0.4507042253521127,
+            "recall": 0.5614035087719298,
+            "f1-score": 0.5,
+            "support": 57.0
           },
           "C": {
-            "precision": 0.7305389221556886,
-            "recall": 0.7011494252873564,
-            "f1-score": 0.7155425219941349,
-            "support": 174.0
+            "precision": 0.7027027027027027,
+            "recall": 0.6933333333333334,
+            "f1-score": 0.697986577181208,
+            "support": 75.0
           },
-          "accuracy": 0.9102880658436214,
+          "accuracy": 0.9386343993085566,
           "macro avg": {
-            "precision": 0.7190857888144772,
-            "recall": 0.7270024771777613,
-            "f1-score": 0.7222993441922716,
-            "support": 1215.0
+            "precision": 0.7145085017099714,
+            "recall": 0.7440992725716731,
+            "f1-score": 0.7272620942101327,
+            "support": 1157.0
           },
           "weighted avg": {
-            "precision": 0.91481963689033,
-            "recall": 0.9102880658436214,
-            "f1-score": 0.9123540795491851,
-            "support": 1215.0
+            "precision": 0.9449130380723849,
+            "recall": 0.9386343993085566,
+            "f1-score": 0.9414379355004412,
+            "support": 1157.0
           }
         },
         "confusionMatrix": [
           [
-            938,
-            9,
-            0
+            1002,
+            19,
+            4
+          ],
+          [
+            7,
+            32,
+            18
           ],
           [
             3,
-            46,
-            45
-          ],
-          [
-            0,
-            52,
-            122
+            20,
+            52
           ]
         ],
         "examples": [
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0421",
+            "asOfDate": "2025-12-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0425",
+            "asOfDate": "2026-06-30",
+            "expected": "B",
+            "predicted": "A",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0426",
+            "asOfDate": "2025-10-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0426",
             "asOfDate": "2025-11-30",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2025-12-31",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2026-01-31",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-02-28",
+            "tenantId": "synthetic-0433",
+            "asOfDate": "2025-09-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0433",
+            "asOfDate": "2025-10-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0433",
+            "asOfDate": "2025-11-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2025-11-30",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-03-31",
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2025-12-31",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0435",
             "asOfDate": "2026-04-30",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0435",
             "asOfDate": "2026-05-31",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0435",
             "asOfDate": "2026-06-30",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-05-31",
-            "expected": "B",
-            "predicted": "A",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-06-30",
-            "expected": "B",
-            "predicted": "A",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-09-30",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-10-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-12-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2026-01-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2026-02-28",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2026-03-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0425",
+            "tenantId": "synthetic-0449",
             "asOfDate": "2025-06-30",
             "expected": "A",
             "predicted": "B",
             "family": "ordinary"
           },
           {
-            "tenantId": "synthetic-0428",
-            "asOfDate": "2025-06-30",
-            "expected": "B",
-            "predicted": "C",
+            "tenantId": "synthetic-0450",
+            "asOfDate": "2026-06-30",
+            "expected": "C",
+            "predicted": "B",
             "family": "mixed"
           },
           {
-            "tenantId": "synthetic-0439",
-            "asOfDate": "2025-06-30",
-            "expected": "B",
-            "predicted": "C",
-            "family": "unpaid"
+            "tenantId": "synthetic-0456",
+            "asOfDate": "2026-04-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "repairs"
           },
           {
-            "tenantId": "synthetic-0439",
-            "asOfDate": "2025-07-31",
-            "expected": "B",
-            "predicted": "C",
-            "family": "unpaid"
+            "tenantId": "synthetic-0456",
+            "asOfDate": "2026-05-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "repairs"
+          },
+          {
+            "tenantId": "synthetic-0457",
+            "asOfDate": "2025-09-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "repairs"
+          },
+          {
+            "tenantId": "synthetic-0457",
+            "asOfDate": "2026-04-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "repairs"
           }
         ]
       }
@@ -1607,206 +1608,206 @@
         "fraction": 1.0
       },
       "boundaries": [
-        0.45654426789108715,
-        0.5553816157762546
+        0.47318729695946765,
+        0.5696036509092921
       ],
-      "treeNodes": 16106,
+      "treeNodes": 12184,
       "validation": {
-        "macroF1": 0.7417845525178257,
-        "binaryPrecision": 0.9708029197080292,
-        "binaryRecall": 0.9925373134328358,
-        "binaryF1": 0.981549815498155,
-        "ordinaryFalsePositiveRate": 0.008447729672650475,
+        "macroF1": 0.756886814546848,
+        "binaryPrecision": 0.8482758620689655,
+        "binaryRecall": 0.9318181818181818,
+        "binaryF1": 0.8880866425992779,
+        "ordinaryFalsePositiveRate": 0.021463414634146343,
         "perGrade": {
           "A": {
-            "precision": 0.997874601487779,
-            "recall": 0.9915522703273495,
-            "f1-score": 0.9947033898305084,
-            "support": 947.0
+            "precision": 0.991106719367589,
+            "recall": 0.9785365853658536,
+            "f1-score": 0.9847815414825725,
+            "support": 1025.0
           },
           "B": {
-            "precision": 0.4672897196261682,
-            "recall": 0.5319148936170213,
-            "f1-score": 0.4975124378109453,
-            "support": 94.0
+            "precision": 0.4861111111111111,
+            "recall": 0.6140350877192983,
+            "f1-score": 0.5426356589147286,
+            "support": 57.0
           },
           "C": {
-            "precision": 0.7485029940119761,
-            "recall": 0.7183908045977011,
-            "f1-score": 0.7331378299120235,
-            "support": 174.0
+            "precision": 0.7534246575342466,
+            "recall": 0.7333333333333333,
+            "f1-score": 0.7432432432432432,
+            "support": 75.0
           },
-          "accuracy": 0.9168724279835391,
+          "accuracy": 0.9446845289541919,
           "macro avg": {
-            "precision": 0.7378891050419744,
-            "recall": 0.7472859895140239,
-            "f1-score": 0.7417845525178257,
-            "support": 1215.0
+            "precision": 0.7435474960043155,
+            "recall": 0.7753016688061618,
+            "f1-score": 0.756886814546848,
+            "support": 1157.0
           },
           "weighted avg": {
-            "precision": 0.9211127590221154,
-            "recall": 0.9168724279835391,
-            "f1-score": 0.9187788162373765,
-            "support": 1215.0
+            "precision": 0.950820717372671,
+            "recall": 0.9446845289541919,
+            "f1-score": 0.9473418805713221,
+            "support": 1157.0
           }
         },
         "confusionMatrix": [
           [
-            939,
-            8,
-            0
+            1003,
+            17,
+            5
           ],
           [
-            2,
-            50,
-            42
+            9,
+            35,
+            13
           ],
           [
             0,
-            49,
-            125
+            20,
+            55
           ]
         ],
         "examples": [
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0425",
+            "asOfDate": "2026-06-30",
+            "expected": "B",
+            "predicted": "A",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0426",
+            "asOfDate": "2025-10-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0426",
             "asOfDate": "2025-11-30",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2025-12-31",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-01-31",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-02-28",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-03-31",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-04-30",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-05-31",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-06-30",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-05-31",
-            "expected": "B",
-            "predicted": "A",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-06-30",
-            "expected": "B",
-            "predicted": "A",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
+            "tenantId": "synthetic-0433",
             "asOfDate": "2025-09-30",
             "expected": "C",
             "predicted": "B",
-            "family": "cleaning"
+            "family": "unpaid"
           },
           {
-            "tenantId": "synthetic-0424",
+            "tenantId": "synthetic-0433",
             "asOfDate": "2025-10-31",
             "expected": "C",
             "predicted": "B",
-            "family": "cleaning"
+            "family": "unpaid"
           },
           {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-12-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2025-11-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2026-01-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2026-02-28",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0426",
-            "asOfDate": "2025-07-31",
+            "tenantId": "synthetic-0449",
+            "asOfDate": "2025-06-30",
             "expected": "A",
             "predicted": "B",
             "family": "ordinary"
           },
           {
-            "tenantId": "synthetic-0428",
-            "asOfDate": "2025-06-30",
-            "expected": "B",
-            "predicted": "C",
+            "tenantId": "synthetic-0450",
+            "asOfDate": "2026-04-30",
+            "expected": "C",
+            "predicted": "B",
             "family": "mixed"
           },
           {
-            "tenantId": "synthetic-0439",
-            "asOfDate": "2025-07-31",
+            "tenantId": "synthetic-0450",
+            "asOfDate": "2026-05-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "mixed"
+          },
+          {
+            "tenantId": "synthetic-0456",
+            "asOfDate": "2026-03-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "repairs"
+          },
+          {
+            "tenantId": "synthetic-0456",
+            "asOfDate": "2026-04-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "repairs"
+          },
+          {
+            "tenantId": "synthetic-0456",
+            "asOfDate": "2026-05-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "repairs"
+          },
+          {
+            "tenantId": "synthetic-0456",
+            "asOfDate": "2026-06-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "repairs"
+          },
+          {
+            "tenantId": "synthetic-0457",
+            "asOfDate": "2025-08-31",
             "expected": "B",
-            "predicted": "C",
-            "family": "unpaid"
+            "predicted": "A",
+            "family": "repairs"
           },
           {
-            "tenantId": "synthetic-0444",
-            "asOfDate": "2025-06-30",
+            "tenantId": "synthetic-0457",
+            "asOfDate": "2025-09-30",
             "expected": "C",
             "predicted": "B",
-            "family": "cleaning"
+            "family": "repairs"
           },
           {
-            "tenantId": "synthetic-0444",
-            "asOfDate": "2025-07-31",
-            "expected": "C",
+            "tenantId": "synthetic-0457",
+            "asOfDate": "2026-04-30",
+            "expected": "A",
             "predicted": "B",
-            "family": "cleaning"
+            "family": "repairs"
+          },
+          {
+            "tenantId": "synthetic-0457",
+            "asOfDate": "2026-05-31",
+            "expected": "A",
+            "predicted": "B",
+            "family": "repairs"
+          },
+          {
+            "tenantId": "synthetic-0457",
+            "asOfDate": "2026-06-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "repairs"
+          },
+          {
+            "tenantId": "synthetic-0458",
+            "asOfDate": "2025-05-31",
+            "expected": "A",
+            "predicted": "B",
+            "family": "late"
           }
         ]
       }
@@ -1830,206 +1831,206 @@
         "fraction": 0.75
       },
       "boundaries": [
-        0.48081531668110405,
-        0.5554677254688518
+        0.4864899927603148,
+        0.5469384805700782
       ],
-      "treeNodes": 11590,
+      "treeNodes": 10724,
       "validation": {
-        "macroF1": 0.7422271955048624,
-        "binaryPrecision": 0.9708029197080292,
-        "binaryRecall": 0.9925373134328358,
-        "binaryF1": 0.981549815498155,
-        "ordinaryFalsePositiveRate": 0.008447729672650475,
+        "macroF1": 0.658436834647902,
+        "binaryPrecision": 0.7528735632183908,
+        "binaryRecall": 0.9924242424242424,
+        "binaryF1": 0.8562091503267973,
+        "ordinaryFalsePositiveRate": 0.041951219512195125,
         "perGrade": {
           "A": {
-            "precision": 0.997874601487779,
-            "recall": 0.9915522703273495,
-            "f1-score": 0.9947033898305084,
-            "support": 947.0
+            "precision": 0.9989827060020345,
+            "recall": 0.9580487804878048,
+            "f1-score": 0.9780876494023905,
+            "support": 1025.0
           },
           "B": {
-            "precision": 0.4835164835164835,
-            "recall": 0.46808510638297873,
-            "f1-score": 0.4756756756756757,
-            "support": 94.0
+            "precision": 0.29310344827586204,
+            "recall": 0.2982456140350877,
+            "f1-score": 0.2956521739130435,
+            "support": 57.0
           },
           "C": {
-            "precision": 0.7377049180327869,
-            "recall": 0.7758620689655172,
-            "f1-score": 0.7563025210084033,
-            "support": 174.0
+            "precision": 0.5775862068965517,
+            "recall": 0.8933333333333333,
+            "f1-score": 0.7015706806282722,
+            "support": 75.0
           },
-          "accuracy": 0.920164609053498,
+          "accuracy": 0.9213483146067416,
           "macro avg": {
-            "precision": 0.7396986676790164,
-            "recall": 0.7451664818919485,
-            "f1-score": 0.7422271955048624,
-            "support": 1215.0
+            "precision": 0.6232241203914827,
+            "recall": 0.7165425759520753,
+            "f1-score": 0.658436834647902,
+            "support": 1157.0
           },
           "weighted avg": {
-            "precision": 0.9208217718495316,
-            "recall": 0.920164609053498,
-            "f1-score": 0.9204068002785738,
-            "support": 1215.0
+            "precision": 0.9368912149706577,
+            "recall": 0.9213483146067416,
+            "f1-score": 0.9265426236798738,
+            "support": 1157.0
           }
         },
         "confusionMatrix": [
           [
-            939,
-            8,
-            0
+            982,
+            33,
+            10
           ],
           [
-            2,
-            44,
-            48
+            1,
+            17,
+            39
           ],
           [
             0,
-            39,
-            135
+            8,
+            67
           ]
         ],
         "examples": [
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0421",
+            "asOfDate": "2025-12-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0425",
+            "asOfDate": "2026-06-30",
+            "expected": "B",
+            "predicted": "A",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0426",
+            "asOfDate": "2025-10-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0426",
             "asOfDate": "2025-11-30",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2025-12-31",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2026-01-31",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2026-02-28",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2026-03-31",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2026-04-30",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2026-05-31",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2026-06-30",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-05-31",
-            "expected": "B",
-            "predicted": "A",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
+            "tenantId": "synthetic-0430",
             "asOfDate": "2025-06-30",
-            "expected": "B",
-            "predicted": "A",
-            "family": "cleaning"
+            "expected": "A",
+            "predicted": "B",
+            "family": "ordinary"
           },
           {
-            "tenantId": "synthetic-0424",
+            "tenantId": "synthetic-0433",
             "asOfDate": "2025-09-30",
             "expected": "C",
             "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-10-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-12-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2026-01-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0428",
-            "asOfDate": "2025-06-30",
-            "expected": "B",
-            "predicted": "C",
-            "family": "mixed"
-          },
-          {
-            "tenantId": "synthetic-0439",
-            "asOfDate": "2025-07-31",
-            "expected": "B",
-            "predicted": "C",
             "family": "unpaid"
           },
           {
-            "tenantId": "synthetic-0444",
-            "asOfDate": "2025-06-30",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0444",
-            "asOfDate": "2025-08-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0444",
+            "tenantId": "synthetic-0433",
             "asOfDate": "2025-10-31",
-            "expected": "A",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0444",
-            "asOfDate": "2026-04-30",
             "expected": "C",
             "predicted": "B",
-            "family": "cleaning"
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2025-11-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2025-12-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2026-01-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2026-02-28",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2026-03-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2026-04-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
           }
         ]
       }
@@ -2053,206 +2054,206 @@
         "fraction": 1.0
       },
       "boundaries": [
-        0.4815278279176872,
-        0.5725241957378999
+        0.4873040474992055,
+        0.5694765367220335
       ],
-      "treeNodes": 11234,
+      "treeNodes": 10728,
       "validation": {
-        "macroF1": 0.7671398770227285,
-        "binaryPrecision": 0.9635036496350365,
-        "binaryRecall": 0.9850746268656716,
-        "binaryF1": 0.974169741697417,
-        "ordinaryFalsePositiveRate": 0.010559662090813094,
+        "macroF1": 0.6519101189077178,
+        "binaryPrecision": 0.7413793103448276,
+        "binaryRecall": 0.9772727272727273,
+        "binaryF1": 0.8431372549019608,
+        "ordinaryFalsePositiveRate": 0.04390243902439024,
         "perGrade": {
           "A": {
-            "precision": 0.9957492029755579,
-            "recall": 0.989440337909187,
-            "f1-score": 0.9925847457627118,
-            "support": 947.0
+            "precision": 0.9969481180061037,
+            "recall": 0.9560975609756097,
+            "f1-score": 0.9760956175298805,
+            "support": 1025.0
           },
           "B": {
-            "precision": 0.5274725274725275,
-            "recall": 0.5106382978723404,
-            "f1-score": 0.518918918918919,
-            "support": 94.0
+            "precision": 0.25,
+            "recall": 0.3157894736842105,
+            "f1-score": 0.27906976744186046,
+            "support": 57.0
           },
           "C": {
-            "precision": 0.7704918032786885,
-            "recall": 0.8103448275862069,
-            "f1-score": 0.7899159663865546,
-            "support": 174.0
+            "precision": 0.6078431372549019,
+            "recall": 0.8266666666666667,
+            "f1-score": 0.7005649717514124,
+            "support": 75.0
           },
-          "accuracy": 0.9267489711934156,
+          "accuracy": 0.916162489196197,
           "macro avg": {
-            "precision": 0.7645711779089247,
-            "recall": 0.7701411544559114,
-            "f1-score": 0.7671398770227285,
-            "support": 1215.0
+            "precision": 0.6182637517536685,
+            "recall": 0.6995179004421623,
+            "f1-score": 0.6519101189077178,
+            "support": 1157.0
           },
           "weighted avg": {
-            "precision": 0.9272613058195578,
-            "recall": 0.9267489711934156,
-            "f1-score": 0.9269148236764831,
-            "support": 1215.0
+            "precision": 0.9349265827574536,
+            "recall": 0.916162489196197,
+            "f1-score": 0.923895728257277,
+            "support": 1157.0
           }
         },
         "confusionMatrix": [
           [
-            937,
-            10,
-            0
+            980,
+            41,
+            4
           ],
           [
-            4,
-            48,
-            42
+            3,
+            18,
+            36
           ],
           [
             0,
-            33,
-            141
+            13,
+            62
           ]
         ],
         "examples": [
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0421",
+            "asOfDate": "2025-12-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0425",
+            "asOfDate": "2026-06-30",
+            "expected": "B",
+            "predicted": "A",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0426",
+            "asOfDate": "2025-10-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0426",
             "asOfDate": "2025-11-30",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2025-12-31",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2026-01-31",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2026-02-28",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2026-03-31",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2026-04-30",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2026-05-31",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0424",
+            "tenantId": "synthetic-0426",
+            "asOfDate": "2026-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0430",
             "asOfDate": "2025-05-31",
-            "expected": "B",
-            "predicted": "A",
-            "family": "cleaning"
+            "expected": "A",
+            "predicted": "B",
+            "family": "ordinary"
           },
           {
-            "tenantId": "synthetic-0424",
+            "tenantId": "synthetic-0430",
             "asOfDate": "2025-06-30",
-            "expected": "B",
-            "predicted": "A",
-            "family": "cleaning"
+            "expected": "A",
+            "predicted": "B",
+            "family": "ordinary"
           },
           {
-            "tenantId": "synthetic-0424",
+            "tenantId": "synthetic-0433",
             "asOfDate": "2025-09-30",
             "expected": "C",
             "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-10-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-12-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2026-01-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0428",
-            "asOfDate": "2025-06-30",
-            "expected": "B",
-            "predicted": "C",
-            "family": "mixed"
-          },
-          {
-            "tenantId": "synthetic-0439",
-            "asOfDate": "2025-07-31",
-            "expected": "B",
-            "predicted": "C",
             "family": "unpaid"
           },
           {
-            "tenantId": "synthetic-0444",
-            "asOfDate": "2025-06-30",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0444",
-            "asOfDate": "2025-08-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0444",
+            "tenantId": "synthetic-0433",
             "asOfDate": "2025-10-31",
-            "expected": "A",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0444",
-            "asOfDate": "2026-04-30",
             "expected": "C",
             "predicted": "B",
-            "family": "cleaning"
+            "family": "unpaid"
           },
           {
-            "tenantId": "synthetic-0449",
-            "asOfDate": "2025-07-31",
+            "tenantId": "synthetic-0433",
+            "asOfDate": "2025-11-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0433",
+            "asOfDate": "2025-12-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2025-11-30",
             "expected": "B",
-            "predicted": "A",
-            "family": "repairs"
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2025-12-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2026-01-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
           }
         ]
       }
@@ -2276,206 +2277,206 @@
         "fraction": 0.75
       },
       "boundaries": [
-        0.4694443762314592,
-        0.5488777600425373
+        0.47498252997453383,
+        0.5564747280416948
       ],
-      "treeNodes": 19396,
+      "treeNodes": 15962,
       "validation": {
-        "macroF1": 0.7397166224562527,
-        "binaryPrecision": 0.9635036496350365,
-        "binaryRecall": 0.9850746268656716,
-        "binaryF1": 0.974169741697417,
-        "ordinaryFalsePositiveRate": 0.010559662090813094,
+        "macroF1": 0.6790729585287089,
+        "binaryPrecision": 0.7924528301886793,
+        "binaryRecall": 0.9545454545454546,
+        "binaryF1": 0.865979381443299,
+        "ordinaryFalsePositiveRate": 0.03219512195121951,
         "perGrade": {
           "A": {
-            "precision": 0.9957492029755579,
-            "recall": 0.989440337909187,
-            "f1-score": 0.9925847457627118,
-            "support": 947.0
+            "precision": 0.9939879759519038,
+            "recall": 0.9678048780487805,
+            "f1-score": 0.9807217004448838,
+            "support": 1025.0
           },
           "B": {
-            "precision": 0.45794392523364486,
-            "recall": 0.5212765957446809,
-            "f1-score": 0.48756218905472637,
-            "support": 94.0
+            "precision": 0.3333333333333333,
+            "recall": 0.3333333333333333,
+            "f1-score": 0.3333333333333333,
+            "support": 57.0
           },
           "C": {
-            "precision": 0.7544910179640718,
-            "recall": 0.7241379310344828,
-            "f1-score": 0.7390029325513197,
-            "support": 174.0
+            "precision": 0.6274509803921569,
+            "recall": 0.8533333333333334,
+            "f1-score": 0.7231638418079096,
+            "support": 75.0
           },
-          "accuracy": 0.9152263374485596,
+          "accuracy": 0.9291270527225584,
           "macro avg": {
-            "precision": 0.7360613820577582,
-            "recall": 0.7449516215627835,
-            "f1-score": 0.7397166224562527,
-            "support": 1215.0
+            "precision": 0.651590763225798,
+            "recall": 0.7181571815718156,
+            "f1-score": 0.6790729585287089,
+            "support": 1157.0
           },
           "weighted avg": {
-            "precision": 0.9195906677494357,
-            "recall": 0.9152263374485596,
-            "f1-score": 0.9171976216233432,
-            "support": 1215.0
+            "precision": 0.937680638617211,
+            "recall": 0.9291270527225584,
+            "f1-score": 0.9321322654205697,
+            "support": 1157.0
           }
         },
         "confusionMatrix": [
           [
-            937,
+            992,
+            28,
+            5
+          ],
+          [
+            5,
+            19,
+            33
+          ],
+          [
+            1,
             10,
-            0
-          ],
-          [
-            4,
-            49,
-            41
-          ],
-          [
-            0,
-            48,
-            126
+            64
           ]
         ],
         "examples": [
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0421",
+            "asOfDate": "2025-12-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0425",
+            "asOfDate": "2026-06-30",
+            "expected": "B",
+            "predicted": "A",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0426",
+            "asOfDate": "2025-10-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0426",
             "asOfDate": "2025-11-30",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2025-12-31",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2026-01-31",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2026-02-28",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2026-03-31",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2026-04-30",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2026-05-31",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2026-06-30",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-05-31",
-            "expected": "B",
-            "predicted": "A",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-06-30",
-            "expected": "B",
-            "predicted": "A",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-09-30",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-10-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-12-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2026-01-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2026-02-28",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2026-03-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0425",
-            "asOfDate": "2025-06-30",
-            "expected": "A",
-            "predicted": "B",
-            "family": "ordinary"
-          },
-          {
-            "tenantId": "synthetic-0426",
-            "asOfDate": "2025-07-31",
-            "expected": "A",
-            "predicted": "B",
-            "family": "ordinary"
-          },
-          {
-            "tenantId": "synthetic-0428",
-            "asOfDate": "2025-06-30",
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2025-11-30",
             "expected": "B",
             "predicted": "C",
-            "family": "mixed"
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2025-12-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2026-01-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2026-02-28",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2026-03-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2026-04-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2026-05-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
           },
           {
             "tenantId": "synthetic-0439",
-            "asOfDate": "2025-07-31",
-            "expected": "B",
-            "predicted": "C",
-            "family": "unpaid"
+            "asOfDate": "2025-09-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "planned"
+          },
+          {
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-10-31",
+            "expected": "A",
+            "predicted": "B",
+            "family": "planned"
           }
         ]
       }
@@ -2499,206 +2500,206 @@
         "fraction": 1.0
       },
       "boundaries": [
-        0.4768095089745662,
-        0.5649380115593037
+        0.4743148511885923,
+        0.6008237288185204
       ],
-      "treeNodes": 19766,
+      "treeNodes": 16036,
       "validation": {
-        "macroF1": 0.7601545534995187,
-        "binaryPrecision": 0.9671532846715328,
-        "binaryRecall": 0.9888059701492538,
-        "binaryF1": 0.977859778597786,
-        "ordinaryFalsePositiveRate": 0.009503695881731784,
+        "macroF1": 0.7108274327151137,
+        "binaryPrecision": 0.7791411042944786,
+        "binaryRecall": 0.9621212121212122,
+        "binaryF1": 0.8610169491525423,
+        "ordinaryFalsePositiveRate": 0.0351219512195122,
         "perGrade": {
           "A": {
-            "precision": 0.9968119022316685,
-            "recall": 0.9904963041182682,
-            "f1-score": 0.9936440677966102,
-            "support": 947.0
+            "precision": 0.9949698189134809,
+            "recall": 0.9648780487804878,
+            "f1-score": 0.979692917285785,
+            "support": 1025.0
           },
           "B": {
-            "precision": 0.5164835164835165,
-            "recall": 0.5,
-            "f1-score": 0.5081081081081081,
-            "support": 94.0
+            "precision": 0.3904761904761905,
+            "recall": 0.7192982456140351,
+            "f1-score": 0.5061728395061729,
+            "support": 57.0
           },
           "C": {
-            "precision": 0.7595628415300546,
-            "recall": 0.7988505747126436,
-            "f1-score": 0.7787114845938375,
-            "support": 174.0
+            "precision": 0.7413793103448276,
+            "recall": 0.5733333333333334,
+            "f1-score": 0.6466165413533834,
+            "support": 75.0
           },
-          "accuracy": 0.9251028806584363,
+          "accuracy": 0.9273984442523768,
           "macro avg": {
-            "precision": 0.7576194200817467,
-            "recall": 0.7631156262769706,
-            "f1-score": 0.7601545534995187,
-            "support": 1215.0
+            "precision": 0.708941773244833,
+            "recall": 0.7525032092426187,
+            "f1-score": 0.7108274327151137,
+            "support": 1157.0
           },
           "weighted avg": {
-            "precision": 0.9256742850938849,
-            "recall": 0.9251028806584363,
-            "f1-score": 0.9252995001521644,
-            "support": 1215.0
+            "precision": 0.9487507826441857,
+            "recall": 0.9273984442523768,
+            "f1-score": 0.9347738398196069,
+            "support": 1157.0
           }
         },
         "confusionMatrix": [
           [
-            938,
-            9,
-            0
+            989,
+            32,
+            4
           ],
           [
-            3,
-            47,
-            44
+            5,
+            41,
+            11
           ],
           [
             0,
-            35,
-            139
+            32,
+            43
           ]
         ],
         "examples": [
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0421",
+            "asOfDate": "2026-01-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0425",
+            "asOfDate": "2026-06-30",
+            "expected": "B",
+            "predicted": "A",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0426",
+            "asOfDate": "2025-10-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0426",
             "asOfDate": "2025-11-30",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2025-12-31",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-01-31",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-02-28",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-03-31",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-04-30",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-05-31",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-06-30",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-06-30",
-            "expected": "B",
-            "predicted": "A",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
+            "tenantId": "synthetic-0433",
             "asOfDate": "2025-09-30",
             "expected": "C",
             "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-10-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-12-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2026-01-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0428",
-            "asOfDate": "2025-06-30",
-            "expected": "B",
-            "predicted": "C",
-            "family": "mixed"
-          },
-          {
-            "tenantId": "synthetic-0439",
-            "asOfDate": "2025-07-31",
-            "expected": "B",
-            "predicted": "C",
             "family": "unpaid"
           },
           {
-            "tenantId": "synthetic-0444",
-            "asOfDate": "2025-06-30",
+            "tenantId": "synthetic-0433",
+            "asOfDate": "2025-10-31",
             "expected": "C",
             "predicted": "B",
-            "family": "cleaning"
+            "family": "unpaid"
           },
           {
-            "tenantId": "synthetic-0444",
-            "asOfDate": "2025-08-31",
+            "tenantId": "synthetic-0433",
+            "asOfDate": "2025-11-30",
             "expected": "C",
             "predicted": "B",
-            "family": "cleaning"
+            "family": "unpaid"
           },
           {
-            "tenantId": "synthetic-0444",
+            "tenantId": "synthetic-0433",
+            "asOfDate": "2025-12-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2025-11-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-09-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "planned"
+          },
+          {
+            "tenantId": "synthetic-0439",
             "asOfDate": "2025-10-31",
             "expected": "A",
             "predicted": "B",
-            "family": "cleaning"
+            "family": "planned"
           },
           {
-            "tenantId": "synthetic-0449",
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-11-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "planned"
+          },
+          {
+            "tenantId": "synthetic-0443",
+            "asOfDate": "2026-05-31",
+            "expected": "A",
+            "predicted": "B",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0443",
+            "asOfDate": "2026-06-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0446",
             "asOfDate": "2025-07-31",
-            "expected": "B",
-            "predicted": "A",
-            "family": "repairs"
+            "expected": "A",
+            "predicted": "B",
+            "family": "ordinary"
           },
           {
             "tenantId": "synthetic-0449",
-            "asOfDate": "2025-08-31",
+            "asOfDate": "2025-06-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0450",
+            "asOfDate": "2025-10-31",
             "expected": "C",
             "predicted": "B",
-            "family": "repairs"
+            "family": "mixed"
+          },
+          {
+            "tenantId": "synthetic-0450",
+            "asOfDate": "2026-04-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "mixed"
+          },
+          {
+            "tenantId": "synthetic-0450",
+            "asOfDate": "2026-05-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "mixed"
           }
         ]
       }
@@ -2722,206 +2723,206 @@
         "fraction": 0.75
       },
       "boundaries": [
-        0.44076147187069326,
-        0.5187626278289277
+        0.4577969429356044,
+        0.5506893637806182
       ],
-      "treeNodes": 32546,
+      "treeNodes": 24538,
       "validation": {
-        "macroF1": 0.7210132372008266,
-        "binaryPrecision": 0.9273356401384083,
-        "binaryRecall": 1.0,
-        "binaryF1": 0.9622980251346499,
-        "ordinaryFalsePositiveRate": 0.022175290390707498,
+        "macroF1": 0.7202354755889622,
+        "binaryPrecision": 0.8050314465408805,
+        "binaryRecall": 0.9696969696969697,
+        "binaryF1": 0.8797250859106529,
+        "ordinaryFalsePositiveRate": 0.03024390243902439,
         "perGrade": {
           "A": {
-            "precision": 1.0,
-            "recall": 0.9778247096092925,
-            "f1-score": 0.9887880405766151,
-            "support": 947.0
+            "precision": 0.9959919839679359,
+            "recall": 0.9697560975609756,
+            "f1-score": 0.9826989619377162,
+            "support": 1025.0
           },
           "B": {
-            "precision": 0.4175824175824176,
-            "recall": 0.40425531914893614,
-            "f1-score": 0.41081081081081083,
-            "support": 94.0
+            "precision": 0.4027777777777778,
+            "recall": 0.5087719298245614,
+            "f1-score": 0.4496124031007752,
+            "support": 57.0
           },
           "C": {
-            "precision": 0.7171717171717171,
-            "recall": 0.8160919540229885,
-            "f1-score": 0.7634408602150538,
-            "support": 174.0
+            "precision": 0.6781609195402298,
+            "recall": 0.7866666666666666,
+            "f1-score": 0.7283950617283951,
+            "support": 75.0
           },
-          "accuracy": 0.9102880658436214,
+          "accuracy": 0.9351771823681936,
           "macro avg": {
-            "precision": 0.7115847115847117,
-            "recall": 0.7327239942604057,
-            "f1-score": 0.7210132372008266,
-            "support": 1215.0
+            "precision": 0.6923102270953145,
+            "recall": 0.7550648980174012,
+            "f1-score": 0.7202354755889622,
+            "support": 1157.0
           },
           "weighted avg": {
-            "precision": 0.914436729251544,
-            "recall": 0.9102880658436214,
-            "f1-score": 0.9118001648721729,
-            "support": 1215.0
+            "precision": 0.946164378449425,
+            "recall": 0.9351771823681936,
+            "f1-score": 0.939951575274445,
+            "support": 1157.0
           }
         },
         "confusionMatrix": [
           [
-            926,
-            21,
-            0
+            994,
+            27,
+            4
+          ],
+          [
+            4,
+            29,
+            24
           ],
           [
             0,
-            38,
-            56
-          ],
-          [
-            0,
-            32,
-            142
+            16,
+            59
           ]
         ],
         "examples": [
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0421",
+            "asOfDate": "2025-12-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0425",
+            "asOfDate": "2026-06-30",
+            "expected": "B",
+            "predicted": "A",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0426",
+            "asOfDate": "2025-10-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0426",
             "asOfDate": "2025-11-30",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2025-12-31",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2026-01-31",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2026-02-28",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0426",
             "asOfDate": "2026-03-31",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-04-30",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-05-31",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-06-30",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0423",
-            "asOfDate": "2025-06-30",
-            "expected": "A",
-            "predicted": "B",
-            "family": "ordinary"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-04-30",
-            "expected": "A",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
+            "tenantId": "synthetic-0433",
             "asOfDate": "2025-09-30",
             "expected": "C",
             "predicted": "B",
-            "family": "cleaning"
+            "family": "unpaid"
           },
           {
-            "tenantId": "synthetic-0424",
+            "tenantId": "synthetic-0433",
             "asOfDate": "2025-10-31",
             "expected": "C",
             "predicted": "B",
-            "family": "cleaning"
+            "family": "unpaid"
           },
           {
-            "tenantId": "synthetic-0424",
+            "tenantId": "synthetic-0433",
+            "asOfDate": "2025-11-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2025-11-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0435",
             "asOfDate": "2025-12-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0424",
+            "tenantId": "synthetic-0435",
             "asOfDate": "2026-01-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0425",
-            "asOfDate": "2025-06-30",
-            "expected": "A",
-            "predicted": "B",
-            "family": "ordinary"
-          },
-          {
-            "tenantId": "synthetic-0426",
-            "asOfDate": "2025-07-31",
-            "expected": "A",
-            "predicted": "B",
-            "family": "ordinary"
-          },
-          {
-            "tenantId": "synthetic-0428",
-            "asOfDate": "2025-06-30",
             "expected": "B",
             "predicted": "C",
-            "family": "mixed"
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2026-02-28",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
           },
           {
             "tenantId": "synthetic-0439",
-            "asOfDate": "2025-06-30",
-            "expected": "B",
-            "predicted": "C",
-            "family": "unpaid"
-          },
-          {
-            "tenantId": "synthetic-0439",
-            "asOfDate": "2025-07-31",
-            "expected": "B",
-            "predicted": "C",
-            "family": "unpaid"
-          },
-          {
-            "tenantId": "synthetic-0441",
             "asOfDate": "2025-09-30",
             "expected": "A",
             "predicted": "B",
+            "family": "planned"
+          },
+          {
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-10-31",
+            "expected": "A",
+            "predicted": "B",
+            "family": "planned"
+          },
+          {
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-11-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "planned"
+          },
+          {
+            "tenantId": "synthetic-0449",
+            "asOfDate": "2025-06-30",
+            "expected": "A",
+            "predicted": "B",
             "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0457",
+            "asOfDate": "2025-09-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "repairs"
           }
         ]
       }
@@ -2945,413 +2946,413 @@
         "fraction": 1.0
       },
       "boundaries": [
-        0.4647914922898672,
-        0.545100610869926
+        0.4764154357062119,
+        0.5675570537066251
       ],
-      "treeNodes": 32652,
+      "treeNodes": 24526,
       "validation": {
-        "macroF1": 0.7476982127405857,
-        "binaryPrecision": 0.9708029197080292,
-        "binaryRecall": 0.9925373134328358,
-        "binaryF1": 0.981549815498155,
-        "ordinaryFalsePositiveRate": 0.008447729672650475,
+        "macroF1": 0.7652412662002689,
+        "binaryPrecision": 0.8344827586206897,
+        "binaryRecall": 0.9166666666666666,
+        "binaryF1": 0.8736462093862816,
+        "ordinaryFalsePositiveRate": 0.023414634146341463,
         "perGrade": {
           "A": {
-            "precision": 0.997874601487779,
-            "recall": 0.9915522703273495,
-            "f1-score": 0.9947033898305084,
-            "support": 947.0
+            "precision": 0.9891304347826086,
+            "recall": 0.9765853658536585,
+            "f1-score": 0.9828178694158075,
+            "support": 1025.0
           },
           "B": {
-            "precision": 0.4945054945054945,
-            "recall": 0.4787234042553192,
-            "f1-score": 0.4864864864864865,
-            "support": 94.0
+            "precision": 0.4861111111111111,
+            "recall": 0.6140350877192983,
+            "f1-score": 0.5426356589147286,
+            "support": 57.0
           },
           "C": {
-            "precision": 0.7431693989071039,
-            "recall": 0.7816091954022989,
-            "f1-score": 0.7619047619047619,
-            "support": 174.0
+            "precision": 0.7808219178082192,
+            "recall": 0.76,
+            "f1-score": 0.7702702702702703,
+            "support": 75.0
           },
-          "accuracy": 0.9218106995884774,
+          "accuracy": 0.9446845289541919,
           "macro avg": {
-            "precision": 0.7451831649667925,
-            "recall": 0.7506282899949892,
-            "f1-score": 0.7476982127405857,
-            "support": 1215.0
+            "precision": 0.7520211545673131,
+            "recall": 0.7835401511909857,
+            "f1-score": 0.7652412662002689,
+            "support": 1157.0
           },
           "weighted avg": {
-            "precision": 0.9224545181088718,
-            "recall": 0.9218106995884774,
-            "f1-score": 0.9220454884532097,
-            "support": 1215.0
+            "precision": 0.9508458710640654,
+            "recall": 0.9446845289541919,
+            "f1-score": 0.9473542082796995,
+            "support": 1157.0
           }
         },
         "confusionMatrix": [
           [
-            939,
-            8,
-            0
+            1001,
+            20,
+            4
           ],
           [
-            2,
-            45,
-            47
+            10,
+            35,
+            12
           ],
           [
-            0,
-            38,
-            136
+            1,
+            17,
+            57
           ]
         ],
         "examples": [
           {
-            "tenantId": "synthetic-0420",
+            "tenantId": "synthetic-0421",
+            "asOfDate": "2025-12-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0425",
+            "asOfDate": "2026-06-30",
+            "expected": "B",
+            "predicted": "A",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0426",
+            "asOfDate": "2025-10-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0426",
             "asOfDate": "2025-11-30",
             "expected": "B",
             "predicted": "C",
             "family": "recovered"
           },
           {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2025-12-31",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-01-31",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-02-28",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-03-31",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-04-30",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-05-31",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0420",
-            "asOfDate": "2026-06-30",
-            "expected": "B",
-            "predicted": "C",
-            "family": "recovered"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-05-31",
-            "expected": "B",
-            "predicted": "A",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-06-30",
-            "expected": "B",
-            "predicted": "A",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-09-30",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-10-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2025-12-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2026-01-31",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
-            "tenantId": "synthetic-0424",
-            "asOfDate": "2026-02-28",
-            "expected": "C",
-            "predicted": "B",
-            "family": "cleaning"
-          },
-          {
             "tenantId": "synthetic-0426",
-            "asOfDate": "2025-07-31",
+            "asOfDate": "2025-12-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0435",
+            "asOfDate": "2025-11-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0449",
+            "asOfDate": "2025-06-30",
             "expected": "A",
             "predicted": "B",
             "family": "ordinary"
           },
           {
-            "tenantId": "synthetic-0428",
-            "asOfDate": "2025-06-30",
-            "expected": "B",
-            "predicted": "C",
+            "tenantId": "synthetic-0450",
+            "asOfDate": "2026-04-30",
+            "expected": "C",
+            "predicted": "B",
             "family": "mixed"
           },
           {
-            "tenantId": "synthetic-0439",
-            "asOfDate": "2025-07-31",
-            "expected": "B",
-            "predicted": "C",
-            "family": "unpaid"
-          },
-          {
-            "tenantId": "synthetic-0444",
-            "asOfDate": "2025-06-30",
+            "tenantId": "synthetic-0450",
+            "asOfDate": "2026-05-31",
             "expected": "C",
             "predicted": "B",
-            "family": "cleaning"
+            "family": "mixed"
           },
           {
-            "tenantId": "synthetic-0444",
+            "tenantId": "synthetic-0456",
+            "asOfDate": "2026-03-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "repairs"
+          },
+          {
+            "tenantId": "synthetic-0456",
+            "asOfDate": "2026-04-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "repairs"
+          },
+          {
+            "tenantId": "synthetic-0456",
+            "asOfDate": "2026-05-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "repairs"
+          },
+          {
+            "tenantId": "synthetic-0457",
             "asOfDate": "2025-08-31",
+            "expected": "B",
+            "predicted": "A",
+            "family": "repairs"
+          },
+          {
+            "tenantId": "synthetic-0457",
+            "asOfDate": "2025-09-30",
             "expected": "C",
             "predicted": "B",
-            "family": "cleaning"
+            "family": "repairs"
+          },
+          {
+            "tenantId": "synthetic-0457",
+            "asOfDate": "2026-04-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "repairs"
+          },
+          {
+            "tenantId": "synthetic-0457",
+            "asOfDate": "2026-05-31",
+            "expected": "A",
+            "predicted": "B",
+            "family": "repairs"
+          },
+          {
+            "tenantId": "synthetic-0457",
+            "asOfDate": "2026-06-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "repairs"
+          },
+          {
+            "tenantId": "synthetic-0458",
+            "asOfDate": "2025-05-31",
+            "expected": "A",
+            "predicted": "B",
+            "family": "late"
+          },
+          {
+            "tenantId": "synthetic-0458",
+            "asOfDate": "2025-09-30",
+            "expected": "B",
+            "predicted": "A",
+            "family": "late"
+          },
+          {
+            "tenantId": "synthetic-0458",
+            "asOfDate": "2025-10-31",
+            "expected": "B",
+            "predicted": "A",
+            "family": "late"
           }
         ]
       }
     }
   ],
   "test": {
-    "macroF1": 0.8462765060281606,
-    "binaryPrecision": 0.9556451612903226,
-    "binaryRecall": 1.0,
-    "binaryF1": 0.977319587628866,
-    "ordinaryFalsePositiveRate": 0.01142263759086189,
+    "macroF1": 0.6897827484607265,
+    "binaryPrecision": 0.8587570621468926,
+    "binaryRecall": 0.9934640522875817,
+    "binaryF1": 0.9212121212121213,
+    "ordinaryFalsePositiveRate": 0.024727992087042534,
     "perGrade": {
       "A": {
-        "precision": 1.0,
-        "recall": 0.9885773624091381,
-        "f1-score": 0.9942558746736292,
-        "support": 963.0
+        "precision": 0.9989868287740629,
+        "recall": 0.9752720079129574,
+        "f1-score": 0.986986986986987,
+        "support": 1011.0
       },
       "B": {
-        "precision": 0.5949367088607594,
-        "recall": 0.7580645161290323,
-        "f1-score": 0.6666666666666666,
-        "support": 62.0
+        "precision": 0.3728813559322034,
+        "recall": 0.34375,
+        "f1-score": 0.35772357723577236,
+        "support": 64.0
       },
       "C": {
-        "precision": 0.893491124260355,
-        "recall": 0.8628571428571429,
-        "f1-score": 0.877906976744186,
-        "support": 175.0
+        "precision": 0.635593220338983,
+        "recall": 0.8426966292134831,
+        "f1-score": 0.7246376811594203,
+        "support": 89.0
       },
-      "accuracy": 0.9583333333333334,
+      "accuracy": 0.9304123711340206,
       "macro avg": {
-        "precision": 0.8294759443737049,
-        "recall": 0.869833007131771,
-        "f1-score": 0.8462765060281606,
-        "support": 1200.0
+        "precision": 0.6691538016817499,
+        "recall": 0.7205728790421468,
+        "f1-score": 0.6897827484607265,
+        "support": 1164.0
       },
       "weighted avg": {
-        "precision": 0.9635391855791077,
-        "recall": 0.9583333333333334,
-        "f1-score": 0.9603628846452258,
-        "support": 1200.0
+        "precision": 0.9367765354642682,
+        "recall": 0.9304123711340206,
+        "f1-score": 0.9323289573970117,
+        "support": 1164.0
       }
     },
     "confusionMatrix": [
       [
-        952,
-        8,
-        3
+        986,
+        23,
+        2
+      ],
+      [
+        1,
+        22,
+        41
       ],
       [
         0,
-        47,
-        15
-      ],
-      [
-        0,
-        24,
-        151
+        14,
+        75
       ]
     ],
     "examples": [
       {
-        "tenantId": "synthetic-0515",
-        "asOfDate": "2026-01-31",
-        "expected": "B",
-        "predicted": "C",
-        "family": "repairs"
+        "tenantId": "synthetic-0512",
+        "asOfDate": "2025-08-31",
+        "expected": "A",
+        "predicted": "B",
+        "family": "unpaid"
       },
       {
-        "tenantId": "synthetic-0515",
+        "tenantId": "synthetic-0512",
+        "asOfDate": "2025-09-30",
+        "expected": "B",
+        "predicted": "C",
+        "family": "unpaid"
+      },
+      {
+        "tenantId": "synthetic-0514",
+        "asOfDate": "2025-09-30",
+        "expected": "C",
+        "predicted": "B",
+        "family": "cleaning"
+      },
+      {
+        "tenantId": "synthetic-0516",
+        "asOfDate": "2025-10-31",
+        "expected": "A",
+        "predicted": "B",
+        "family": "mixed"
+      },
+      {
+        "tenantId": "synthetic-0516",
+        "asOfDate": "2025-11-30",
+        "expected": "B",
+        "predicted": "C",
+        "family": "mixed"
+      },
+      {
+        "tenantId": "synthetic-0516",
         "asOfDate": "2026-03-31",
         "expected": "B",
         "predicted": "C",
-        "family": "repairs"
+        "family": "mixed"
       },
       {
-        "tenantId": "synthetic-0515",
+        "tenantId": "synthetic-0516",
         "asOfDate": "2026-04-30",
         "expected": "B",
         "predicted": "C",
-        "family": "repairs"
+        "family": "mixed"
       },
       {
-        "tenantId": "synthetic-0520",
-        "asOfDate": "2025-11-30",
-        "expected": "C",
-        "predicted": "B",
-        "family": "repairs"
+        "tenantId": "synthetic-0516",
+        "asOfDate": "2026-05-31",
+        "expected": "B",
+        "predicted": "C",
+        "family": "mixed"
       },
       {
-        "tenantId": "synthetic-0520",
-        "asOfDate": "2026-02-28",
-        "expected": "C",
-        "predicted": "B",
-        "family": "repairs"
+        "tenantId": "synthetic-0516",
+        "asOfDate": "2026-06-30",
+        "expected": "B",
+        "predicted": "C",
+        "family": "mixed"
       },
       {
-        "tenantId": "synthetic-0520",
-        "asOfDate": "2026-03-31",
-        "expected": "C",
-        "predicted": "B",
-        "family": "repairs"
-      },
-      {
-        "tenantId": "synthetic-0522",
-        "asOfDate": "2025-05-31",
+        "tenantId": "synthetic-0518",
+        "asOfDate": "2025-09-30",
         "expected": "A",
         "predicted": "B",
-        "family": "late"
+        "family": "repairs"
       },
       {
-        "tenantId": "synthetic-0522",
+        "tenantId": "synthetic-0518",
+        "asOfDate": "2025-10-31",
+        "expected": "A",
+        "predicted": "B",
+        "family": "repairs"
+      },
+      {
+        "tenantId": "synthetic-0518",
+        "asOfDate": "2025-11-30",
+        "expected": "A",
+        "predicted": "B",
+        "family": "repairs"
+      },
+      {
+        "tenantId": "synthetic-0518",
+        "asOfDate": "2025-12-31",
+        "expected": "A",
+        "predicted": "B",
+        "family": "repairs"
+      },
+      {
+        "tenantId": "synthetic-0518",
+        "asOfDate": "2026-01-31",
+        "expected": "A",
+        "predicted": "B",
+        "family": "repairs"
+      },
+      {
+        "tenantId": "synthetic-0521",
         "asOfDate": "2025-06-30",
         "expected": "A",
-        "predicted": "C",
-        "family": "late"
+        "predicted": "B",
+        "family": "unpaid"
       },
       {
-        "tenantId": "synthetic-0522",
+        "tenantId": "synthetic-0521",
         "asOfDate": "2025-07-31",
         "expected": "B",
         "predicted": "C",
-        "family": "late"
+        "family": "unpaid"
       },
       {
-        "tenantId": "synthetic-0522",
+        "tenantId": "synthetic-0523",
         "asOfDate": "2025-08-31",
-        "expected": "B",
-        "predicted": "C",
-        "family": "late"
-      },
-      {
-        "tenantId": "synthetic-0522",
-        "asOfDate": "2025-10-31",
-        "expected": "C",
+        "expected": "A",
         "predicted": "B",
-        "family": "late"
+        "family": "ordinary"
       },
       {
-        "tenantId": "synthetic-0522",
-        "asOfDate": "2025-11-30",
-        "expected": "C",
-        "predicted": "B",
-        "family": "late"
-      },
-      {
-        "tenantId": "synthetic-0522",
+        "tenantId": "synthetic-0527",
         "asOfDate": "2025-12-31",
         "expected": "C",
         "predicted": "B",
-        "family": "late"
+        "family": "recovered"
       },
       {
-        "tenantId": "synthetic-0522",
+        "tenantId": "synthetic-0527",
         "asOfDate": "2026-01-31",
         "expected": "C",
         "predicted": "B",
-        "family": "late"
+        "family": "recovered"
       },
       {
-        "tenantId": "synthetic-0522",
+        "tenantId": "synthetic-0527",
         "asOfDate": "2026-02-28",
         "expected": "C",
         "predicted": "B",
-        "family": "late"
-      },
-      {
-        "tenantId": "synthetic-0522",
-        "asOfDate": "2026-05-31",
-        "expected": "C",
-        "predicted": "B",
-        "family": "late"
-      },
-      {
-        "tenantId": "synthetic-0522",
-        "asOfDate": "2026-06-30",
-        "expected": "C",
-        "predicted": "B",
-        "family": "late"
-      },
-      {
-        "tenantId": "synthetic-0524",
-        "asOfDate": "2025-05-31",
-        "expected": "A",
-        "predicted": "C",
-        "family": "mixed"
-      },
-      {
-        "tenantId": "synthetic-0524",
-        "asOfDate": "2025-06-30",
-        "expected": "A",
-        "predicted": "C",
-        "family": "mixed"
-      },
-      {
-        "tenantId": "synthetic-0524",
-        "asOfDate": "2025-07-31",
-        "expected": "B",
-        "predicted": "C",
-        "family": "mixed"
+        "family": "recovered"
       }
     ]
   },
   "targetsMet": {
     "binaryF1": true,
-    "CRecall": true,
+    "CRecall": false,
     "ordinaryFalsePositiveRate": true
   }
 }

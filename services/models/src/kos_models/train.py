@@ -176,7 +176,7 @@ def train():
             chosen["boundaries"],
         ),
     )
-    version = "tenant-if-v1-" + manifest["sha256"]["snapshots.jsonl"][:12]
+    version = "tenant-if-v2-" + manifest["sha256"]["snapshots.jsonl"][:12]
     artifact = {
         "model": model,
         "modelVersion": version,

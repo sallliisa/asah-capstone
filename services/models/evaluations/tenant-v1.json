@@ -1,0 +1,3357 @@
+{
+  "modelVersion": "tenant-if-v1-95579f6d6314",
+  "artifactSha256": "82731f9b20e37330065795b80ae74c629a4b5f64ffe0f09c2fe599b4c7b5333e",
+  "selected": "tuned-200-128-1.0",
+  "selection": "Validation macro-F1, then C recall, then tree node count. Test rows excluded from selection.",
+  "dataset": {
+    "seed": 2992026,
+    "tenants": 600,
+    "snapshots": 10800,
+    "splits": {
+      "train": 420,
+      "validation": 90,
+      "test": 90
+    },
+    "eligibleLabels": {
+      "A": 6467,
+      "B": 500,
+      "C": 1081
+    },
+    "sha256": {
+      "histories.jsonl": "b25c0830b88d694d0d1a56f49627d51250f09c33e620f830118d7da42c23e8b4",
+      "snapshots.jsonl": "95579f6d6314878896259d90868bbae1be5db170d7b2b9b50d41853a07912e1e",
+      "plans.jsonl": "a679a3b14c9d7912bd798463c878e98356128218c8fd478d688055002aca215e"
+    }
+  },
+  "eligibleCounts": {
+    "train": 5633,
+    "validation": 1215,
+    "test": 1200
+  },
+  "ineligibleCount": 2752,
+  "experiments": [
+    {
+      "name": "baseline",
+      "featureNames": [
+        "repairCount",
+        "repairSpend",
+        "extraCleaningCount",
+        "settledLateCount",
+        "oldestUnpaidDays",
+        "overdueAmount"
+      ],
+      "parameters": {
+        "trees": 100,
+        "samples": "auto",
+        "fraction": 1.0
+      },
+      "boundaries": [
+        0.4652936712314002,
+        0.606510123682464
+      ],
+      "treeNodes": 7652,
+      "validation": {
+        "macroF1": 0.7358837721974556,
+        "binaryPrecision": 0.9912280701754386,
+        "binaryRecall": 0.8432835820895522,
+        "binaryF1": 0.9112903225806451,
+        "ordinaryFalsePositiveRate": 0.0021119324181626186,
+        "perGrade": {
+          "A": {
+            "precision": 0.9574468085106383,
+            "recall": 0.9978880675818373,
+            "f1-score": 0.9772492244053774,
+            "support": 947.0
+          },
+          "B": {
+            "precision": 0.5,
+            "recall": 0.723404255319149,
+            "f1-score": 0.591304347826087,
+            "support": 94.0
+          },
+          "C": {
+            "precision": 0.9239130434782609,
+            "recall": 0.4885057471264368,
+            "f1-score": 0.6390977443609023,
+            "support": 174.0
+          },
+          "accuracy": 0.9037037037037037,
+          "macro avg": {
+            "precision": 0.7937866173296331,
+            "recall": 0.7365993566758077,
+            "f1-score": 0.7358837721974556,
+            "support": 1215.0
+          },
+          "weighted avg": {
+            "precision": 0.917253495658265,
+            "recall": 0.9037037037037037,
+            "f1-score": 0.8989634829023389,
+            "support": 1215.0
+          }
+        },
+        "confusionMatrix": [
+          [
+            945,
+            2,
+            0
+          ],
+          [
+            19,
+            68,
+            7
+          ],
+          [
+            23,
+            66,
+            85
+          ]
+        ],
+        "examples": [
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2025-07-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-05-31",
+            "expected": "B",
+            "predicted": "A",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-06-30",
+            "expected": "B",
+            "predicted": "A",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-07-31",
+            "expected": "B",
+            "predicted": "A",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-08-31",
+            "expected": "B",
+            "predicted": "A",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-09-30",
+            "expected": "C",
+            "predicted": "A",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-10-31",
+            "expected": "C",
+            "predicted": "A",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-12-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2026-01-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2026-02-28",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2026-03-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2026-04-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2026-05-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2026-06-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0428",
+            "asOfDate": "2025-07-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "mixed"
+          },
+          {
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-08-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0444",
+            "asOfDate": "2025-05-31",
+            "expected": "B",
+            "predicted": "A",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0444",
+            "asOfDate": "2025-06-30",
+            "expected": "C",
+            "predicted": "A",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0444",
+            "asOfDate": "2025-07-31",
+            "expected": "C",
+            "predicted": "A",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0444",
+            "asOfDate": "2025-08-31",
+            "expected": "C",
+            "predicted": "A",
+            "family": "cleaning"
+          }
+        ]
+      }
+    },
+    {
+      "name": "engineered",
+      "featureNames": [
+        "repairCount90",
+        "repairRate30",
+        "repairSpend30Log",
+        "extraCleaningCount90",
+        "extraCleaningRate30",
+        "rentLateShare",
+        "meanSettledLateDays",
+        "oldestUnpaidDays",
+        "overdueAmountShare"
+      ],
+      "parameters": {
+        "trees": 100,
+        "samples": "auto",
+        "fraction": 1.0
+      },
+      "boundaries": [
+        0.4355836088249688,
+        0.5445892057105572
+      ],
+      "treeNodes": 9558,
+      "validation": {
+        "macroF1": 0.7490721243833182,
+        "binaryPrecision": 0.9273356401384083,
+        "binaryRecall": 1.0,
+        "binaryF1": 0.9622980251346499,
+        "ordinaryFalsePositiveRate": 0.022175290390707498,
+        "perGrade": {
+          "A": {
+            "precision": 1.0,
+            "recall": 0.9778247096092925,
+            "f1-score": 0.9887880405766151,
+            "support": 947.0
+          },
+          "B": {
+            "precision": 0.5,
+            "recall": 0.40425531914893614,
+            "f1-score": 0.4470588235294118,
+            "support": 94.0
+          },
+          "C": {
+            "precision": 0.7370892018779343,
+            "recall": 0.9022988505747126,
+            "f1-score": 0.8113695090439277,
+            "support": 174.0
+          },
+          "accuracy": 0.922633744855967,
+          "macro avg": {
+            "precision": 0.745696400625978,
+            "recall": 0.7614596264443138,
+            "f1-score": 0.7490721243833182,
+            "support": 1215.0
+          },
+          "weighted avg": {
+            "precision": 0.9236654494870457,
+            "recall": 0.922633744855967,
+            "f1-score": 0.9214683937542901,
+            "support": 1215.0
+          }
+        },
+        "confusionMatrix": [
+          [
+            926,
+            21,
+            0
+          ],
+          [
+            0,
+            38,
+            56
+          ],
+          [
+            0,
+            17,
+            157
+          ]
+        ],
+        "examples": [
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2025-11-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2025-12-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-01-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-02-28",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-03-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-04-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-05-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0423",
+            "asOfDate": "2025-06-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-04-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-09-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-10-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2026-01-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0425",
+            "asOfDate": "2025-06-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0426",
+            "asOfDate": "2025-06-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0426",
+            "asOfDate": "2025-07-31",
+            "expected": "A",
+            "predicted": "B",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0428",
+            "asOfDate": "2025-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "mixed"
+          },
+          {
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-07-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0444",
+            "asOfDate": "2025-06-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          }
+        ]
+      }
+    },
+    {
+      "name": "tuned-100-128-0.75",
+      "featureNames": [
+        "repairCount90",
+        "repairRate30",
+        "repairSpend30Log",
+        "extraCleaningCount90",
+        "extraCleaningRate30",
+        "rentLateShare",
+        "meanSettledLateDays",
+        "oldestUnpaidDays",
+        "overdueAmountShare"
+      ],
+      "parameters": {
+        "trees": 100,
+        "samples": 128,
+        "fraction": 0.75
+      },
+      "boundaries": [
+        0.4728848879354843,
+        0.5483448730936386
+      ],
+      "treeNodes": 5634,
+      "validation": {
+        "macroF1": 0.7258141437976932,
+        "binaryPrecision": 0.9708029197080292,
+        "binaryRecall": 0.9925373134328358,
+        "binaryF1": 0.981549815498155,
+        "ordinaryFalsePositiveRate": 0.008447729672650475,
+        "perGrade": {
+          "A": {
+            "precision": 0.997874601487779,
+            "recall": 0.9915522703273495,
+            "f1-score": 0.9947033898305084,
+            "support": 947.0
+          },
+          "B": {
+            "precision": 0.45054945054945056,
+            "recall": 0.43617021276595747,
+            "f1-score": 0.44324324324324327,
+            "support": 94.0
+          },
+          "C": {
+            "precision": 0.7213114754098361,
+            "recall": 0.7586206896551724,
+            "f1-score": 0.7394957983193278,
+            "support": 174.0
+          },
+          "accuracy": 0.9152263374485596,
+          "macro avg": {
+            "precision": 0.7232451758156886,
+            "recall": 0.7287810575828265,
+            "f1-score": 0.7258141437976932,
+            "support": 1215.0
+          },
+          "weighted avg": {
+            "precision": 0.9159235330715114,
+            "recall": 0.9152263374485596,
+            "f1-score": 0.9154907357546662,
+            "support": 1215.0
+          }
+        },
+        "confusionMatrix": [
+          [
+            939,
+            8,
+            0
+          ],
+          [
+            2,
+            41,
+            51
+          ],
+          [
+            0,
+            42,
+            132
+          ]
+        ],
+        "examples": [
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2025-11-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2025-12-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-01-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-02-28",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-03-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-04-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-05-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-05-31",
+            "expected": "B",
+            "predicted": "A",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-06-30",
+            "expected": "B",
+            "predicted": "A",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-09-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-10-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-12-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2026-01-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2026-02-28",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0428",
+            "asOfDate": "2025-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "mixed"
+          },
+          {
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-07-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0444",
+            "asOfDate": "2025-06-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0444",
+            "asOfDate": "2025-08-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0444",
+            "asOfDate": "2025-10-31",
+            "expected": "A",
+            "predicted": "B",
+            "family": "cleaning"
+          }
+        ]
+      }
+    },
+    {
+      "name": "tuned-100-128-1.0",
+      "featureNames": [
+        "repairCount90",
+        "repairRate30",
+        "repairSpend30Log",
+        "extraCleaningCount90",
+        "extraCleaningRate30",
+        "rentLateShare",
+        "meanSettledLateDays",
+        "oldestUnpaidDays",
+        "overdueAmountShare"
+      ],
+      "parameters": {
+        "trees": 100,
+        "samples": 128,
+        "fraction": 1.0
+      },
+      "boundaries": [
+        0.4470685389421257,
+        0.5626497014867351
+      ],
+      "treeNodes": 5510,
+      "validation": {
+        "macroF1": 0.7538226993474874,
+        "binaryPrecision": 0.9209621993127147,
+        "binaryRecall": 1.0,
+        "binaryF1": 0.9588550983899821,
+        "ordinaryFalsePositiveRate": 0.024287222808870117,
+        "perGrade": {
+          "A": {
+            "precision": 1.0,
+            "recall": 0.9757127771911299,
+            "f1-score": 0.9877071084981294,
+            "support": 947.0
+          },
+          "B": {
+            "precision": 0.46296296296296297,
+            "recall": 0.5319148936170213,
+            "f1-score": 0.49504950495049505,
+            "support": 94.0
+          },
+          "C": {
+            "precision": 0.7595628415300546,
+            "recall": 0.7988505747126436,
+            "f1-score": 0.7787114845938375,
+            "support": 174.0
+          },
+          "accuracy": 0.9160493827160494,
+          "macro avg": {
+            "precision": 0.7408419348310059,
+            "recall": 0.7688260818402649,
+            "f1-score": 0.7538226993474874,
+            "support": 1215.0
+          },
+          "weighted avg": {
+            "precision": 0.9240184797899161,
+            "recall": 0.9160493827160494,
+            "f1-score": 0.9196617971460105,
+            "support": 1215.0
+          }
+        },
+        "confusionMatrix": [
+          [
+            924,
+            23,
+            0
+          ],
+          [
+            0,
+            50,
+            44
+          ],
+          [
+            0,
+            35,
+            139
+          ]
+        ],
+        "examples": [
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2025-11-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2025-12-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-01-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-02-28",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-03-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-04-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-05-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0423",
+            "asOfDate": "2025-06-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-09-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-10-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-12-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2026-01-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2026-02-28",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0425",
+            "asOfDate": "2025-06-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0426",
+            "asOfDate": "2025-07-31",
+            "expected": "A",
+            "predicted": "B",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0428",
+            "asOfDate": "2025-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "mixed"
+          },
+          {
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-07-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0444",
+            "asOfDate": "2025-06-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0444",
+            "asOfDate": "2025-08-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          }
+        ]
+      }
+    },
+    {
+      "name": "tuned-100-256-0.75",
+      "featureNames": [
+        "repairCount90",
+        "repairRate30",
+        "repairSpend30Log",
+        "extraCleaningCount90",
+        "extraCleaningRate30",
+        "rentLateShare",
+        "meanSettledLateDays",
+        "oldestUnpaidDays",
+        "overdueAmountShare"
+      ],
+      "parameters": {
+        "trees": 100,
+        "samples": 256,
+        "fraction": 0.75
+      },
+      "boundaries": [
+        0.4650864700012367,
+        0.546882598282292
+      ],
+      "treeNodes": 9442,
+      "validation": {
+        "macroF1": 0.7365127687193208,
+        "binaryPrecision": 0.9708029197080292,
+        "binaryRecall": 0.9925373134328358,
+        "binaryF1": 0.981549815498155,
+        "ordinaryFalsePositiveRate": 0.008447729672650475,
+        "perGrade": {
+          "A": {
+            "precision": 0.997874601487779,
+            "recall": 0.9915522703273495,
+            "f1-score": 0.9947033898305084,
+            "support": 947.0
+          },
+          "B": {
+            "precision": 0.45794392523364486,
+            "recall": 0.5212765957446809,
+            "f1-score": 0.48756218905472637,
+            "support": 94.0
+          },
+          "C": {
+            "precision": 0.7425149700598802,
+            "recall": 0.7126436781609196,
+            "f1-score": 0.7272727272727273,
+            "support": 174.0
+          },
+          "accuracy": 0.9152263374485596,
+          "macro avg": {
+            "precision": 0.7327778322604347,
+            "recall": 0.7418241814109834,
+            "f1-score": 0.7365127687193208,
+            "support": 1215.0
+          },
+          "weighted avg": {
+            "precision": 0.9195321657377022,
+            "recall": 0.9152263374485596,
+            "f1-score": 0.9171690621284694,
+            "support": 1215.0
+          }
+        },
+        "confusionMatrix": [
+          [
+            939,
+            8,
+            0
+          ],
+          [
+            2,
+            49,
+            43
+          ],
+          [
+            0,
+            50,
+            124
+          ]
+        ],
+        "examples": [
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2025-11-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2025-12-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-01-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-02-28",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-03-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-04-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-05-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-05-31",
+            "expected": "B",
+            "predicted": "A",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-06-30",
+            "expected": "B",
+            "predicted": "A",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-09-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-10-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-12-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2026-01-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2026-02-28",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2026-03-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0425",
+            "asOfDate": "2025-06-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0428",
+            "asOfDate": "2025-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "mixed"
+          },
+          {
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-07-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "unpaid"
+          }
+        ]
+      }
+    },
+    {
+      "name": "tuned-100-256-1.0",
+      "featureNames": [
+        "repairCount90",
+        "repairRate30",
+        "repairSpend30Log",
+        "extraCleaningCount90",
+        "extraCleaningRate30",
+        "rentLateShare",
+        "meanSettledLateDays",
+        "oldestUnpaidDays",
+        "overdueAmountShare"
+      ],
+      "parameters": {
+        "trees": 100,
+        "samples": 256,
+        "fraction": 1.0
+      },
+      "boundaries": [
+        0.4355836088249688,
+        0.5445892057105572
+      ],
+      "treeNodes": 9558,
+      "validation": {
+        "macroF1": 0.7490721243833182,
+        "binaryPrecision": 0.9273356401384083,
+        "binaryRecall": 1.0,
+        "binaryF1": 0.9622980251346499,
+        "ordinaryFalsePositiveRate": 0.022175290390707498,
+        "perGrade": {
+          "A": {
+            "precision": 1.0,
+            "recall": 0.9778247096092925,
+            "f1-score": 0.9887880405766151,
+            "support": 947.0
+          },
+          "B": {
+            "precision": 0.5,
+            "recall": 0.40425531914893614,
+            "f1-score": 0.4470588235294118,
+            "support": 94.0
+          },
+          "C": {
+            "precision": 0.7370892018779343,
+            "recall": 0.9022988505747126,
+            "f1-score": 0.8113695090439277,
+            "support": 174.0
+          },
+          "accuracy": 0.922633744855967,
+          "macro avg": {
+            "precision": 0.745696400625978,
+            "recall": 0.7614596264443138,
+            "f1-score": 0.7490721243833182,
+            "support": 1215.0
+          },
+          "weighted avg": {
+            "precision": 0.9236654494870457,
+            "recall": 0.922633744855967,
+            "f1-score": 0.9214683937542901,
+            "support": 1215.0
+          }
+        },
+        "confusionMatrix": [
+          [
+            926,
+            21,
+            0
+          ],
+          [
+            0,
+            38,
+            56
+          ],
+          [
+            0,
+            17,
+            157
+          ]
+        ],
+        "examples": [
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2025-11-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2025-12-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-01-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-02-28",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-03-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-04-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-05-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0423",
+            "asOfDate": "2025-06-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-04-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-09-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-10-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2026-01-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0425",
+            "asOfDate": "2025-06-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0426",
+            "asOfDate": "2025-06-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0426",
+            "asOfDate": "2025-07-31",
+            "expected": "A",
+            "predicted": "B",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0428",
+            "asOfDate": "2025-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "mixed"
+          },
+          {
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-07-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0444",
+            "asOfDate": "2025-06-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          }
+        ]
+      }
+    },
+    {
+      "name": "tuned-100-512-0.75",
+      "featureNames": [
+        "repairCount90",
+        "repairRate30",
+        "repairSpend30Log",
+        "extraCleaningCount90",
+        "extraCleaningRate30",
+        "rentLateShare",
+        "meanSettledLateDays",
+        "oldestUnpaidDays",
+        "overdueAmountShare"
+      ],
+      "parameters": {
+        "trees": 100,
+        "samples": 512,
+        "fraction": 0.75
+      },
+      "boundaries": [
+        0.4563177488811044,
+        0.5315987230178365
+      ],
+      "treeNodes": 15750,
+      "validation": {
+        "macroF1": 0.7222993441922716,
+        "binaryPrecision": 0.9671532846715328,
+        "binaryRecall": 0.9888059701492538,
+        "binaryF1": 0.977859778597786,
+        "ordinaryFalsePositiveRate": 0.009503695881731784,
+        "perGrade": {
+          "A": {
+            "precision": 0.9968119022316685,
+            "recall": 0.9904963041182682,
+            "f1-score": 0.9936440677966102,
+            "support": 947.0
+          },
+          "B": {
+            "precision": 0.42990654205607476,
+            "recall": 0.48936170212765956,
+            "f1-score": 0.4577114427860697,
+            "support": 94.0
+          },
+          "C": {
+            "precision": 0.7305389221556886,
+            "recall": 0.7011494252873564,
+            "f1-score": 0.7155425219941349,
+            "support": 174.0
+          },
+          "accuracy": 0.9102880658436214,
+          "macro avg": {
+            "precision": 0.7190857888144772,
+            "recall": 0.7270024771777613,
+            "f1-score": 0.7222993441922716,
+            "support": 1215.0
+          },
+          "weighted avg": {
+            "precision": 0.91481963689033,
+            "recall": 0.9102880658436214,
+            "f1-score": 0.9123540795491851,
+            "support": 1215.0
+          }
+        },
+        "confusionMatrix": [
+          [
+            938,
+            9,
+            0
+          ],
+          [
+            3,
+            46,
+            45
+          ],
+          [
+            0,
+            52,
+            122
+          ]
+        ],
+        "examples": [
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2025-11-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2025-12-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-01-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-02-28",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-03-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-04-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-05-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-05-31",
+            "expected": "B",
+            "predicted": "A",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-06-30",
+            "expected": "B",
+            "predicted": "A",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-09-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-10-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-12-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2026-01-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2026-02-28",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2026-03-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0425",
+            "asOfDate": "2025-06-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0428",
+            "asOfDate": "2025-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "mixed"
+          },
+          {
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-07-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "unpaid"
+          }
+        ]
+      }
+    },
+    {
+      "name": "tuned-100-512-1.0",
+      "featureNames": [
+        "repairCount90",
+        "repairRate30",
+        "repairSpend30Log",
+        "extraCleaningCount90",
+        "extraCleaningRate30",
+        "rentLateShare",
+        "meanSettledLateDays",
+        "oldestUnpaidDays",
+        "overdueAmountShare"
+      ],
+      "parameters": {
+        "trees": 100,
+        "samples": 512,
+        "fraction": 1.0
+      },
+      "boundaries": [
+        0.45654426789108715,
+        0.5553816157762546
+      ],
+      "treeNodes": 16106,
+      "validation": {
+        "macroF1": 0.7417845525178257,
+        "binaryPrecision": 0.9708029197080292,
+        "binaryRecall": 0.9925373134328358,
+        "binaryF1": 0.981549815498155,
+        "ordinaryFalsePositiveRate": 0.008447729672650475,
+        "perGrade": {
+          "A": {
+            "precision": 0.997874601487779,
+            "recall": 0.9915522703273495,
+            "f1-score": 0.9947033898305084,
+            "support": 947.0
+          },
+          "B": {
+            "precision": 0.4672897196261682,
+            "recall": 0.5319148936170213,
+            "f1-score": 0.4975124378109453,
+            "support": 94.0
+          },
+          "C": {
+            "precision": 0.7485029940119761,
+            "recall": 0.7183908045977011,
+            "f1-score": 0.7331378299120235,
+            "support": 174.0
+          },
+          "accuracy": 0.9168724279835391,
+          "macro avg": {
+            "precision": 0.7378891050419744,
+            "recall": 0.7472859895140239,
+            "f1-score": 0.7417845525178257,
+            "support": 1215.0
+          },
+          "weighted avg": {
+            "precision": 0.9211127590221154,
+            "recall": 0.9168724279835391,
+            "f1-score": 0.9187788162373765,
+            "support": 1215.0
+          }
+        },
+        "confusionMatrix": [
+          [
+            939,
+            8,
+            0
+          ],
+          [
+            2,
+            50,
+            42
+          ],
+          [
+            0,
+            49,
+            125
+          ]
+        ],
+        "examples": [
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2025-11-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2025-12-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-01-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-02-28",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-03-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-04-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-05-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-05-31",
+            "expected": "B",
+            "predicted": "A",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-06-30",
+            "expected": "B",
+            "predicted": "A",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-09-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-10-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-12-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2026-01-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2026-02-28",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0426",
+            "asOfDate": "2025-07-31",
+            "expected": "A",
+            "predicted": "B",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0428",
+            "asOfDate": "2025-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "mixed"
+          },
+          {
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-07-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0444",
+            "asOfDate": "2025-06-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0444",
+            "asOfDate": "2025-07-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          }
+        ]
+      }
+    },
+    {
+      "name": "tuned-200-128-0.75",
+      "featureNames": [
+        "repairCount90",
+        "repairRate30",
+        "repairSpend30Log",
+        "extraCleaningCount90",
+        "extraCleaningRate30",
+        "rentLateShare",
+        "meanSettledLateDays",
+        "oldestUnpaidDays",
+        "overdueAmountShare"
+      ],
+      "parameters": {
+        "trees": 200,
+        "samples": 128,
+        "fraction": 0.75
+      },
+      "boundaries": [
+        0.48081531668110405,
+        0.5554677254688518
+      ],
+      "treeNodes": 11590,
+      "validation": {
+        "macroF1": 0.7422271955048624,
+        "binaryPrecision": 0.9708029197080292,
+        "binaryRecall": 0.9925373134328358,
+        "binaryF1": 0.981549815498155,
+        "ordinaryFalsePositiveRate": 0.008447729672650475,
+        "perGrade": {
+          "A": {
+            "precision": 0.997874601487779,
+            "recall": 0.9915522703273495,
+            "f1-score": 0.9947033898305084,
+            "support": 947.0
+          },
+          "B": {
+            "precision": 0.4835164835164835,
+            "recall": 0.46808510638297873,
+            "f1-score": 0.4756756756756757,
+            "support": 94.0
+          },
+          "C": {
+            "precision": 0.7377049180327869,
+            "recall": 0.7758620689655172,
+            "f1-score": 0.7563025210084033,
+            "support": 174.0
+          },
+          "accuracy": 0.920164609053498,
+          "macro avg": {
+            "precision": 0.7396986676790164,
+            "recall": 0.7451664818919485,
+            "f1-score": 0.7422271955048624,
+            "support": 1215.0
+          },
+          "weighted avg": {
+            "precision": 0.9208217718495316,
+            "recall": 0.920164609053498,
+            "f1-score": 0.9204068002785738,
+            "support": 1215.0
+          }
+        },
+        "confusionMatrix": [
+          [
+            939,
+            8,
+            0
+          ],
+          [
+            2,
+            44,
+            48
+          ],
+          [
+            0,
+            39,
+            135
+          ]
+        ],
+        "examples": [
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2025-11-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2025-12-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-01-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-02-28",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-03-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-04-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-05-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-05-31",
+            "expected": "B",
+            "predicted": "A",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-06-30",
+            "expected": "B",
+            "predicted": "A",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-09-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-10-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-12-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2026-01-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0428",
+            "asOfDate": "2025-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "mixed"
+          },
+          {
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-07-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0444",
+            "asOfDate": "2025-06-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0444",
+            "asOfDate": "2025-08-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0444",
+            "asOfDate": "2025-10-31",
+            "expected": "A",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0444",
+            "asOfDate": "2026-04-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          }
+        ]
+      }
+    },
+    {
+      "name": "tuned-200-128-1.0",
+      "featureNames": [
+        "repairCount90",
+        "repairRate30",
+        "repairSpend30Log",
+        "extraCleaningCount90",
+        "extraCleaningRate30",
+        "rentLateShare",
+        "meanSettledLateDays",
+        "oldestUnpaidDays",
+        "overdueAmountShare"
+      ],
+      "parameters": {
+        "trees": 200,
+        "samples": 128,
+        "fraction": 1.0
+      },
+      "boundaries": [
+        0.4815278279176872,
+        0.5725241957378999
+      ],
+      "treeNodes": 11234,
+      "validation": {
+        "macroF1": 0.7671398770227285,
+        "binaryPrecision": 0.9635036496350365,
+        "binaryRecall": 0.9850746268656716,
+        "binaryF1": 0.974169741697417,
+        "ordinaryFalsePositiveRate": 0.010559662090813094,
+        "perGrade": {
+          "A": {
+            "precision": 0.9957492029755579,
+            "recall": 0.989440337909187,
+            "f1-score": 0.9925847457627118,
+            "support": 947.0
+          },
+          "B": {
+            "precision": 0.5274725274725275,
+            "recall": 0.5106382978723404,
+            "f1-score": 0.518918918918919,
+            "support": 94.0
+          },
+          "C": {
+            "precision": 0.7704918032786885,
+            "recall": 0.8103448275862069,
+            "f1-score": 0.7899159663865546,
+            "support": 174.0
+          },
+          "accuracy": 0.9267489711934156,
+          "macro avg": {
+            "precision": 0.7645711779089247,
+            "recall": 0.7701411544559114,
+            "f1-score": 0.7671398770227285,
+            "support": 1215.0
+          },
+          "weighted avg": {
+            "precision": 0.9272613058195578,
+            "recall": 0.9267489711934156,
+            "f1-score": 0.9269148236764831,
+            "support": 1215.0
+          }
+        },
+        "confusionMatrix": [
+          [
+            937,
+            10,
+            0
+          ],
+          [
+            4,
+            48,
+            42
+          ],
+          [
+            0,
+            33,
+            141
+          ]
+        ],
+        "examples": [
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2025-11-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2025-12-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-01-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-02-28",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-03-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-04-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-05-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-05-31",
+            "expected": "B",
+            "predicted": "A",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-06-30",
+            "expected": "B",
+            "predicted": "A",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-09-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-10-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-12-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2026-01-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0428",
+            "asOfDate": "2025-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "mixed"
+          },
+          {
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-07-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0444",
+            "asOfDate": "2025-06-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0444",
+            "asOfDate": "2025-08-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0444",
+            "asOfDate": "2025-10-31",
+            "expected": "A",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0444",
+            "asOfDate": "2026-04-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0449",
+            "asOfDate": "2025-07-31",
+            "expected": "B",
+            "predicted": "A",
+            "family": "repairs"
+          }
+        ]
+      }
+    },
+    {
+      "name": "tuned-200-256-0.75",
+      "featureNames": [
+        "repairCount90",
+        "repairRate30",
+        "repairSpend30Log",
+        "extraCleaningCount90",
+        "extraCleaningRate30",
+        "rentLateShare",
+        "meanSettledLateDays",
+        "oldestUnpaidDays",
+        "overdueAmountShare"
+      ],
+      "parameters": {
+        "trees": 200,
+        "samples": 256,
+        "fraction": 0.75
+      },
+      "boundaries": [
+        0.4694443762314592,
+        0.5488777600425373
+      ],
+      "treeNodes": 19396,
+      "validation": {
+        "macroF1": 0.7397166224562527,
+        "binaryPrecision": 0.9635036496350365,
+        "binaryRecall": 0.9850746268656716,
+        "binaryF1": 0.974169741697417,
+        "ordinaryFalsePositiveRate": 0.010559662090813094,
+        "perGrade": {
+          "A": {
+            "precision": 0.9957492029755579,
+            "recall": 0.989440337909187,
+            "f1-score": 0.9925847457627118,
+            "support": 947.0
+          },
+          "B": {
+            "precision": 0.45794392523364486,
+            "recall": 0.5212765957446809,
+            "f1-score": 0.48756218905472637,
+            "support": 94.0
+          },
+          "C": {
+            "precision": 0.7544910179640718,
+            "recall": 0.7241379310344828,
+            "f1-score": 0.7390029325513197,
+            "support": 174.0
+          },
+          "accuracy": 0.9152263374485596,
+          "macro avg": {
+            "precision": 0.7360613820577582,
+            "recall": 0.7449516215627835,
+            "f1-score": 0.7397166224562527,
+            "support": 1215.0
+          },
+          "weighted avg": {
+            "precision": 0.9195906677494357,
+            "recall": 0.9152263374485596,
+            "f1-score": 0.9171976216233432,
+            "support": 1215.0
+          }
+        },
+        "confusionMatrix": [
+          [
+            937,
+            10,
+            0
+          ],
+          [
+            4,
+            49,
+            41
+          ],
+          [
+            0,
+            48,
+            126
+          ]
+        ],
+        "examples": [
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2025-11-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2025-12-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-01-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-02-28",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-03-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-04-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-05-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-05-31",
+            "expected": "B",
+            "predicted": "A",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-06-30",
+            "expected": "B",
+            "predicted": "A",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-09-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-10-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-12-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2026-01-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2026-02-28",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2026-03-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0425",
+            "asOfDate": "2025-06-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0426",
+            "asOfDate": "2025-07-31",
+            "expected": "A",
+            "predicted": "B",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0428",
+            "asOfDate": "2025-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "mixed"
+          },
+          {
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-07-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "unpaid"
+          }
+        ]
+      }
+    },
+    {
+      "name": "tuned-200-256-1.0",
+      "featureNames": [
+        "repairCount90",
+        "repairRate30",
+        "repairSpend30Log",
+        "extraCleaningCount90",
+        "extraCleaningRate30",
+        "rentLateShare",
+        "meanSettledLateDays",
+        "oldestUnpaidDays",
+        "overdueAmountShare"
+      ],
+      "parameters": {
+        "trees": 200,
+        "samples": 256,
+        "fraction": 1.0
+      },
+      "boundaries": [
+        0.4768095089745662,
+        0.5649380115593037
+      ],
+      "treeNodes": 19766,
+      "validation": {
+        "macroF1": 0.7601545534995187,
+        "binaryPrecision": 0.9671532846715328,
+        "binaryRecall": 0.9888059701492538,
+        "binaryF1": 0.977859778597786,
+        "ordinaryFalsePositiveRate": 0.009503695881731784,
+        "perGrade": {
+          "A": {
+            "precision": 0.9968119022316685,
+            "recall": 0.9904963041182682,
+            "f1-score": 0.9936440677966102,
+            "support": 947.0
+          },
+          "B": {
+            "precision": 0.5164835164835165,
+            "recall": 0.5,
+            "f1-score": 0.5081081081081081,
+            "support": 94.0
+          },
+          "C": {
+            "precision": 0.7595628415300546,
+            "recall": 0.7988505747126436,
+            "f1-score": 0.7787114845938375,
+            "support": 174.0
+          },
+          "accuracy": 0.9251028806584363,
+          "macro avg": {
+            "precision": 0.7576194200817467,
+            "recall": 0.7631156262769706,
+            "f1-score": 0.7601545534995187,
+            "support": 1215.0
+          },
+          "weighted avg": {
+            "precision": 0.9256742850938849,
+            "recall": 0.9251028806584363,
+            "f1-score": 0.9252995001521644,
+            "support": 1215.0
+          }
+        },
+        "confusionMatrix": [
+          [
+            938,
+            9,
+            0
+          ],
+          [
+            3,
+            47,
+            44
+          ],
+          [
+            0,
+            35,
+            139
+          ]
+        ],
+        "examples": [
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2025-11-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2025-12-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-01-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-02-28",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-03-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-04-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-05-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-06-30",
+            "expected": "B",
+            "predicted": "A",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-09-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-10-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-12-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2026-01-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0428",
+            "asOfDate": "2025-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "mixed"
+          },
+          {
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-07-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0444",
+            "asOfDate": "2025-06-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0444",
+            "asOfDate": "2025-08-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0444",
+            "asOfDate": "2025-10-31",
+            "expected": "A",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0449",
+            "asOfDate": "2025-07-31",
+            "expected": "B",
+            "predicted": "A",
+            "family": "repairs"
+          },
+          {
+            "tenantId": "synthetic-0449",
+            "asOfDate": "2025-08-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "repairs"
+          }
+        ]
+      }
+    },
+    {
+      "name": "tuned-200-512-0.75",
+      "featureNames": [
+        "repairCount90",
+        "repairRate30",
+        "repairSpend30Log",
+        "extraCleaningCount90",
+        "extraCleaningRate30",
+        "rentLateShare",
+        "meanSettledLateDays",
+        "oldestUnpaidDays",
+        "overdueAmountShare"
+      ],
+      "parameters": {
+        "trees": 200,
+        "samples": 512,
+        "fraction": 0.75
+      },
+      "boundaries": [
+        0.44076147187069326,
+        0.5187626278289277
+      ],
+      "treeNodes": 32546,
+      "validation": {
+        "macroF1": 0.7210132372008266,
+        "binaryPrecision": 0.9273356401384083,
+        "binaryRecall": 1.0,
+        "binaryF1": 0.9622980251346499,
+        "ordinaryFalsePositiveRate": 0.022175290390707498,
+        "perGrade": {
+          "A": {
+            "precision": 1.0,
+            "recall": 0.9778247096092925,
+            "f1-score": 0.9887880405766151,
+            "support": 947.0
+          },
+          "B": {
+            "precision": 0.4175824175824176,
+            "recall": 0.40425531914893614,
+            "f1-score": 0.41081081081081083,
+            "support": 94.0
+          },
+          "C": {
+            "precision": 0.7171717171717171,
+            "recall": 0.8160919540229885,
+            "f1-score": 0.7634408602150538,
+            "support": 174.0
+          },
+          "accuracy": 0.9102880658436214,
+          "macro avg": {
+            "precision": 0.7115847115847117,
+            "recall": 0.7327239942604057,
+            "f1-score": 0.7210132372008266,
+            "support": 1215.0
+          },
+          "weighted avg": {
+            "precision": 0.914436729251544,
+            "recall": 0.9102880658436214,
+            "f1-score": 0.9118001648721729,
+            "support": 1215.0
+          }
+        },
+        "confusionMatrix": [
+          [
+            926,
+            21,
+            0
+          ],
+          [
+            0,
+            38,
+            56
+          ],
+          [
+            0,
+            32,
+            142
+          ]
+        ],
+        "examples": [
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2025-11-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2025-12-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-01-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-02-28",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-03-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-04-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-05-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0423",
+            "asOfDate": "2025-06-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-04-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-09-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-10-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-12-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2026-01-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0425",
+            "asOfDate": "2025-06-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0426",
+            "asOfDate": "2025-07-31",
+            "expected": "A",
+            "predicted": "B",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0428",
+            "asOfDate": "2025-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "mixed"
+          },
+          {
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-07-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0441",
+            "asOfDate": "2025-09-30",
+            "expected": "A",
+            "predicted": "B",
+            "family": "ordinary"
+          }
+        ]
+      }
+    },
+    {
+      "name": "tuned-200-512-1.0",
+      "featureNames": [
+        "repairCount90",
+        "repairRate30",
+        "repairSpend30Log",
+        "extraCleaningCount90",
+        "extraCleaningRate30",
+        "rentLateShare",
+        "meanSettledLateDays",
+        "oldestUnpaidDays",
+        "overdueAmountShare"
+      ],
+      "parameters": {
+        "trees": 200,
+        "samples": 512,
+        "fraction": 1.0
+      },
+      "boundaries": [
+        0.4647914922898672,
+        0.545100610869926
+      ],
+      "treeNodes": 32652,
+      "validation": {
+        "macroF1": 0.7476982127405857,
+        "binaryPrecision": 0.9708029197080292,
+        "binaryRecall": 0.9925373134328358,
+        "binaryF1": 0.981549815498155,
+        "ordinaryFalsePositiveRate": 0.008447729672650475,
+        "perGrade": {
+          "A": {
+            "precision": 0.997874601487779,
+            "recall": 0.9915522703273495,
+            "f1-score": 0.9947033898305084,
+            "support": 947.0
+          },
+          "B": {
+            "precision": 0.4945054945054945,
+            "recall": 0.4787234042553192,
+            "f1-score": 0.4864864864864865,
+            "support": 94.0
+          },
+          "C": {
+            "precision": 0.7431693989071039,
+            "recall": 0.7816091954022989,
+            "f1-score": 0.7619047619047619,
+            "support": 174.0
+          },
+          "accuracy": 0.9218106995884774,
+          "macro avg": {
+            "precision": 0.7451831649667925,
+            "recall": 0.7506282899949892,
+            "f1-score": 0.7476982127405857,
+            "support": 1215.0
+          },
+          "weighted avg": {
+            "precision": 0.9224545181088718,
+            "recall": 0.9218106995884774,
+            "f1-score": 0.9220454884532097,
+            "support": 1215.0
+          }
+        },
+        "confusionMatrix": [
+          [
+            939,
+            8,
+            0
+          ],
+          [
+            2,
+            45,
+            47
+          ],
+          [
+            0,
+            38,
+            136
+          ]
+        ],
+        "examples": [
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2025-11-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2025-12-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-01-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-02-28",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-03-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-04-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-05-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0420",
+            "asOfDate": "2026-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "recovered"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-05-31",
+            "expected": "B",
+            "predicted": "A",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-06-30",
+            "expected": "B",
+            "predicted": "A",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-09-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-10-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2025-12-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2026-01-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0424",
+            "asOfDate": "2026-02-28",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0426",
+            "asOfDate": "2025-07-31",
+            "expected": "A",
+            "predicted": "B",
+            "family": "ordinary"
+          },
+          {
+            "tenantId": "synthetic-0428",
+            "asOfDate": "2025-06-30",
+            "expected": "B",
+            "predicted": "C",
+            "family": "mixed"
+          },
+          {
+            "tenantId": "synthetic-0439",
+            "asOfDate": "2025-07-31",
+            "expected": "B",
+            "predicted": "C",
+            "family": "unpaid"
+          },
+          {
+            "tenantId": "synthetic-0444",
+            "asOfDate": "2025-06-30",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          },
+          {
+            "tenantId": "synthetic-0444",
+            "asOfDate": "2025-08-31",
+            "expected": "C",
+            "predicted": "B",
+            "family": "cleaning"
+          }
+        ]
+      }
+    }
+  ],
+  "test": {
+    "macroF1": 0.8462765060281606,
+    "binaryPrecision": 0.9556451612903226,
+    "binaryRecall": 1.0,
+    "binaryF1": 0.977319587628866,
+    "ordinaryFalsePositiveRate": 0.01142263759086189,
+    "perGrade": {
+      "A": {
+        "precision": 1.0,
+        "recall": 0.9885773624091381,
+        "f1-score": 0.9942558746736292,
+        "support": 963.0
+      },
+      "B": {
+        "precision": 0.5949367088607594,
+        "recall": 0.7580645161290323,
+        "f1-score": 0.6666666666666666,
+        "support": 62.0
+      },
+      "C": {
+        "precision": 0.893491124260355,
+        "recall": 0.8628571428571429,
+        "f1-score": 0.877906976744186,
+        "support": 175.0
+      },
+      "accuracy": 0.9583333333333334,
+      "macro avg": {
+        "precision": 0.8294759443737049,
+        "recall": 0.869833007131771,
+        "f1-score": 0.8462765060281606,
+        "support": 1200.0
+      },
+      "weighted avg": {
+        "precision": 0.9635391855791077,
+        "recall": 0.9583333333333334,
+        "f1-score": 0.9603628846452258,
+        "support": 1200.0
+      }
+    },
+    "confusionMatrix": [
+      [
+        952,
+        8,
+        3
+      ],
+      [
+        0,
+        47,
+        15
+      ],
+      [
+        0,
+        24,
+        151
+      ]
+    ],
+    "examples": [
+      {
+        "tenantId": "synthetic-0515",
+        "asOfDate": "2026-01-31",
+        "expected": "B",
+        "predicted": "C",
+        "family": "repairs"
+      },
+      {
+        "tenantId": "synthetic-0515",
+        "asOfDate": "2026-03-31",
+        "expected": "B",
+        "predicted": "C",
+        "family": "repairs"
+      },
+      {
+        "tenantId": "synthetic-0515",
+        "asOfDate": "2026-04-30",
+        "expected": "B",
+        "predicted": "C",
+        "family": "repairs"
+      },
+      {
+        "tenantId": "synthetic-0520",
+        "asOfDate": "2025-11-30",
+        "expected": "C",
+        "predicted": "B",
+        "family": "repairs"
+      },
+      {
+        "tenantId": "synthetic-0520",
+        "asOfDate": "2026-02-28",
+        "expected": "C",
+        "predicted": "B",
+        "family": "repairs"
+      },
+      {
+        "tenantId": "synthetic-0520",
+        "asOfDate": "2026-03-31",
+        "expected": "C",
+        "predicted": "B",
+        "family": "repairs"
+      },
+      {
+        "tenantId": "synthetic-0522",
+        "asOfDate": "2025-05-31",
+        "expected": "A",
+        "predicted": "B",
+        "family": "late"
+      },
+      {
+        "tenantId": "synthetic-0522",
+        "asOfDate": "2025-06-30",
+        "expected": "A",
+        "predicted": "C",
+        "family": "late"
+      },
+      {
+        "tenantId": "synthetic-0522",
+        "asOfDate": "2025-07-31",
+        "expected": "B",
+        "predicted": "C",
+        "family": "late"
+      },
+      {
+        "tenantId": "synthetic-0522",
+        "asOfDate": "2025-08-31",
+        "expected": "B",
+        "predicted": "C",
+        "family": "late"
+      },
+      {
+        "tenantId": "synthetic-0522",
+        "asOfDate": "2025-10-31",
+        "expected": "C",
+        "predicted": "B",
+        "family": "late"
+      },
+      {
+        "tenantId": "synthetic-0522",
+        "asOfDate": "2025-11-30",
+        "expected": "C",
+        "predicted": "B",
+        "family": "late"
+      },
+      {
+        "tenantId": "synthetic-0522",
+        "asOfDate": "2025-12-31",
+        "expected": "C",
+        "predicted": "B",
+        "family": "late"
+      },
+      {
+        "tenantId": "synthetic-0522",
+        "asOfDate": "2026-01-31",
+        "expected": "C",
+        "predicted": "B",
+        "family": "late"
+      },
+      {
+        "tenantId": "synthetic-0522",
+        "asOfDate": "2026-02-28",
+        "expected": "C",
+        "predicted": "B",
+        "family": "late"
+      },
+      {
+        "tenantId": "synthetic-0522",
+        "asOfDate": "2026-05-31",
+        "expected": "C",
+        "predicted": "B",
+        "family": "late"
+      },
+      {
+        "tenantId": "synthetic-0522",
+        "asOfDate": "2026-06-30",
+        "expected": "C",
+        "predicted": "B",
+        "family": "late"
+      },
+      {
+        "tenantId": "synthetic-0524",
+        "asOfDate": "2025-05-31",
+        "expected": "A",
+        "predicted": "C",
+        "family": "mixed"
+      },
+      {
+        "tenantId": "synthetic-0524",
+        "asOfDate": "2025-06-30",
+        "expected": "A",
+        "predicted": "C",
+        "family": "mixed"
+      },
+      {
+        "tenantId": "synthetic-0524",
+        "asOfDate": "2025-07-31",
+        "expected": "B",
+        "predicted": "C",
+        "family": "mixed"
+      }
+    ]
+  },
+  "targetsMet": {
+    "binaryF1": true,
+    "CRecall": true,
+    "ordinaryFalsePositiveRate": true
+  }
+}

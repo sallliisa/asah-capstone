@@ -1,12 +1,12 @@
 {
-  "selectionEffect": "None. These cases were reviewed after final model selection. They do not change parameters or boundaries.",
+  "selectionEffect": "These known regression cases informed the v2 dataset review. They are not new held-out proof. No manual grade override is applied.",
   "cases": [
     {
       "case": "No incidents, on-time rent across a room move",
       "expected": "A",
       "actual": "A",
       "matches": true,
-      "score": 0.34965445750993523,
+      "score": 0.34780453619117074,
       "input": {
         "tenantId": "independent-review",
         "asOfDate": "2026-11-01",
@@ -169,7 +169,7 @@
       "expected": "A",
       "actual": "A",
       "matches": true,
-      "score": 0.3692482929210568,
+      "score": 0.3754646060101151,
       "input": {
         "tenantId": "independent-review",
         "asOfDate": "2026-11-01",
@@ -343,7 +343,7 @@
       "expected": "A",
       "actual": "A",
       "matches": true,
-      "score": 0.34965445750993523,
+      "score": 0.34780453619117074,
       "input": {
         "tenantId": "independent-review",
         "asOfDate": "2026-11-01",
@@ -539,7 +539,7 @@
       "expected": "A",
       "actual": "A",
       "matches": true,
-      "score": 0.34965445750993523,
+      "score": 0.34780453619117074,
       "input": {
         "tenantId": "independent-review",
         "asOfDate": "2026-11-01",
@@ -768,7 +768,7 @@
       "expected": "B",
       "actual": "A",
       "matches": false,
-      "score": 0.4185104620872142,
+      "score": 0.415663376428641,
       "input": {
         "tenantId": "independent-review",
         "asOfDate": "2026-11-01",
@@ -964,7 +964,7 @@
       "expected": "C",
       "actual": "B",
       "matches": false,
-      "score": 0.49900218262939283,
+      "score": 0.48256373239853806,
       "input": {
         "tenantId": "independent-review",
         "asOfDate": "2026-11-01",
@@ -1191,9 +1191,9 @@
     {
       "case": "Three extra cleanings",
       "expected": "B",
-      "actual": "A",
-      "matches": false,
-      "score": 0.44469126966153527,
+      "actual": "B",
+      "matches": true,
+      "score": 0.48563711574793883,
       "input": {
         "tenantId": "independent-review",
         "asOfDate": "2026-11-01",
@@ -1387,9 +1387,9 @@
     {
       "case": "Eight extra cleanings",
       "expected": "C",
-      "actual": "B",
-      "matches": false,
-      "score": 0.5533713895362647,
+      "actual": "C",
+      "matches": true,
+      "score": 0.6068917053899573,
       "input": {
         "tenantId": "independent-review",
         "asOfDate": "2026-11-01",
@@ -1640,7 +1640,7 @@
       "expected": "C",
       "actual": "C",
       "matches": true,
-      "score": 0.6007324145790363,
+      "score": 0.6219672369926097,
       "input": {
         "tenantId": "independent-review",
         "asOfDate": "2026-11-01",
@@ -1803,7 +1803,7 @@
       "expected": "A",
       "actual": "A",
       "matches": true,
-      "score": 0.3529018045636949,
+      "score": 0.3484634498486612,
       "input": {
         "tenantId": "independent-review",
         "asOfDate": "2026-11-01",
