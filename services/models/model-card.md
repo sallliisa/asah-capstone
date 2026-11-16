@@ -31,3 +31,10 @@ Serving verifies the trusted artifact hash, feature order, and sklearn version.
 The abnormality is negative score_samples, not a probability. Routine cleaning
 and planned servicing are excluded from adverse inputs. A move does not reset
 the tenant's associated history. No model retraining occurs in normal requests.
+
+## Independent scenario limit
+
+The later ten-case review matched six expected grades. It under-ranked all four
+isolated repair and extra-cleaning burst cases. See scenario-review.json. The
+aggregate synthetic targets alone do not establish release readiness. This
+artifact is a review candidate. Retain its results before any dataset revision.

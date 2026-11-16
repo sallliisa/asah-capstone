@@ -12,6 +12,18 @@ import { activitiesActions } from '../activities/activities.actions'
 import { recurringPlans } from '../recurring-plans/recurring-plans.resource'
 import { recurringPlansActions } from '../recurring-plans/recurring-plans.actions'
 import DashboardCash from './DashboardCash.vue'
+import { permissions } from '@/stores/permissions'
+import { loadTenantPriorities } from '../tenant-detector/tenant-detector.actions'
+
+const access = permissions()
+const canAssess = computed(() => access.can('view-users') && access.can('view-activities') && access.can('view-rooms'))
+const {
+  records: priorities,
+  loading: prioritiesLoading,
+  error: prioritiesError,
+  refresh: refreshPriorities,
+} = useCollection(() => ({ ...(canAssess.value ? { load: loadTenantPriorities } : { data: [] }), resource: 'tenant-detector', namespace: 'dashboard-priorities' }))
+const tenantGrades = computed(() => new Map(priorities.value.map((tenant) => [tenant.tenantId, tenant.prediction?.grade ?? '—'])))
 
 const can = resourceCan(rooms)
 async function loadRooms(context: CollectionLoadContext) {
@@ -63,6 +75,7 @@ onMounted(() => {
   interval = setInterval(() => {
     if (canActivities('list')) refreshCash()
     if (canPlans('list')) refreshPlans()
+    if (canAssess.value) refreshPriorities()
   }, 60000)
 })
 onBeforeUnmount(() => clearInterval(interval))
@@ -90,7 +103,10 @@ onBeforeUnmount(() => clearInterval(interval))
               :aria-label="`${room.roomCode}: ${room.name}, ${room.occupantId ? 'Occupied' : 'Unoccupied'}`"
               :class="room.occupantId ? 'bg-surface-container-high hover:bg-surface-container-highest' : 'bg-transparent'"
               class="flex h-full w-full items-center justify-center rounded border border-outline-variant overflow-hidden p-1 text-center text-xs font-medium text-on-surface focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-              ><span class="truncate">{{ room.roomCode }}</span></RouterLink
+              ><span class="flex flex-col"
+                ><span class="truncate">{{ room.roomCode }}</span
+                ><span v-if="room.occupantId && canAssess" class="text-[10px]">{{ tenantGrades.get(room.occupantId) ?? '—' }}</span></span
+              ></RouterLink
             >
           </li>
         </ul>
@@ -125,6 +141,20 @@ onBeforeUnmount(() => clearInterval(interval))
         </ul>
         <RouterLink v-if="snapshot.attention.total > snapshot.attention.items.length" :to="{ name: 'activities' }" class="text-sm text-primary underline">View all activities</RouterLink>
       </template>
+      <section v-if="canAssess" class="flex flex-col gap-2">
+        <h3 class="font-semibold">Tenant review priorities ({{ priorities.length }})</h3>
+        <p v-if="prioritiesLoading">Loading tenant assessments…</p>
+        <p v-else-if="prioritiesError" role="alert">Could not load tenant assessments.</p>
+        <p v-else-if="!priorities.length">No tenant assessments yet.</p>
+        <ul v-else class="flex flex-col gap-2">
+          <li v-for="tenant in priorities.slice(0, 8)" :key="tenant.tenantId">
+            <RouterLink :to="{ name: 'settings-users-detail', params: { userId: tenant.tenantId } }" class="text-primary underline">{{ tenant.tenantName }}</RouterLink>
+            · {{ tenant.prediction?.grade ?? 'Not enough data' }}
+            <span v-if="tenant.stale"> · Needs refresh</span>
+            <p class="text-sm text-on-surface-variant">{{ tenant.rooms.map((room) => room.name).join(', ') }}</p>
+          </li>
+        </ul>
+      </section>
     </Card>
     <Card class="plans-panel min-h-0 min-w-0 gap-2 p-3 lg:overflow-auto">
       <h2 class="text-base font-semibold">

@@ -1,0 +1,79 @@
+import { createHash } from 'node:crypto'
+import { and, asc, eq, inArray, isNotNull, or, sql } from 'drizzle-orm'
+import { z } from 'zod/v4'
+import { getDb } from '../../../db'
+import { businessDate } from '../activities/dates'
+import { activities } from '../activities/activities.table'
+import { recurringPlans } from '../recurring-plans/recurring-plans.table'
+import { rooms } from '../rooms/rooms.table'
+import { users } from '../users/users.table'
+import { detectorCoverageSchema, detectorResultSchema } from './schema'
+import { tenantDetectorCoverage, tenantDetectorPredictions, tenantDetectorPredictionRooms, tenantDetectorState } from './tenant-detector.table'
+
+async function modelRequest(path: string, body?: unknown) {
+  const response = await fetch(`${process.env.MODEL_SERVICE_URL?.replace(/\/$/, '')}${path}`, {
+    method: body ? 'POST' : 'GET',
+    headers: { authorization: `Bearer ${process.env.MODEL_SERVICE_TOKEN}`, 'Content-Type': 'application/json' },
+    ...(body ? { body: JSON.stringify(body) } : {}),
+    signal: AbortSignal.timeout(10000),
+  })
+  if (!response.ok) throw new Error('model_service_unavailable')
+  return response.json()
+}
+
+export async function processTenantDetector() {
+  if (!process.env.MODEL_SERVICE_URL || !process.env.MODEL_SERVICE_TOKEN) return { configured: false, saved: 0 }
+  let modelVersion: string
+  try {
+    modelVersion = z.object({ ready: z.literal(true), modelVersion: z.string(), featureVersion: z.literal('tenant-v1') }).parse(await modelRequest('/health')).modelVersion
+  } catch {
+    await getDb().update(tenantDetectorState).set({ error: 'model_service_unavailable' }).where(eq(tenantDetectorState.pending, true))
+    return { configured: true, saved: 0, error: 'model_service_unavailable' }
+  }
+  const today = businessDate()
+  const clock = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Jakarta', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).format(new Date())
+  const current = await getDb().selectDistinct({ tenantId: rooms.occupantId }).from(rooms).innerJoin(users, eq(users.id, rooms.occupantId)).where(and(isNotNull(rooms.occupantId), eq(users.statusCode, 'active')))
+  for (const { tenantId } of current) {
+    if (!tenantId) continue
+    await getDb().insert(tenantDetectorState).values({ tenantId }).onConflictDoNothing()
+    await getDb().update(tenantDetectorState).set({ pending: true, dailyDate: today }).where(and(eq(tenantDetectorState.tenantId, tenantId), or(
+      clock >= '00:10' ? sql`${tenantDetectorState.dailyDate} is distinct from ${today}` : sql`false`,
+      sql`exists (select 1 from ${tenantDetectorPredictions} where ${tenantDetectorPredictions.id} = ${tenantDetectorState.latestPredictionId} and ${tenantDetectorPredictions.modelVersion} <> ${modelVersion})`,
+    )))
+  }
+  const candidates = await getDb().select({ tenantId: tenantDetectorState.tenantId }).from(tenantDetectorState).where(and(eq(tenantDetectorState.pending, true), sql`(${tenantDetectorState.lastAttempt} is null or ${tenantDetectorState.lastAttempt} < now() - interval '30 seconds')`)).orderBy(asc(tenantDetectorState.lastAttempt), asc(tenantDetectorState.tenantId)).limit(25)
+  const snapshots = (await Promise.all(candidates.map(async (candidate) => getDb().transaction(async (tx) => {
+      const state = (await tx.select().from(tenantDetectorState).where(and(eq(tenantDetectorState.tenantId, candidate.tenantId), eq(tenantDetectorState.pending, true), sql`(${tenantDetectorState.lastAttempt} is null or ${tenantDetectorState.lastAttempt} < now() - interval '30 seconds')`)).for('update', { skipLocked: true }))[0]
+      if (!state) return null
+      await tx.update(tenantDetectorState).set({ lastAttempt: new Date().toISOString() }).where(eq(tenantDetectorState.tenantId, state.tenantId))
+      const coverage = (await tx.select().from(tenantDetectorCoverage).where(eq(tenantDetectorCoverage.tenantId, state.tenantId)))[0]
+      const records = await tx.select({ id: activities.id, roomId: activities.roomId, categoryId: activities.categoryId, workStatus: activities.workStatus, completedDate: activities.completedDate, financialKind: activities.financialKind, amount: activities.amount, paymentStatus: activities.paymentStatus, paymentDate: activities.paymentDate, occurrenceDate: activities.occurrenceDate }).from(activities).where(and(eq(activities.tenantId, state.tenantId), isNotNull(activities.roomId))).orderBy(asc(activities.id))
+      const incomplete = await tx.select({ id: recurringPlans.id }).from(recurringPlans).where(and(eq(recurringPlans.tenantId, state.tenantId), eq(recurringPlans.active, true), sql`${recurringPlans.nextOccurrenceDate} <= ${today}`)).limit(1)
+      const input = { tenantId: state.tenantId, asOfDate: today, coverage: detectorCoverageSchema.parse(coverage ?? { repairsFrom: null, cleaningFrom: null, rentFrom: null, repairCostsComplete: false }), recurrenceComplete: !incomplete.length, activities: records }
+      return { state, input, hash: createHash('sha256').update(JSON.stringify(input)).digest('hex') }
+    }, { isolationLevel: 'repeatable read' })))).filter((snapshot) => snapshot !== null)
+  if (!snapshots.length) return { configured: true, saved: 0 }
+  let saved = 0
+  try {
+    const response = z.object({ results: z.array(detectorResultSchema).length(snapshots.length) }).parse(await modelRequest('/tenant-detector/score', { featureVersion: 'tenant-v1', tenants: snapshots.map((snapshot) => snapshot.input) }))
+    const results = new Map(response.results.map((result) => [result.tenantId, result]))
+    if (results.size !== snapshots.length || snapshots.some((snapshot) => !results.has(snapshot.state.tenantId)) || response.results.some((result) => result.asOfDate !== today || result.modelVersion !== modelVersion)) throw new Error('model_response_mismatch')
+    for (const snapshot of snapshots) {
+      const result = results.get(snapshot.state.tenantId)
+      if (!result) continue
+      saved += await getDb().transaction(async (tx) => {
+        const state = (await tx.select().from(tenantDetectorState).where(eq(tenantDetectorState.tenantId, snapshot.state.tenantId)).for('update'))[0]
+        if (state.sourceRevision !== snapshot.state.sourceRevision) return 0
+        let prediction = (await tx.insert(tenantDetectorPredictions).values({ tenantId: state.tenantId, asOfDate: today, sourceRevision: state.sourceRevision, inputHash: snapshot.hash, modelVersion, featureVersion: result.featureVersion, input: snapshot.input, result, grade: result.grade, score: result.score }).onConflictDoNothing().returning())[0]
+        prediction ??= (await tx.select().from(tenantDetectorPredictions).where(and(eq(tenantDetectorPredictions.tenantId, state.tenantId), eq(tenantDetectorPredictions.asOfDate, today), eq(tenantDetectorPredictions.inputHash, snapshot.hash), eq(tenantDetectorPredictions.modelVersion, modelVersion))))[0]
+        const roomIds = [...new Set(snapshot.input.activities.map((activity) => activity.roomId).filter((id): id is string => id !== null))]
+        if (roomIds.length) await tx.insert(tenantDetectorPredictionRooms).values(roomIds.map((roomId) => ({ predictionId: prediction.id, roomId }))).onConflictDoNothing()
+        await tx.update(tenantDetectorState).set({ pending: false, latestPredictionId: prediction.id, error: null }).where(eq(tenantDetectorState.tenantId, state.tenantId))
+        return 1
+      })
+    }
+  } catch {
+    await getDb().update(tenantDetectorState).set({ error: 'model_assessment_failed' }).where(inArray(tenantDetectorState.tenantId, snapshots.map((snapshot) => snapshot.state.tenantId)))
+  }
+  return { configured: true, saved }
+}

@@ -1,3 +1,4 @@
+import { processTenantDetector } from '../tenant-detector/process'
 import { processNotifications } from '../notifications/deliver'
 import { and, asc, eq, lte } from 'drizzle-orm'
 import { z } from 'zod/v4'
@@ -69,6 +70,7 @@ export function startRecurringActivityWorker() {
     try {
       await generateDueActivities()
       await processNotifications()
+      await processTenantDetector()
     } catch (error) {
       console.error('Recurring activity generation failed.', error)
     } finally {

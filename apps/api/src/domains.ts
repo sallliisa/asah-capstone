@@ -1,3 +1,4 @@
+import { domain as tenantDetector } from './routes/(authenticated)/tenant-detector/tenant-detector'
 import { domain as notifications } from './routes/(authenticated)/notifications/notifications'
 import { domain as activityCategories } from './routes/(authenticated)/activity-categories/activity-categories'
 import { domain as activities } from './routes/(authenticated)/activities/activities'
@@ -9,4 +10,4 @@ import { domain as permissions } from './routes/(authenticated)/permissions/perm
 import { domain as roles } from './routes/(authenticated)/roles/roles'
 import { domain as users } from './routes/(authenticated)/users/users'
 
-export const domains = [auth, permissions, roles, users, roomTypes, rooms, activityCategories, recurringPlans, activities, notifications] as const
+export const domains = [auth, permissions, roles, users, roomTypes, rooms, activityCategories, recurringPlans, activities, notifications, tenantDetector] as const

@@ -1,0 +1,1987 @@
+{
+  "selectionEffect": "None. These cases were reviewed after final model selection. They do not change parameters or boundaries.",
+  "cases": [
+    {
+      "case": "No incidents, on-time rent across a room move",
+      "expected": "A",
+      "actual": "A",
+      "matches": true,
+      "score": 0.34965445750993523,
+      "input": {
+        "tenantId": "independent-review",
+        "asOfDate": "2026-11-01",
+        "coverage": {
+          "repairsFrom": "2025-11-02",
+          "cleaningFrom": "2025-11-02",
+          "rentFrom": "2025-11-02",
+          "repairCostsComplete": true
+        },
+        "recurrenceComplete": true,
+        "activities": [
+          {
+            "id": "rent-0",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2025-12-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2025-12-01"
+          },
+          {
+            "id": "rent-1",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-01-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-01-01"
+          },
+          {
+            "id": "rent-2",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-02-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-02-01"
+          },
+          {
+            "id": "rent-3",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-03-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-03-01"
+          },
+          {
+            "id": "rent-4",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-04-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-04-01"
+          },
+          {
+            "id": "rent-5",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-05-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-05-01"
+          },
+          {
+            "id": "rent-6",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-06-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-06-01"
+          },
+          {
+            "id": "rent-7",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-07-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-07-01"
+          },
+          {
+            "id": "rent-8",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-08-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-08-01"
+          },
+          {
+            "id": "rent-9",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-09-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-09-01"
+          },
+          {
+            "id": "rent-10",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-10-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-10-01"
+          },
+          {
+            "id": "rent-11",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-11-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-11-01"
+          }
+        ]
+      },
+      "features": {
+        "repairCount90": 0,
+        "repairRate30": 0.0,
+        "repairSpend30Log": 0.0,
+        "extraCleaningCount90": 0,
+        "extraCleaningRate30": 0.0,
+        "rentLateShare": 0.0,
+        "meanSettledLateDays": 0,
+        "oldestUnpaidDays": 0,
+        "overdueAmountShare": 0.0
+      }
+    },
+    {
+      "case": "One expensive isolated repair",
+      "expected": "A",
+      "actual": "A",
+      "matches": true,
+      "score": 0.3692482929210568,
+      "input": {
+        "tenantId": "independent-review",
+        "asOfDate": "2026-11-01",
+        "coverage": {
+          "repairsFrom": "2025-11-02",
+          "cleaningFrom": "2025-11-02",
+          "rentFrom": "2025-11-02",
+          "repairCostsComplete": true
+        },
+        "recurrenceComplete": true,
+        "activities": [
+          {
+            "id": "rent-0",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2025-12-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2025-12-01"
+          },
+          {
+            "id": "rent-1",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-01-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-01-01"
+          },
+          {
+            "id": "rent-2",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-02-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-02-01"
+          },
+          {
+            "id": "rent-3",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-03-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-03-01"
+          },
+          {
+            "id": "rent-4",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-04-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-04-01"
+          },
+          {
+            "id": "rent-5",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-05-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-05-01"
+          },
+          {
+            "id": "rent-6",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-06-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-06-01"
+          },
+          {
+            "id": "rent-7",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-07-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-07-01"
+          },
+          {
+            "id": "rent-8",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-08-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-08-01"
+          },
+          {
+            "id": "rent-9",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-09-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-09-01"
+          },
+          {
+            "id": "rent-10",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-10-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-10-01"
+          },
+          {
+            "id": "rent-11",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-11-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-11-01"
+          },
+          {
+            "id": "work-0",
+            "roomId": "new-room",
+            "categoryId": "activity-category-corrective-repairs",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-10-02",
+            "amount": 2000000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-10-02"
+          }
+        ]
+      },
+      "features": {
+        "repairCount90": 1,
+        "repairRate30": 0.0821917808219178,
+        "repairSpend30Log": 12.009963849918714,
+        "extraCleaningCount90": 0,
+        "extraCleaningRate30": 0.0,
+        "rentLateShare": 0.0,
+        "meanSettledLateDays": 0,
+        "oldestUnpaidDays": 0,
+        "overdueAmountShare": 0.0
+      }
+    },
+    {
+      "case": "High planned servicing spend",
+      "expected": "A",
+      "actual": "A",
+      "matches": true,
+      "score": 0.34965445750993523,
+      "input": {
+        "tenantId": "independent-review",
+        "asOfDate": "2026-11-01",
+        "coverage": {
+          "repairsFrom": "2025-11-02",
+          "cleaningFrom": "2025-11-02",
+          "rentFrom": "2025-11-02",
+          "repairCostsComplete": true
+        },
+        "recurrenceComplete": true,
+        "activities": [
+          {
+            "id": "rent-0",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2025-12-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2025-12-01"
+          },
+          {
+            "id": "rent-1",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-01-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-01-01"
+          },
+          {
+            "id": "rent-2",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-02-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-02-01"
+          },
+          {
+            "id": "rent-3",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-03-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-03-01"
+          },
+          {
+            "id": "rent-4",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-04-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-04-01"
+          },
+          {
+            "id": "rent-5",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-05-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-05-01"
+          },
+          {
+            "id": "rent-6",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-06-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-06-01"
+          },
+          {
+            "id": "rent-7",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-07-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-07-01"
+          },
+          {
+            "id": "rent-8",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-08-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-08-01"
+          },
+          {
+            "id": "rent-9",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-09-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-09-01"
+          },
+          {
+            "id": "rent-10",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-10-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-10-01"
+          },
+          {
+            "id": "rent-11",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-11-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-11-01"
+          },
+          {
+            "id": "work-0",
+            "roomId": "new-room",
+            "categoryId": "activity-category-scheduled-servicing",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-10-22",
+            "amount": 2000000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-10-22"
+          },
+          {
+            "id": "work-1",
+            "roomId": "old-room",
+            "categoryId": "activity-category-scheduled-servicing",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-09-22",
+            "amount": 2000000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-09-22"
+          },
+          {
+            "id": "work-2",
+            "roomId": "new-room",
+            "categoryId": "activity-category-scheduled-servicing",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-08-23",
+            "amount": 2000000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-08-23"
+          }
+        ]
+      },
+      "features": {
+        "repairCount90": 0,
+        "repairRate30": 0.0,
+        "repairSpend30Log": 0.0,
+        "extraCleaningCount90": 0,
+        "extraCleaningRate30": 0.0,
+        "rentLateShare": 0.0,
+        "meanSettledLateDays": 0,
+        "oldestUnpaidDays": 0,
+        "overdueAmountShare": 0.0
+      }
+    },
+    {
+      "case": "Routine cleaning is not adverse",
+      "expected": "A",
+      "actual": "A",
+      "matches": true,
+      "score": 0.34965445750993523,
+      "input": {
+        "tenantId": "independent-review",
+        "asOfDate": "2026-11-01",
+        "coverage": {
+          "repairsFrom": "2025-11-02",
+          "cleaningFrom": "2025-11-02",
+          "rentFrom": "2025-11-02",
+          "repairCostsComplete": true
+        },
+        "recurrenceComplete": true,
+        "activities": [
+          {
+            "id": "rent-0",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2025-12-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2025-12-01"
+          },
+          {
+            "id": "rent-1",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-01-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-01-01"
+          },
+          {
+            "id": "rent-2",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-02-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-02-01"
+          },
+          {
+            "id": "rent-3",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-03-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-03-01"
+          },
+          {
+            "id": "rent-4",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-04-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-04-01"
+          },
+          {
+            "id": "rent-5",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-05-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-05-01"
+          },
+          {
+            "id": "rent-6",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-06-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-06-01"
+          },
+          {
+            "id": "rent-7",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-07-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-07-01"
+          },
+          {
+            "id": "rent-8",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-08-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-08-01"
+          },
+          {
+            "id": "rent-9",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-09-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-09-01"
+          },
+          {
+            "id": "rent-10",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-10-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-10-01"
+          },
+          {
+            "id": "rent-11",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-11-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-11-01"
+          },
+          {
+            "id": "work-0",
+            "roomId": "new-room",
+            "categoryId": "activity-category-routine-cleaning",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-11-01",
+            "amount": 150000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-11-01"
+          },
+          {
+            "id": "work-1",
+            "roomId": "old-room",
+            "categoryId": "activity-category-routine-cleaning",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-10-17",
+            "amount": 150000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-10-17"
+          },
+          {
+            "id": "work-2",
+            "roomId": "new-room",
+            "categoryId": "activity-category-routine-cleaning",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-10-02",
+            "amount": 150000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-10-02"
+          },
+          {
+            "id": "work-3",
+            "roomId": "old-room",
+            "categoryId": "activity-category-routine-cleaning",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-09-17",
+            "amount": 150000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-09-17"
+          },
+          {
+            "id": "work-4",
+            "roomId": "new-room",
+            "categoryId": "activity-category-routine-cleaning",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-09-02",
+            "amount": 150000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-09-02"
+          },
+          {
+            "id": "work-5",
+            "roomId": "old-room",
+            "categoryId": "activity-category-routine-cleaning",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-08-18",
+            "amount": 150000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-08-18"
+          }
+        ]
+      },
+      "features": {
+        "repairCount90": 0,
+        "repairRate30": 0.0,
+        "repairSpend30Log": 0.0,
+        "extraCleaningCount90": 0,
+        "extraCleaningRate30": 0.0,
+        "rentLateShare": 0.0,
+        "meanSettledLateDays": 0,
+        "oldestUnpaidDays": 0,
+        "overdueAmountShare": 0.0
+      }
+    },
+    {
+      "case": "Three recent repairs across rooms",
+      "expected": "B",
+      "actual": "A",
+      "matches": false,
+      "score": 0.4185104620872142,
+      "input": {
+        "tenantId": "independent-review",
+        "asOfDate": "2026-11-01",
+        "coverage": {
+          "repairsFrom": "2025-11-02",
+          "cleaningFrom": "2025-11-02",
+          "rentFrom": "2025-11-02",
+          "repairCostsComplete": true
+        },
+        "recurrenceComplete": true,
+        "activities": [
+          {
+            "id": "rent-0",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2025-12-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2025-12-01"
+          },
+          {
+            "id": "rent-1",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-01-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-01-01"
+          },
+          {
+            "id": "rent-2",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-02-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-02-01"
+          },
+          {
+            "id": "rent-3",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-03-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-03-01"
+          },
+          {
+            "id": "rent-4",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-04-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-04-01"
+          },
+          {
+            "id": "rent-5",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-05-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-05-01"
+          },
+          {
+            "id": "rent-6",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-06-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-06-01"
+          },
+          {
+            "id": "rent-7",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-07-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-07-01"
+          },
+          {
+            "id": "rent-8",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-08-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-08-01"
+          },
+          {
+            "id": "rent-9",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-09-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-09-01"
+          },
+          {
+            "id": "rent-10",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-10-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-10-01"
+          },
+          {
+            "id": "rent-11",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-11-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-11-01"
+          },
+          {
+            "id": "work-0",
+            "roomId": "new-room",
+            "categoryId": "activity-category-corrective-repairs",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-10-27",
+            "amount": 150000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-10-27"
+          },
+          {
+            "id": "work-1",
+            "roomId": "old-room",
+            "categoryId": "activity-category-corrective-repairs",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-09-27",
+            "amount": 150000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-09-27"
+          },
+          {
+            "id": "work-2",
+            "roomId": "new-room",
+            "categoryId": "activity-category-corrective-repairs",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-08-28",
+            "amount": 150000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-08-28"
+          }
+        ]
+      },
+      "features": {
+        "repairCount90": 3,
+        "repairRate30": 0.2465753424657534,
+        "repairSpend30Log": 10.51832992649771,
+        "extraCleaningCount90": 0,
+        "extraCleaningRate30": 0.0,
+        "rentLateShare": 0.0,
+        "meanSettledLateDays": 0,
+        "oldestUnpaidDays": 0,
+        "overdueAmountShare": 0.0
+      }
+    },
+    {
+      "case": "Six repairs in sixty days",
+      "expected": "C",
+      "actual": "B",
+      "matches": false,
+      "score": 0.49900218262939283,
+      "input": {
+        "tenantId": "independent-review",
+        "asOfDate": "2026-11-01",
+        "coverage": {
+          "repairsFrom": "2025-11-02",
+          "cleaningFrom": "2025-11-02",
+          "rentFrom": "2025-11-02",
+          "repairCostsComplete": true
+        },
+        "recurrenceComplete": true,
+        "activities": [
+          {
+            "id": "rent-0",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2025-12-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2025-12-01"
+          },
+          {
+            "id": "rent-1",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-01-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-01-01"
+          },
+          {
+            "id": "rent-2",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-02-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-02-01"
+          },
+          {
+            "id": "rent-3",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-03-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-03-01"
+          },
+          {
+            "id": "rent-4",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-04-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-04-01"
+          },
+          {
+            "id": "rent-5",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-05-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-05-01"
+          },
+          {
+            "id": "rent-6",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-06-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-06-01"
+          },
+          {
+            "id": "rent-7",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-07-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-07-01"
+          },
+          {
+            "id": "rent-8",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-08-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-08-01"
+          },
+          {
+            "id": "rent-9",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-09-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-09-01"
+          },
+          {
+            "id": "rent-10",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-10-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-10-01"
+          },
+          {
+            "id": "rent-11",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-11-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-11-01"
+          },
+          {
+            "id": "work-0",
+            "roomId": "new-room",
+            "categoryId": "activity-category-corrective-repairs",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-10-30",
+            "amount": 150000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-10-30"
+          },
+          {
+            "id": "work-1",
+            "roomId": "old-room",
+            "categoryId": "activity-category-corrective-repairs",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-10-20",
+            "amount": 150000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-10-20"
+          },
+          {
+            "id": "work-2",
+            "roomId": "new-room",
+            "categoryId": "activity-category-corrective-repairs",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-10-10",
+            "amount": 150000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-10-10"
+          },
+          {
+            "id": "work-3",
+            "roomId": "old-room",
+            "categoryId": "activity-category-corrective-repairs",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-09-30",
+            "amount": 150000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-09-30"
+          },
+          {
+            "id": "work-4",
+            "roomId": "new-room",
+            "categoryId": "activity-category-corrective-repairs",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-09-20",
+            "amount": 150000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-09-20"
+          },
+          {
+            "id": "work-5",
+            "roomId": "old-room",
+            "categoryId": "activity-category-corrective-repairs",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-09-10",
+            "amount": 150000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-09-10"
+          }
+        ]
+      },
+      "features": {
+        "repairCount90": 6,
+        "repairRate30": 0.4931506849315068,
+        "repairSpend30Log": 11.211463588813256,
+        "extraCleaningCount90": 0,
+        "extraCleaningRate30": 0.0,
+        "rentLateShare": 0.0,
+        "meanSettledLateDays": 0,
+        "oldestUnpaidDays": 0,
+        "overdueAmountShare": 0.0
+      }
+    },
+    {
+      "case": "Three extra cleanings",
+      "expected": "B",
+      "actual": "A",
+      "matches": false,
+      "score": 0.44469126966153527,
+      "input": {
+        "tenantId": "independent-review",
+        "asOfDate": "2026-11-01",
+        "coverage": {
+          "repairsFrom": "2025-11-02",
+          "cleaningFrom": "2025-11-02",
+          "rentFrom": "2025-11-02",
+          "repairCostsComplete": true
+        },
+        "recurrenceComplete": true,
+        "activities": [
+          {
+            "id": "rent-0",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2025-12-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2025-12-01"
+          },
+          {
+            "id": "rent-1",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-01-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-01-01"
+          },
+          {
+            "id": "rent-2",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-02-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-02-01"
+          },
+          {
+            "id": "rent-3",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-03-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-03-01"
+          },
+          {
+            "id": "rent-4",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-04-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-04-01"
+          },
+          {
+            "id": "rent-5",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-05-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-05-01"
+          },
+          {
+            "id": "rent-6",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-06-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-06-01"
+          },
+          {
+            "id": "rent-7",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-07-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-07-01"
+          },
+          {
+            "id": "rent-8",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-08-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-08-01"
+          },
+          {
+            "id": "rent-9",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-09-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-09-01"
+          },
+          {
+            "id": "rent-10",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-10-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-10-01"
+          },
+          {
+            "id": "rent-11",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-11-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-11-01"
+          },
+          {
+            "id": "work-0",
+            "roomId": "new-room",
+            "categoryId": "activity-category-extra-cleaning",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-10-27",
+            "amount": 150000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-10-27"
+          },
+          {
+            "id": "work-1",
+            "roomId": "old-room",
+            "categoryId": "activity-category-extra-cleaning",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-09-27",
+            "amount": 150000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-09-27"
+          },
+          {
+            "id": "work-2",
+            "roomId": "new-room",
+            "categoryId": "activity-category-extra-cleaning",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-08-28",
+            "amount": 150000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-08-28"
+          }
+        ]
+      },
+      "features": {
+        "repairCount90": 0,
+        "repairRate30": 0.0,
+        "repairSpend30Log": 0.0,
+        "extraCleaningCount90": 3,
+        "extraCleaningRate30": 0.2465753424657534,
+        "rentLateShare": 0.0,
+        "meanSettledLateDays": 0,
+        "oldestUnpaidDays": 0,
+        "overdueAmountShare": 0.0
+      }
+    },
+    {
+      "case": "Eight extra cleanings",
+      "expected": "C",
+      "actual": "B",
+      "matches": false,
+      "score": 0.5533713895362647,
+      "input": {
+        "tenantId": "independent-review",
+        "asOfDate": "2026-11-01",
+        "coverage": {
+          "repairsFrom": "2025-11-02",
+          "cleaningFrom": "2025-11-02",
+          "rentFrom": "2025-11-02",
+          "repairCostsComplete": true
+        },
+        "recurrenceComplete": true,
+        "activities": [
+          {
+            "id": "rent-0",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2025-12-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2025-12-01"
+          },
+          {
+            "id": "rent-1",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-01-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-01-01"
+          },
+          {
+            "id": "rent-2",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-02-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-02-01"
+          },
+          {
+            "id": "rent-3",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-03-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-03-01"
+          },
+          {
+            "id": "rent-4",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-04-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-04-01"
+          },
+          {
+            "id": "rent-5",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-05-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-05-01"
+          },
+          {
+            "id": "rent-6",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-06-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-06-01"
+          },
+          {
+            "id": "rent-7",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-07-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-07-01"
+          },
+          {
+            "id": "rent-8",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-08-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-08-01"
+          },
+          {
+            "id": "rent-9",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-09-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-09-01"
+          },
+          {
+            "id": "rent-10",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-10-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-10-01"
+          },
+          {
+            "id": "rent-11",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-11-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-11-01"
+          },
+          {
+            "id": "work-0",
+            "roomId": "new-room",
+            "categoryId": "activity-category-extra-cleaning",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-10-27",
+            "amount": 150000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-10-27"
+          },
+          {
+            "id": "work-1",
+            "roomId": "old-room",
+            "categoryId": "activity-category-extra-cleaning",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-10-17",
+            "amount": 150000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-10-17"
+          },
+          {
+            "id": "work-2",
+            "roomId": "new-room",
+            "categoryId": "activity-category-extra-cleaning",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-10-07",
+            "amount": 150000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-10-07"
+          },
+          {
+            "id": "work-3",
+            "roomId": "old-room",
+            "categoryId": "activity-category-extra-cleaning",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-09-27",
+            "amount": 150000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-09-27"
+          },
+          {
+            "id": "work-4",
+            "roomId": "new-room",
+            "categoryId": "activity-category-extra-cleaning",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-09-17",
+            "amount": 150000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-09-17"
+          },
+          {
+            "id": "work-5",
+            "roomId": "old-room",
+            "categoryId": "activity-category-extra-cleaning",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-09-07",
+            "amount": 150000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-09-07"
+          },
+          {
+            "id": "work-6",
+            "roomId": "new-room",
+            "categoryId": "activity-category-extra-cleaning",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-08-28",
+            "amount": 150000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-08-28"
+          },
+          {
+            "id": "work-7",
+            "roomId": "old-room",
+            "categoryId": "activity-category-extra-cleaning",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-08-18",
+            "amount": 150000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-08-18"
+          }
+        ]
+      },
+      "features": {
+        "repairCount90": 0,
+        "repairRate30": 0.0,
+        "repairSpend30Log": 0.0,
+        "extraCleaningCount90": 8,
+        "extraCleaningRate30": 0.6575342465753424,
+        "rentLateShare": 0.0,
+        "meanSettledLateDays": 0,
+        "oldestUnpaidDays": 0,
+        "overdueAmountShare": 0.0
+      }
+    },
+    {
+      "case": "Repeated substantial settled rent delay",
+      "expected": "C",
+      "actual": "C",
+      "matches": true,
+      "score": 0.6007324145790363,
+      "input": {
+        "tenantId": "independent-review",
+        "asOfDate": "2026-11-01",
+        "coverage": {
+          "repairsFrom": "2025-11-02",
+          "cleaningFrom": "2025-11-02",
+          "rentFrom": "2025-11-02",
+          "repairCostsComplete": true
+        },
+        "recurrenceComplete": true,
+        "activities": [
+          {
+            "id": "rent-0",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2025-12-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2025-12-31"
+          },
+          {
+            "id": "rent-1",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-01-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-01-31"
+          },
+          {
+            "id": "rent-2",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-02-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-03-03"
+          },
+          {
+            "id": "rent-3",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-03-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-03-31"
+          },
+          {
+            "id": "rent-4",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-04-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-05-01"
+          },
+          {
+            "id": "rent-5",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-05-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-05-31"
+          },
+          {
+            "id": "rent-6",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-06-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-07-01"
+          },
+          {
+            "id": "rent-7",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-07-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-07-31"
+          },
+          {
+            "id": "rent-8",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-08-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-08-31"
+          },
+          {
+            "id": "rent-9",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-09-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-10-01"
+          },
+          {
+            "id": "rent-10",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-10-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-10-31"
+          },
+          {
+            "id": "rent-11",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-11-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-12-01"
+          }
+        ]
+      },
+      "features": {
+        "repairCount90": 0,
+        "repairRate30": 0.0,
+        "repairSpend30Log": 0.0,
+        "extraCleaningCount90": 0,
+        "extraCleaningRate30": 0.0,
+        "rentLateShare": 0.9166666666666666,
+        "meanSettledLateDays": 30.0,
+        "oldestUnpaidDays": 0,
+        "overdueAmountShare": 0.0
+      }
+    },
+    {
+      "case": "Old repairs outside recent window, now recovered",
+      "expected": "A",
+      "actual": "A",
+      "matches": true,
+      "score": 0.3529018045636949,
+      "input": {
+        "tenantId": "independent-review",
+        "asOfDate": "2026-11-01",
+        "coverage": {
+          "repairsFrom": "2025-11-02",
+          "cleaningFrom": "2025-11-02",
+          "rentFrom": "2025-11-02",
+          "repairCostsComplete": true
+        },
+        "recurrenceComplete": true,
+        "activities": [
+          {
+            "id": "rent-0",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2025-12-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2025-12-01"
+          },
+          {
+            "id": "rent-1",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-01-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-01-01"
+          },
+          {
+            "id": "rent-2",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-02-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-02-01"
+          },
+          {
+            "id": "rent-3",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-03-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-03-01"
+          },
+          {
+            "id": "rent-4",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-04-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-04-01"
+          },
+          {
+            "id": "rent-5",
+            "roomId": "old-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-05-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-05-01"
+          },
+          {
+            "id": "rent-6",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-06-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-06-01"
+          },
+          {
+            "id": "rent-7",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-07-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-07-01"
+          },
+          {
+            "id": "rent-8",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-08-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-08-01"
+          },
+          {
+            "id": "rent-9",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-09-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-09-01"
+          },
+          {
+            "id": "rent-10",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-10-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-10-01"
+          },
+          {
+            "id": "rent-11",
+            "roomId": "new-room",
+            "categoryId": "activity-category-room-rent",
+            "financialKind": "income",
+            "workStatus": "planned",
+            "amount": 1500000,
+            "occurrenceDate": "2026-11-01",
+            "paymentStatus": "settled",
+            "paymentDate": "2026-11-01"
+          },
+          {
+            "id": "work-0",
+            "roomId": "new-room",
+            "categoryId": "activity-category-corrective-repairs",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2026-01-05",
+            "amount": 150000,
+            "paymentStatus": "settled",
+            "paymentDate": "2026-01-05"
+          },
+          {
+            "id": "work-1",
+            "roomId": "old-room",
+            "categoryId": "activity-category-corrective-repairs",
+            "financialKind": "expense",
+            "workStatus": "completed",
+            "completedDate": "2025-12-26",
+            "amount": 150000,
+            "paymentStatus": "settled",
+            "paymentDate": "2025-12-26"
+          }
+        ]
+      },
+      "features": {
+        "repairCount90": 0,
+        "repairRate30": 0.1643835616438356,
+        "repairSpend30Log": 10.112878336451203,
+        "extraCleaningCount90": 0,
+        "extraCleaningRate30": 0.0,
+        "rentLateShare": 0.0,
+        "meanSettledLateDays": 0,
+        "oldestUnpaidDays": 0,
+        "overdueAmountShare": 0.0
+      }
+    }
+  ]
+}
