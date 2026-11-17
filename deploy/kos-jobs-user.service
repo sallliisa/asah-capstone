@@ -1,0 +1,12 @@
+[Unit]
+Description=Kos recurring work, notifications, and tenant assessments
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/app/models
+EnvironmentFile=%h/app/models/jobs.env
+ExecStart=%h/.local/opt/node-v24.22.3-linux-x64/bin/node %h/app/models/scripts/run-jobs.ts
+TimeoutStartSec=50
+UMask=0077
+NoNewPrivileges=true

@@ -100,3 +100,17 @@ CARTA_MIGRATE_ON_BUILD=true. Inspect its build and runtime results before
 promoting that exact deployment. The upload excludes services/models, analysis,
 and deploy, in addition to local files and secrets. The checked source set
 contains no Python environment, raw histories, or .env files.
+
+## Current live state
+
+Deployment dpl_74ZUbT6xBuadMo6wrWrd3CFH4K3N passed staged checks and is promoted.
+The canonical app is https://asah-capstone-nu.vercel.app. Its database migration
+step used the existing Vercel secret; database, storage, and login secrets were
+not replaced.
+
+The user timer templates are installed as kos-jobs.service and kos-jobs.timer
+in muslik's user systemd directory. The timer is enabled and running. Its
+private environment targets the canonical /api base. Repeated actual runs
+completed successfully. The native tool connection is pending the OAuth
+proposal in the Pi design. The prior fixed-header MCP instructions above
+describe the existing endpoint, not a completed native connector setup.

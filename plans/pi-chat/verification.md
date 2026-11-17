@@ -63,3 +63,20 @@ berhasil. After reload, the native SDK reopened the saved conversation and read
 two messages without an error. This resolves the earlier empty-workspace
 blocker. Model/tool resource grants and native classifier-driven answers with
 sources remain unfinished until the remote MCP endpoint is deployed.
+
+## Native tool authentication finding
+
+The deployed app, owner sign-in, native session handoff, private MCP client,
+VPS classifier, live RAG, and actual app projections pass. The production
+deployment is dpl_74ZUbT6xBuadMo6wrWrd3CFH4K3N. The canonical app domain
+points to that tested build. Its owner proof created and removed only its own
+app login session.
+
+The installed CloudflareOS gatekeeper-mcp source and connect form accept a
+server URL and perform OAuth discovery; they provide no static per-connection
+header field. Its portal connector accepts a deployment-wide fixed token, but
+is for aggregators and would widen the connection beyond the intended account.
+It is not the proposed solution. The app's static tool token therefore cannot
+finish the native connection. The Pi design now proposes a bounded owner-only
+OAuth flow through the compatible provider package. This authorization/API
+revision is Draft; it has not been implemented.

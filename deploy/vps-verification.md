@@ -39,3 +39,21 @@ financial intent classification pass over HTTPS. The existing CloudflareOS
 origin still returns 200. The local API environment now uses the HTTPS model
 address. Evidence: models-tunnel-apply.log and models-https-proof.json under
 .local/verification. The deployed API and timer still need acceptance.
+
+## Live app and minute timer
+
+Vercel deployment dpl_74ZUbT6xBuadMo6wrWrd3CFH4K3N was staged, checked, then
+promoted to https://asah-capstone-nu.vercel.app. The build applied pending
+migrations through Vercel's existing production database secret. A real MCP
+client used the deployed endpoint, VPS classifier, active Vectorize corpus,
+and app database. It returned the monthly-rent policy with a source version,
+read calculated cash, and saved its routing audit. Anonymous tools returned
+401; exactly two read-only tool names were exposed. Owner app sign-in and the
+Wisp native-session handoff also passed.
+
+The minute job is installed at app/models/scripts/run-jobs.ts with a private
+jobs.env file. User systemd kos-jobs.service and kos-jobs.timer are installed,
+verified, enabled, and active. A manual run and later timer runs completed with
+recurrence, push, and model configuration enabled. No current occurrence was
+due, so generated/created/sent/saved counts were zero. This does not prove an
+iPhone received a push. Evidence is in vps-jobs-*.log.

@@ -143,3 +143,22 @@ published through the existing tunnel. Authenticated HTTPS health and intent
 classification pass; anonymous health is 401, and CloudflareOS remains available.
 The local API environment uses https://models.southneuhof.tech. Activation
 guards and context-route tests pass. Deployment and the minute timer are next.
+
+## Production and discussion checkpoint
+
+Production now serves the staged and tested deployment
+dpl_74ZUbT6xBuadMo6wrWrd3CFH4K3N at
+https://asah-capstone-nu.vercel.app. Owner sign-in and Wisp native handoff pass.
+The real deployed MCP endpoint uses the VPS classifier, active RAG corpus, and
+app projections. A fresh routing-audit read proved persistence in the configured
+store. The VPS user timer is enabled and repeated minute runs pass with all
+three job systems configured.
+
+The remaining native tool connection needs an authentication revision: the
+installed CloudflareOS custom MCP connector supports OAuth discovery, not a
+static per-connection header. The compatible provider package 1.6.23 was checked
+against the installed Better Auth 1.6.23. The proposed owner-only OAuth flow is
+in the Pi design, marked Draft/Needs update. No OAuth code or migration has
+been implemented. The user chose Discuss it first. Keep this scope pending.
+The user also deferred the iPhone delivery/tap check. Do not create its temporary
+reminder until the device check resumes.
