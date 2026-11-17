@@ -27,12 +27,13 @@ test retrieval results. It writes evidence under .local/verification/rag.
 No default arbitrary cutoff is used. Native answer generation is a separate
 check from passage retrieval.
 
-Passages follow paragraph boundaries within each section and retain source
-titles and sections. Retrieval keeps the best vector match rather than attach loosely related
-secondary passages. Evaluation examples can name reviewed alternative sources
-when the same fact is present in more than one section. The selected cutoff must first meet validation
-precision, recall, and unsupported-answer limits; F1 orders feasible cutoffs.
-A separate held-out test still gates activation.
+Passages follow paragraph boundaries within each source section. BGE-M3 vector
+search supplies up to 16 candidates. A fixed vector/BM25 blend selects one
+passage; a hosted BGE reranker scores that passage. Both score cutoffs are
+calibrated from validation examples. Select the strongest support cutoff that
+still meets the precision, recall, and unsupported-answer limits. A separate
+held-out test gates activation. Reviewed alternative sources are accepted only
+where their text supports the same fact. The sources remain in Indonesian.
 
 The initial activation check requires precision at least 0.90 and answerable
 recall at least 0.75 on validation and test, with no accepted unsupported test
@@ -41,7 +42,9 @@ Inspect its passages and errors. If it fails, keep the previous corpus active;
 revise from validation evidence and use fresh test cases for a test-informed
 change. Do not lower the gate just to publish.
 
-To activate a passing candidate, rerun knowledge:verify VERSION --activate.
+To activate a passing candidate, run pnpm --filter @southneuhof/api
+knowledge:activate VERSION. It requires the saved passing report and matching
+verified database scores/model metadata. It does not repeat provider calls.
 Activation retires the old version in one transaction. A failed ingestion or
 verification does not replace it. Published versions retain their passages and
 source hashes. To queue removal of retired vectors, run knowledge:cleanup VERSION.

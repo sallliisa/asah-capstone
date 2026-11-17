@@ -39,7 +39,8 @@
     "knowledge:build": "tsx scripts/build-workflow-documents.ts",
     "knowledge:ingest": "node --env-file-if-exists=.env --import tsx scripts/ingest-knowledge.ts",
     "knowledge:verify": "node --env-file-if-exists=.env --import tsx scripts/verify-knowledge.ts",
-    "knowledge:cleanup": "node --env-file-if-exists=.env --import tsx scripts/cleanup-knowledge.ts"
+    "knowledge:cleanup": "node --env-file-if-exists=.env --import tsx scripts/cleanup-knowledge.ts",
+    "knowledge:activate": "node --env-file-if-exists=.env --import tsx scripts/activate-knowledge.ts"
   },
   "exports": {
     ".": "./src/index.ts",

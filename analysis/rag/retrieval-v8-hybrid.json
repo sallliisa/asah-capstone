@@ -1,0 +1,2953 @@
+{
+  "versionId": "4e2e758fcfff33fa021fb23f90888d06e8989c1b21ff7a1e06c0932138ed073b",
+  "rerankerModel": "@cf/baai/bge-reranker-base",
+  "retrievalPolicy": "hybrid-bm25-075-reranker-v2",
+  "minimumScore": 0.0007087934063747525,
+  "minimumRetrievalScore": 0.5074676266400647,
+  "validation": {
+    "cutoff": 0.0007087934063747525,
+    "retrievalCutoff": 0.5074676266400647,
+    "precision": 0.9642857142857143,
+    "recall": 0.8901098901098901,
+    "unsupported": 0,
+    "f1": 0.9257142857142856
+  },
+  "test": {
+    "precision": 0.9130434782608695,
+    "recall": 0.875,
+    "unsupported": 1,
+    "f1": 0.8936170212765957
+  },
+  "passed": false,
+  "rows": [
+    {
+      "split": "validation",
+      "question": "Bagaimana mencatat aktivitas dan pembayaran yang sudah terjadi?",
+      "area": "guidance",
+      "documentId": "app-help",
+      "section": "Mencatat kegiatan dan pembayaran",
+      "matches": [
+        {
+          "id": "49484dfbccf5c7843e4940139da75354083c22f81622832ea3287c5bb4cf21f8",
+          "score": 0.9573063254356384,
+          "retrievalScore": 0.6905777067349419,
+          "documentId": "app-help",
+          "section": "Mencatat kegiatan dan pembayaran",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apa yang terjadi pada riwayat tenant saat pindah kamar?",
+      "area": "rooms",
+      "documentId": "tenant-attention",
+      "section": "Cakupan riwayat dan perpindahan kamar",
+      "matches": [
+        {
+          "id": "62b47e5073b9fcb52f2a9c260d561155a84a1f750cad08f8b7079e6fab565352",
+          "score": 0.9666192531585692,
+          "retrievalScore": 0.6792003666655462,
+          "documentId": "tenant-attention",
+          "section": "Cakupan riwayat dan perpindahan kamar",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Seberapa sering AC diservis secara rutin?",
+      "area": "schedules",
+      "documentId": "kos-procedures",
+      "section": "Kebersihan dan servis berkala",
+      "alternatives": [
+        {
+          "documentId": "app-help",
+          "section": "Rencana berulang dan kotak masuk"
+        }
+      ],
+      "matches": [
+        {
+          "id": "9a7df36e3c0f5e77d90671ace1b43a3149cceaeaf4daa1e2d3fb7ac997d05d77",
+          "score": 0.9975582361221312,
+          "retrievalScore": 0.6270501411280771,
+          "documentId": "kos-procedures",
+          "section": "Kebersihan dan servis berkala",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Adakah masa tenggang untuk sewa bulanan?",
+      "area": "finances",
+      "documentId": "kos-procedures",
+      "section": "Sewa dan pencatatan uang",
+      "matches": [
+        {
+          "id": "a5b81805b6a3199f16e34b54e3f220c50c58fd73d5cb95599ad3b33a693871e2",
+          "score": 0.0709805116057396,
+          "retrievalScore": 0.6231584779020433,
+          "documentId": "kos-procedures",
+          "section": "Sewa dan pencatatan uang",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apa kata sandi Wi-Fi kos?",
+      "area": "guidance",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "dd60fddc3821ff785eb8b3e520414a8b0bab14723b4dd126db072a982888f57d",
+          "score": 0.00003738814848475158,
+          "retrievalScore": 0.3530200360593557,
+          "documentId": "kos-procedures",
+          "section": "Kebersihan dan servis berkala",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Berapa nomor rekening pemilik untuk transfer?",
+      "area": "finances",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "64a8e9d09630bd1330c3a28e34506e234f2d9574256b2bedb81d47b8dc199547",
+          "score": 0.00003735126301762648,
+          "retrievalScore": 0.4378882154052067,
+          "documentId": "tenant-attention",
+          "section": "Cakupan riwayat dan perpindahan kamar",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Siapa nama teknisi langganan kos?",
+      "area": "rooms",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "9a7df36e3c0f5e77d90671ace1b43a3149cceaeaf4daa1e2d3fb7ac997d05d77",
+          "score": 0.00003737520819413476,
+          "retrievalScore": 0.4204528922324792,
+          "documentId": "kos-procedures",
+          "section": "Kebersihan dan servis berkala",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apa nomor telepon pemadam setempat?",
+      "area": "guidance",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "a4b9051e9908c4aa2e43fd9f3be9f6a4fdab9152ce1ab5d10ceddd5428bd9b85",
+          "score": 0.000037325873563531786,
+          "retrievalScore": 0.365782365,
+          "documentId": "maintenance",
+          "section": "Air, lampu, dan pintu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apakah menandai notifikasi dibaca juga menyelesaikan pekerjaan?",
+      "area": "schedules",
+      "documentId": "app-help",
+      "section": "Rencana berulang dan kotak masuk",
+      "matches": [
+        {
+          "id": "3c857e3f476d29944fe02672597f2a93ee452b3ea95214ba35fa55ef5a6555c9",
+          "score": 0.9305834770202636,
+          "retrievalScore": 0.6113151093698652,
+          "documentId": "app-help",
+          "section": "Rencana berulang dan kotak masuk",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apa makna A B dan C pada perhatian tenant?",
+      "area": "guidance",
+      "documentId": "tenant-attention",
+      "section": "Arti nilai dan sumber data",
+      "matches": [
+        {
+          "id": "22bd71ffb30144e17675a7d3044d0459afcc6d9c8e0c6b5907c936f051d00e19",
+          "score": 0.9991507530212402,
+          "retrievalScore": 0.70805571422609,
+          "documentId": "tenant-attention",
+          "section": "Arti nilai dan sumber data",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Data minimum apa yang diperlukan sebelum ada nilai tenant?",
+      "area": "rooms",
+      "documentId": "tenant-attention",
+      "section": "Cakupan riwayat dan perpindahan kamar",
+      "matches": [
+        {
+          "id": "22bd71ffb30144e17675a7d3044d0459afcc6d9c8e0c6b5907c936f051d00e19",
+          "score": 0.0553266741335392,
+          "retrievalScore": 0.6110738247131646,
+          "documentId": "tenant-attention",
+          "section": "Arti nilai dan sumber data",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apa tindakan awal bila AC bocor dekat listrik?",
+      "area": "rooms",
+      "documentId": "maintenance",
+      "section": "AC bocor atau tidak dingin",
+      "matches": [
+        {
+          "id": "15d1ed186d83fb929b453efb1bff03be6f989fdb7cecae6f10b707e24142ec79",
+          "score": 0.9937212467193604,
+          "retrievalScore": 0.7042282667059497,
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apakah biaya sewa saat ini dipakai untuk mengganti catatan sewa lama?",
+      "area": "finances",
+      "documentId": "kos-procedures",
+      "section": "Sewa dan pencatatan uang",
+      "matches": [
+        {
+          "id": "a5b81805b6a3199f16e34b54e3f220c50c58fd73d5cb95599ad3b33a693871e2",
+          "score": 0.8110058307647705,
+          "retrievalScore": 0.622135334427462,
+          "documentId": "kos-procedures",
+          "section": "Sewa dan pencatatan uang",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Berapa tarif sambungan internet per kamar?",
+      "area": "finances",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "a5b81805b6a3199f16e34b54e3f220c50c58fd73d5cb95599ad3b33a693871e2",
+          "score": 0.0000373316761397291,
+          "retrievalScore": 0.44860204361473716,
+          "documentId": "kos-procedures",
+          "section": "Sewa dan pencatatan uang",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Berapa ukuran kasur setiap kamar?",
+      "area": "rooms",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "9a7df36e3c0f5e77d90671ace1b43a3149cceaeaf4daa1e2d3fb7ac997d05d77",
+          "score": 0.000037396312109194696,
+          "retrievalScore": 0.41744169557556904,
+          "documentId": "kos-procedures",
+          "section": "Kebersihan dan servis berkala",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apa harga pasti penggantian kompresor AC?",
+      "area": "guidance",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "9a7df36e3c0f5e77d90671ace1b43a3149cceaeaf4daa1e2d3fb7ac997d05d77",
+          "score": 0.000541077577508986,
+          "retrievalScore": 0.42509248973247926,
+          "documentId": "kos-procedures",
+          "section": "Kebersihan dan servis berkala",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Bagaimana cara menyimpan bukti transaksi pengeluaran yang telah dibayar?",
+      "area": "finances",
+      "documentId": "app-help",
+      "section": "Mencatat kegiatan dan pembayaran",
+      "matches": [
+        {
+          "id": "49484dfbccf5c7843e4940139da75354083c22f81622832ea3287c5bb4cf21f8",
+          "score": 0.9993020296096802,
+          "retrievalScore": 0.6123489464057299,
+          "documentId": "app-help",
+          "section": "Mencatat kegiatan dan pembayaran",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apakah aktivitas manual dipakai untuk tagihan yang belum lunas?",
+      "area": "guidance",
+      "documentId": "app-help",
+      "section": "Mencatat kegiatan dan pembayaran",
+      "matches": [
+        {
+          "id": "49484dfbccf5c7843e4940139da75354083c22f81622832ea3287c5bb4cf21f8",
+          "score": 0.7977092266082764,
+          "retrievalScore": 0.6103891972976274,
+          "documentId": "app-help",
+          "section": "Mencatat kegiatan dan pembayaran",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Bagaimana mengaktifkan pemberitahuan di iPhone yang sudah dipasang ke Home Screen?",
+      "area": "schedules",
+      "documentId": "app-help",
+      "section": "Rencana berulang dan kotak masuk",
+      "matches": [
+        {
+          "id": "3c857e3f476d29944fe02672597f2a93ee452b3ea95214ba35fa55ef5a6555c9",
+          "score": 0.9981542229652404,
+          "retrievalScore": 0.6820807863552463,
+          "documentId": "app-help",
+          "section": "Rencana berulang dan kotak masuk",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apakah menekan logout memutus push pada perangkat tersebut?",
+      "area": "schedules",
+      "documentId": "app-help",
+      "section": "Rencana berulang dan kotak masuk",
+      "matches": [
+        {
+          "id": "3c857e3f476d29944fe02672597f2a93ee452b3ea95214ba35fa55ef5a6555c9",
+          "score": 0.00981402862817049,
+          "retrievalScore": 0.6392026921779416,
+          "documentId": "app-help",
+          "section": "Rencana berulang dan kotak masuk",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Kalau bayar sesudah tanggal jatuh tempo, apakah sudah dianggap terlambat?",
+      "area": "finances",
+      "documentId": "kos-procedures",
+      "section": "Sewa dan pencatatan uang",
+      "matches": [
+        {
+          "id": "a5b81805b6a3199f16e34b54e3f220c50c58fd73d5cb95599ad3b33a693871e2",
+          "score": 0.3146602511405945,
+          "retrievalScore": 0.6214784517286047,
+          "documentId": "kos-procedures",
+          "section": "Sewa dan pencatatan uang",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Denda keterlambatan sewa dihitung otomatis atau tidak?",
+      "area": "finances",
+      "documentId": "kos-procedures",
+      "section": "Sewa dan pencatatan uang",
+      "matches": [
+        {
+          "id": "a5b81805b6a3199f16e34b54e3f220c50c58fd73d5cb95599ad3b33a693871e2",
+          "score": 0.803642988204956,
+          "retrievalScore": 0.6661646988916112,
+          "documentId": "kos-procedures",
+          "section": "Sewa dan pencatatan uang",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apakah tanggal bersih-bersih rutin wajib sama setiap bulannya?",
+      "area": "schedules",
+      "documentId": "kos-procedures",
+      "section": "Kebersihan dan servis berkala",
+      "matches": [
+        {
+          "id": "dd60fddc3821ff785eb8b3e520414a8b0bab14723b4dd126db072a982888f57d",
+          "score": 0.2296394109725952,
+          "retrievalScore": 0.5684343255660211,
+          "documentId": "kos-procedures",
+          "section": "Kebersihan dan servis berkala",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apakah aplikasi yang menentukan tanggal dan nominal pajak usaha?",
+      "area": "schedules",
+      "documentId": "kos-procedures",
+      "section": "Pajak dan pengingat pemilik",
+      "matches": [
+        {
+          "id": "d0df31485c1a6d575c58b0a1f9fc517a6a1f3fe05afb4ca4cc44a92bfbc07c93",
+          "score": 0.023113399744033813,
+          "retrievalScore": 0.6521015593701136,
+          "documentId": "kos-procedures",
+          "section": "Pajak dan pengingat pemilik",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Satu penggantian alat yang mahal langsung membuat tenant memperoleh C?",
+      "area": "rooms",
+      "documentId": "tenant-attention",
+      "section": "Arti nilai dan sumber data",
+      "matches": [
+        {
+          "id": "0b55aff35607b49e0356902538f54b95b2ffbfb1bd6ef3049122a68981bb4ac5",
+          "score": 0.1285788267850876,
+          "retrievalScore": 0.6030448954251988,
+          "documentId": "tenant-attention",
+          "section": "Arti nilai dan sumber data",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apakah hasil penilaian lama hilang ketika layanan model sedang gagal?",
+      "area": "rooms",
+      "documentId": "tenant-attention",
+      "section": "Cakupan riwayat dan perpindahan kamar",
+      "matches": [
+        {
+          "id": "62b47e5073b9fcb52f2a9c260d561155a84a1f750cad08f8b7079e6fab565352",
+          "score": 0.034829724580049515,
+          "retrievalScore": 0.5786612442528449,
+          "documentId": "tenant-attention",
+          "section": "Cakupan riwayat dan perpindahan kamar",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apa yang dilakukan saat ada kabel terbuka dan bau terbakar?",
+      "area": "rooms",
+      "documentId": "maintenance",
+      "section": "Air, lampu, dan pintu",
+      "matches": [
+        {
+          "id": "a4b9051e9908c4aa2e43fd9f3be9f6a4fdab9152ce1ab5d10ceddd5428bd9b85",
+          "score": 0.7120146155357361,
+          "retrievalScore": 0.6155312555907446,
+          "documentId": "maintenance",
+          "section": "Air, lampu, dan pintu",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Siapa yang boleh membongkar bagian listrik AC?",
+      "area": "rooms",
+      "documentId": "maintenance",
+      "section": "AC bocor atau tidak dingin",
+      "matches": [
+        {
+          "id": "15d1ed186d83fb929b453efb1bff03be6f989fdb7cecae6f10b707e24142ec79",
+          "score": 0.6761665940284729,
+          "retrievalScore": 0.5356648210623003,
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Berapa biaya pemasangan CCTV baru di lorong?",
+      "area": "finances",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "3046cca4dcdfe6ee4795845b6c07d846616b112906549e2ed9e5fc7ce40a733a",
+          "score": 0.000037334670196287334,
+          "retrievalScore": 0.3783107096125161,
+          "documentId": "maintenance",
+          "section": "Air, lampu, dan pintu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Jam berapa batas tamu boleh berkunjung ke kos?",
+      "area": "guidance",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "dd60fddc3821ff785eb8b3e520414a8b0bab14723b4dd126db072a982888f57d",
+          "score": 0.003105865092948079,
+          "retrievalScore": 0.4070361835593558,
+          "documentId": "kos-procedures",
+          "section": "Kebersihan dan servis berkala",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apa merek AC yang terpasang di kamar nomor tujuh?",
+      "area": "rooms",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "15d1ed186d83fb929b453efb1bff03be6f989fdb7cecae6f10b707e24142ec79",
+          "score": 0.0010125180706381798,
+          "retrievalScore": 0.41760900754479835,
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Tanggal pasti pelaporan pajak pemilik tahun ini kapan?",
+      "area": "schedules",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "d0df31485c1a6d575c58b0a1f9fc517a6a1f3fe05afb4ca4cc44a92bfbc07c93",
+          "score": 0.000594868790358305,
+          "retrievalScore": 0.6045675551215233,
+          "documentId": "kos-procedures",
+          "section": "Pajak dan pengingat pemilik",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Berapa deposit yang wajib disetor tenant baru?",
+      "area": "finances",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "64a8e9d09630bd1330c3a28e34506e234f2d9574256b2bedb81d47b8dc199547",
+          "score": 0.0003090508689638227,
+          "retrievalScore": 0.4370436128178472,
+          "documentId": "tenant-attention",
+          "section": "Cakupan riwayat dan perpindahan kamar",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Siapa nomor kontak darurat pengelola malam?",
+      "area": "guidance",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "833cadc30e7bd738ab0333c69f0649041c004eab8f62089ae545563524ef4bae",
+          "score": 0.00003731174729182385,
+          "retrievalScore": 0.31756456499999997,
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apa bedanya Routine Cleaning dengan Extra Cleaning?",
+      "area": "guidance",
+      "documentId": "kos-procedures",
+      "section": "Kebersihan dan servis berkala",
+      "matches": [
+        {
+          "id": "dd60fddc3821ff785eb8b3e520414a8b0bab14723b4dd126db072a982888f57d",
+          "score": 0.9737247824668884,
+          "retrievalScore": 0.6143425079825343,
+          "documentId": "kos-procedures",
+          "section": "Kebersihan dan servis berkala",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Kapan servis AC berkala perlu dijadwalkan lagi?",
+      "area": "schedules",
+      "documentId": "kos-procedures",
+      "section": "Kebersihan dan servis berkala",
+      "alternatives": [
+        {
+          "documentId": "app-help",
+          "section": "Rencana berulang dan kotak masuk"
+        }
+      ],
+      "matches": [
+        {
+          "id": "9a7df36e3c0f5e77d90671ace1b43a3149cceaeaf4daa1e2d3fb7ac997d05d77",
+          "score": 0.3496512770652771,
+          "retrievalScore": 0.6727243748183782,
+          "documentId": "kos-procedures",
+          "section": "Kebersihan dan servis berkala",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apakah uang draft sudah dianggap kas masuk?",
+      "area": "finances",
+      "documentId": "kos-procedures",
+      "section": "Sewa dan pencatatan uang",
+      "matches": [
+        {
+          "id": "a5b81805b6a3199f16e34b54e3f220c50c58fd73d5cb95599ad3b33a693871e2",
+          "score": 0.0017003986285999415,
+          "retrievalScore": 0.5488382313232406,
+          "documentId": "kos-procedures",
+          "section": "Sewa dan pencatatan uang",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Pembayaran tepat pada tanggal jatuh tempo termasuk tepat waktu atau terlambat?",
+      "area": "finances",
+      "documentId": "kos-procedures",
+      "section": "Sewa dan pencatatan uang",
+      "matches": [
+        {
+          "id": "a5b81805b6a3199f16e34b54e3f220c50c58fd73d5cb95599ad3b33a693871e2",
+          "score": 0.4291730523109436,
+          "retrievalScore": 0.6580042995490342,
+          "documentId": "kos-procedures",
+          "section": "Sewa dan pencatatan uang",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apakah Pi boleh menetapkan besaran pajak yang harus saya bayar?",
+      "area": "finances",
+      "documentId": "kos-procedures",
+      "section": "Pajak dan pengingat pemilik",
+      "matches": [
+        {
+          "id": "d0df31485c1a6d575c58b0a1f9fc517a6a1f3fe05afb4ca4cc44a92bfbc07c93",
+          "score": 0.00003739049861906096,
+          "retrievalScore": 0.5529447159825418,
+          "documentId": "kos-procedures",
+          "section": "Pajak dan pengingat pemilik",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apa alasan nilai tenant tidak membuktikan bahwa dia merusak kamar?",
+      "area": "rooms",
+      "documentId": "tenant-attention",
+      "section": "Arti nilai dan sumber data",
+      "matches": [
+        {
+          "id": "62b47e5073b9fcb52f2a9c260d561155a84a1f750cad08f8b7079e6fab565352",
+          "score": 0.0001091203957912512,
+          "retrievalScore": 0.5836736094569893,
+          "documentId": "tenant-attention",
+          "section": "Cakupan riwayat dan perpindahan kamar",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apakah kebersihan rutin termasuk data yang menaikkan prioritas tenant?",
+      "area": "rooms",
+      "documentId": "tenant-attention",
+      "section": "Arti nilai dan sumber data",
+      "matches": [
+        {
+          "id": "0b55aff35607b49e0356902538f54b95b2ffbfb1bd6ef3049122a68981bb4ac5",
+          "score": 0.05722707137465477,
+          "retrievalScore": 0.6309705951630786,
+          "documentId": "tenant-attention",
+          "section": "Arti nilai dan sumber data",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Bagaimana memperbaiki keterkaitan tenant yang salah pada aktivitas historis?",
+      "area": "rooms",
+      "documentId": "tenant-attention",
+      "section": "Cakupan riwayat dan perpindahan kamar",
+      "matches": [
+        {
+          "id": "62b47e5073b9fcb52f2a9c260d561155a84a1f750cad08f8b7079e6fab565352",
+          "score": 0.0007087934063747525,
+          "retrievalScore": 0.5772662719531261,
+          "documentId": "tenant-attention",
+          "section": "Cakupan riwayat dan perpindahan kamar",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Masih bisakah melihat riwayat tenant yang sudah tidak aktif?",
+      "area": "rooms",
+      "documentId": "tenant-attention",
+      "section": "Cakupan riwayat dan perpindahan kamar",
+      "matches": [
+        {
+          "id": "62b47e5073b9fcb52f2a9c260d561155a84a1f750cad08f8b7079e6fab565352",
+          "score": 0.006407096050679684,
+          "retrievalScore": 0.6445093398245244,
+          "documentId": "tenant-attention",
+          "section": "Cakupan riwayat dan perpindahan kamar",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Kalau pekerjaan dibatalkan, apakah pembayaran draft otomatis menjadi lunas?",
+      "area": "finances",
+      "documentId": "app-help",
+      "section": "Mencatat kegiatan dan pembayaran",
+      "matches": [
+        {
+          "id": "49484dfbccf5c7843e4940139da75354083c22f81622832ea3287c5bb4cf21f8",
+          "score": 0.9979239702224731,
+          "retrievalScore": 0.5964089871658599,
+          "documentId": "app-help",
+          "section": "Mencatat kegiatan dan pembayaran",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Haruskah biaya yang belum diketahui saya isi nol?",
+      "area": "finances",
+      "documentId": "app-help",
+      "section": "Mencatat kegiatan dan pembayaran",
+      "matches": [
+        {
+          "id": "49484dfbccf5c7843e4940139da75354083c22f81622832ea3287c5bb4cf21f8",
+          "score": 0.8630526065826416,
+          "retrievalScore": 0.5276974781390903,
+          "documentId": "app-help",
+          "section": "Mencatat kegiatan dan pembayaran",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Setelah ganti penghuni, apakah rencana sewa lama dipindahkan tenantnya?",
+      "area": "schedules",
+      "documentId": "app-help",
+      "section": "Rencana berulang dan kotak masuk",
+      "matches": [
+        {
+          "id": "00e57bdf4b53843ae4bf137613952c319b3f87a7dd587585020ce6bf1168b1d1",
+          "score": 0.014896782115101814,
+          "retrievalScore": 0.5935972775339311,
+          "documentId": "app-help",
+          "section": "Rencana berulang dan kotak masuk",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Bagaimana menjaga penghuni saat ada air dekat stopkontak AC?",
+      "area": "rooms",
+      "documentId": "maintenance",
+      "section": "AC bocor atau tidak dingin",
+      "matches": [
+        {
+          "id": "15d1ed186d83fb929b453efb1bff03be6f989fdb7cecae6f10b707e24142ec79",
+          "score": 0.9929832220077516,
+          "retrievalScore": 0.6467224801729973,
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Kalau pintu rusak, apa yang harus diperhatikan tentang jalan keluar?",
+      "area": "rooms",
+      "documentId": "maintenance",
+      "section": "Air, lampu, dan pintu",
+      "matches": [
+        {
+          "id": "a4b9051e9908c4aa2e43fd9f3be9f6a4fdab9152ce1ab5d10ceddd5428bd9b85",
+          "score": 0.35647711157798767,
+          "retrievalScore": 0.6130518891098808,
+          "documentId": "maintenance",
+          "section": "Air, lampu, dan pintu",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apa password akun admin aplikasi?",
+      "area": "guidance",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "3c857e3f476d29944fe02672597f2a93ee452b3ea95214ba35fa55ef5a6555c9",
+          "score": 0.000037475532735697925,
+          "retrievalScore": 0.41333445486419906,
+          "documentId": "app-help",
+          "section": "Rencana berulang dan kotak masuk",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Siapa pemilik sah bangunan kos ini?",
+      "area": "guidance",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "a5b81805b6a3199f16e34b54e3f220c50c58fd73d5cb95599ad3b33a693871e2",
+          "score": 0.00003729161107912659,
+          "retrievalScore": 0.39103708747490684,
+          "documentId": "kos-procedures",
+          "section": "Sewa dan pencatatan uang",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Berapa kapasitas daya listrik tiap kamar dalam watt?",
+      "area": "rooms",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "15d1ed186d83fb929b453efb1bff03be6f989fdb7cecae6f10b707e24142ec79",
+          "score": 0.00003730644311872311,
+          "retrievalScore": 0.41362734690629865,
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apakah boleh membawa kucing ke kamar kos?",
+      "area": "guidance",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "dd60fddc3821ff785eb8b3e520414a8b0bab14723b4dd126db072a982888f57d",
+          "score": 0.00003732512777787633,
+          "retrievalScore": 0.4708332291183867,
+          "documentId": "kos-procedures",
+          "section": "Kebersihan dan servis berkala",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Berapa biaya langganan laundry bulanan?",
+      "area": "finances",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "a5b81805b6a3199f16e34b54e3f220c50c58fd73d5cb95599ad3b33a693871e2",
+          "score": 0.00019892537966370585,
+          "retrievalScore": 0.42584372135921866,
+          "documentId": "kos-procedures",
+          "section": "Sewa dan pencatatan uang",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Siapa petugas piket pada hari Minggu ini?",
+      "area": "schedules",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "15d1ed186d83fb929b453efb1bff03be6f989fdb7cecae6f10b707e24142ec79",
+          "score": 0.00031884043710306287,
+          "retrievalScore": 0.38367127205830964,
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Bagaimana mencatat tanggal bayar yang berbeda dari tanggal pekerjaan selesai?",
+      "area": "guidance",
+      "documentId": "app-help",
+      "section": "Mencatat kegiatan dan pembayaran",
+      "alternatives": [
+        {
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin"
+        }
+      ],
+      "matches": [
+        {
+          "id": "49484dfbccf5c7843e4940139da75354083c22f81622832ea3287c5bb4cf21f8",
+          "score": 0.21028271317481995,
+          "retrievalScore": 0.6342808153035208,
+          "documentId": "app-help",
+          "section": "Mencatat kegiatan dan pembayaran",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apa yang harus dilakukan agar bukti pembayaran ikut tersimpan?",
+      "area": "finances",
+      "documentId": "app-help",
+      "section": "Mencatat kegiatan dan pembayaran",
+      "matches": [
+        {
+          "id": "49484dfbccf5c7843e4940139da75354083c22f81622832ea3287c5bb4cf21f8",
+          "score": 0.8529297709465027,
+          "retrievalScore": 0.5634723556524013,
+          "documentId": "app-help",
+          "section": "Mencatat kegiatan dan pembayaran",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Di mana pemilik dapat melihat daftar pemberitahuan kegiatan?",
+      "area": "schedules",
+      "documentId": "app-help",
+      "section": "Rencana berulang dan kotak masuk",
+      "matches": [
+        {
+          "id": "d0df31485c1a6d575c58b0a1f9fc517a6a1f3fe05afb4ca4cc44a92bfbc07c93",
+          "score": 0.0013521215878427029,
+          "retrievalScore": 0.5011029498024343,
+          "documentId": "kos-procedures",
+          "section": "Pajak dan pengingat pemilik",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apakah daftar kegiatan mendatang langsung membuat aktivitas lebih cepat?",
+      "area": "schedules",
+      "documentId": "app-help",
+      "section": "Rencana berulang dan kotak masuk",
+      "matches": [
+        {
+          "id": "00e57bdf4b53843ae4bf137613952c319b3f87a7dd587585020ce6bf1168b1d1",
+          "score": 0.000037303208955563605,
+          "retrievalScore": 0.5957943281842495,
+          "documentId": "app-help",
+          "section": "Rencana berulang dan kotak masuk",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Berapa bulan sekali penghuni membayar sewa?",
+      "area": "finances",
+      "documentId": "kos-procedures",
+      "section": "Sewa dan pencatatan uang",
+      "alternatives": [
+        {
+          "documentId": "app-help",
+          "section": "Rencana berulang dan kotak masuk"
+        }
+      ],
+      "matches": [
+        {
+          "id": "a5b81805b6a3199f16e34b54e3f220c50c58fd73d5cb95599ad3b33a693871e2",
+          "score": 0.009824687615036964,
+          "retrievalScore": 0.5534049616830141,
+          "documentId": "kos-procedures",
+          "section": "Sewa dan pencatatan uang",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Bolehkah mengubah nominal transaksi sewa lama sesuai tarif kamar terbaru?",
+      "area": "finances",
+      "documentId": "kos-procedures",
+      "section": "Sewa dan pencatatan uang",
+      "matches": [
+        {
+          "id": "a5b81805b6a3199f16e34b54e3f220c50c58fd73d5cb95599ad3b33a693871e2",
+          "score": 0.4189952313899994,
+          "retrievalScore": 0.6098673812653752,
+          "documentId": "kos-procedures",
+          "section": "Sewa dan pencatatan uang",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apakah bersih-bersih tambahan boleh dianggap bukti penghuni bersalah?",
+      "area": "rooms",
+      "documentId": "kos-procedures",
+      "section": "Kebersihan dan servis berkala",
+      "matches": [
+        {
+          "id": "3046cca4dcdfe6ee4795845b6c07d846616b112906549e2ed9e5fc7ce40a733a",
+          "score": 0.0014663446927443149,
+          "retrievalScore": 0.5013736365522538,
+          "documentId": "maintenance",
+          "section": "Air, lampu, dan pintu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Kategori apa yang dipakai untuk servis AC yang sudah direncanakan?",
+      "area": "schedules",
+      "documentId": "kos-procedures",
+      "section": "Kebersihan dan servis berkala",
+      "alternatives": [
+        {
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin"
+        },
+        {
+          "documentId": "app-help",
+          "section": "Mencatat kegiatan dan pembayaran"
+        }
+      ],
+      "matches": [
+        {
+          "id": "833cadc30e7bd738ab0333c69f0649041c004eab8f62089ae545563524ef4bae",
+          "score": 0.01240046974271536,
+          "retrievalScore": 0.5903996261111762,
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Siapa yang mengatur tanggal pengingat urusan perpajakan?",
+      "area": "schedules",
+      "documentId": "kos-procedures",
+      "section": "Pajak dan pengingat pemilik",
+      "matches": [
+        {
+          "id": "d0df31485c1a6d575c58b0a1f9fc517a6a1f3fe05afb4ca4cc44a92bfbc07c93",
+          "score": 0.3652873933315277,
+          "retrievalScore": 0.614021797989992,
+          "documentId": "kos-procedures",
+          "section": "Pajak dan pengingat pemilik",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apa arti prioritas C untuk pemeriksaan tenant?",
+      "area": "guidance",
+      "documentId": "tenant-attention",
+      "section": "Arti nilai dan sumber data",
+      "matches": [
+        {
+          "id": "22bd71ffb30144e17675a7d3044d0459afcc6d9c8e0c6b5907c936f051d00e19",
+          "score": 0.9992944002151488,
+          "retrievalScore": 0.6310349108885064,
+          "documentId": "tenant-attention",
+          "section": "Arti nilai dan sumber data",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apakah satu perbaikan dengan biaya besar menjamin nilai tenant C?",
+      "area": "rooms",
+      "documentId": "tenant-attention",
+      "section": "Arti nilai dan sumber data",
+      "matches": [
+        {
+          "id": "0b55aff35607b49e0356902538f54b95b2ffbfb1bd6ef3049122a68981bb4ac5",
+          "score": 0.002024651039391756,
+          "retrievalScore": 0.6428564745788822,
+          "documentId": "tenant-attention",
+          "section": "Arti nilai dan sumber data",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Mengapa data tenant yang belum lengkap tidak langsung diberi nilai A?",
+      "area": "rooms",
+      "documentId": "tenant-attention",
+      "section": "Cakupan riwayat dan perpindahan kamar",
+      "matches": [
+        {
+          "id": "64a8e9d09630bd1330c3a28e34506e234f2d9574256b2bedb81d47b8dc199547",
+          "score": 0.00004388624074636027,
+          "retrievalScore": 0.6168512153938156,
+          "documentId": "tenant-attention",
+          "section": "Cakupan riwayat dan perpindahan kamar",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apakah pindah kamar mereset seluruh riwayat tenant?",
+      "area": "rooms",
+      "documentId": "tenant-attention",
+      "section": "Cakupan riwayat dan perpindahan kamar",
+      "matches": [
+        {
+          "id": "62b47e5073b9fcb52f2a9c260d561155a84a1f750cad08f8b7079e6fab565352",
+          "score": 0.7215495705604553,
+          "retrievalScore": 0.6639821916655462,
+          "documentId": "tenant-attention",
+          "section": "Cakupan riwayat dan perpindahan kamar",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apa yang perlu dicatat saat AC mengeluarkan air?",
+      "area": "rooms",
+      "documentId": "maintenance",
+      "section": "AC bocor atau tidak dingin",
+      "matches": [
+        {
+          "id": "15d1ed186d83fb929b453efb1bff03be6f989fdb7cecae6f10b707e24142ec79",
+          "score": 0.8995717167854309,
+          "retrievalScore": 0.606293684071079,
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Bolehkah penghuni mengerjakan instalasi listrik yang masih bertegangan?",
+      "area": "rooms",
+      "documentId": "maintenance",
+      "section": "Air, lampu, dan pintu",
+      "matches": [
+        {
+          "id": "a4b9051e9908c4aa2e43fd9f3be9f6a4fdab9152ce1ab5d10ceddd5428bd9b85",
+          "score": 0.02674666978418827,
+          "retrievalScore": 0.6014349071271512,
+          "documentId": "maintenance",
+          "section": "Air, lampu, dan pintu",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Bagaimana mencatat hasil pekerjaan setelah gangguan fasilitas selesai ditangani?",
+      "area": "rooms",
+      "documentId": "maintenance",
+      "section": "Air, lampu, dan pintu",
+      "alternatives": [
+        {
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin"
+        }
+      ],
+      "matches": [
+        {
+          "id": "3046cca4dcdfe6ee4795845b6c07d846616b112906549e2ed9e5fc7ce40a733a",
+          "score": 0.020680055022239685,
+          "retrievalScore": 0.5669613489816607,
+          "documentId": "maintenance",
+          "section": "Air, lampu, dan pintu",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Nomor rekening bank apa yang dipakai untuk uang jaminan?",
+      "area": "finances",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "49484dfbccf5c7843e4940139da75354083c22f81622832ea3287c5bb4cf21f8",
+          "score": 0.00003733182165888138,
+          "retrievalScore": 0.42084494725536836,
+          "documentId": "app-help",
+          "section": "Mencatat kegiatan dan pembayaran",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apakah tersedia kamar dengan balkon pribadi?",
+      "area": "rooms",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "62b47e5073b9fcb52f2a9c260d561155a84a1f750cad08f8b7079e6fab565352",
+          "score": 0.00003740972533705644,
+          "retrievalScore": 0.42181917977918115,
+          "documentId": "tenant-attention",
+          "section": "Cakupan riwayat dan perpindahan kamar",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Di mana tempat parkir khusus pengunjung?",
+      "area": "guidance",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "f06b1928b31803f01cc40568208a00cf1ff425f70dc9528f740db1087860eff0",
+          "score": 0.00003740940155694261,
+          "retrievalScore": 0.37151658667514464,
+          "documentId": "app-help",
+          "section": "Mencatat kegiatan dan pembayaran",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Berapa biaya langganan televisi kabel?",
+      "area": "finances",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "a4b9051e9908c4aa2e43fd9f3be9f6a4fdab9152ce1ab5d10ceddd5428bd9b85",
+          "score": 0.00003742978151421994,
+          "retrievalScore": 0.35526863224306954,
+          "documentId": "maintenance",
+          "section": "Air, lampu, dan pintu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apa nama merek deterjen yang harus dipakai?",
+      "area": "guidance",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "f06b1928b31803f01cc40568208a00cf1ff425f70dc9528f740db1087860eff0",
+          "score": 0.00003740198371815495,
+          "retrievalScore": 0.3933186759435011,
+          "documentId": "app-help",
+          "section": "Mencatat kegiatan dan pembayaran",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Kapan jadwal pengangkutan sampah oleh petugas kota?",
+      "area": "schedules",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "15d1ed186d83fb929b453efb1bff03be6f989fdb7cecae6f10b707e24142ec79",
+          "score": 0.00003732370532816276,
+          "retrievalScore": 0.38545142705830965,
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apakah penghuni boleh memasak dengan kompor gas di kamar?",
+      "area": "guidance",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "15d1ed186d83fb929b453efb1bff03be6f989fdb7cecae6f10b707e24142ec79",
+          "score": 0.0006011336809024215,
+          "retrievalScore": 0.4308544725447983,
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Berapa luas lahan bangunan kos dalam meter persegi?",
+      "area": "rooms",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "9a7df36e3c0f5e77d90671ace1b43a3149cceaeaf4daa1e2d3fb7ac997d05d77",
+          "score": 0.00003733189078047872,
+          "retrievalScore": 0.38245741223247925,
+          "documentId": "kos-procedures",
+          "section": "Kebersihan dan servis berkala",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Bagaimana memilih kategori Corrective Repairs untuk kejadian insidental?",
+      "area": "rooms",
+      "documentId": "app-help",
+      "section": "Mencatat kegiatan dan pembayaran",
+      "alternatives": [
+        {
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin"
+        }
+      ],
+      "matches": [
+        {
+          "id": "833cadc30e7bd738ab0333c69f0649041c004eab8f62089ae545563524ef4bae",
+          "score": 0.036784250289201736,
+          "retrievalScore": 0.6046546781457237,
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Jika transaksi manual berupa pemasukan sudah diterima, rincian uang apa yang harus saya isi?",
+      "area": "finances",
+      "documentId": "app-help",
+      "section": "Mencatat kegiatan dan pembayaran",
+      "matches": [
+        {
+          "id": "49484dfbccf5c7843e4940139da75354083c22f81622832ea3287c5bb4cf21f8",
+          "score": 0.7729699015617371,
+          "retrievalScore": 0.6962153420935532,
+          "documentId": "app-help",
+          "section": "Mencatat kegiatan dan pembayaran",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Bukti bayar tersedia, apakah bisa disimpan bersama aktivitas?",
+      "area": "finances",
+      "documentId": "app-help",
+      "section": "Mencatat kegiatan dan pembayaran",
+      "matches": [
+        {
+          "id": "49484dfbccf5c7843e4940139da75354083c22f81622832ea3287c5bb4cf21f8",
+          "score": 0.9571223855018616,
+          "retrievalScore": 0.618413886906029,
+          "documentId": "app-help",
+          "section": "Mencatat kegiatan dan pembayaran",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Bagaimana cara mendapatkan push di iPhone melalui aplikasi Home Screen?",
+      "area": "schedules",
+      "documentId": "app-help",
+      "section": "Rencana berulang dan kotak masuk",
+      "matches": [
+        {
+          "id": "3c857e3f476d29944fe02672597f2a93ee452b3ea95214ba35fa55ef5a6555c9",
+          "score": 0.9947077035903932,
+          "retrievalScore": 0.7291644808144941,
+          "documentId": "app-help",
+          "section": "Rencana berulang dan kotak masuk",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apakah membaca pesan di kotak Notifications mengubah status pembayaran?",
+      "area": "schedules",
+      "documentId": "app-help",
+      "section": "Rencana berulang dan kotak masuk",
+      "matches": [
+        {
+          "id": "3c857e3f476d29944fe02672597f2a93ee452b3ea95214ba35fa55ef5a6555c9",
+          "score": 0.7381311655044556,
+          "retrievalScore": 0.6369271377877089,
+          "documentId": "app-help",
+          "section": "Rencana berulang dan kotak masuk",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Untuk sewa penghuni, berapa interval pembayaran bulanannya dan adakah masa tenggang?",
+      "area": "finances",
+      "documentId": "kos-procedures",
+      "section": "Sewa dan pencatatan uang",
+      "matches": [
+        {
+          "id": "a5b81805b6a3199f16e34b54e3f220c50c58fd73d5cb95599ad3b33a693871e2",
+          "score": 0.12030187994241714,
+          "retrievalScore": 0.6481753535675122,
+          "documentId": "kos-procedures",
+          "section": "Sewa dan pencatatan uang",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apakah nominal transaksi draft sudah dihitung sebagai uang yang diterima?",
+      "area": "finances",
+      "documentId": "kos-procedures",
+      "section": "Sewa dan pencatatan uang",
+      "matches": [
+        {
+          "id": "49484dfbccf5c7843e4940139da75354083c22f81622832ea3287c5bb4cf21f8",
+          "score": 0.017165852710604668,
+          "retrievalScore": 0.5908694595981845,
+          "documentId": "app-help",
+          "section": "Mencatat kegiatan dan pembayaran",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Seperti apa pencatatan untuk pembersihan di luar kebersihan rutin?",
+      "area": "rooms",
+      "documentId": "kos-procedures",
+      "section": "Kebersihan dan servis berkala",
+      "matches": [
+        {
+          "id": "dd60fddc3821ff785eb8b3e520414a8b0bab14723b4dd126db072a982888f57d",
+          "score": 0.4229332506656647,
+          "retrievalScore": 0.6793755556492737,
+          "documentId": "kos-procedures",
+          "section": "Kebersihan dan servis berkala",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Berapa interval bulan untuk Scheduled Servicing AC kamar?",
+      "area": "schedules",
+      "documentId": "kos-procedures",
+      "section": "Kebersihan dan servis berkala",
+      "alternatives": [
+        {
+          "documentId": "app-help",
+          "section": "Rencana berulang dan kotak masuk"
+        }
+      ],
+      "matches": [
+        {
+          "id": "9a7df36e3c0f5e77d90671ace1b43a3149cceaeaf4daa1e2d3fb7ac997d05d77",
+          "score": 0.6757219433784485,
+          "retrievalScore": 0.6756139726962959,
+          "documentId": "kos-procedures",
+          "section": "Kebersihan dan servis berkala",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Bagaimana pemilik mengatur pengingat pada musim pajak?",
+      "area": "schedules",
+      "documentId": "kos-procedures",
+      "section": "Pajak dan pengingat pemilik",
+      "matches": [
+        {
+          "id": "d0df31485c1a6d575c58b0a1f9fc517a6a1f3fe05afb4ca4cc44a92bfbc07c93",
+          "score": 0.9936625957489014,
+          "retrievalScore": 0.7260369040734396,
+          "documentId": "kos-procedures",
+          "section": "Pajak dan pengingat pemilik",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Mengapa prioritas tenant bukan kesimpulan tentang watak atau penyebab kerusakan?",
+      "area": "guidance",
+      "documentId": "tenant-attention",
+      "section": "Arti nilai dan sumber data",
+      "matches": [
+        {
+          "id": "22bd71ffb30144e17675a7d3044d0459afcc6d9c8e0c6b5907c936f051d00e19",
+          "score": 0.5913452506065369,
+          "retrievalScore": 0.6250747046035989,
+          "documentId": "tenant-attention",
+          "section": "Arti nilai dan sumber data",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apakah model mempertimbangkan perbaikan selesai, biaya yang dibayar, dan ketepatan sewa?",
+      "area": "guidance",
+      "documentId": "tenant-attention",
+      "section": "Arti nilai dan sumber data",
+      "matches": [
+        {
+          "id": "0b55aff35607b49e0356902538f54b95b2ffbfb1bd6ef3049122a68981bb4ac5",
+          "score": 0.7931604981422424,
+          "retrievalScore": 0.6234660452193261,
+          "documentId": "tenant-attention",
+          "section": "Arti nilai dan sumber data",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Berapa lama riwayat yang dipakai dan berapa minimum kejadian sewa untuk penilaian tenant?",
+      "area": "rooms",
+      "documentId": "tenant-attention",
+      "section": "Cakupan riwayat dan perpindahan kamar",
+      "matches": [
+        {
+          "id": "64a8e9d09630bd1330c3a28e34506e234f2d9574256b2bedb81d47b8dc199547",
+          "score": 0.301444947719574,
+          "retrievalScore": 0.7017757927141969,
+          "documentId": "tenant-attention",
+          "section": "Cakupan riwayat dan perpindahan kamar",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apa hubungan antara kamar sumber aktivitas dan riwayat tenant setelah perpindahan?",
+      "area": "rooms",
+      "documentId": "tenant-attention",
+      "section": "Cakupan riwayat dan perpindahan kamar",
+      "matches": [
+        {
+          "id": "62b47e5073b9fcb52f2a9c260d561155a84a1f750cad08f8b7079e6fab565352",
+          "score": 0.9944509863853456,
+          "retrievalScore": 0.7001138640195599,
+          "documentId": "tenant-attention",
+          "section": "Cakupan riwayat dan perpindahan kamar",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Saat AC berbau terbakar dan berbunyi tidak normal, apa langkah aman untuk penghuni?",
+      "area": "rooms",
+      "documentId": "maintenance",
+      "section": "AC bocor atau tidak dingin",
+      "matches": [
+        {
+          "id": "15d1ed186d83fb929b453efb1bff03be6f989fdb7cecae6f10b707e24142ec79",
+          "score": 0.9707277417182922,
+          "retrievalScore": 0.6834859341749082,
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apa yang perlu diperhatikan agar pintu rusak tidak menghalangi evakuasi?",
+      "area": "rooms",
+      "documentId": "maintenance",
+      "section": "Air, lampu, dan pintu",
+      "matches": [
+        {
+          "id": "a4b9051e9908c4aa2e43fd9f3be9f6a4fdab9152ce1ab5d10ceddd5428bd9b85",
+          "score": 0.7524548768997192,
+          "retrievalScore": 0.6283024282882301,
+          "documentId": "maintenance",
+          "section": "Air, lampu, dan pintu",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apa alamat kantor pengelola kos?",
+      "area": "guidance",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "dd60fddc3821ff785eb8b3e520414a8b0bab14723b4dd126db072a982888f57d",
+          "score": 0.0000647821361781098,
+          "retrievalScore": 0.43359758355935574,
+          "documentId": "kos-procedures",
+          "section": "Kebersihan dan servis berkala",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apakah tarif parkir motor dibayar terpisah?",
+      "area": "finances",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "a5b81805b6a3199f16e34b54e3f220c50c58fd73d5cb95599ad3b33a693871e2",
+          "score": 0.00003739017847692594,
+          "retrievalScore": 0.49135671478916676,
+          "documentId": "kos-procedures",
+          "section": "Sewa dan pencatatan uang",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Kamar mana saja yang punya pemanas air?",
+      "area": "rooms",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "15d1ed186d83fb929b453efb1bff03be6f989fdb7cecae6f10b707e24142ec79",
+          "score": 0.00003784674845519475,
+          "retrievalScore": 0.47323467513094175,
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apakah tersedia makanan sahur untuk penghuni?",
+      "area": "guidance",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "a5b81805b6a3199f16e34b54e3f220c50c58fd73d5cb95599ad3b33a693871e2",
+          "score": 0.00003742388798855245,
+          "retrievalScore": 0.37355261052162436,
+          "documentId": "kos-procedures",
+          "section": "Sewa dan pencatatan uang",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Berapa nomor pelanggan perusahaan air untuk kos ini?",
+      "area": "finances",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "dd60fddc3821ff785eb8b3e520414a8b0bab14723b4dd126db072a982888f57d",
+          "score": 0.00004724626705865376,
+          "retrievalScore": 0.43501260855935575,
+          "documentId": "kos-procedures",
+          "section": "Kebersihan dan servis berkala",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apa hari libur tahunan penjaga kos?",
+      "area": "schedules",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "dd60fddc3821ff785eb8b3e520414a8b0bab14723b4dd126db072a982888f57d",
+          "score": 0.006586616858839989,
+          "retrievalScore": 0.46618418355935576,
+          "documentId": "kos-procedures",
+          "section": "Kebersihan dan servis berkala",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Berapa nomor seri mesin cuci di fasilitas bersama?",
+      "area": "rooms",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "9a7df36e3c0f5e77d90671ace1b43a3149cceaeaf4daa1e2d3fb7ac997d05d77",
+          "score": 0.00004196913505438715,
+          "retrievalScore": 0.342049575,
+          "documentId": "kos-procedures",
+          "section": "Kebersihan dan servis berkala",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Jam berapa gerbang depan dikunci setiap malam?",
+      "area": "guidance",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "a5b81805b6a3199f16e34b54e3f220c50c58fd73d5cb95599ad3b33a693871e2",
+          "score": 0.000037421679735416546,
+          "retrievalScore": 0.3722265901847854,
+          "documentId": "kos-procedures",
+          "section": "Sewa dan pencatatan uang",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Saya mau merekam perbaikan mendadak di kamar. Kategori aktivitas apa yang sesuai?",
+      "area": "rooms",
+      "documentId": "app-help",
+      "section": "Mencatat kegiatan dan pembayaran",
+      "alternatives": [
+        {
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin"
+        },
+        {
+          "documentId": "kos-procedures",
+          "section": "Kebersihan dan servis berkala"
+        }
+      ],
+      "matches": [
+        {
+          "id": "f06b1928b31803f01cc40568208a00cf1ff425f70dc9528f740db1087860eff0",
+          "score": 0.6136792898178101,
+          "retrievalScore": 0.6461194807481901,
+          "documentId": "app-help",
+          "section": "Mencatat kegiatan dan pembayaran",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Bagaimana mengisi pemasukan dan pengeluaran manual yang pembayarannya sudah terjadi?",
+      "area": "finances",
+      "documentId": "app-help",
+      "section": "Mencatat kegiatan dan pembayaran",
+      "matches": [
+        {
+          "id": "49484dfbccf5c7843e4940139da75354083c22f81622832ea3287c5bb4cf21f8",
+          "score": 0.995599627494812,
+          "retrievalScore": 0.7016994708953219,
+          "documentId": "app-help",
+          "section": "Mencatat kegiatan dan pembayaran",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Untuk transaksi yang sudah lunas, tanggal mana yang dicatat sebagai tanggal bayar?",
+      "area": "finances",
+      "documentId": "app-help",
+      "section": "Mencatat kegiatan dan pembayaran",
+      "alternatives": [
+        {
+          "documentId": "kos-procedures",
+          "section": "Sewa dan pencatatan uang"
+        },
+        {
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin"
+        }
+      ],
+      "matches": [
+        {
+          "id": "49484dfbccf5c7843e4940139da75354083c22f81622832ea3287c5bb4cf21f8",
+          "score": 0.22625410556793213,
+          "retrievalScore": 0.5074676266400647,
+          "documentId": "app-help",
+          "section": "Mencatat kegiatan dan pembayaran",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apa gunanya memilih kamar dan tenant ketika membuat kegiatan?",
+      "area": "rooms",
+      "documentId": "app-help",
+      "section": "Mencatat kegiatan dan pembayaran",
+      "matches": [
+        {
+          "id": "00e57bdf4b53843ae4bf137613952c319b3f87a7dd587585020ce6bf1168b1d1",
+          "score": 0.00012270663864910605,
+          "retrievalScore": 0.5706192173444301,
+          "documentId": "app-help",
+          "section": "Rencana berulang dan kotak masuk",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Bisakah notifikasi tetap berada di kotak masuk jika push tidak sampai?",
+      "area": "schedules",
+      "documentId": "app-help",
+      "section": "Rencana berulang dan kotak masuk",
+      "matches": [
+        {
+          "id": "3c857e3f476d29944fe02672597f2a93ee452b3ea95214ba35fa55ef5a6555c9",
+          "score": 0.8903076648712158,
+          "retrievalScore": 0.6876788383570882,
+          "documentId": "app-help",
+          "section": "Rencana berulang dan kotak masuk",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Bagaimana menghentikan push di perangkat yang tidak saya gunakan lagi?",
+      "area": "schedules",
+      "documentId": "app-help",
+      "section": "Rencana berulang dan kotak masuk",
+      "matches": [
+        {
+          "id": "3c857e3f476d29944fe02672597f2a93ee452b3ea95214ba35fa55ef5a6555c9",
+          "score": 0.4611373841762543,
+          "retrievalScore": 0.6482960206332681,
+          "documentId": "app-help",
+          "section": "Rencana berulang dan kotak masuk",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Pembayaran sewa saya lewat jatuh tempo satu hari. Bagaimana aturan keterlambatannya?",
+      "area": "finances",
+      "documentId": "kos-procedures",
+      "section": "Sewa dan pencatatan uang",
+      "matches": [
+        {
+          "id": "a5b81805b6a3199f16e34b54e3f220c50c58fd73d5cb95599ad3b33a693871e2",
+          "score": 0.8908978700637817,
+          "retrievalScore": 0.6839269769255484,
+          "documentId": "kos-procedures",
+          "section": "Sewa dan pencatatan uang",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apa aturan masa tenggang dalam pembayaran sewa kos?",
+      "area": "finances",
+      "documentId": "kos-procedures",
+      "section": "Sewa dan pencatatan uang",
+      "matches": [
+        {
+          "id": "a5b81805b6a3199f16e34b54e3f220c50c58fd73d5cb95599ad3b33a693871e2",
+          "score": 0.43361005187034607,
+          "retrievalScore": 0.7025471256227165,
+          "documentId": "kos-procedures",
+          "section": "Sewa dan pencatatan uang",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Kalau tarif kamar berubah sekarang, nominal sewa historis ikut diganti atau tetap?",
+      "area": "finances",
+      "documentId": "kos-procedures",
+      "section": "Sewa dan pencatatan uang",
+      "matches": [
+        {
+          "id": "a5b81805b6a3199f16e34b54e3f220c50c58fd73d5cb95599ad3b33a693871e2",
+          "score": 0.15767377614974976,
+          "retrievalScore": 0.5804373570776058,
+          "documentId": "kos-procedures",
+          "section": "Sewa dan pencatatan uang",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apakah pembersihan rutin harus dijadwalkan pada hari tetap agar bisa menghitung keterlambatan?",
+      "area": "schedules",
+      "documentId": "kos-procedures",
+      "section": "Kebersihan dan servis berkala",
+      "matches": [
+        {
+          "id": "dd60fddc3821ff785eb8b3e520414a8b0bab14723b4dd126db072a982888f57d",
+          "score": 0.9476959109306335,
+          "retrievalScore": 0.6589390445102138,
+          "documentId": "kos-procedures",
+          "section": "Kebersihan dan servis berkala",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Dua kejadian perbaikan dalam satu tahun pasti merupakan pola luar biasa?",
+      "area": "rooms",
+      "documentId": "kos-procedures",
+      "section": "Kebersihan dan servis berkala",
+      "matches": [
+        {
+          "id": "9a7df36e3c0f5e77d90671ace1b43a3149cceaeaf4daa1e2d3fb7ac997d05d77",
+          "score": 0.21803578734397888,
+          "retrievalScore": 0.6045443888912493,
+          "documentId": "kos-procedures",
+          "section": "Kebersihan dan servis berkala",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apakah periode perpajakan ikut mempengaruhi penilaian tenant?",
+      "area": "guidance",
+      "documentId": "kos-procedures",
+      "section": "Pajak dan pengingat pemilik",
+      "matches": [
+        {
+          "id": "d0df31485c1a6d575c58b0a1f9fc517a6a1f3fe05afb4ca4cc44a92bfbc07c93",
+          "score": 0.12031245976686478,
+          "retrievalScore": 0.5578595266597477,
+          "documentId": "kos-procedures",
+          "section": "Pajak dan pengingat pemilik",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Prioritas A mengharuskan tindakan apa dibandingkan B dan C?",
+      "area": "guidance",
+      "documentId": "tenant-attention",
+      "section": "Arti nilai dan sumber data",
+      "matches": [
+        {
+          "id": "22bd71ffb30144e17675a7d3044d0459afcc6d9c8e0c6b5907c936f051d00e19",
+          "score": 0.24173325300216675,
+          "retrievalScore": 0.5563456626288275,
+          "documentId": "tenant-attention",
+          "section": "Arti nilai dan sumber data",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apakah hasil model bisa dipakai sebagai bukti tenant adalah penyebab kerusakan?",
+      "area": "rooms",
+      "documentId": "tenant-attention",
+      "section": "Arti nilai dan sumber data",
+      "matches": [
+        {
+          "id": "22bd71ffb30144e17675a7d3044d0459afcc6d9c8e0c6b5907c936f051d00e19",
+          "score": 0.7707356214523315,
+          "retrievalScore": 0.5495028232434302,
+          "documentId": "tenant-attention",
+          "section": "Arti nilai dan sumber data",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Jika ada keluhan terbuka, apakah itu sama dengan pola perbaikan yang sudah selesai?",
+      "area": "rooms",
+      "documentId": "tenant-attention",
+      "section": "Arti nilai dan sumber data",
+      "matches": [
+        {
+          "id": "0b55aff35607b49e0356902538f54b95b2ffbfb1bd6ef3049122a68981bb4ac5",
+          "score": 0.755386233329773,
+          "retrievalScore": 0.6060256762985821,
+          "documentId": "tenant-attention",
+          "section": "Arti nilai dan sumber data",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Bagaimana status hasil penilaian bila pencatatan riwayat belum lengkap?",
+      "area": "rooms",
+      "documentId": "tenant-attention",
+      "section": "Cakupan riwayat dan perpindahan kamar",
+      "matches": [
+        {
+          "id": "64a8e9d09630bd1330c3a28e34506e234f2d9574256b2bedb81d47b8dc199547",
+          "score": 0.0838174894452095,
+          "retrievalScore": 0.6316828954700454,
+          "documentId": "tenant-attention",
+          "section": "Cakupan riwayat dan perpindahan kamar",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apakah aktivitas dengan pembayaran di masa depan sudah dihitung sebagai kejadian yang terjadi?",
+      "area": "finances",
+      "documentId": "tenant-attention",
+      "section": "Cakupan riwayat dan perpindahan kamar",
+      "matches": [
+        {
+          "id": "49484dfbccf5c7843e4940139da75354083c22f81622832ea3287c5bb4cf21f8",
+          "score": 0.0027312058955430984,
+          "retrievalScore": 0.5800541268409963,
+          "documentId": "app-help",
+          "section": "Mencatat kegiatan dan pembayaran",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Bagaimana menjaga nilai lama tetap terlihat ketika pembaruan model masih menunggu?",
+      "area": "rooms",
+      "documentId": "tenant-attention",
+      "section": "Cakupan riwayat dan perpindahan kamar",
+      "matches": [
+        {
+          "id": "62b47e5073b9fcb52f2a9c260d561155a84a1f750cad08f8b7079e6fab565352",
+          "score": 0.008119226433336735,
+          "retrievalScore": 0.5888023813399674,
+          "documentId": "tenant-attention",
+          "section": "Cakupan riwayat dan perpindahan kamar",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Jika penghuni melaporkan AC tidak dingin, informasi awal apa yang perlu direkam?",
+      "area": "rooms",
+      "documentId": "maintenance",
+      "section": "AC bocor atau tidak dingin",
+      "matches": [
+        {
+          "id": "15d1ed186d83fb929b453efb1bff03be6f989fdb7cecae6f10b707e24142ec79",
+          "score": 0.5168748497962952,
+          "retrievalScore": 0.6704624236889438,
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Siapa yang seharusnya membongkar sistem pendingin dan bagian listrik?",
+      "area": "rooms",
+      "documentId": "maintenance",
+      "section": "AC bocor atau tidak dingin",
+      "matches": [
+        {
+          "id": "15d1ed186d83fb929b453efb1bff03be6f989fdb7cecae6f10b707e24142ec79",
+          "score": 0.36787518858909607,
+          "retrievalScore": 0.5584319368334646,
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apakah Pi boleh memastikan penyebab gangguan AC tanpa pemeriksaan langsung?",
+      "area": "rooms",
+      "documentId": "maintenance",
+      "section": "AC bocor atau tidak dingin",
+      "matches": [
+        {
+          "id": "15d1ed186d83fb929b453efb1bff03be6f989fdb7cecae6f10b707e24142ec79",
+          "score": 0.9960284233093262,
+          "retrievalScore": 0.6361184192398751,
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Bagaimana membedakan perbaikan gangguan AC dengan servis berkala dalam pencatatan kategori?",
+      "area": "rooms",
+      "documentId": "maintenance",
+      "section": "AC bocor atau tidak dingin",
+      "alternatives": [
+        {
+          "documentId": "kos-procedures",
+          "section": "Kebersihan dan servis berkala"
+        }
+      ],
+      "matches": [
+        {
+          "id": "833cadc30e7bd738ab0333c69f0649041c004eab8f62089ae545563524ef4bae",
+          "score": 0.22613365948200223,
+          "retrievalScore": 0.6617942206772685,
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apa yang harus diamankan ketika terjadi kebocoran air agar barang tidak rusak?",
+      "area": "rooms",
+      "documentId": "maintenance",
+      "section": "Air, lampu, dan pintu",
+      "matches": [
+        {
+          "id": "a4b9051e9908c4aa2e43fd9f3be9f6a4fdab9152ce1ab5d10ceddd5428bd9b85",
+          "score": 0.20213797688484192,
+          "retrievalScore": 0.6687438020439427,
+          "documentId": "maintenance",
+          "section": "Air, lampu, dan pintu",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Saat mencatat gangguan berulang, bolehkah langsung menyalahkan penghuni?",
+      "area": "rooms",
+      "documentId": "maintenance",
+      "section": "Air, lampu, dan pintu",
+      "alternatives": [
+        {
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin"
+        },
+        {
+          "documentId": "tenant-attention",
+          "section": "Arti nilai dan sumber data"
+        }
+      ],
+      "matches": [
+        {
+          "id": "15d1ed186d83fb929b453efb1bff03be6f989fdb7cecae6f10b707e24142ec79",
+          "score": 0.012624508701264858,
+          "retrievalScore": 0.5987999114328063,
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apa nama jaringan internet yang tersedia untuk tenant?",
+      "area": "guidance",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "f06b1928b31803f01cc40568208a00cf1ff425f70dc9528f740db1087860eff0",
+          "score": 0.000037390822399174795,
+          "retrievalScore": 0.4702292146017446,
+          "documentId": "app-help",
+          "section": "Mencatat kegiatan dan pembayaran",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Berapa besar biaya administrasi ketika kontrak sewa diperpanjang?",
+      "area": "finances",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "a5b81805b6a3199f16e34b54e3f220c50c58fd73d5cb95599ad3b33a693871e2",
+          "score": 0.0000939835372264497,
+          "retrievalScore": 0.5544039444888539,
+          "documentId": "kos-procedures",
+          "section": "Sewa dan pencatatan uang",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apa kode akses gerbang elektronik kos?",
+      "area": "guidance",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "dd60fddc3821ff785eb8b3e520414a8b0bab14723b4dd126db072a982888f57d",
+          "score": 0.000037398200220195577,
+          "retrievalScore": 0.36626286105935574,
+          "documentId": "kos-procedures",
+          "section": "Kebersihan dan servis berkala",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Apakah ada lift untuk penghuni lantai atas?",
+      "area": "rooms",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "15d1ed186d83fb929b453efb1bff03be6f989fdb7cecae6f10b707e24142ec79",
+          "score": 0.00003736202052095905,
+          "retrievalScore": 0.41179371698424155,
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Berapa ukuran tempat parkir mobil di halaman?",
+      "area": "rooms",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "64a8e9d09630bd1330c3a28e34506e234f2d9574256b2bedb81d47b8dc199547",
+          "score": 0.000037323061405913904,
+          "retrievalScore": 0.2793277725,
+          "documentId": "tenant-attention",
+          "section": "Cakupan riwayat dan perpindahan kamar",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Siapa nomor kontak penjual air minum galon?",
+      "area": "guidance",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "15d1ed186d83fb929b453efb1bff03be6f989fdb7cecae6f10b707e24142ec79",
+          "score": 0.0003452638629823923,
+          "retrievalScore": 0.3816824111381164,
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Kapan jadwal rapat bulanan dengan para penghuni?",
+      "area": "schedules",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "00e57bdf4b53843ae4bf137613952c319b3f87a7dd587585020ce6bf1168b1d1",
+          "score": 0.00003736234430107288,
+          "retrievalScore": 0.5063045333551095,
+          "documentId": "app-help",
+          "section": "Rencana berulang dan kotak masuk",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "question": "Bagaimana ketentuan meminjam sepeda milik pengelola?",
+      "area": "guidance",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "64a8e9d09630bd1330c3a28e34506e234f2d9574256b2bedb81d47b8dc199547",
+          "score": 0.9587244391441344,
+          "retrievalScore": 0.363438315,
+          "documentId": "tenant-attention",
+          "section": "Cakupan riwayat dan perpindahan kamar",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Apa yang membedakan catatan uang manual dengan rencana pembayaran mendatang?",
+      "area": "finances",
+      "documentId": "app-help",
+      "section": "Mencatat kegiatan dan pembayaran",
+      "matches": [
+        {
+          "id": "49484dfbccf5c7843e4940139da75354083c22f81622832ea3287c5bb4cf21f8",
+          "score": 0.8731333613395691,
+          "retrievalScore": 0.7032294383118927,
+          "documentId": "app-help",
+          "section": "Mencatat kegiatan dan pembayaran",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Bagaimana pemilik menambahkan bukti untuk pembayaran aktivitas?",
+      "area": "finances",
+      "documentId": "app-help",
+      "section": "Mencatat kegiatan dan pembayaran",
+      "matches": [
+        {
+          "id": "49484dfbccf5c7843e4940139da75354083c22f81622832ea3287c5bb4cf21f8",
+          "score": 0.002544665709137917,
+          "retrievalScore": 0.583988531193698,
+          "documentId": "app-help",
+          "section": "Mencatat kegiatan dan pembayaran",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Apakah aktivitas yang saya buat manual langsung mempunyai status pekerjaan selesai?",
+      "area": "guidance",
+      "documentId": "app-help",
+      "section": "Mencatat kegiatan dan pembayaran",
+      "matches": [
+        {
+          "id": "49484dfbccf5c7843e4940139da75354083c22f81622832ea3287c5bb4cf21f8",
+          "score": 0.26179179549217224,
+          "retrievalScore": 0.6531939534155407,
+          "documentId": "app-help",
+          "section": "Mencatat kegiatan dan pembayaran",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Saat membuat aktivitas terkait kamar, bagaimana mencatat orang yang terkait jika diketahui?",
+      "area": "rooms",
+      "documentId": "app-help",
+      "section": "Mencatat kegiatan dan pembayaran",
+      "matches": [
+        {
+          "id": "f06b1928b31803f01cc40568208a00cf1ff425f70dc9528f740db1087860eff0",
+          "score": 0.8618525266647339,
+          "retrievalScore": 0.6113224350448252,
+          "documentId": "app-help",
+          "section": "Mencatat kegiatan dan pembayaran",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Apa yang harus dilakukan untuk mengizinkan push pada PWA iPhone?",
+      "area": "schedules",
+      "documentId": "app-help",
+      "section": "Rencana berulang dan kotak masuk",
+      "matches": [
+        {
+          "id": "3c857e3f476d29944fe02672597f2a93ee452b3ea95214ba35fa55ef5a6555c9",
+          "score": 0.6988207697868347,
+          "retrievalScore": 0.5979086301535651,
+          "documentId": "app-help",
+          "section": "Rencana berulang dan kotak masuk",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Kalau menandai notifikasi dibaca, apakah saya masih harus memperbarui aktivitasnya?",
+      "area": "schedules",
+      "documentId": "app-help",
+      "section": "Rencana berulang dan kotak masuk",
+      "matches": [
+        {
+          "id": "3c857e3f476d29944fe02672597f2a93ee452b3ea95214ba35fa55ef5a6555c9",
+          "score": 0.9959554672241212,
+          "retrievalScore": 0.6562589263429923,
+          "documentId": "app-help",
+          "section": "Rencana berulang dan kotak masuk",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Bagaimana menentukan tepat waktu jika sewa dibayar persis pada hari jatuh tempo?",
+      "area": "finances",
+      "documentId": "kos-procedures",
+      "section": "Sewa dan pencatatan uang",
+      "matches": [
+        {
+          "id": "a5b81805b6a3199f16e34b54e3f220c50c58fd73d5cb95599ad3b33a693871e2",
+          "score": 0.5281251668930054,
+          "retrievalScore": 0.712932782847089,
+          "documentId": "kos-procedures",
+          "section": "Sewa dan pencatatan uang",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Apa jadwal pembayaran sewa dan aturan tenggang yang dipakai kos ini?",
+      "area": "finances",
+      "documentId": "kos-procedures",
+      "section": "Sewa dan pencatatan uang",
+      "matches": [
+        {
+          "id": "a5b81805b6a3199f16e34b54e3f220c50c58fd73d5cb95599ad3b33a693871e2",
+          "score": 0.01661062426865101,
+          "retrievalScore": 0.6486124740034194,
+          "documentId": "kos-procedures",
+          "section": "Sewa dan pencatatan uang",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Apakah aplikasi menambahkan biaya denda secara otomatis ketika pembayaran terlambat?",
+      "area": "finances",
+      "documentId": "kos-procedures",
+      "section": "Sewa dan pencatatan uang",
+      "matches": [
+        {
+          "id": "a5b81805b6a3199f16e34b54e3f220c50c58fd73d5cb95599ad3b33a693871e2",
+          "score": 0.0006290300516411662,
+          "retrievalScore": 0.6144190242402555,
+          "documentId": "kos-procedures",
+          "section": "Sewa dan pencatatan uang",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Kalau kebutuhan bersih-bersih terjadi di luar rutinitas, apa jenis catatannya?",
+      "area": "rooms",
+      "documentId": "kos-procedures",
+      "section": "Kebersihan dan servis berkala",
+      "matches": [
+        {
+          "id": "dd60fddc3821ff785eb8b3e520414a8b0bab14723b4dd126db072a982888f57d",
+          "score": 0.9397467374801636,
+          "retrievalScore": 0.6172412923325996,
+          "documentId": "kos-procedures",
+          "section": "Kebersihan dan servis berkala",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Untuk perawatan AC terencana, kapan servis berikutnya setelah servis rutin?",
+      "area": "schedules",
+      "documentId": "kos-procedures",
+      "section": "Kebersihan dan servis berkala",
+      "alternatives": [
+        {
+          "documentId": "app-help",
+          "section": "Rencana berulang dan kotak masuk"
+        }
+      ],
+      "matches": [
+        {
+          "id": "9a7df36e3c0f5e77d90671ace1b43a3149cceaeaf4daa1e2d3fb7ac997d05d77",
+          "score": 0.19370310008525848,
+          "retrievalScore": 0.6352902065640178,
+          "documentId": "kos-procedures",
+          "section": "Kebersihan dan servis berkala",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Apakah tanggal pajak yang belum dimasukkan akan ditentukan sendiri oleh aplikasi?",
+      "area": "schedules",
+      "documentId": "kos-procedures",
+      "section": "Pajak dan pengingat pemilik",
+      "matches": [
+        {
+          "id": "d0df31485c1a6d575c58b0a1f9fc517a6a1f3fe05afb4ca4cc44a92bfbc07c93",
+          "score": 0.9889525175094604,
+          "retrievalScore": 0.6753163093701136,
+          "documentId": "kos-procedures",
+          "section": "Pajak dan pengingat pemilik",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Apa arti B pada hasil perhatian tenant dan apa batas kesimpulan dari nilai itu?",
+      "area": "guidance",
+      "documentId": "tenant-attention",
+      "section": "Arti nilai dan sumber data",
+      "matches": [
+        {
+          "id": "22bd71ffb30144e17675a7d3044d0459afcc6d9c8e0c6b5907c936f051d00e19",
+          "score": 0.9962711334228516,
+          "retrievalScore": 0.6799165871573739,
+          "documentId": "tenant-attention",
+          "section": "Arti nilai dan sumber data",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Apakah biaya perbaikan mahal satu kali langsung menjadikan prioritas tertinggi?",
+      "area": "rooms",
+      "documentId": "tenant-attention",
+      "section": "Arti nilai dan sumber data",
+      "matches": [
+        {
+          "id": "0b55aff35607b49e0356902538f54b95b2ffbfb1bd6ef3049122a68981bb4ac5",
+          "score": 0.00024367387231905013,
+          "retrievalScore": 0.5037356686171532,
+          "documentId": "tenant-attention",
+          "section": "Arti nilai dan sumber data",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Apakah kegiatan servis rutin dan pembersihan rutin menjadi masukan adverse tenant?",
+      "area": "rooms",
+      "documentId": "tenant-attention",
+      "section": "Arti nilai dan sumber data",
+      "matches": [
+        {
+          "id": "dd60fddc3821ff785eb8b3e520414a8b0bab14723b4dd126db072a982888f57d",
+          "score": 0.35051918029785156,
+          "retrievalScore": 0.6119741083361175,
+          "documentId": "kos-procedures",
+          "section": "Kebersihan dan servis berkala",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Apakah perlu mengonfirmasi bahwa catatan biaya perbaikan lengkap sebelum model menilai?",
+      "area": "rooms",
+      "documentId": "tenant-attention",
+      "section": "Cakupan riwayat dan perpindahan kamar",
+      "matches": [
+        {
+          "id": "64a8e9d09630bd1330c3a28e34506e234f2d9574256b2bedb81d47b8dc199547",
+          "score": 0.057528261095285416,
+          "retrievalScore": 0.600318688420433,
+          "documentId": "tenant-attention",
+          "section": "Cakupan riwayat dan perpindahan kamar",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Apa dampak pindah kamar terhadap kegiatan historis yang sudah terkait tenant?",
+      "area": "rooms",
+      "documentId": "tenant-attention",
+      "section": "Cakupan riwayat dan perpindahan kamar",
+      "matches": [
+        {
+          "id": "62b47e5073b9fcb52f2a9c260d561155a84a1f750cad08f8b7079e6fab565352",
+          "score": 0.8801022171974182,
+          "retrievalScore": 0.662408316984691,
+          "documentId": "tenant-attention",
+          "section": "Cakupan riwayat dan perpindahan kamar",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Apakah koreksi hubungan historis tenant harus disertai alasan yang diaudit?",
+      "area": "rooms",
+      "documentId": "tenant-attention",
+      "section": "Cakupan riwayat dan perpindahan kamar",
+      "matches": [
+        {
+          "id": "62b47e5073b9fcb52f2a9c260d561155a84a1f750cad08f8b7079e6fab565352",
+          "score": 0.7233396768569946,
+          "retrievalScore": 0.6509150280155105,
+          "documentId": "tenant-attention",
+          "section": "Cakupan riwayat dan perpindahan kamar",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Saat AC bocor dekat listrik, apakah penghuni perlu berhenti menggunakannya?",
+      "area": "rooms",
+      "documentId": "maintenance",
+      "section": "AC bocor atau tidak dingin",
+      "matches": [
+        {
+          "id": "15d1ed186d83fb929b453efb1bff03be6f989fdb7cecae6f10b707e24142ec79",
+          "score": 0.9487066864967346,
+          "retrievalScore": 0.6988902755233164,
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Bolehkah Pi menyatakan penyebab kerusakan pendingin sebagai kepastian?",
+      "area": "rooms",
+      "documentId": "maintenance",
+      "section": "AC bocor atau tidak dingin",
+      "matches": [
+        {
+          "id": "15d1ed186d83fb929b453efb1bff03be6f989fdb7cecae6f10b707e24142ec79",
+          "score": 0.3451836109161377,
+          "retrievalScore": 0.5993409733073418,
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Bagaimana membedakan pencatatan gangguan AC insidental dari servis yang direncanakan?",
+      "area": "rooms",
+      "documentId": "maintenance",
+      "section": "AC bocor atau tidak dingin",
+      "alternatives": [
+        {
+          "documentId": "kos-procedures",
+          "section": "Kebersihan dan servis berkala"
+        }
+      ],
+      "matches": [
+        {
+          "id": "833cadc30e7bd738ab0333c69f0649041c004eab8f62089ae545563524ef4bae",
+          "score": 0.31338050961494446,
+          "retrievalScore": 0.710473578200509,
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Saat kebocoran air meluas, apa yang perlu dilakukan terhadap barang dan sumber air?",
+      "area": "rooms",
+      "documentId": "maintenance",
+      "section": "Air, lampu, dan pintu",
+      "matches": [
+        {
+          "id": "a4b9051e9908c4aa2e43fd9f3be9f6a4fdab9152ce1ab5d10ceddd5428bd9b85",
+          "score": 0.7312509417533875,
+          "retrievalScore": 0.6654477609931799,
+          "documentId": "maintenance",
+          "section": "Air, lampu, dan pintu",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Jika pintu sulit dibuka, bagaimana mempertimbangkan keamanan akses keluar?",
+      "area": "rooms",
+      "documentId": "maintenance",
+      "section": "Air, lampu, dan pintu",
+      "matches": [
+        {
+          "id": "a4b9051e9908c4aa2e43fd9f3be9f6a4fdab9152ce1ab5d10ceddd5428bd9b85",
+          "score": 0.01229930855333805,
+          "retrievalScore": 0.5792874816098807,
+          "documentId": "maintenance",
+          "section": "Air, lampu, dan pintu",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Sesudah pekerjaan gangguan selesai, bagaimana menyimpan hasil penanganan serta biaya sebenarnya?",
+      "area": "rooms",
+      "documentId": "maintenance",
+      "section": "Air, lampu, dan pintu",
+      "alternatives": [
+        {
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin"
+        }
+      ],
+      "matches": [
+        {
+          "id": "833cadc30e7bd738ab0333c69f0649041c004eab8f62089ae545563524ef4bae",
+          "score": 0.33155274391174316,
+          "retrievalScore": 0.5796360958387268,
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Berapa biaya khusus untuk pembersihan kamar yang sangat kotor?",
+      "area": "finances",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "dd60fddc3821ff785eb8b3e520414a8b0bab14723b4dd126db072a982888f57d",
+          "score": 0.00003728449883055873,
+          "retrievalScore": 0.5308646519061279,
+          "documentId": "kos-procedures",
+          "section": "Kebersihan dan servis berkala",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Apakah pemilik menyediakan layanan antar jemput penghuni?",
+      "area": "guidance",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "62b47e5073b9fcb52f2a9c260d561155a84a1f750cad08f8b7079e6fab565352",
+          "score": 0.000037305235309759155,
+          "retrievalScore": 0.44406205539075627,
+          "documentId": "tenant-attention",
+          "section": "Cakupan riwayat dan perpindahan kamar",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Berapa nomor seri unit AC yang harus dilaporkan kepada garansi?",
+      "area": "rooms",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "15d1ed186d83fb929b453efb1bff03be6f989fdb7cecae6f10b707e24142ec79",
+          "score": 0.0005911615444347262,
+          "retrievalScore": 0.46773106448424157,
+          "documentId": "maintenance",
+          "section": "AC bocor atau tidak dingin",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Di mana lokasi kotak penyimpanan kunci cadangan?",
+      "area": "rooms",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "3c857e3f476d29944fe02672597f2a93ee452b3ea95214ba35fa55ef5a6555c9",
+          "score": 0.00003732584082172252,
+          "retrievalScore": 0.41884316085633216,
+          "documentId": "app-help",
+          "section": "Rencana berulang dan kotak masuk",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Berapa biaya penggantian kunci jika tenant kehilangan kunci?",
+      "area": "finances",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "64a8e9d09630bd1330c3a28e34506e234f2d9574256b2bedb81d47b8dc199547",
+          "score": 0.000730022497009486,
+          "retrievalScore": 0.4657022168279115,
+          "documentId": "tenant-attention",
+          "section": "Cakupan riwayat dan perpindahan kamar",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Kapan tanggal pasti pembayaran pajak daerah pemilik tahun depan?",
+      "area": "schedules",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "d0df31485c1a6d575c58b0a1f9fc517a6a1f3fe05afb4ca4cc44a92bfbc07c93",
+          "score": 0.0015285959234461188,
+          "retrievalScore": 0.5491608900516276,
+          "documentId": "kos-procedures",
+          "section": "Pajak dan pengingat pemilik",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Berapa batas pemakaian air per penghuni setiap hari?",
+      "area": "guidance",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "a4b9051e9908c4aa2e43fd9f3be9f6a4fdab9152ce1ab5d10ceddd5428bd9b85",
+          "score": 0.00008694737334735692,
+          "retrievalScore": 0.4913932599719365,
+          "documentId": "maintenance",
+          "section": "Air, lampu, dan pintu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "split": "test",
+      "question": "Apakah penghuni boleh meminjam meja kantor pengelola?",
+      "area": "guidance",
+      "documentId": null,
+      "section": null,
+      "matches": [
+        {
+          "id": "3046cca4dcdfe6ee4795845b6c07d846616b112906549e2ed9e5fc7ce40a733a",
+          "score": 0.001893003238365054,
+          "retrievalScore": 0.402189777323186,
+          "documentId": "maintenance",
+          "section": "Air, lampu, dan pintu",
+          "correct": false
+        }
+      ]
+    }
+  ],
+  "scope": "Retrieval only. Generation and source use require native chat evidence."
+}

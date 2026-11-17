@@ -118,3 +118,28 @@ the deployed API to the VPS; install the minute job; configure the native MCP
 resource and base skill; verify routing/citations and iPhone PWA push. Local
 development servers and temporary processes may need a restart. Do not copy
 secrets into Git or re-create a token merely because local processes stopped.
+
+## Resumed integration
+
+The VPS model service survived the local restart. Live retrieval passed its
+fresh held-out gate and the verified corpus is active. The actual app MCP path
+uses the VPS classifier through a private SSH forward for local proof; routing
+evidence is saved. Native Wisp generation and saved conversation reads pass.
+
+The Cloudflare tunnel is locally managed. Its root-only configuration cannot
+be changed by muslik, which has no sudo access. A bounded configuration script
+is prepared at /home/muslik/app/models/configure-tunnel.py. It preserves the
+CloudflareOS route and validates the candidate before publication. The owner
+was asked for an administrator SSH alias or to run that root step. No hostname
+was published. Vercel deployment preparation excludes Python environments/data
+and analysis files from the app upload. Existing production secrets cannot be
+pulled, so production migrations must use the provider's existing environment
+without replacing the database connection.
+
+## HTTPS model checkpoint
+
+The owner supplied administrator alias kknkalongan. The model hostname is now
+published through the existing tunnel. Authenticated HTTPS health and intent
+classification pass; anonymous health is 401, and CloudflareOS remains available.
+The local API environment uses https://models.southneuhof.tech. Activation
+guards and context-route tests pass. Deployment and the minute timer are next.

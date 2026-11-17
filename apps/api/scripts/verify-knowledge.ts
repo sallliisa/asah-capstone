@@ -1,5 +1,5 @@
 import { readFile, mkdir, writeFile } from 'node:fs/promises'
-import { and, eq, ne, sql } from 'drizzle-orm'
+import { eq } from 'drizzle-orm'
 import { z } from 'zod/v4'
 import { closeDb, getDb } from '../src/db'
 import { embedTexts, embeddingDimensions, embeddingModel, queryVectors } from '../src/knowledge/cloudflare'
@@ -7,11 +7,7 @@ import { knowledgeChunks, knowledgeIndexVersions } from '../src/routes/(authenti
 
 import { candidateLimit, rankGuidance, rerankerModel, retrievalPolicy } from '../src/knowledge/rank'
 
-const versionId = z
-  .string()
-  .regex(/^[a-f0-9]{64}$/)
-  .parse(process.argv[2])
-const activate = process.argv.includes('--activate')
+const [versionId] = z.tuple([z.string().regex(/^[a-f0-9]{64}$/)]).parse(process.argv.slice(2))
 const examples = z
   .array(
     z.object({
@@ -92,7 +88,7 @@ try {
   const candidates = [Math.max(...scores) + Number.EPSILON, ...scores].flatMap((cutoff) =>
     retrievalScores.map((retrievalCutoff) => ({ cutoff, retrievalCutoff, ...evaluate('validation', cutoff, retrievalCutoff) }))
   )
-  candidates.sort((a, b) => b.f1 - a.f1 || b.precision - a.precision || b.retrievalCutoff - a.retrievalCutoff || b.cutoff - a.cutoff)
+  candidates.sort((a, b) => b.cutoff - a.cutoff || b.precision - a.precision || b.recall - a.recall || b.retrievalCutoff - a.retrievalCutoff)
   const eligible = candidates.filter((candidate) => candidate.precision >= 0.9 && candidate.recall >= 0.75 && candidate.unsupported === 0)
   const chosen = eligible[0] ?? candidates[0]
   const test = evaluate('test', chosen.cutoff, chosen.retrievalCutoff)
@@ -101,6 +97,7 @@ try {
     versionId,
     rerankerModel,
     retrievalPolicy,
+    calibrationRule: 'Highest support cutoff that meets validation precision, recall, and rejection limits.',
     minimumScore: chosen.cutoff,
     minimumRetrievalScore: chosen.retrievalCutoff,
     validation: chosen,
@@ -117,23 +114,6 @@ try {
       .update(knowledgeIndexVersions)
       .set({ state: 'verified', minimumScore: chosen.cutoff, minimumRetrievalScore: chosen.retrievalCutoff, error: null })
       .where(eq(knowledgeIndexVersions.id, versionId))
-  if (activate) {
-    if (!passed) throw new Error('Retrieval verification failed. The previous active corpus is unchanged.')
-    await getDb().transaction(async (tx) => {
-      await tx.execute(sql`select pg_advisory_xact_lock(hashtext('kos-knowledge-activate'))`)
-      const candidate = (await tx.select().from(knowledgeIndexVersions).where(eq(knowledgeIndexVersions.id, versionId)).for('update'))[0]
-      if (candidate?.state !== 'verified' || candidate.minimumScore !== chosen.cutoff || candidate.minimumRetrievalScore !== chosen.retrievalCutoff)
-        throw new Error('Candidate changed before activation')
-      await tx
-        .update(knowledgeIndexVersions)
-        .set({ state: 'retired' })
-        .where(and(eq(knowledgeIndexVersions.embeddingModel, version.embeddingModel), eq(knowledgeIndexVersions.state, 'active'), ne(knowledgeIndexVersions.id, versionId)))
-      await tx
-        .update(knowledgeIndexVersions)
-        .set({ state: 'active', activatedAt: new Date().toISOString() })
-        .where(and(eq(knowledgeIndexVersions.id, versionId), eq(knowledgeIndexVersions.state, 'verified')))
-    })
-  }
   console.log(
     JSON.stringify({
       versionId,
@@ -142,7 +122,7 @@ try {
       validation: chosen,
       test,
       passed,
-      activated: activate && passed,
+      activated: false,
     })
   )
   if (!passed) process.exitCode = 1

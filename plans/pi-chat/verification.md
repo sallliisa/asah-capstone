@@ -54,3 +54,12 @@ A tenant profile rendered saved Not enough data assessments, required coverage
 reasons, model versions, and history. Its coverage form opened with three date
 inputs and the expense-completeness checkbox. No business data was changed.
 These observations do not establish actual iPhone delivery or VPS deployment.
+
+## Native workspace and generation
+
+Created Kos De Mansion through Wisp. The instance supplied its existing Muse
+Spark 1.3 Contributor model. A bounded connection prompt returned Koneksi
+berhasil. After reload, the native SDK reopened the saved conversation and read
+two messages without an error. This resolves the earlier empty-workspace
+blocker. Model/tool resource grants and native classifier-driven answers with
+sources remain unfinished until the remote MCP endpoint is deployed.
