@@ -70,3 +70,19 @@ notification-owner-production-proof.log. The deployment runbook now names this
 required owner setting and inbox acceptance check. No new tests were needed
 for this configuration-only correction. Device permission and actual push
 delivery still require the iPhone check.
+
+## Installed iPhone delivery check started
+
+The user enabled push successfully in the Home Screen app. The real store has
+one owner subscription with an Apple Web Push endpoint. Created one clearly
+labeled temporary nonfinancial Activity under an inactive temporary recurring
+plan, then called the production job endpoint. The normal notification pipeline
+created its inbox entry and Apple accepted its delivery on attempt one. The
+saved delivery state is sent with no error.
+
+This establishes registration and provider acceptance. The user's visible
+receipt and notification-tap check are pending. Keep the temporary Activity
+until that check finishes, then remove only its Activity, inbox/delivery rows,
+and inactive plan. Evidence and exact cleanup IDs are retained in ignored
+.local/verification/iphone-push-fixture.json and iphone-push-delivery.json.
+No subscription key, push endpoint token, or credential is recorded here.

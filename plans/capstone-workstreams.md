@@ -11,7 +11,7 @@ owns its feature rules. Git contains the earlier delivery checkpoints.
 | Order | Workstream | Owning designs | Current delivery |
 |---|---|---|---|
 | 1 | Tenant activity history | [Activities](activities/design.md), [Rooms](rooms/design.md) | Implemented. Database checks prove historical attribution, moves, corrections, and former-tenant selection. Final authenticated form interaction remains unverified. |
-| 2 | Notifications and PWA | [Notifications](notifications/design.md) | Implemented and deployed. VPS minute timer runs successfully. The user deferred real iPhone push delivery and tap checks. |
+| 2 | Notifications and PWA | [Notifications](notifications/design.md) | Implemented and deployed. VPS minute timer runs successfully. The iPhone registered successfully and Apple accepted one test push. Visible receipt and notification-tap confirmation are pending. |
 | 3 | Tenant attention model | [Tenant assessment](room-detector/design.md), [delivery plan](room-detector/implementation-plan.md) | Implemented, deployed on the VPS, and connected to saved app results. The experimental model misses its C-recall target and two repair-burst cases. These limits remain published. |
 | 4 | Dashboard and DS analysis | [Dashboard](dashboard/design.md) | Financial filters, tenant projections, and executed analysis are implemented. Local signed-in rendering was observed; final production filter and form interaction remains unverified. |
 | 5 | Pi through Wisp | [Pi chat](pi-chat/design.md) | Production owner session handoff, native generation, read tools, and Wisp conversation reopening pass. Final browser origin and iPhone panel checks remain unverified. |
@@ -49,9 +49,10 @@ reopened the linked answer in the same saved native conversation. See
 
 ## Remaining acceptance and limits
 
-The user deferred the installed iPhone Home Screen push test. Do not create its
-temporary test reminder until that test resumes. This leaves permission, actual
-push delivery, and notification taps unverified.
+The installed iPhone Home Screen test has resumed. Permission and device
+registration passed; Apple accepted one labeled test push on its first attempt.
+Visible receipt and notification tapping await user confirmation. The temporary
+activity remains available for that tap and must be removed after the check.
 
 Final production browser interaction and iPhone panel layout remain unverified.
 The available Helium window was in active user use during the final check;
