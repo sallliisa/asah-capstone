@@ -57,3 +57,13 @@ verified, enabled, and active. A manual run and later timer runs completed with
 recurrence, push, and model configuration enabled. No current occurrence was
 due, so generated/created/sent/saved counts were zero. This does not prove an
 iPhone received a push. Evidence is in vps-jobs-*.log.
+
+## Current direct MCP deployment
+
+The later tested deployment dpl_HxZYREtQ1sP6RKyi1cF9sV1ZEapy is now live.
+The user selected public MCP access for internal testing, so the old anonymous
+401 statement above describes the previous checkpoint only. The current two-tool
+MCP endpoint has no caller authentication. Authenticated model HTTPS and private
+job tokens retain their checks. Both user services remain active. Native chats
+now prove classifier routing, source use, live cash, and Wisp reopening; see
+cfos-verification.md.

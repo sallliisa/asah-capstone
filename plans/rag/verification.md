@@ -83,3 +83,20 @@ authenticated HTTPS, after hostname publication. API build/lint, SDK/web types,
 and the three selected context/activation tests pass. The development corpus
 is active; publication on the deployed app still needs its configured database
 and deployment checks.
+
+
+## Production native answer acceptance
+
+The active corpus is available to the deployed canonical app. Both staged and
+public production MCP checks passed with the VPS classifier over authenticated
+HTTPS. A real CloudflareOS chat called getQuestionContext and cited the returned
+monthly rent passage in Indonesian. The app database contains the resulting
+routing audit. The four private workflow documents remain on the app server;
+only the base skill is installed in the native Skills collection.
+
+A separate native cash question routed through the classifier and continued
+with live app reads when guidance retrieval returned no-match. The answer used
+actual settled cash and a record link. Wisp reopened that saved answer. See
+../pi-chat/verification.md and ../../deploy/cfos-verification.md. This proves
+the generation, embedding, vector retrieval, classifier, and app-read connection;
+it does not increase the size or scope of the authored retrieval evaluation.

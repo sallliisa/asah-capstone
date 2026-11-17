@@ -36,3 +36,14 @@ two notification tests pass after the fix, including all six persisted sends,
 no duplicate second pass, natural session expiry, and explicit logout cleanup.
 The external push service remains mocked. No age window or send-time policy was
 added. Real iPhone delivery still needs the device.
+
+
+## Production scheduler
+
+The canonical production API is deployed. kos-jobs.timer is enabled and active
+under the muslik VPS account. Repeated actual runs completed recurrence,
+notification, and tenant-assessment work with configured services. There was
+no due work in those runs, so they do not establish real push delivery. The
+user explicitly deferred the installed-iPhone delivery and tap check. No
+temporary test reminder was created. Earlier local signed-in inspection showed
+the inbox and iPhone Home Screen instructions; final device proof stays open.

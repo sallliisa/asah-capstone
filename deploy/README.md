@@ -61,12 +61,14 @@ workspace. Do not upload the private workflow documents to CloudflareOS. The
 server exposes the router and authorized reads; it exposes no document resource
 or app write operation. Verify the resource controls on the deployed instance.
 
-## Acceptance still required
+## Acceptance status
 
-Check the real deployed API, service readiness, minute timer, restart recovery,
-model latency/memory, owner permissions, native chat routing and sources, and
-iPhone Home Screen push delivery/taps. Local types and mocks do not establish
-these outcomes. Keep the experimental model limitations visible in the demo.
+Real deployed API, service readiness, minute timer, restart recovery, measured
+VPS latency/memory, owner permissions, native chat routing, sources, and Wisp
+conversation reopening pass. See cfos-verification.md and vps-verification.md.
+Final production browser origin and iPhone panel checks remain unverified.
+The user deferred iPhone Home Screen push delivery/taps. Keep the experimental
+model limitations visible in the demo.
 
 ## Current VPS installation
 
@@ -79,13 +81,13 @@ environment and reviewed artifacts are installed in that root. Its .env is mode
 thread limits. No database or Cloudflare credentials were copied there.
 
 Use systemctl --user status kos-models.service or journalctl --user -u
-kos-models.service for operations. HTTPS publication and the app job timer are
-separate acceptance steps. See vps-verification.md for measured checks.
+kos-models.service for operations. HTTPS publication and the app job timer also pass. See vps-verification.md
+for measured checks.
 
 ## Stage the existing Vercel app
 
 The linked project is asah-capstone. Existing production database, storage, and
-authentication variables are preserved. New Cloudflare, private model/tool/job,
+authentication variables are preserved. New Cloudflare, private model/job,
 and Web Push variables are configured for production. Secret values enter the
 CLI through stdin and are not command arguments or output.
 
@@ -103,7 +105,7 @@ contains no Python environment, raw histories, or .env files.
 
 ## Current live state
 
-Deployment dpl_74ZUbT6xBuadMo6wrWrd3CFH4K3N passed staged checks and is promoted.
+Deployment dpl_HxZYREtQ1sP6RKyi1cF9sV1ZEapy passed staged checks and is promoted.
 The canonical app is https://asah-capstone-nu.vercel.app. Its database migration
 step used the existing Vercel secret; database, storage, and login secrets were
 not replaced.
@@ -114,3 +116,8 @@ private environment targets the canonical /api base. Repeated actual runs
 completed successfully. The user chose direct MCP access without OAuth for internal testing. The
 private model and job endpoints keep their own tokens; the MCP endpoint uses
 the configured owner read scope without checking a network caller identity.
+
+
+Native setup and real answer proof are recorded in cfos-verification.md. The
+base skill in the private native collection matches its repository source.
+The two named tool grants are bound as KOS_TOOLS in Kos De Mansion.

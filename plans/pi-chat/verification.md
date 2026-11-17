@@ -1,6 +1,8 @@
 # Pi connection checkpoint
 
-17 November 2026. Implementation is in progress.
+17 November 2026. Production chat integration passes. Final browser origin and
+iPhone panel checks remain unverified. The sections below retain checkpoint
+history; the final native acceptance section states the current result.
 
 Installed Wisp Vue UI and core version 0.3.0 from the public npm registry.
 The scoped GitHub registry returned 404; the public registry supplied the
@@ -95,3 +97,42 @@ context selection, routing persistence, uncertainty handling, and corpus/area
 filtering. The obsolete network-token assertion was removed because that access
 rule changed. Both cases, API build, and lint pass. No OAuth dependency, OAuth
 record, or consent page was added. Native connection proof is next.
+
+## Final native acceptance
+
+Deployment dpl_HxZYREtQ1sP6RKyi1cF9sV1ZEapy passed staged MCP proof and was
+promoted to https://asah-capstone-nu.vercel.app. The same proof then passed on
+the public canonical endpoint with no application Authorization header and no
+Vercel protection bypass. API build/lint, two context tests, and SDK/web types
+pass. No new application code was needed for native setup.
+
+Connected the native MCP account and granted only getQuestionContext and
+readAppData. Its description reports two read-only tools and zero approval
+operations. A workspace gadget named Kos app tools holds the permanent
+KOS_TOOLS binding so new chats inherit it. The private Skills collection contains
+only kos-assistant/SKILL.md. No private workflow source was uploaded.
+
+A real Indonesian rent question caused the native agent to load the skill,
+call getQuestionContext, receive Finances plus the supporting rent passage,
+and cite Prosedur operasional kos. Its routing audit exists in the app database.
+The model first made a JavaScript variable error while loading the skill and
+corrected it. This was an agent execution error, not an app route failure.
+
+An initial cash question recovered from an incorrect argument wrapper, read the
+correct current totals, but printed a record ID instead of a link. The base
+skill now gives the exact request wrapper and Activity detail URL pattern. A
+fresh chat loaded that revision, called both tools, and returned the matching
+cash totals with a clickable Activity link. A fresh database read confirmed its
+classifier audit. A separate Wisp client reopened that saved chat and restored
+the linked answer. No business record or payment was changed.
+
+Evidence: .local/verification/direct-mcp-production-proof.json,
+native-chat-acceptance.json, cfos-guidance-chat.json, and cfos-chat-output.json.
+The fresh cash chat has six user/assistant messages in the Wisp view. See
+../../deploy/cfos-verification.md for installed connection details.
+
+The post-deployment error scan reported a PostgreSQL connection-string SSL-mode
+warning, with no application failure reported in that scan. Final browser
+origin behavior remains unverified: Helium was in active user use and the
+isolated in-app browser was unavailable. No further UI input was sent. Actual
+iPhone panel and push checks remain separate; the user deferred push testing.

@@ -145,8 +145,9 @@ the navigation pill and iPhone safe areas. Do not change framework packages.
 
 [Wisp's integration guide](https://github.com/southneuhof/wisp/blob/main/docs/agent-integration.md)
 and [auth types](https://github.com/southneuhof/wisp/blob/main/packages/core/src/types.ts)
-define the host and authentication integration. Connection, origin handling,
-session handoff, conversation reopening, and real read-only tool grants remain
-unverified until the instance is tested.
+define the host and authentication integration. Production session handoff,
+native read-only tool grants, classifier routing, cited guidance, live cash,
+and SDK conversation reopening passed. Final browser origin and iPhone panel
+layout checks remain unverified. See verification.md for the acceptance record.
 
 The [workstream index](../capstone-workstreams.md) owns delivery order and status.

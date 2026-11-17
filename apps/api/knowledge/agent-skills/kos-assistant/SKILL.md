@@ -18,6 +18,19 @@ and link the returned records. For guidance, cite the returned document title,
 section, and version. Use live app reads for occupancy, payments, schedules,
 and tenant assessments.
 
+The workspace exposes these tools through env.KOS_TOOLS. For example:
+
+```js
+const result = await env.KOS_TOOLS.readAppData({
+  request: { operation: 'finances', period: 'this-month' }
+})
+```
+
+Read the MCP text result as JSON. If isError is true, correct the request or
+report the failure. For an activity ID returned by the tool, use a Markdown
+link to https://asah-capstone-nu.vercel.app/activities/{id}/detail. Replace
+{id} with the returned ID. Do not show only the ID when a record link applies.
+
 If routing returns uncertain, ask its clarification question. If out of scope,
 give its short domain response. If routing or retrieval fails, report the failed
 step. A live-data answer can continue after successful routing when it does not
