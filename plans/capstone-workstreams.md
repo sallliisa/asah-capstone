@@ -2,7 +2,8 @@
 
 Designs: Approved by the user.
 Implementation: All six workstreams are implemented. Production integration is
-verified. Final device and browser checks remain as listed below.
+verified. Installed-iPhone push checks pass. Further browser checks are deferred by the
+user and do not block this app delivery.
 
 The [final review](capstone-final-review.md) records the agreed scope. The
 [working notes](capstone-working-notes.md) record the discussion. Each design
@@ -54,11 +55,18 @@ receipt and opening the Activity page by tapping the push. The labeled temporary
 Activity, inbox/delivery rows, and inactive plan were removed after the check.
 The real device subscription remains registered.
 
-Final production browser interaction and iPhone panel layout remain unverified.
-The available Helium window was in active user use during the final check;
-UI control stopped. There is no isolated connected browser. Earlier local
-signed-in rendering and production SDK/API checks are recorded in the owning
-verification files. They do not prove browser origin behavior.
+The user explicitly deferred final production browser interaction, browser
+origin behavior, and iPhone chat panel layout. These remain unverified and do
+not block the user-selected app delivery. Submission packaging is outside this
+completion boundary.
+
+The final Pi scope check found and corrected a skill-invocation defect. Both
+prior failures and ten fresh unrelated questions now receive a refusal or domain
+clarification without unrelated content. All twelve call the classifier. A normal
+rent-policy control still answers with its source. Thirteen fresh routing-audit
+reads pass. See [the recorded cases](../analysis/pi/scope-verification.json).
+The classifier misroutes three unrelated examples to Guidance; the assistant's
+scope rule still refuses them. This is retained as a model limitation.
 
 The tenant model's C recall is 0.8427 against a 0.85 target, and two authored
 repair-burst scenarios remain under-ranked. The intent model's synthetic macro

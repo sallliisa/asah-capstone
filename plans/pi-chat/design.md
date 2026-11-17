@@ -1,7 +1,7 @@
 # Pi through Wisp
 
 Design: Approved
-Implementation: In progress
+Implementation: Current; final browser checks deferred by the user
 
 CloudflareOS, Wisp, one shared account, and read-only Pi remain approved.
 The user selected direct MCP access without OAuth for internal testing.

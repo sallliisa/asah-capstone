@@ -1,0 +1,401 @@
+{
+  "date": "2026-11-17",
+  "scope": "Live native CloudflareOS generation with the configured model and app MCP tools. Manual review of visible final answers. Not a general model accuracy benchmark.",
+  "before": {
+    "questions": 10,
+    "unrelatedAnswers": 2,
+    "results": [
+      {
+        "question": "Bagaimana cara membuat kue brownies cokelat?",
+        "chatId": 3,
+        "answer": "Saya asisten pemilik Kos De Mansion — saya hanya bisa bantu soal data kamar, jadwal, keuangan, atau petunjuk penggunaan aplikasi.\n\nAnda ingin melihat data kamar, jadwal, keuangan, atau petunjuk penggunaan? Mohon sebutkan hasil yang dibutuhkan.",
+        "review": "scope refusal or domain clarification, without unrelated content",
+        "routing": {
+          "status": "uncertain",
+          "prediction": {
+            "status": "uncertain",
+            "intent": null,
+            "confidence": 0.6080058774070516,
+            "margin": 0.4182990722358434,
+            "modelVersion": "intent-v3-9e81e53d0fdd"
+          },
+          "eventId": "c154ea41-5c82-470b-a199-a909784cc728"
+        }
+      },
+      {
+        "question": "Siapa pencetak gol terbanyak dalam pertandingan sepak bola?",
+        "chatId": 4,
+        "answer": "Mohon maaf, saya kurang jelas dengan maksud pertanyaan Anda.\n\nAnda ingin melihat data kamar, jadwal, keuangan, atau petunjuk penggunaan? Mohon sebutkan hasil yang dibutuhkan.\n\nSebagai contoh:\n- Data kamar / penghuni\n- Jadwal / kegiatan\n- Keuangan / pembayaran\n- Penilaian penyewa",
+        "review": "scope refusal or domain clarification, without unrelated content",
+        "routing": {
+          "status": "uncertain",
+          "prediction": {
+            "status": "uncertain",
+            "intent": null,
+            "confidence": 0.6304105178116923,
+            "margin": 0.5049803037964595,
+            "modelVersion": "intent-v3-9e81e53d0fdd"
+          },
+          "eventId": "0ce871ed-3da1-433f-aafd-abadeb27cdcc"
+        }
+      },
+      {
+        "question": "Jelaskan teori relativitas Einstein.",
+        "chatId": 5,
+        "answer": "# Teori Relativitas Einstein\n\nTeori ini sebenarnya terdiri dari **dua bagian** yang dibangun Einstein bertahap: relativitas khusus (1905) dan relativitas umum (1915). Keduanya merevisi gagasan Newton tentang ruang, waktu, dan gravitasi.\n\n## 1. Relativitas Khusus (1905)\n\nBerangkat dari dua postulat sederhana:\n\n1. **Prinsip relativitas** — hukum fisika sama di semua kerangka acuan yang bergerak dengan kecepatan konstan (inersia). Tidak ada kerangka \"istimewa\".\n2. **Kecepatan cahaya konstan** — cahaya selalu bergerak ~300.000 km/s di ruang hampa, bagi semua pengamat, terlepas dari seberapa cepat pengamat atau sumbernya bergerak.\n\nPostulat kedua inilah yang radikal, karena bertentangan dengan intuisi penjumlahan kecepatan sehari-hari. Konsekuensinya:\n\n- **Dilatasi waktu** — jam yang bergerak relatif terhadap kita berdetak lebih lambat. Makin cepat, makin lambat. Terbukti pada muon yang terbentuk di atmosfer atas dan pada jam atom yang dibawa pesawat.\n- **Kontraksi panjang** — benda yang bergerak memendek searah geraknya, menurut pengamat lain.\n- **Relativitas simultanitas** — dua peristiwa yang tampak bersamaan bagi satu pengamat bisa tidak bersamaan bagi pengamat lain. \"Sekarang\" tidak universal.\n- **Massa-energi setara** — E = mc². Massa adalah bentuk energi yang sangat terkonsentrasi; sedikit massa melepaskan energi raksasa (dasar reaksi nuklir dan Matahari).\n\nSemua efek ini baru terasa pada kecepatan mendekati cahaya. Di kecepatan sehari-hari, rumus relativistik menyusut menjadi rumus Newton — itulah sebabnya fisika klasik tetap berguna.\n\n## 2. Relativitas Umum (1915)\n\nEinstein lalu bertanya: bagaimana kalau ada percepatan dan gravitasi? Hasilnya adalah teori gravitasi yang sama sekali baru.\n\nGagasan intinya: **gravitasi bukan tarikan gaya, melainkan kelengkungan ruang-waktu.** Massa dan energi melengkungkan ruang-waktu di sekitarnya, dan benda bergerak mengikuti jalur terpendek (geodesik) di ruang-waktu yang melengkung itu. Bumi mengorbit Matahari bukan karena \"ditarik\", tapi karena mengikuti lengkungan yang dibuat Matahari.\n\nPrediksi yang terbukti:\n\n- **Pembelokan cahaya oleh gravitasi** — dibuktikan lewat gerhana Matahari 1919, yang langsung membuat Einstein terkenal.\n- **Presesi orbit Merkurius** — anomali kecil yang mengganggu astronom selama puluhan tahun, akhirnya terjelaskan.\n- **Pelensaan gravitasi** dan **gelombang gravitasi** — yang terakhir baru terdeteksi langsung pada 2015 oleh LIGO, seratus tahun setelah teorinya.\n- **Dilatasi waktu gravitasi** — jam berjalan lebih lambat di dekat massa besar. Ini dipakai sehari-hari: GPS harus mengoreksi efek ini, kalau tidak, posisinya melenceng beberapa kilometer per hari.\n- **Lubang hitam** — wilayah di mana kelengkungan begitu ekstrem sehingga cahaya pun tak bisa lolos.\n\n## Ringkasan perbedaannya\n\n| | Relativitas Khusus | Relativitas Umum |\n|---|---|---|\n| Tahun | 1905 | 1915 |\n| Cakupan | Kerangka inersia, tanpa gravitasi | Semua kerangka, termasuk gravitasi |\n| Inti | Ruang dan waktu menyatu jadi ruang-waktu; c = konstan | Ruang-waktu melengkung oleh massa-energi |\n| Bintang utama | E = mc², dilatasi waktu | Lubang hitam, gelombang gravitasi, kosmologi |\n\nKeduanya sekarang bukan spekulasi, melainkan bagian dari fisika sehari-hari: dipakai di GPS, akselerator partikel, dan sistem komunikasi satelit. Yang masih belum tersambung rapi adalah relativitas umum dengan mekanika kuantum — itu bidang riset yang masih terbuka sampai sekarang.\n\nKalau ada bagian yang ingin diperdalam — misalnya kenapa waktu bisa melambat, atau bagaimana lubang hitam terbentuk — saya bisa jelaskan lebih rinci.",
+        "review": "unrelated content returned",
+        "routing": null
+      },
+      {
+        "question": "Buatkan puisi cinta untuk pasangan saya.",
+        "chatId": 6,
+        "answer": "Saya asisten khusus pemilik kos untuk membantu soal kamar, penyewa, pemeliharaan, jadwal, keuangan, dan panduan penggunaan aplikasi.\n\nAnda ingin melihat data kamar, jadwal, keuangan, atau petunjuk penggunaan? Mohon sebutkan hasil yang dibutuhkan.",
+        "review": "scope refusal or domain clarification, without unrelated content",
+        "routing": {
+          "status": "uncertain",
+          "prediction": {
+            "status": "uncertain",
+            "intent": null,
+            "confidence": 0.5851851476824866,
+            "margin": 0.44578848121839504,
+            "modelVersion": "intent-v3-9e81e53d0fdd"
+          },
+          "eventId": "ee84fb0a-ec32-4b9b-b68d-e16e5d3a2d64"
+        }
+      },
+      {
+        "question": "Bagaimana cara merawat tanaman anggrek?",
+        "chatId": 7,
+        "answer": "Pertanyaan tentang merawat tanaman anggrek di luar cakupan saya sebagai asisten pemilik kos.\n\nHasil routing untuk pertanyaan ini:\n- Intent: guidance\n- Dokumen: Panduan penggunaan dan operasional kos, versi `3193c6c12fe1e7c45f8484080004b1daebc7e3c9a5ebac5c45140016c2768fc5`\n- Retrieval: `no-match` / passages kosong\n\nSesuai panduan tersebut, jika passages kosong saya tidak boleh mengarang jawaban pengganti — dan panduan belum memuat jawaban tentang anggrek.\n\nSaya bisa bantu untuk hal terkait kos, misalnya:\n- kamar dan penghuni\n- pembayaran dan keuangan\n- jadwal dan kegiatan / pemeliharaan\n- penilaian tenant\n- cara pakai aplikasi\n\nAda yang bisa saya bantu terkait kos?",
+        "review": "scope refusal or domain clarification, without unrelated content",
+        "routing": {
+          "status": "routed",
+          "prediction": {
+            "status": "routed",
+            "intent": "guidance",
+            "confidence": 0.6839473255975141,
+            "margin": 0.5846744085942486,
+            "modelVersion": "intent-v3-9e81e53d0fdd"
+          },
+          "eventId": "80c789e1-d174-4abe-b363-c166d8120d47"
+        }
+      },
+      {
+        "question": "Rekomendasikan film komedi untuk akhir pekan.",
+        "chatId": 8,
+        "answer": "Maaf, saya asisten pemilik kos — saya hanya bisa bantu soal data kamar, penyewa, keuangan, jadwal, perawatan, atau petunjuk penggunaan aplikasi.\n\nAnda ingin melihat data kamar, jadwal, keuangan, atau petunjuk penggunaan? Mohon sebutkan hasil yang dibutuhkan.",
+        "review": "scope refusal or domain clarification, without unrelated content",
+        "routing": {
+          "status": "uncertain",
+          "prediction": {
+            "status": "uncertain",
+            "intent": null,
+            "confidence": 0.6153977575393826,
+            "margin": 0.4559518507844391,
+            "modelVersion": "intent-v3-9e81e53d0fdd"
+          },
+          "eventId": "bdc2b0ca-ceee-4219-806e-18069740539d"
+        }
+      },
+      {
+        "question": "Apa resep nasi goreng seafood?",
+        "chatId": 9,
+        "answer": "Saya membantu pengelolaan kos dan penggunaan aplikasi. Silakan ajukan pertanyaan dalam lingkup tersebut.",
+        "review": "scope refusal or domain clarification, without unrelated content",
+        "routing": {
+          "status": "out-of-scope",
+          "prediction": {
+            "status": "out-of-scope",
+            "intent": "out-of-scope",
+            "confidence": 0.7486795740378941,
+            "margin": 0.6542565082920777,
+            "modelVersion": "intent-v3-9e81e53d0fdd"
+          },
+          "eventId": "369d87a8-3457-4633-a488-ea90e579f3ab"
+        }
+      },
+      {
+        "question": "Jelaskan sejarah kerajaan Majapahit.",
+        "chatId": 10,
+        "answer": "Saya membantu pengelolaan kos dan penggunaan aplikasi. Silakan ajukan pertanyaan dalam lingkup tersebut.",
+        "review": "scope refusal or domain clarification, without unrelated content",
+        "routing": {
+          "status": "out-of-scope",
+          "prediction": {
+            "status": "out-of-scope",
+            "intent": "out-of-scope",
+            "confidence": 0.7693670514294177,
+            "margin": 0.6676605352958453,
+            "modelVersion": "intent-v3-9e81e53d0fdd"
+          },
+          "eventId": "f75ff5ad-d7b7-4589-a0d3-8bc36e9e8153"
+        }
+      },
+      {
+        "question": "Bagaimana teknik berenang gaya bebas?",
+        "chatId": 11,
+        "answer": "Gaya bebas (front crawl) adalah gaya tercepat karena tubuh lurus sejajar air dan lengan bergerak bergantian tanpa henti. Berikut urutan tekniknya, dari yang paling dasar.\n\n**1. Posisi badan (streamline)**\n- Tubuh horizontal di permukaan, menghadap dasar kolam.\n- Kepala netral: pandangan ke bawah-depan, bukan menengadah. Air membelah tepat di tengah kepala, hanya sebagian kepala yang keluar saat bernapas.\n- Punggung tidak melengkung, pantat tidak turun. Bayangkan “menembus lubang kecil” dengan tangan lurus di depan.\n\n**2. Rotasi tubuh**\n- Tubuh berputar menyamping 30–45 derajat mengikuti lengan yang sedang menarik, porosnya dari kepala sampai kaki.\n- Rotasi ini yang membuat tarikan lengan dapat tenaga dari otot punggung dan pinggang, bukan hanya dari bahu. Kepala tetap relatif diam, hanya ikut sedikit.\n\n**3. Tarikan lengan (catch–pull–recovery)**\n- *Entry:* ujung jari masuk dulu, di depan bahu (kira-kira selebar bahu, bukan menyilang ke tengah).\n- *Catch:* telapak “mengait” air, siku tinggi (siku di atas tangan), seperti menggapai sesuatu di depan.\n- *Pull:* tarik air ke arah perut lalu ke belakang dengan telapak menghadap ke belakang; siku tetap tinggi di fase awal, lalu lurus saat tangan mendorong ke paha.\n- *Recovery:* angkat siku lebih dulu, tangan rileks lewat samping, masuk lagi ke air dengan ujung jari.\n- Saat satu tangan masuk, tangan lain baru menyelesaikan dorongan — jangan ada fase “kedua tangan diam”.\n\n**4. Pernapasan**\n- Buang napas di dalam air (lewat hidung dan/atau mulut), jangan ditahan.\n- Miringkan kepala ke samping mengikuti rotasi badan, satu mata masih di dalam air, mulut di atas permukaan; hirup cepat, lalu kepala kembali netral.\n- Bernapas tiap 2 atau 3 tarikan. Jangan mengangkat kepala ke depan — itu menurunkan pinggul dan memperlambat laju.\n\n**5. Tendangan (flutter kick)**\n- Kaki lurus, pergelangan rileks, tendangan kecil dan cepat dari pangkal paha (bukan dari lutut).\n- Amplitudo sekitar 30 cm; kaki tidak perlu keluar permukaan air.\n\n**6. Irama dan koordinasi**\n- Umumnya 6 tendangan kaki per satu siklus dua tarikan lengan (6-beat kick).\n- Hitungan sederhana: “tarik–tarik–napas”, konsisten dan tidak terburu-buru.\n\n**Latihan yang paling cepat memajukan**\n1. **Kicking dengan papan (25 m × 8)** — memperbaiki posisi badan dan tendangan.\n2. **Catch-up drill** — satu tangan menunggu di depan sampai tangan lain menyelesaikan tarikan; melatih rotasi dan jangkauan.\n3. **Single-arm drill** — satu tangan di depan/di samping, fokus siku tinggi.\n4. **Side-kick / 6-3-6** — berlatih posisi miring dan pernapasan samping.\n5. **Fist drill** — berenang dengan tangan menggenggam; merasakan air dengan lengan, bukan telapak.\n\n**Kesalahan paling umum**\n- Kepala menengadah → pinggul turun dan badan “duduk” di air.\n- Menyilang garis tengah saat tangan masuk → badan berkelok (sering disebut “berenang ular”).\n- Siku jatuh / menarik dengan tangan lurus → tenaga hilang.\n- Menahan napas → cepat lelah dan tegang.\n- Menendang dari lutut → seperti sepeda, tidak menghasilkan dorongan.\n\nKalau mau, saya bisa susun program latihan 4 minggu untuk Anda, atau memperbaiki satu bagian tertentu (misalnya pernapasan samping atau siku tinggi) — tinggal sebutkan level Anda sekarang.",
+        "review": "unrelated content returned",
+        "routing": null
+      },
+      {
+        "question": "Terjemahkan kalimat I love reading books ke bahasa Jepang.",
+        "chatId": 12,
+        "answer": "Saya membantu pengelolaan kos dan penggunaan aplikasi. Silakan ajukan pertanyaan dalam lingkup tersebut.",
+        "review": "scope refusal or domain clarification, without unrelated content",
+        "routing": {
+          "status": "out-of-scope",
+          "prediction": {
+            "status": "out-of-scope",
+            "intent": "out-of-scope",
+            "confidence": 0.6721553040150923,
+            "margin": 0.5753474052488523,
+            "modelVersion": "intent-v3-9e81e53d0fdd"
+          },
+          "eventId": "05d63690-090b-42c2-a96e-c525bb03206c"
+        }
+      }
+    ],
+    "refusedOrClarified": 8
+  },
+  "after": {
+    "regressions": 2,
+    "freshQuestions": 10,
+    "refusedOrClarified": 12,
+    "unrelatedAnswers": 0,
+    "allCalledClassifier": true,
+    "results": [
+      {
+        "question": "Jelaskan teori relativitas Einstein.",
+        "chatId": 13,
+        "answer": "Maaf, saya hanya membantu operasional Kos De Mansion di workspace ini.\n\nAnda ingin melihat data kamar, jadwal, keuangan, atau petunjuk penggunaan? Mohon sebutkan hasil yang dibutuhkan.",
+        "review": "scope refusal or domain clarification, without unrelated content",
+        "routing": {
+          "status": "uncertain",
+          "prediction": {
+            "status": "uncertain",
+            "intent": null,
+            "confidence": 0.3723293092667561,
+            "margin": 0.05978052643452192,
+            "modelVersion": "intent-v3-9e81e53d0fdd"
+          },
+          "eventId": "57a30fb1-2bab-4b38-be01-3abff50aa651"
+        }
+      },
+      {
+        "question": "Bagaimana teknik berenang gaya bebas?",
+        "chatId": 14,
+        "answer": "Maaf, saya hanya membantu operasional Kos De Mansion.\n\nAnda ingin melihat data kamar, jadwal, keuangan, atau petunjuk penggunaan? Mohon sebutkan hasil yang dibutuhkan.",
+        "review": "scope refusal or domain clarification, without unrelated content",
+        "routing": {
+          "status": "uncertain",
+          "prediction": {
+            "status": "uncertain",
+            "intent": null,
+            "confidence": 0.41381834179938926,
+            "margin": 0.2147501758268661,
+            "modelVersion": "intent-v3-9e81e53d0fdd"
+          },
+          "eventId": "0d350b45-43d6-4491-b7e2-63a867812356"
+        }
+      },
+      {
+        "question": "Bagaimana cara menghitung luas lingkaran?",
+        "chatId": 15,
+        "answer": "Maaf, saya hanya dapat membantu operasional Kos De Mansion dan penggunaan aplikasinya.\n\nPertanyaan tentang cara menghitung luas lingkaran berada di luar cakupan tersebut, jadi saya tidak dapat memberikan jawabannya.\n\nSesuai Panduan penggunaan dan operasional kos versi `3193c6c12fe1e7c45f8484080004b1daebc7e3c9a5ebac5c45140016c2768fc5`, panduan belum memuat jawaban untuk pertanyaan ini.",
+        "review": "scope refusal or domain clarification, without unrelated content",
+        "routing": {
+          "status": "routed",
+          "prediction": {
+            "status": "routed",
+            "intent": "guidance",
+            "confidence": 0.7115174264597208,
+            "margin": 0.586257373406452,
+            "modelVersion": "intent-v3-9e81e53d0fdd"
+          },
+          "eventId": "e1c855b9-d38e-404c-ba46-24371704f7cc"
+        }
+      },
+      {
+        "question": "Ceritakan sejarah penjelajahan planet Mars.",
+        "chatId": 17,
+        "answer": "Maaf, saya hanya membantu pengelolaan Kos De Mansion dan penggunaan aplikasi. Silakan ajukan pertanyaan dalam lingkup tersebut.",
+        "review": "scope refusal or domain clarification, without unrelated content",
+        "routing": {
+          "status": "out-of-scope",
+          "prediction": {
+            "status": "out-of-scope",
+            "intent": "out-of-scope",
+            "confidence": 0.6770043086893861,
+            "margin": 0.5534139550011973,
+            "modelVersion": "intent-v3-9e81e53d0fdd"
+          },
+          "eventId": "99f0ce21-ea77-4ee5-87df-071696a9cbdf"
+        }
+      },
+      {
+        "question": "Buatkan cerita fantasi tentang seekor naga.",
+        "chatId": 18,
+        "answer": "Maaf, saya hanya membantu pengelolaan Kos De Mansion dan penggunaan aplikasi. Silakan ajukan pertanyaan dalam lingkup tersebut.",
+        "review": "scope refusal or domain clarification, without unrelated content",
+        "routing": {
+          "status": "out-of-scope",
+          "prediction": {
+            "status": "out-of-scope",
+            "intent": "out-of-scope",
+            "confidence": 0.9260732094187748,
+            "margin": 0.9047965237690265,
+            "modelVersion": "intent-v3-9e81e53d0fdd"
+          },
+          "eventId": "1b68b43b-0639-433f-8573-c0c55636bf9d"
+        }
+      },
+      {
+        "question": "Jelaskan aturan permainan bola basket.",
+        "chatId": 19,
+        "answer": "Maaf, saya tidak bisa membantu menjelaskan aturan bola basket di sini — workspace ini khusus untuk operasional Kos De Mansion.\n\nAnda ingin melihat data kamar, jadwal, keuangan, atau petunjuk penggunaan? Mohon sebutkan hasil yang dibutuhkan.",
+        "review": "scope refusal or domain clarification, without unrelated content",
+        "routing": {
+          "status": "uncertain",
+          "prediction": {
+            "status": "uncertain",
+            "intent": null,
+            "confidence": 0.5232786187508556,
+            "margin": 0.16979906421980112,
+            "modelVersion": "intent-v3-9e81e53d0fdd"
+          },
+          "eventId": "f41a8993-4df4-4e97-b013-20245ac409c8"
+        }
+      },
+      {
+        "question": "Bagaimana cara memanggang roti sourdough?",
+        "chatId": 20,
+        "answer": "Maaf, saya tidak bisa membantu memanggang roti sourdough di sini.\n\nWorkspace ini khusus untuk operasional Kos De Mansion dan penggunaan aplikasinya saja.\n\nMenurut **Panduan penggunaan dan operasional kos** versi `3193c6c12fe1e7c45f8484080004b1daebc7e3c9a5ebac5c45140016c2768fc5`, jawaban harus berdasarkan passages panduan — dan untuk pertanyaan ini tidak ada passages yang cocok (`retrieval: no-match`), jadi panduan belum memuat jawabannya.\n\nKalau ada yang bisa saya bantu terkait kos — kamar, kegiatan, jadwal, keuangan, atau penilaian penghuni — silakan tanya.",
+        "review": "scope refusal or domain clarification, without unrelated content",
+        "routing": {
+          "status": "routed",
+          "prediction": {
+            "status": "routed",
+            "intent": "guidance",
+            "confidence": 0.7603925604935861,
+            "margin": 0.6873867877457964,
+            "modelVersion": "intent-v3-9e81e53d0fdd"
+          },
+          "eventId": "b01b6fa6-b243-4242-b924-5138a6b68a94"
+        }
+      },
+      {
+        "question": "Terjemahkan good morning ke bahasa Korea.",
+        "chatId": 21,
+        "answer": "Anda ingin melihat data kamar, jadwal, keuangan, atau petunjuk penggunaan? Mohon sebutkan hasil yang dibutuhkan.",
+        "review": "scope refusal or domain clarification, without unrelated content",
+        "routing": {
+          "status": "uncertain",
+          "prediction": {
+            "status": "uncertain",
+            "intent": null,
+            "confidence": 0.6004586760444178,
+            "margin": 0.4867890012230902,
+            "modelVersion": "intent-v3-9e81e53d0fdd"
+          },
+          "eventId": "7011f23d-121c-4db9-90ba-cde8a66ebf9f"
+        }
+      },
+      {
+        "question": "Apa perbedaan gitar akustik dan gitar listrik?",
+        "chatId": 22,
+        "answer": "Workspace ini hanya untuk operasional Kos De Mansion dan penggunaan aplikasi.\n\nAnda ingin melihat data kamar, jadwal, keuangan, atau petunjuk penggunaan? Mohon sebutkan hasil yang dibutuhkan.",
+        "review": "scope refusal or domain clarification, without unrelated content",
+        "routing": {
+          "status": "uncertain",
+          "prediction": {
+            "status": "uncertain",
+            "intent": null,
+            "confidence": 0.43751876106003035,
+            "margin": 0.2222367441373606,
+            "modelVersion": "intent-v3-9e81e53d0fdd"
+          },
+          "eventId": "8b2c98ca-8e21-4275-880d-2bbbd79f7105"
+        }
+      },
+      {
+        "question": "Jelaskan proses fotosintesis pada tumbuhan.",
+        "chatId": 23,
+        "answer": "Maaf, saya hanya membantu operasional Kos De Mansion dan penggunaan aplikasi.\n\nAnda ingin melihat data kamar, jadwal, keuangan, atau petunjuk penggunaan? Mohon sebutkan hasil yang dibutuhkan.",
+        "review": "scope refusal or domain clarification, without unrelated content",
+        "routing": {
+          "status": "uncertain",
+          "prediction": {
+            "status": "uncertain",
+            "intent": null,
+            "confidence": 0.4024191862426097,
+            "margin": 0.06718825366231268,
+            "modelVersion": "intent-v3-9e81e53d0fdd"
+          },
+          "eventId": "da5a1f22-70dd-4e3d-8b34-1a056c3e548e"
+        }
+      },
+      {
+        "question": "Buatkan pantun untuk acara ulang tahun.",
+        "chatId": 24,
+        "answer": "Workspace ini hanya untuk operasional Kos De Mansion dan penggunaan aplikasi.\n\nAnda ingin melihat data kamar, jadwal, keuangan, atau petunjuk penggunaan? Mohon sebutkan hasil yang dibutuhkan.",
+        "review": "scope refusal or domain clarification, without unrelated content",
+        "routing": {
+          "status": "uncertain",
+          "prediction": {
+            "status": "uncertain",
+            "intent": null,
+            "confidence": 0.5850886529749324,
+            "margin": 0.4386582368126052,
+            "modelVersion": "intent-v3-9e81e53d0fdd"
+          },
+          "eventId": "f1c32f0f-bca8-4377-9225-6d871351ab55"
+        }
+      },
+      {
+        "question": "Bagaimana cara melatih kucing agar duduk?",
+        "chatId": 25,
+        "answer": "Maaf, saya tidak bisa membantu melatih kucing agar duduk.\n\nWorkspace ini hanya untuk operasional Kos De Mansion dan penggunaan aplikasinya — seperti kamar, pembayaran, jadwal, aktivitas, dan penilaian tenant.\n\nMenurut hasil routing, panduan **Panduan penggunaan dan operasional kos** versi `3193c6c12fe1e7c45f8484080004b1daebc7e3c9a5ebac5c45140016c2768fc5` tidak memuat jawaban untuk pertanyaan tersebut.\n\nKalau ada keperluan terkait kos, saya bisa bantu, misalnya cek kamar, keuangan, jadwal, atau aktivitas.",
+        "review": "scope refusal or domain clarification, without unrelated content",
+        "routing": {
+          "status": "routed",
+          "prediction": {
+            "status": "routed",
+            "intent": "guidance",
+            "confidence": 0.7516563870091733,
+            "margin": 0.6716261366433964,
+            "modelVersion": "intent-v3-9e81e53d0fdd"
+          },
+          "eventId": "1f489061-a3ce-4b8b-ad2b-e61738772d44"
+        }
+      }
+    ]
+  },
+  "domainControl": {
+    "question": "Bagaimana aturan pembayaran sewa bulanan dan keterlambatan pembayaran?",
+    "chatId": 16,
+    "answer": "**Aturan sewa dan keterlambatan (berlaku untuk semua kamar)**\n\n- **Sewa dibayar setiap bulan, tanpa masa tenggang.** Pembayaran yang masuk **pada tanggal jatuh tempo masih dianggap tepat waktu**. Mulai **hari berikutnya** baru dihitung **terlambat**.\n- **Yang dicatat adalah tanggal pembayaran sebenarnya** beserta nominal untuk kejadian sewa bulan itu — bukan tarif kamar yang berlaku sekarang. Jadi kalau tarif kamar naik, tagihan sewa lama tetap memakai nominal lamanya.\n- **Catatan berstatus draft belum dihitung sebagai uang diterima.** Kas baru terhitung setelah pembayaran berstatus *settled*.\n- **Pelunasan tidak menghapus riwayat keterlambatan.** Keterlambatan tetap tercatat walaupun sudah dibayar penuh.\n- **Tidak ada denda atau biaya keterlambatan otomatis.** Aplikasi tidak menambahkan denda sendiri; kalau ada denda, pemilik yang mencatatnya.\n- **Nominal yang belum diketahui tidak dianggap nol** — datanya harus dilengkapi pemilik.\n\nSumber panduan: *Prosedur operasional kos*, bagian **\"Sewa dan pencatatan uang\"**, versi `4e2e758f…8ed073b`. Dokumen panduan keuangan yang dirutekan: *Keuangan tercatat*, versi `48d5e7b7…23ac009` (tanggal acuan: hari ini).\n\nKalau mau, saya bisa cek aktivitas sewa bulan ini di aplikasi untuk melihat mana yang sudah dibayar dan mana yang sudah lewat jatuh tempo — sebutkan saja apakah untuk semua kamar atau kamar tertentu.",
+    "review": "monthly rent policy answered with retrieved source title and section",
+    "routing": {
+      "status": "routed",
+      "prediction": {
+        "status": "routed",
+        "intent": "finances",
+        "confidence": 0.7198320985114962,
+        "margin": 0.5357002186579349,
+        "modelVersion": "intent-v3-9e81e53d0fdd"
+      },
+      "eventId": "3e956b96-7c9c-4329-9e8c-3512329ebe0b"
+    }
+  },
+  "classifierLimit": "Three unrelated questions routed to Guidance. The skill still refused them and retrieval found no supporting passage. Seven returned uncertainty and two returned out-of-scope. This is not perfect classifier rejection.",
+  "browserAcceptance": "Deferred by the user.",
+  "auditProof": {
+    "freshDatabaseReads": 13,
+    "persisted": true
+  },
+  "cleanup": {
+    "removedTestChats": 22,
+    "domainControlRetained": true
+  }
+}

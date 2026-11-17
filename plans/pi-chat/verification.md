@@ -136,3 +136,36 @@ warning, with no application failure reported in that scan. Final browser
 origin behavior remains unverified: Helium was in active user use and the
 isolated in-app browser was unavailable. No further UI input was sent. Actual
 iPhone panel and push checks remain separate; the user deferred push testing.
+
+
+## Final app scope check and correction
+
+The user limited completion to the app and explicitly deferred further browser
+checks. Submission documents and media do not block this delivery.
+
+Ten native unrelated questions exposed two failures: Pi answered relativity
+and swimming without loading the kos skill or calling the classifier. The
+skill description had scoped invocation to domain questions. Broadened that
+pointer to every substantive workspace request, including unrelated questions.
+The body now requires routing before an answer and a brief scope refusal for
+unrelated requests. No estimator, route permission, or framework package changed.
+The native private skill collection contains the same updated source.
+
+Both failures now receive a scope refusal. Ten fresh unrelated questions also
+receive a refusal or domain clarification without the requested unrelated
+content. All twelve call getQuestionContext. A separate normal rent-policy
+question still selects Finances and answers with its retrieved source reference.
+Fresh app database reads confirmed all thirteen routing audits.
+
+The classifier itself returned uncertainty for seven unrelated questions,
+Out of scope for two, and Guidance for three. Pi still refused those three
+and retrieval found no matching support. This check proves the final assistant
+scope behavior, not perfect classifier accuracy. The model's published coverage
+and accuracy limits remain unchanged.
+
+Prompts, visible answers, routing outcomes, and the original failures are in
+../../analysis/pi/scope-verification.json. Raw native traces remain ignored in
+.local/verification. Test-only conversations are removed after preserving this
+evidence; normal saved conversations and the cited domain control remain.
+Browser origin, forms/filters, and iPhone chat panel layout remain unverified by
+explicit user choice. Installed-iPhone push delivery and tapping passed.
