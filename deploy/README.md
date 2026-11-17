@@ -40,12 +40,22 @@ up to 25 tenant assessments. Daily assessment refresh is queued after 00:10
 Asia/Jakarta once per date. That model job time does not set a notification time.
 There is no notification age window or repeated overdue push policy.
 
+## Notification owner
+
+Set CARTA_ADMIN_EMAIL in the production API environment to the existing app
+owner's email. Notifications has no default owner when this value is absent.
+NOTIFICATION_OWNER_USER_ID can select a different explicit recipient and takes
+precedence. Keep it unset when the shared app owner is the recipient. A working
+admin login or Pi connection does not prove this notification setting exists.
+Check authenticated /api/notifications/list after deployment before asking a
+device to register for push. No seed or account recreation is needed.
+
 ## Pi and hosted RAG
 
 The API server needs the CloudflareOS URL, username, and password. The browser
 receives the native session only after owner authorization. Wisp selects native
-workspaces and models. The current account authenticated but had no workspace
-at the live check. The owner must provide a chat-ready workspace and model.
+workspaces and models. Kos De Mansion has a connected generation model and
+read tools; see cfos-verification.md for current setup.
 
 For RAG, configure CLOUDFLARE_ACCOUNT_ID, CLOUDFLARE_API_TOKEN, and
 VECTORIZE_INDEX_NAME in the API environment. The account is for Workers AI and
@@ -105,7 +115,7 @@ contains no Python environment, raw histories, or .env files.
 
 ## Current live state
 
-Deployment dpl_HxZYREtQ1sP6RKyi1cF9sV1ZEapy passed staged checks and is promoted.
+Deployment dpl_BTbjWADLzhtdKD5sYUSHnN5mdxNR passed staged checks and is promoted.
 The canonical app is https://asah-capstone-nu.vercel.app. Its database migration
 step used the existing Vercel secret; database, storage, and login secrets were
 not replaced.

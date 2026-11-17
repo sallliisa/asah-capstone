@@ -47,3 +47,26 @@ no due work in those runs, so they do not establish real push delivery. The
 user explicitly deferred the installed-iPhone delivery and tap check. No
 temporary test reminder was created. Earlier local signed-in inspection showed
 the inbox and iPhone Home Screen instructions; final device proof stays open.
+
+## Production owner configuration correction
+
+The installed-iPhone check reported Notifications are available to the configured
+owner. A live login with the seeded owner reproduced HTTP 403 on the inbox.
+Production had neither NOTIFICATION_OWNER_USER_ID nor CARTA_ADMIN_EMAIL, so
+notificationOwnerId returned null for every signed-in user. Pi's separate
+seed-email default had hidden this missing notification configuration.
+
+Set CARTA_ADMIN_EMAIL in the production API environment to the existing owner
+email. No user, role, permission, subscription, or business record was changed.
+No application access rule or source code was changed. Staged deployment
+dpl_BTbjWADLzhtdKD5sYUSHnN5mdxNR passed owner sign-in, inbox HTTP 200, and a
+public push key match with the expected 65-byte decoded key. Promoted that
+exact build. The first immediate canonical request still reached the previous
+release; after alias propagation, the same live proof passed on the canonical
+app. Each proof signed out only its own temporary login session.
+
+Evidence: .local/verification/notification-owner-stage-proof.log and
+notification-owner-production-proof.log. The deployment runbook now names this
+required owner setting and inbox acceptance check. No new tests were needed
+for this configuration-only correction. Device permission and actual push
+delivery still require the iPhone check.

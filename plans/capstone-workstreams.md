@@ -20,8 +20,10 @@ owns its feature rules. Git contains the earlier delivery checkpoints.
 ## Current production checkpoint, 17 November 2026
 
 The canonical app is https://asah-capstone-nu.vercel.app. Tested deployment
-dpl_HxZYREtQ1sP6RKyi1cF9sV1ZEapy is promoted. Its source commit is 9bdf875.
-Existing database, storage, and login secrets were preserved.
+dpl_BTbjWADLzhtdKD5sYUSHnN5mdxNR is promoted. Its source commit is 4094d6f.
+Existing database, storage, and login secrets were preserved. Production now
+explicitly sets CARTA_ADMIN_EMAIL for the existing notification owner; the
+authenticated inbox and push public-key checks pass.
 
 The model service at https://models.southneuhof.tech requires its service token.
 The VPS runs kos-models.service and kos-jobs.timer as muslik. Repeated minute
