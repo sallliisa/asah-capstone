@@ -86,3 +86,8 @@ until that check finishes, then remove only its Activity, inbox/delivery rows,
 and inactive plan. Evidence and exact cleanup IDs are retained in ignored
 .local/verification/iphone-push-fixture.json and iphone-push-delivery.json.
 No subscription key, push endpoint token, or credential is recorded here.
+
+
+The user confirmed that the test notification arrived on the iPhone. Visible
+delivery now passes. Notification-tap behavior still awaits confirmation; the
+temporary Activity remains available for that check.
