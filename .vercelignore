@@ -17,3 +17,6 @@ evals
 .env.local
 .neon
 .neon.env
+services/models
+analysis
+deploy

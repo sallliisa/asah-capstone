@@ -81,3 +81,22 @@ thread limits. No database or Cloudflare credentials were copied there.
 Use systemctl --user status kos-models.service or journalctl --user -u
 kos-models.service for operations. HTTPS publication and the app job timer are
 separate acceptance steps. See vps-verification.md for measured checks.
+
+## Stage the existing Vercel app
+
+The linked project is asah-capstone. Existing production database, storage, and
+authentication variables are preserved. New Cloudflare, private model/tool/job,
+and Web Push variables are configured for production. Secret values enter the
+CLI through stdin and are not command arguments or output.
+
+The API service build runs scripts/build-vercel.mjs. Normal builds only check
+types and compile routes. A staged production deployment can explicitly set
+CARTA_MIGRATE_ON_BUILD=true to apply pending migrations using Vercel's existing
+production database secret. The script rejects this flag outside production.
+No database reset or full demo seed runs during deployment.
+
+Use vercel deploy --prod --skip-domain --build-env
+CARTA_MIGRATE_ON_BUILD=true. Inspect its build and runtime results before
+promoting that exact deployment. The upload excludes services/models, analysis,
+and deploy, in addition to local files and secrets. The checked source set
+contains no Python environment, raw histories, or .env files.

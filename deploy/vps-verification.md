@@ -22,3 +22,20 @@ Evidence is retained under .local/verification/vps-models-*.
 
 HTTPS publication, deployed app-to-service requests, and the minute job timer
 remain to be checked. The experimental model quality limits are unchanged.
+
+## HTTPS publication
+
+The owner supplied administrator SSH alias kknkalongan. Its ubuntu account
+can use sudo. The prepared script validated a candidate tunnel configuration,
+preserved cfos.southneuhof.tech, published models.southneuhof.tech, and restarted
+cloudflared. The existing origin certificate is at
+/home/ubuntu/.cloudflared/cert.pem; no certificate contents were copied or printed.
+
+The applied command was sudo env
+TUNNEL_ORIGIN_CERT=/home/ubuntu/.cloudflared/cert.pem python3
+/home/muslik/app/models/configure-tunnel.py --apply. A private root-owned config
+backup was saved. Anonymous HTTPS health returns 401. Authenticated health and
+financial intent classification pass over HTTPS. The existing CloudflareOS
+origin still returns 200. The local API environment now uses the HTTPS model
+address. Evidence: models-tunnel-apply.log and models-https-proof.json under
+.local/verification. The deployed API and timer still need acceptance.
