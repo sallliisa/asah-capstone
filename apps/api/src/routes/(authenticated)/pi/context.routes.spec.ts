@@ -11,11 +11,12 @@ import { activities } from '../activities/activities.table'
 import { rooms } from '../rooms/rooms.table'
 import { knowledgeChunks, knowledgeDocuments, knowledgeIndexVersions } from '../knowledge/knowledge.table'
 import { queryVectors } from '../../../knowledge/cloudflare'
+import { rerankerModel, retrievalPolicy } from '../../../knowledge/rank'
 import { piRoutingEvents } from './pi.table'
 import { rolePermissions } from '../roles/roles.table'
 
 vi.mock('../../../model-service', () => ({ modelRequest: vi.fn().mockResolvedValue({ status: 'routed', intent: 'finances', confidence: 0.9, margin: 0.8, modelVersion: 'external-intent-test' }) }))
-vi.mock('../../../knowledge/cloudflare', () => ({ embeddingModel: '@cf/baai/bge-m3', embeddingDimensions: 1024, embedTexts: vi.fn().mockResolvedValue([Array(1024).fill(0)]), queryVectors: vi.fn() }))
+vi.mock('../../../knowledge/cloudflare', () => ({ embeddingModel: '@cf/baai/bge-m3', embeddingDimensions: 1024, embedTexts: vi.fn().mockResolvedValue([Array(1024).fill(0)]), queryVectors: vi.fn(), cloudflareRequest: vi.fn().mockResolvedValue({ response: [{ id: 0, score: 0.9 }] }) }))
 const versionIds: string[] = []
 const documentIds: string[] = []
 const savedEmail = process.env.CARTA_ADMIN_EMAIL
@@ -113,8 +114,8 @@ it('returns passages only from the active corpus and permitted area even when th
   await getDb()
     .insert(knowledgeIndexVersions)
     .values([
-      { id: activeId, embeddingModel: '@cf/baai/bge-m3', dimensions: 1024, indexName: 'fixture-index', state: 'active', minimumScore: 0.75 },
-      { id: candidateId, embeddingModel: '@cf/baai/bge-m3', dimensions: 1024, indexName: 'fixture-index', state: 'indexed', minimumScore: 0.75 },
+      { id: activeId, embeddingModel: '@cf/baai/bge-m3', rerankerModel, retrievalPolicy, dimensions: 1024, indexName: 'fixture-index', state: 'active', minimumScore: 0.75, minimumRetrievalScore: 0.25 },
+      { id: candidateId, embeddingModel: '@cf/baai/bge-m3', rerankerModel, retrievalPolicy, dimensions: 1024, indexName: 'fixture-index', state: 'indexed', minimumScore: 0.75, minimumRetrievalScore: 0.25 },
     ])
   const published = crypto.randomUUID()
   const candidate = crypto.randomUUID()

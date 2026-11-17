@@ -1,0 +1,1 @@
+ALTER TABLE "knowledge_index_versions" ADD COLUMN "retrieval_policy" text DEFAULT 'unrecorded' NOT NULL;

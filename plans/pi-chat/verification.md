@@ -41,3 +41,16 @@ API, SDK, and web type checks passed. The owner route test passed. Focused API
 and web lint and formatting passed. The production web build passed with the
 existing large-chunk and plugin-time warnings. Browser origin handling still
 needs a browser check; a Node connection does not establish CORS behavior.
+
+## Helium UI check, 17 November
+
+Browser access recovered. In the signed-in app at localhost:5181, the dashboard
+rendered room links, tenant review priorities, financial totals, and charts.
+The notification route rendered its empty inbox and iPhone Home Screen push
+instructions with enable/disable controls. No push permission was requested.
+Wisp opened and showed the shared account. The workspace selector offered only
+Create workspace; native generation is still blocked by workspace/model setup.
+A tenant profile rendered saved Not enough data assessments, required coverage
+reasons, model versions, and history. Its coverage form opened with three date
+inputs and the expense-completeness checkbox. No business data was changed.
+These observations do not establish actual iPhone delivery or VPS deployment.

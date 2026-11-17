@@ -27,6 +27,13 @@ test retrieval results. It writes evidence under .local/verification/rag.
 No default arbitrary cutoff is used. Native answer generation is a separate
 check from passage retrieval.
 
+Passages follow paragraph boundaries within each section and retain source
+titles and sections. Retrieval keeps the best vector match rather than attach loosely related
+secondary passages. Evaluation examples can name reviewed alternative sources
+when the same fact is present in more than one section. The selected cutoff must first meet validation
+precision, recall, and unsupported-answer limits; F1 orders feasible cutoffs.
+A separate held-out test still gates activation.
+
 The initial activation check requires precision at least 0.90 and answerable
 recall at least 0.75 on validation and test, with no accepted unsupported test
 question. This small authored set is a technical gate, not real-world accuracy.

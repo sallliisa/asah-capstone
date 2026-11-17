@@ -82,3 +82,39 @@ The tenant model misses its C-recall target and two authored burst scenarios.
 These limits are retained in the model card and report. The synthetic intent
 classifier also requires clarification for many questions. Neither report
 establishes accuracy on real tenant or owner data.
+
+## Restart checkpoint, 17 November
+
+The user paused work to restart the local computer. VPS deployment is committed
+at 06ca6c3. The model service remains enabled at /home/muslik/app/models under
+SSH alias kknkalongan_muslik. It binds to 127.0.0.1:5195 and requires the private
+service token. Both models, anonymous rejection, batch scoring, and restart
+recovery passed on the VPS. HTTPS publication and the job timer are unfinished.
+
+Cloudflare credentials are saved only in ignored apps/api/.env. Live Workers AI
+and Vectorize work. RAG candidates and failures are retained under analysis/rag
+and .local/verification. No corpus is active. Current candidate version is
+4e2e758fcfff33fa021fb23f90888d06e8989c1b21ff7a1e06c0932138ed073b.
+Its hybrid vector/BM25 ranking and reranker use separately calibrated score
+floors. Validation over 134 authored examples passed: precision 0.9643, recall
+0.8901, zero unsupported. All current examples are validation only. Before any
+activation, write a fresh held-out test set without changing the frozen
+configuration, run knowledge:verify, inspect the result, then activate only if
+the existing gates pass. Three new knowledge migrations were applied to the
+development database. Latest migrations and final changes still need the final
+API route checks, build, lint, SDK/web types, and guarded test migration.
+
+Wisp has a new Kos De Mansion workspace and an available generation model.
+The native response was Koneksi berhasil. A separate native SDK check restored
+the saved conversation with two messages and no error. UI inbox, dashboard,
+tenant assessment, history, and coverage form rendered without business writes.
+The browser agent was interrupted before the computer restart. Its task was
+to inspect the existing Cloudflare tunnel and prepare models.southneuhof.tech
+to http://127.0.0.1:5195. It was instructed not to publish the new hostname
+without action-time confirmation. Inspect its final state before continuing.
+
+Next: finish held-out RAG proof and activation; finish HTTPS publication; wire
+the deployed API to the VPS; install the minute job; configure the native MCP
+resource and base skill; verify routing/citations and iPhone PWA push. Local
+development servers and temporary processes may need a restart. Do not copy
+secrets into Git or re-create a token merely because local processes stopped.

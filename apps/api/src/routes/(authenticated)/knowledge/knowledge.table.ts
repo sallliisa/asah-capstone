@@ -13,6 +13,8 @@ export const knowledgeIndexVersions = pgTable(
   {
     id: text('id').primaryKey(),
     embeddingModel: text('embedding_model').notNull(),
+    rerankerModel: text('reranker_model'),
+    retrievalPolicy: text('retrieval_policy').notNull().default('unrecorded'),
     dimensions: integer('dimensions').notNull(),
     indexName: text('index_name').notNull(),
     state: text('state').notNull().default('preparing'),
@@ -20,6 +22,7 @@ export const knowledgeIndexVersions = pgTable(
     activatedAt: timestamp('activated_at', { withTimezone: true, mode: 'string' }),
     error: text('error'),
     minimumScore: doublePrecision('minimum_score'),
+    minimumRetrievalScore: doublePrecision('minimum_retrieval_score'),
   },
   (table) => [
     uniqueIndex('knowledge_one_active_model')

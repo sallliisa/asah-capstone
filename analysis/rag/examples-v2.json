@@ -1,0 +1,240 @@
+[
+  {
+    "split": "validation",
+    "question": "Bagaimana mencatat aktivitas dan pembayaran yang sudah terjadi?",
+    "area": "guidance",
+    "documentId": "app-help",
+    "section": "Mencatat kegiatan dan pembayaran"
+  },
+  {
+    "split": "validation",
+    "question": "Apa yang terjadi pada riwayat tenant saat pindah kamar?",
+    "area": "rooms",
+    "documentId": "tenant-attention",
+    "section": "Cakupan riwayat dan perpindahan kamar"
+  },
+  {
+    "split": "validation",
+    "question": "Seberapa sering AC diservis secara rutin?",
+    "area": "schedules",
+    "documentId": "kos-procedures",
+    "section": "Kebersihan dan servis berkala"
+  },
+  {
+    "split": "validation",
+    "question": "Adakah masa tenggang untuk sewa bulanan?",
+    "area": "finances",
+    "documentId": "kos-procedures",
+    "section": "Sewa dan pencatatan uang"
+  },
+  {
+    "split": "validation",
+    "question": "Apa kata sandi Wi-Fi kos?",
+    "area": "guidance",
+    "documentId": null,
+    "section": null
+  },
+  {
+    "split": "validation",
+    "question": "Berapa nomor rekening pemilik untuk transfer?",
+    "area": "finances",
+    "documentId": null,
+    "section": null
+  },
+  {
+    "split": "validation",
+    "question": "Siapa nama teknisi langganan kos?",
+    "area": "rooms",
+    "documentId": null,
+    "section": null
+  },
+  {
+    "split": "validation",
+    "question": "Apa nomor telepon pemadam setempat?",
+    "area": "guidance",
+    "documentId": null,
+    "section": null
+  },
+  {
+    "split": "validation",
+    "question": "Apakah menandai notifikasi dibaca juga menyelesaikan pekerjaan?",
+    "area": "schedules",
+    "documentId": "app-help",
+    "section": "Rencana berulang dan kotak masuk"
+  },
+  {
+    "split": "validation",
+    "question": "Apa makna A B dan C pada perhatian tenant?",
+    "area": "guidance",
+    "documentId": "tenant-attention",
+    "section": "Arti nilai dan sumber data"
+  },
+  {
+    "split": "validation",
+    "question": "Data minimum apa yang diperlukan sebelum ada nilai tenant?",
+    "area": "rooms",
+    "documentId": "tenant-attention",
+    "section": "Cakupan riwayat dan perpindahan kamar"
+  },
+  {
+    "split": "validation",
+    "question": "Apa tindakan awal bila AC bocor dekat listrik?",
+    "area": "rooms",
+    "documentId": "maintenance",
+    "section": "AC bocor atau tidak dingin"
+  },
+  {
+    "split": "validation",
+    "question": "Apakah biaya sewa saat ini dipakai untuk mengganti catatan sewa lama?",
+    "area": "finances",
+    "documentId": "kos-procedures",
+    "section": "Sewa dan pencatatan uang"
+  },
+  {
+    "split": "validation",
+    "question": "Berapa tarif sambungan internet per kamar?",
+    "area": "finances",
+    "documentId": null,
+    "section": null
+  },
+  {
+    "split": "validation",
+    "question": "Berapa ukuran kasur setiap kamar?",
+    "area": "rooms",
+    "documentId": null,
+    "section": null
+  },
+  {
+    "split": "validation",
+    "question": "Apa harga pasti penggantian kompresor AC?",
+    "area": "guidance",
+    "documentId": null,
+    "section": null
+  },
+  {
+    "split": "test",
+    "question": "Bagaimana cara menyimpan bukti transaksi pengeluaran yang telah dibayar?",
+    "area": "finances",
+    "documentId": "app-help",
+    "section": "Mencatat kegiatan dan pembayaran"
+  },
+  {
+    "split": "test",
+    "question": "Apakah aktivitas manual dipakai untuk tagihan yang belum lunas?",
+    "area": "guidance",
+    "documentId": "app-help",
+    "section": "Mencatat kegiatan dan pembayaran"
+  },
+  {
+    "split": "test",
+    "question": "Bagaimana mengaktifkan pemberitahuan di iPhone yang sudah dipasang ke Home Screen?",
+    "area": "schedules",
+    "documentId": "app-help",
+    "section": "Rencana berulang dan kotak masuk"
+  },
+  {
+    "split": "test",
+    "question": "Apakah menekan logout memutus push pada perangkat tersebut?",
+    "area": "schedules",
+    "documentId": "app-help",
+    "section": "Rencana berulang dan kotak masuk"
+  },
+  {
+    "split": "test",
+    "question": "Kalau bayar sesudah tanggal jatuh tempo, apakah sudah dianggap terlambat?",
+    "area": "finances",
+    "documentId": "kos-procedures",
+    "section": "Sewa dan pencatatan uang"
+  },
+  {
+    "split": "test",
+    "question": "Denda keterlambatan sewa dihitung otomatis atau tidak?",
+    "area": "finances",
+    "documentId": "kos-procedures",
+    "section": "Sewa dan pencatatan uang"
+  },
+  {
+    "split": "test",
+    "question": "Apakah tanggal bersih-bersih rutin wajib sama setiap bulannya?",
+    "area": "schedules",
+    "documentId": "kos-procedures",
+    "section": "Kebersihan dan servis berkala"
+  },
+  {
+    "split": "test",
+    "question": "Apakah aplikasi yang menentukan tanggal dan nominal pajak usaha?",
+    "area": "schedules",
+    "documentId": "kos-procedures",
+    "section": "Pajak dan pengingat pemilik"
+  },
+  {
+    "split": "test",
+    "question": "Satu penggantian alat yang mahal langsung membuat tenant memperoleh C?",
+    "area": "rooms",
+    "documentId": "tenant-attention",
+    "section": "Arti nilai dan sumber data"
+  },
+  {
+    "split": "test",
+    "question": "Apakah hasil penilaian lama hilang ketika layanan model sedang gagal?",
+    "area": "rooms",
+    "documentId": "tenant-attention",
+    "section": "Cakupan riwayat dan perpindahan kamar"
+  },
+  {
+    "split": "test",
+    "question": "Apa yang dilakukan saat ada kabel terbuka dan bau terbakar?",
+    "area": "rooms",
+    "documentId": "maintenance",
+    "section": "Air, lampu, dan pintu"
+  },
+  {
+    "split": "test",
+    "question": "Siapa yang boleh membongkar bagian listrik AC?",
+    "area": "rooms",
+    "documentId": "maintenance",
+    "section": "AC bocor atau tidak dingin"
+  },
+  {
+    "split": "test",
+    "question": "Berapa biaya pemasangan CCTV baru di lorong?",
+    "area": "finances",
+    "documentId": null,
+    "section": null
+  },
+  {
+    "split": "test",
+    "question": "Jam berapa batas tamu boleh berkunjung ke kos?",
+    "area": "guidance",
+    "documentId": null,
+    "section": null
+  },
+  {
+    "split": "test",
+    "question": "Apa merek AC yang terpasang di kamar nomor tujuh?",
+    "area": "rooms",
+    "documentId": null,
+    "section": null
+  },
+  {
+    "split": "test",
+    "question": "Tanggal pasti pelaporan pajak pemilik tahun ini kapan?",
+    "area": "schedules",
+    "documentId": null,
+    "section": null
+  },
+  {
+    "split": "test",
+    "question": "Berapa deposit yang wajib disetor tenant baru?",
+    "area": "finances",
+    "documentId": null,
+    "section": null
+  },
+  {
+    "split": "test",
+    "question": "Siapa nomor kontak darurat pengelola malam?",
+    "area": "guidance",
+    "documentId": null,
+    "section": null
+  }
+]
