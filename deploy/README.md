@@ -1,6 +1,7 @@
 # Deployment preparation
 
-These files are prepared for review. They have not been installed on the VPS.
+The generic system service templates are available below. The model service is
+now installed through the user service described in vps-verification.md.
 The app uses its existing hosting, database, and storage configuration. The VPS
 runs one private Python model service and a minute job. It does not host an LLM,
 embedding model, or vector database.
@@ -66,3 +67,17 @@ Check the real deployed API, service readiness, minute timer, restart recovery,
 model latency/memory, owner permissions, native chat routing and sources, and
 iPhone Home Screen push delivery/taps. Local types and mocks do not establish
 these outcomes. Keep the experimental model limitations visible in the demo.
+
+## Current VPS installation
+
+The user selected SSH alias kknkalongan_muslik and app/models. The installed
+root is /home/muslik/app/models. This account has no sudo access, but user
+systemd and login linger are available. kos-models-user.service is installed as
+~/.config/systemd/user/kos-models.service and enabled. The pinned Python 3.11
+environment and reviewed artifacts are installed in that root. Its .env is mode
+600 and contains only the service token, trusted artifact paths/hashes, and CPU
+thread limits. No database or Cloudflare credentials were copied there.
+
+Use systemctl --user status kos-models.service or journalctl --user -u
+kos-models.service for operations. HTTPS publication and the app job timer are
+separate acceptance steps. See vps-verification.md for measured checks.
