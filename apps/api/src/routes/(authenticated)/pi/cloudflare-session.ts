@@ -14,7 +14,9 @@ interface NativePublic {
 let cached: { key: string; expiresAt: number; token: string; accountId: string } | undefined
 
 export async function cloudflareSession() {
-  const input = z.object({ url: z.url(), username: z.string().min(1), password: z.string().min(1) }).parse({ url: process.env.CLOUDFLARE_OS_URL, username: process.env.CLOUDFLARE_OS_USERNAME, password: process.env.CLOUDFLARE_OS_PASSWORD })
+  const input = z
+    .object({ url: z.url(), username: z.string().min(1), password: z.string().min(1) })
+    .parse({ url: process.env.CLOUDFLARE_OS_URL, username: process.env.CLOUDFLARE_OS_USERNAME, password: process.env.CLOUDFLARE_OS_PASSWORD })
   const endpoint = new URL(input.url)
   if (endpoint.protocol !== 'https:' || endpoint.username || endpoint.password) throw new Error('Invalid CloudflareOS URL')
   const key = JSON.stringify(input)
@@ -30,7 +32,9 @@ export async function cloudflareSession() {
         const account = await api.authenticate(cached.token)
         const profile = z.object({ id: z.string() }).parse(await account.whoami())
         if (profile.id === cached.accountId) return piSessionSchema.parse({ url: input.url, session: { token: cached.token, accountId: profile.id } })
-      } catch { cached = undefined }
+      } catch {
+        cached = undefined
+      }
     }
     const config = z.object({ passwordAuthEnabled: z.boolean() }).parse(await api.getServerConfig())
     if (!config.passwordAuthEnabled) throw new Error('Password login is unavailable')
@@ -40,7 +44,10 @@ export async function cloudflareSession() {
     salt.set(prefix)
     salt.set(name, prefix.length)
     const hash = await argon2id({ password: input.password, salt, parallelism: 1, iterations: 3, memorySize: 65536, hashLength: 32, outputType: 'binary' })
-    const token = z.string().min(1).parse(await api.login(input.username, hash))
+    const token = z
+      .string()
+      .min(1)
+      .parse(await api.login(input.username, hash))
     const account = await api.authenticate(token)
     const profile = z.object({ id: z.string().min(1) }).parse(await account.whoami())
     cached = { key, token, accountId: profile.id, expiresAt: Date.now() + 600000 }

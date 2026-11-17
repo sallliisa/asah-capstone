@@ -1,3 +1,5 @@
+import { domain as pi } from './routes/(authenticated)/pi/pi'
+import { domain as knowledge } from './routes/(authenticated)/knowledge/knowledge'
 import { domain as tenantDetector } from './routes/(authenticated)/tenant-detector/tenant-detector'
 import { domain as notifications } from './routes/(authenticated)/notifications/notifications'
 import { domain as activityCategories } from './routes/(authenticated)/activity-categories/activity-categories'
@@ -10,4 +12,4 @@ import { domain as permissions } from './routes/(authenticated)/permissions/perm
 import { domain as roles } from './routes/(authenticated)/roles/roles'
 import { domain as users } from './routes/(authenticated)/users/users'
 
-export const domains = [auth, permissions, roles, users, roomTypes, rooms, activityCategories, recurringPlans, activities, notifications, tenantDetector] as const
+export const domains = [auth, permissions, roles, users, roomTypes, rooms, activityCategories, recurringPlans, activities, notifications, tenantDetector, knowledge, pi] as const

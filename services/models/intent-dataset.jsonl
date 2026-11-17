@@ -1,0 +1,1000 @@
+{"text": "Siapa nama penghuni kmr yang mengalami AC bocor", "intent": "rooms", "split": "train", "group": "rooms-template-27"}
+{"text": "Siapa nama penghuni kamar yang mengalami pembersihan kamar", "intent": "rooms", "split": "train", "group": "rooms-template-27"}
+{"text": "Siapa nama penghuni kamar yang mengalami perbaikan pintu", "intent": "rooms", "split": "train", "group": "rooms-template-27"}
+{"text": "Siapa nama penghuni kamar yang mengalami sewa bulanan", "intent": "rooms", "split": "train", "group": "rooms-template-27"}
+{"text": "Siapa nama penghuni kmr yang mengalami layanan kmr 12", "intent": "rooms", "split": "train", "group": "rooms-template-27"}
+{"text": "Tlg buka rekam aktivitas AC bocor penghuni", "intent": "rooms", "split": "train", "group": "rooms-template-19"}
+{"text": "Tolong buka rekam aktivitas pembersihan kamar penghuni", "intent": "rooms", "split": "train", "group": "rooms-template-19"}
+{"text": "Tolong buka rekam aktivitas perbaikan pintu penghuni", "intent": "rooms", "split": "train", "group": "rooms-template-19"}
+{"text": "Tolong buka rekam aktivitas sewa bulanan penghuni", "intent": "rooms", "split": "train", "group": "rooms-template-19"}
+{"text": "Tlg buka rekam aktivitas layanan kmr 12 penghuni", "intent": "rooms", "split": "train", "group": "rooms-template-19"}
+{"text": "Tampilkan kejadian AC bocor pada riwayat penghuni", "intent": "rooms", "split": "train", "group": "rooms-template-6"}
+{"text": "Tampilkan kejadian pembersihan kamar pada riwayat penghuni", "intent": "rooms", "split": "train", "group": "rooms-template-6"}
+{"text": "Tampilkan kejadian perbaikan pintu pada riwayat penghuni", "intent": "rooms", "split": "train", "group": "rooms-template-6"}
+{"text": "Tampilkan kejadian sewa bulanan pada riwayat penghuni", "intent": "rooms", "split": "train", "group": "rooms-template-6"}
+{"text": "Tampilkan kejadian layanan kmr 12 pada riwayat penghuni", "intent": "rooms", "split": "train", "group": "rooms-template-6"}
+{"text": "Tampilkan catatan kerusakan AC bocor sepanjang penghuni tinggal", "intent": "rooms", "split": "train", "group": "rooms-template-29"}
+{"text": "Tampilkan catatan kerusakan pembersihan kamar sepanjang penghuni tinggal", "intent": "rooms", "split": "train", "group": "rooms-template-29"}
+{"text": "Tampilkan catatan kerusakan perbaikan pintu sepanjang penghuni tinggal", "intent": "rooms", "split": "train", "group": "rooms-template-29"}
+{"text": "Tampilkan catatan kerusakan sewa bulanan sepanjang penghuni tinggal", "intent": "rooms", "split": "train", "group": "rooms-template-29"}
+{"text": "Tampilkan catatan kerusakan layanan kmr 12 sepanjang penghuni tinggal", "intent": "rooms", "split": "train", "group": "rooms-template-29"}
+{"text": "Tunjukkan riwayat kerusakan AC bocor", "intent": "rooms", "split": "train", "group": "rooms-template-0"}
+{"text": "Tunjukkan riwayat kerusakan pembersihan kamar", "intent": "rooms", "split": "train", "group": "rooms-template-0"}
+{"text": "Tunjukkan riwayat kerusakan perbaikan pintu", "intent": "rooms", "split": "train", "group": "rooms-template-0"}
+{"text": "Tunjukkan riwayat kerusakan sewa bulanan", "intent": "rooms", "split": "train", "group": "rooms-template-0"}
+{"text": "Tunjukkan riwayat kerusakan layanan kmr 12", "intent": "rooms", "split": "train", "group": "rooms-template-0"}
+{"text": "Kamar mana yang punya masalah AC bocor", "intent": "rooms", "split": "train", "group": "rooms-template-1"}
+{"text": "Kamar mana yang punya masalah pembersihan kamar", "intent": "rooms", "split": "train", "group": "rooms-template-1"}
+{"text": "Kamar mana yang punya masalah perbaikan pintu", "intent": "rooms", "split": "train", "group": "rooms-template-1"}
+{"text": "Kamar mana yang punya masalah sewa bulanan", "intent": "rooms", "split": "train", "group": "rooms-template-1"}
+{"text": "Kamar mana yang punya masalah layanan kmr 12", "intent": "rooms", "split": "train", "group": "rooms-template-1"}
+{"text": "Gue mencari daftar tenant dengan kejadian AC bocor", "intent": "rooms", "split": "train", "group": "rooms-template-22"}
+{"text": "Saya mencari daftar tenant dengan kejadian pembersihan kamar", "intent": "rooms", "split": "train", "group": "rooms-template-22"}
+{"text": "Saya mencari daftar tenant dengan kejadian perbaikan pintu", "intent": "rooms", "split": "train", "group": "rooms-template-22"}
+{"text": "Saya mencari daftar tenant dengan kejadian sewa bulanan", "intent": "rooms", "split": "train", "group": "rooms-template-22"}
+{"text": "Gue mencari daftar tenant dengan kejadian layanan kmr 12", "intent": "rooms", "split": "train", "group": "rooms-template-22"}
+{"text": "Mana kmr yang saat ini ditempati penyewa AC bocor", "intent": "rooms", "split": "train", "group": "rooms-template-20"}
+{"text": "Mana kamar yang saat ini ditempati penyewa pembersihan kamar", "intent": "rooms", "split": "train", "group": "rooms-template-20"}
+{"text": "Mana kamar yang saat ini ditempati penyewa perbaikan pintu", "intent": "rooms", "split": "train", "group": "rooms-template-20"}
+{"text": "Mana kamar yang saat ini ditempati penyewa sewa bulanan", "intent": "rooms", "split": "train", "group": "rooms-template-20"}
+{"text": "Mana kmr yang saat ini ditempati penyewa layanan kmr 12", "intent": "rooms", "split": "train", "group": "rooms-template-20"}
+{"text": "Nilai perhatian tenant mana yang terkait AC bocor", "intent": "rooms", "split": "train", "group": "rooms-template-33"}
+{"text": "Nilai perhatian tenant mana yang terkait pembersihan kamar", "intent": "rooms", "split": "train", "group": "rooms-template-33"}
+{"text": "Nilai perhatian tenant mana yang terkait perbaikan pintu", "intent": "rooms", "split": "train", "group": "rooms-template-33"}
+{"text": "Nilai perhatian tenant mana yang terkait sewa bulanan", "intent": "rooms", "split": "train", "group": "rooms-template-33"}
+{"text": "Nilai perhatian tenant mana yang terkait layanan kmr 12", "intent": "rooms", "split": "train", "group": "rooms-template-33"}
+{"text": "Tlg tunjukkan data hunian terkait AC bocor", "intent": "rooms", "split": "train", "group": "rooms-template-21"}
+{"text": "Tolong tunjukkan data hunian terkait pembersihan kamar", "intent": "rooms", "split": "train", "group": "rooms-template-21"}
+{"text": "Tolong tunjukkan data hunian terkait perbaikan pintu", "intent": "rooms", "split": "train", "group": "rooms-template-21"}
+{"text": "Tolong tunjukkan data hunian terkait sewa bulanan", "intent": "rooms", "split": "train", "group": "rooms-template-21"}
+{"text": "Tlg tunjukkan data hunian terkait layanan kmr 12", "intent": "rooms", "split": "train", "group": "rooms-template-21"}
+{"text": "Apa kondisi terakhir AC bocor yang dicatat petugas", "intent": "rooms", "split": "train", "group": "rooms-template-24"}
+{"text": "Apa kondisi terakhir pembersihan kamar yang dicatat petugas", "intent": "rooms", "split": "train", "group": "rooms-template-24"}
+{"text": "Apa kondisi terakhir perbaikan pintu yang dicatat petugas", "intent": "rooms", "split": "train", "group": "rooms-template-24"}
+{"text": "Apa kondisi terakhir sewa bulanan yang dicatat petugas", "intent": "rooms", "split": "train", "group": "rooms-template-24"}
+{"text": "Apa kondisi terakhir layanan kmr 12 yang dicatat petugas", "intent": "rooms", "split": "train", "group": "rooms-template-24"}
+{"text": "Cari aktivitas perawatan AC bocor milik penyewa", "intent": "rooms", "split": "train", "group": "rooms-template-5"}
+{"text": "Cari aktivitas perawatan pembersihan kamar milik penyewa", "intent": "rooms", "split": "train", "group": "rooms-template-5"}
+{"text": "Cari aktivitas perawatan perbaikan pintu milik penyewa", "intent": "rooms", "split": "train", "group": "rooms-template-5"}
+{"text": "Cari aktivitas perawatan sewa bulanan milik penyewa", "intent": "rooms", "split": "train", "group": "rooms-template-5"}
+{"text": "Cari aktivitas perawatan layanan kmr 12 milik penyewa", "intent": "rooms", "split": "train", "group": "rooms-template-5"}
+{"text": "Ada berapa perbaikan AC bocor yang tercatat", "intent": "rooms", "split": "train", "group": "rooms-template-8"}
+{"text": "Ada berapa perbaikan pembersihan kamar yang tercatat", "intent": "rooms", "split": "train", "group": "rooms-template-8"}
+{"text": "Ada berapa perbaikan perbaikan pintu yang tercatat", "intent": "rooms", "split": "train", "group": "rooms-template-8"}
+{"text": "Ada berapa perbaikan sewa bulanan yang tercatat", "intent": "rooms", "split": "train", "group": "rooms-template-8"}
+{"text": "Ada berapa perbaikan layanan kmr 12 yang tercatat", "intent": "rooms", "split": "train", "group": "rooms-template-8"}
+{"text": "Keadaan fasilitas AC bocor menurut catatan terakhir bagaimana", "intent": "rooms", "split": "train", "group": "rooms-template-35"}
+{"text": "Keadaan fasilitas pembersihan kamar menurut catatan terakhir bagaimana", "intent": "rooms", "split": "train", "group": "rooms-template-35"}
+{"text": "Keadaan fasilitas perbaikan pintu menurut catatan terakhir bagaimana", "intent": "rooms", "split": "train", "group": "rooms-template-35"}
+{"text": "Keadaan fasilitas sewa bulanan menurut catatan terakhir bagaimana", "intent": "rooms", "split": "train", "group": "rooms-template-35"}
+{"text": "Keadaan fasilitas layanan kmr 12 menurut catatan terakhir bagaimana", "intent": "rooms", "split": "train", "group": "rooms-template-35"}
+{"text": "Ringkas kondisi kmr dan masalah AC bocor", "intent": "rooms", "split": "train", "group": "rooms-template-12"}
+{"text": "Ringkas kondisi kamar dan masalah pembersihan kamar", "intent": "rooms", "split": "train", "group": "rooms-template-12"}
+{"text": "Ringkas kondisi kamar dan masalah perbaikan pintu", "intent": "rooms", "split": "train", "group": "rooms-template-12"}
+{"text": "Ringkas kondisi kamar dan masalah sewa bulanan", "intent": "rooms", "split": "train", "group": "rooms-template-12"}
+{"text": "Ringkas kondisi kmr dan masalah layanan kmr 12", "intent": "rooms", "split": "train", "group": "rooms-template-12"}
+{"text": "Kejadian perbaikan AC bocor dialami penyewa siapa", "intent": "rooms", "split": "train", "group": "rooms-template-26"}
+{"text": "Kejadian perbaikan pembersihan kamar dialami penyewa siapa", "intent": "rooms", "split": "train", "group": "rooms-template-26"}
+{"text": "Kejadian perbaikan perbaikan pintu dialami penyewa siapa", "intent": "rooms", "split": "train", "group": "rooms-template-26"}
+{"text": "Kejadian perbaikan sewa bulanan dialami penyewa siapa", "intent": "rooms", "split": "train", "group": "rooms-template-26"}
+{"text": "Kejadian perbaikan layanan kmr 12 dialami penyewa siapa", "intent": "rooms", "split": "train", "group": "rooms-template-26"}
+{"text": "Bantu cek histori penanganan AC bocor", "intent": "rooms", "split": "train", "group": "rooms-template-13"}
+{"text": "Bantu cek histori penanganan pembersihan kamar", "intent": "rooms", "split": "train", "group": "rooms-template-13"}
+{"text": "Bantu cek histori penanganan perbaikan pintu", "intent": "rooms", "split": "train", "group": "rooms-template-13"}
+{"text": "Bantu cek histori penanganan sewa bulanan", "intent": "rooms", "split": "train", "group": "rooms-template-13"}
+{"text": "Bantu cek histori penanganan layanan kmr 12", "intent": "rooms", "split": "train", "group": "rooms-template-13"}
+{"text": "Ruangan kosong atau terisi mana yang ada AC bocor", "intent": "rooms", "split": "train", "group": "rooms-template-23"}
+{"text": "Ruangan kosong atau terisi mana yang ada pembersihan kamar", "intent": "rooms", "split": "train", "group": "rooms-template-23"}
+{"text": "Ruangan kosong atau terisi mana yang ada perbaikan pintu", "intent": "rooms", "split": "train", "group": "rooms-template-23"}
+{"text": "Ruangan kosong atau terisi mana yang ada sewa bulanan", "intent": "rooms", "split": "train", "group": "rooms-template-23"}
+{"text": "Ruangan kosong atau terisi mana yang ada layanan kmr 12", "intent": "rooms", "split": "train", "group": "rooms-template-23"}
+{"text": "Penyewa mana yang paling perlu diperiksa terkait AC bocor", "intent": "rooms", "split": "train", "group": "rooms-template-7"}
+{"text": "Penyewa mana yang paling perlu diperiksa terkait pembersihan kamar", "intent": "rooms", "split": "train", "group": "rooms-template-7"}
+{"text": "Penyewa mana yang paling perlu diperiksa terkait perbaikan pintu", "intent": "rooms", "split": "train", "group": "rooms-template-7"}
+{"text": "Penyewa mana yang paling perlu diperiksa terkait sewa bulanan", "intent": "rooms", "split": "train", "group": "rooms-template-7"}
+{"text": "Penyewa mana yang paling perlu diperiksa terkait layanan kmr 12", "intent": "rooms", "split": "train", "group": "rooms-template-7"}
+{"text": "Apa saja ruang kosong yang memiliki AC bocor", "intent": "rooms", "split": "train", "group": "rooms-template-11"}
+{"text": "Apa saja ruang kosong yang memiliki pembersihan kamar", "intent": "rooms", "split": "train", "group": "rooms-template-11"}
+{"text": "Apa saja ruang kosong yang memiliki perbaikan pintu", "intent": "rooms", "split": "train", "group": "rooms-template-11"}
+{"text": "Apa saja ruang kosong yang memiliki sewa bulanan", "intent": "rooms", "split": "train", "group": "rooms-template-11"}
+{"text": "Apa saja ruang kosong yang memiliki layanan kmr 12", "intent": "rooms", "split": "train", "group": "rooms-template-11"}
+{"text": "Jumlah kejadian AC bocor penyewa ini bertambah tidak", "intent": "rooms", "split": "train", "group": "rooms-template-30"}
+{"text": "Jumlah kejadian pembersihan kamar penyewa ini bertambah tidak", "intent": "rooms", "split": "train", "group": "rooms-template-30"}
+{"text": "Jumlah kejadian perbaikan pintu penyewa ini bertambah tidak", "intent": "rooms", "split": "train", "group": "rooms-template-30"}
+{"text": "Jumlah kejadian sewa bulanan penyewa ini bertambah tidak", "intent": "rooms", "split": "train", "group": "rooms-template-30"}
+{"text": "Jumlah kejadian layanan kmr 12 penyewa ini bertambah tidak", "intent": "rooms", "split": "train", "group": "rooms-template-30"}
+{"text": "Rekap kejadian AC bocor di kmr penyewa ini", "intent": "rooms", "split": "train", "group": "rooms-template-15"}
+{"text": "Rekap kejadian pembersihan kamar di kamar penyewa ini", "intent": "rooms", "split": "train", "group": "rooms-template-15"}
+{"text": "Rekap kejadian perbaikan pintu di kamar penyewa ini", "intent": "rooms", "split": "train", "group": "rooms-template-15"}
+{"text": "Rekap kejadian sewa bulanan di kamar penyewa ini", "intent": "rooms", "split": "train", "group": "rooms-template-15"}
+{"text": "Rekap kejadian layanan kmr 12 di kmr penyewa ini", "intent": "rooms", "split": "train", "group": "rooms-template-15"}
+{"text": "Lihat profil tenant dan catatan AC bocor", "intent": "rooms", "split": "train", "group": "rooms-template-10"}
+{"text": "Lihat profil tenant dan catatan pembersihan kamar", "intent": "rooms", "split": "train", "group": "rooms-template-10"}
+{"text": "Lihat profil tenant dan catatan perbaikan pintu", "intent": "rooms", "split": "train", "group": "rooms-template-10"}
+{"text": "Lihat profil tenant dan catatan sewa bulanan", "intent": "rooms", "split": "train", "group": "rooms-template-10"}
+{"text": "Lihat profil tenant dan catatan layanan kmr 12", "intent": "rooms", "split": "train", "group": "rooms-template-10"}
+{"text": "Informasi hunian dan catatan AC bocor dong", "intent": "rooms", "split": "train", "group": "rooms-template-17"}
+{"text": "Informasi hunian dan catatan pembersihan kamar dong", "intent": "rooms", "split": "train", "group": "rooms-template-17"}
+{"text": "Informasi hunian dan catatan perbaikan pintu dong", "intent": "rooms", "split": "train", "group": "rooms-template-17"}
+{"text": "Informasi hunian dan catatan sewa bulanan dong", "intent": "rooms", "split": "train", "group": "rooms-template-17"}
+{"text": "Informasi hunian dan catatan layanan kmr 12 dong", "intent": "rooms", "split": "train", "group": "rooms-template-17"}
+{"text": "Perlihatkan profil penghuni dan rekam perawatan AC bocor", "intent": "rooms", "split": "train", "group": "rooms-template-34"}
+{"text": "Perlihatkan profil penghuni dan rekam perawatan pembersihan kamar", "intent": "rooms", "split": "train", "group": "rooms-template-34"}
+{"text": "Perlihatkan profil penghuni dan rekam perawatan perbaikan pintu", "intent": "rooms", "split": "train", "group": "rooms-template-34"}
+{"text": "Perlihatkan profil penghuni dan rekam perawatan sewa bulanan", "intent": "rooms", "split": "train", "group": "rooms-template-34"}
+{"text": "Perlihatkan profil penghuni dan rekam perawatan layanan kmr 12", "intent": "rooms", "split": "train", "group": "rooms-template-34"}
+{"text": "Buka detail ruang hunian dan catatan masalah AC bocor", "intent": "rooms", "split": "train", "group": "rooms-template-38"}
+{"text": "Buka detail ruang hunian dan catatan masalah pembersihan kamar", "intent": "rooms", "split": "train", "group": "rooms-template-38"}
+{"text": "Buka detail ruang hunian dan catatan masalah perbaikan pintu", "intent": "rooms", "split": "train", "group": "rooms-template-38"}
+{"text": "Buka detail ruang hunian dan catatan masalah sewa bulanan", "intent": "rooms", "split": "train", "group": "rooms-template-38"}
+{"text": "Buka detail ruang hunian dan catatan masalah layanan kmr 12", "intent": "rooms", "split": "train", "group": "rooms-template-38"}
+{"text": "Tlg daftar kmr dan penghuni yang punya riwayat AC bocor", "intent": "rooms", "split": "train", "group": "rooms-template-39"}
+{"text": "Tolong daftar kamar dan penghuni yang punya riwayat pembersihan kamar", "intent": "rooms", "split": "train", "group": "rooms-template-39"}
+{"text": "Tolong daftar kamar dan penghuni yang punya riwayat perbaikan pintu", "intent": "rooms", "split": "train", "group": "rooms-template-39"}
+{"text": "Tolong daftar kamar dan penghuni yang punya riwayat sewa bulanan", "intent": "rooms", "split": "train", "group": "rooms-template-39"}
+{"text": "Tlg daftar kmr dan penghuni yang punya riwayat layanan kmr 12", "intent": "rooms", "split": "train", "group": "rooms-template-39"}
+{"text": "Cek informasi kmr serta penghuni terkait AC bocor", "intent": "rooms", "split": "train", "group": "rooms-template-31"}
+{"text": "Cek informasi kamar serta penghuni terkait pembersihan kamar", "intent": "rooms", "split": "train", "group": "rooms-template-31"}
+{"text": "Cek informasi kamar serta penghuni terkait perbaikan pintu", "intent": "rooms", "split": "train", "group": "rooms-template-31"}
+{"text": "Cek informasi kamar serta penghuni terkait sewa bulanan", "intent": "rooms", "split": "train", "group": "rooms-template-31"}
+{"text": "Cek informasi kmr serta penghuni terkait layanan kmr 12", "intent": "rooms", "split": "train", "group": "rooms-template-31"}
+{"text": "Penghuni sebelumnya pernah mengalami AC bocor apa saja", "intent": "rooms", "split": "validation", "group": "rooms-template-14"}
+{"text": "Penghuni sebelumnya pernah mengalami pembersihan kamar apa saja", "intent": "rooms", "split": "validation", "group": "rooms-template-14"}
+{"text": "Penghuni sebelumnya pernah mengalami perbaikan pintu apa saja", "intent": "rooms", "split": "validation", "group": "rooms-template-14"}
+{"text": "Penghuni sebelumnya pernah mengalami sewa bulanan apa saja", "intent": "rooms", "split": "validation", "group": "rooms-template-14"}
+{"text": "Penghuni sebelumnya pernah mengalami layanan kmr 12 apa saja", "intent": "rooms", "split": "validation", "group": "rooms-template-14"}
+{"text": "Urutkan tenant berdasarkan perhatian untuk AC bocor", "intent": "rooms", "split": "validation", "group": "rooms-template-16"}
+{"text": "Urutkan tenant berdasarkan perhatian untuk pembersihan kamar", "intent": "rooms", "split": "validation", "group": "rooms-template-16"}
+{"text": "Urutkan tenant berdasarkan perhatian untuk perbaikan pintu", "intent": "rooms", "split": "validation", "group": "rooms-template-16"}
+{"text": "Urutkan tenant berdasarkan perhatian untuk sewa bulanan", "intent": "rooms", "split": "validation", "group": "rooms-template-16"}
+{"text": "Urutkan tenant berdasarkan perhatian untuk layanan kmr 12", "intent": "rooms", "split": "validation", "group": "rooms-template-16"}
+{"text": "Apakah ada catatan kondisi AC bocor", "intent": "rooms", "split": "validation", "group": "rooms-template-3"}
+{"text": "Apakah ada catatan kondisi pembersihan kamar", "intent": "rooms", "split": "validation", "group": "rooms-template-3"}
+{"text": "Apakah ada catatan kondisi perbaikan pintu", "intent": "rooms", "split": "validation", "group": "rooms-template-3"}
+{"text": "Apakah ada catatan kondisi sewa bulanan", "intent": "rooms", "split": "validation", "group": "rooms-template-3"}
+{"text": "Apakah ada catatan kondisi layanan kmr 12", "intent": "rooms", "split": "validation", "group": "rooms-template-3"}
+{"text": "Gue ingin mengecek keadaan AC bocor di kmr", "intent": "rooms", "split": "validation", "group": "rooms-template-18"}
+{"text": "Saya ingin mengecek keadaan pembersihan kamar di kamar", "intent": "rooms", "split": "validation", "group": "rooms-template-18"}
+{"text": "Saya ingin mengecek keadaan perbaikan pintu di kamar", "intent": "rooms", "split": "validation", "group": "rooms-template-18"}
+{"text": "Saya ingin mengecek keadaan sewa bulanan di kamar", "intent": "rooms", "split": "validation", "group": "rooms-template-18"}
+{"text": "Gue ingin mengecek keadaan layanan kmr 12 di kmr", "intent": "rooms", "split": "validation", "group": "rooms-template-18"}
+{"text": "Ringkasan histori kegiatan AC bocor per tenant dong", "intent": "rooms", "split": "validation", "group": "rooms-template-28"}
+{"text": "Ringkasan histori kegiatan pembersihan kamar per tenant dong", "intent": "rooms", "split": "validation", "group": "rooms-template-28"}
+{"text": "Ringkasan histori kegiatan perbaikan pintu per tenant dong", "intent": "rooms", "split": "validation", "group": "rooms-template-28"}
+{"text": "Ringkasan histori kegiatan sewa bulanan per tenant dong", "intent": "rooms", "split": "validation", "group": "rooms-template-28"}
+{"text": "Ringkasan histori kegiatan layanan kmr 12 per tenant dong", "intent": "rooms", "split": "validation", "group": "rooms-template-28"}
+{"text": "Cari tahu kmr penyewa dengan insiden AC bocor", "intent": "rooms", "split": "validation", "group": "rooms-template-36"}
+{"text": "Cari tahu kamar penyewa dengan insiden pembersihan kamar", "intent": "rooms", "split": "validation", "group": "rooms-template-36"}
+{"text": "Cari tahu kamar penyewa dengan insiden perbaikan pintu", "intent": "rooms", "split": "validation", "group": "rooms-template-36"}
+{"text": "Cari tahu kamar penyewa dengan insiden sewa bulanan", "intent": "rooms", "split": "validation", "group": "rooms-template-36"}
+{"text": "Cari tahu kmr penyewa dengan insiden layanan kmr 12", "intent": "rooms", "split": "validation", "group": "rooms-template-36"}
+{"text": "Laporan kerusakan AC bocor pernah masuk di kmr mana", "intent": "rooms", "split": "test", "group": "rooms-template-25"}
+{"text": "Laporan kerusakan pembersihan kamar pernah masuk di kamar mana", "intent": "rooms", "split": "test", "group": "rooms-template-25"}
+{"text": "Laporan kerusakan perbaikan pintu pernah masuk di kamar mana", "intent": "rooms", "split": "test", "group": "rooms-template-25"}
+{"text": "Laporan kerusakan sewa bulanan pernah masuk di kamar mana", "intent": "rooms", "split": "test", "group": "rooms-template-25"}
+{"text": "Laporan kerusakan layanan kmr 12 pernah masuk di kmr mana", "intent": "rooms", "split": "test", "group": "rooms-template-25"}
+{"text": "Siapa penghuni yang terkait perbaikan AC bocor", "intent": "rooms", "split": "test", "group": "rooms-template-2"}
+{"text": "Siapa penghuni yang terkait perbaikan pembersihan kamar", "intent": "rooms", "split": "test", "group": "rooms-template-2"}
+{"text": "Siapa penghuni yang terkait perbaikan perbaikan pintu", "intent": "rooms", "split": "test", "group": "rooms-template-2"}
+{"text": "Siapa penghuni yang terkait perbaikan sewa bulanan", "intent": "rooms", "split": "test", "group": "rooms-template-2"}
+{"text": "Siapa penghuni yang terkait perbaikan layanan kmr 12", "intent": "rooms", "split": "test", "group": "rooms-template-2"}
+{"text": "Siapa tenant aktif yang punya rekaman AC bocor", "intent": "rooms", "split": "test", "group": "rooms-template-37"}
+{"text": "Siapa tenant aktif yang punya rekaman pembersihan kamar", "intent": "rooms", "split": "test", "group": "rooms-template-37"}
+{"text": "Siapa tenant aktif yang punya rekaman perbaikan pintu", "intent": "rooms", "split": "test", "group": "rooms-template-37"}
+{"text": "Siapa tenant aktif yang punya rekaman sewa bulanan", "intent": "rooms", "split": "test", "group": "rooms-template-37"}
+{"text": "Siapa tenant aktif yang punya rekaman layanan kmr 12", "intent": "rooms", "split": "test", "group": "rooms-template-37"}
+{"text": "Coba periksa hubungan penghuni dengan AC bocor", "intent": "rooms", "split": "test", "group": "rooms-template-9"}
+{"text": "Coba periksa hubungan penghuni dengan pembersihan kamar", "intent": "rooms", "split": "test", "group": "rooms-template-9"}
+{"text": "Coba periksa hubungan penghuni dengan perbaikan pintu", "intent": "rooms", "split": "test", "group": "rooms-template-9"}
+{"text": "Coba periksa hubungan penghuni dengan sewa bulanan", "intent": "rooms", "split": "test", "group": "rooms-template-9"}
+{"text": "Coba periksa hubungan penghuni dengan layanan kmr 12", "intent": "rooms", "split": "test", "group": "rooms-template-9"}
+{"text": "Kamar apa yang paling sering ada perbaikan AC bocor", "intent": "rooms", "split": "test", "group": "rooms-template-32"}
+{"text": "Kamar apa yang paling sering ada perbaikan pembersihan kamar", "intent": "rooms", "split": "test", "group": "rooms-template-32"}
+{"text": "Kamar apa yang paling sering ada perbaikan perbaikan pintu", "intent": "rooms", "split": "test", "group": "rooms-template-32"}
+{"text": "Kamar apa yang paling sering ada perbaikan sewa bulanan", "intent": "rooms", "split": "test", "group": "rooms-template-32"}
+{"text": "Kamar apa yang paling sering ada perbaikan layanan kmr 12", "intent": "rooms", "split": "test", "group": "rooms-template-32"}
+{"text": "Gue mau lihat daftar kmr dengan AC bocor", "intent": "rooms", "split": "test", "group": "rooms-template-4"}
+{"text": "Saya mau lihat daftar kamar dengan pembersihan kamar", "intent": "rooms", "split": "test", "group": "rooms-template-4"}
+{"text": "Saya mau lihat daftar kamar dengan perbaikan pintu", "intent": "rooms", "split": "test", "group": "rooms-template-4"}
+{"text": "Saya mau lihat daftar kamar dengan sewa bulanan", "intent": "rooms", "split": "test", "group": "rooms-template-4"}
+{"text": "Gue mau lihat daftar kmr dengan layanan kmr 12", "intent": "rooms", "split": "test", "group": "rooms-template-4"}
+{"text": "Urutkan kegiatan terjdwl AC bocor menurut tenggat", "intent": "schedules", "split": "train", "group": "schedules-template-38"}
+{"text": "Urutkan kegiatan terjadwal pembersihan kamar menurut tenggat", "intent": "schedules", "split": "train", "group": "schedules-template-38"}
+{"text": "Urutkan kegiatan terjadwal perbaikan pintu menurut tenggat", "intent": "schedules", "split": "train", "group": "schedules-template-38"}
+{"text": "Urutkan kegiatan terjadwal sewa bulanan menurut tenggat", "intent": "schedules", "split": "train", "group": "schedules-template-38"}
+{"text": "Urutkan kegiatan terjdwl layanan kmr 12 menurut tenggat", "intent": "schedules", "split": "train", "group": "schedules-template-38"}
+{"text": "Kegiatan AC bocor kapan harus ditangani menurut jdwl", "intent": "schedules", "split": "train", "group": "schedules-template-17"}
+{"text": "Kegiatan pembersihan kamar kapan harus ditangani menurut jadwal", "intent": "schedules", "split": "train", "group": "schedules-template-17"}
+{"text": "Kegiatan perbaikan pintu kapan harus ditangani menurut jadwal", "intent": "schedules", "split": "train", "group": "schedules-template-17"}
+{"text": "Kegiatan sewa bulanan kapan harus ditangani menurut jadwal", "intent": "schedules", "split": "train", "group": "schedules-template-17"}
+{"text": "Kegiatan layanan kmr 12 kapan harus ditangani menurut jdwl", "intent": "schedules", "split": "train", "group": "schedules-template-17"}
+{"text": "Kapan rutinitas AC bocor akan muncul lagi", "intent": "schedules", "split": "train", "group": "schedules-template-31"}
+{"text": "Kapan rutinitas pembersihan kamar akan muncul lagi", "intent": "schedules", "split": "train", "group": "schedules-template-31"}
+{"text": "Kapan rutinitas perbaikan pintu akan muncul lagi", "intent": "schedules", "split": "train", "group": "schedules-template-31"}
+{"text": "Kapan rutinitas sewa bulanan akan muncul lagi", "intent": "schedules", "split": "train", "group": "schedules-template-31"}
+{"text": "Kapan rutinitas layanan kmr 12 akan muncul lagi", "intent": "schedules", "split": "train", "group": "schedules-template-31"}
+{"text": "Tlg tampilkan waktu jatuh tempo rencana AC bocor", "intent": "schedules", "split": "train", "group": "schedules-template-32"}
+{"text": "Tolong tampilkan waktu jatuh tempo rencana pembersihan kamar", "intent": "schedules", "split": "train", "group": "schedules-template-32"}
+{"text": "Tolong tampilkan waktu jatuh tempo rencana perbaikan pintu", "intent": "schedules", "split": "train", "group": "schedules-template-32"}
+{"text": "Tolong tampilkan waktu jatuh tempo rencana sewa bulanan", "intent": "schedules", "split": "train", "group": "schedules-template-32"}
+{"text": "Tlg tampilkan waktu jatuh tempo rencana layanan kmr 12", "intent": "schedules", "split": "train", "group": "schedules-template-32"}
+{"text": "Urutan tanggal jatuh tempo AC bocor seperti apa", "intent": "schedules", "split": "train", "group": "schedules-template-15"}
+{"text": "Urutan tanggal jatuh tempo pembersihan kamar seperti apa", "intent": "schedules", "split": "train", "group": "schedules-template-15"}
+{"text": "Urutan tanggal jatuh tempo perbaikan pintu seperti apa", "intent": "schedules", "split": "train", "group": "schedules-template-15"}
+{"text": "Urutan tanggal jatuh tempo sewa bulanan seperti apa", "intent": "schedules", "split": "train", "group": "schedules-template-15"}
+{"text": "Urutan tanggal jatuh tempo layanan kmr 12 seperti apa", "intent": "schedules", "split": "train", "group": "schedules-template-15"}
+{"text": "Cek kegiatan rutin AC bocor yang belum jatuh tempo", "intent": "schedules", "split": "train", "group": "schedules-template-10"}
+{"text": "Cek kegiatan rutin pembersihan kamar yang belum jatuh tempo", "intent": "schedules", "split": "train", "group": "schedules-template-10"}
+{"text": "Cek kegiatan rutin perbaikan pintu yang belum jatuh tempo", "intent": "schedules", "split": "train", "group": "schedules-template-10"}
+{"text": "Cek kegiatan rutin sewa bulanan yang belum jatuh tempo", "intent": "schedules", "split": "train", "group": "schedules-template-10"}
+{"text": "Cek kegiatan rutin layanan kmr 12 yang belum jatuh tempo", "intent": "schedules", "split": "train", "group": "schedules-template-10"}
+{"text": "Apakah kegiatan AC bocor direncanakan minggu ini", "intent": "schedules", "split": "train", "group": "schedules-template-24"}
+{"text": "Apakah kegiatan pembersihan kamar direncanakan minggu ini", "intent": "schedules", "split": "train", "group": "schedules-template-24"}
+{"text": "Apakah kegiatan perbaikan pintu direncanakan minggu ini", "intent": "schedules", "split": "train", "group": "schedules-template-24"}
+{"text": "Apakah kegiatan sewa bulanan direncanakan minggu ini", "intent": "schedules", "split": "train", "group": "schedules-template-24"}
+{"text": "Apakah kegiatan layanan kmr 12 direncanakan minggu ini", "intent": "schedules", "split": "train", "group": "schedules-template-24"}
+{"text": "Tlg cari tanggal rencana AC bocor", "intent": "schedules", "split": "train", "group": "schedules-template-13"}
+{"text": "Tolong cari tanggal rencana pembersihan kamar", "intent": "schedules", "split": "train", "group": "schedules-template-13"}
+{"text": "Tolong cari tanggal rencana perbaikan pintu", "intent": "schedules", "split": "train", "group": "schedules-template-13"}
+{"text": "Tolong cari tanggal rencana sewa bulanan", "intent": "schedules", "split": "train", "group": "schedules-template-13"}
+{"text": "Tlg cari tanggal rencana layanan kmr 12", "intent": "schedules", "split": "train", "group": "schedules-template-13"}
+{"text": "Apa jdwl berikutnya untuk petugas menangani AC bocor", "intent": "schedules", "split": "train", "group": "schedules-template-27"}
+{"text": "Apa jadwal berikutnya untuk petugas menangani pembersihan kamar", "intent": "schedules", "split": "train", "group": "schedules-template-27"}
+{"text": "Apa jadwal berikutnya untuk petugas menangani perbaikan pintu", "intent": "schedules", "split": "train", "group": "schedules-template-27"}
+{"text": "Apa jadwal berikutnya untuk petugas menangani sewa bulanan", "intent": "schedules", "split": "train", "group": "schedules-template-27"}
+{"text": "Apa jdwl berikutnya untuk petugas menangani layanan kmr 12", "intent": "schedules", "split": "train", "group": "schedules-template-27"}
+{"text": "Tampilkan rencana rutin AC bocor minggu depan", "intent": "schedules", "split": "train", "group": "schedules-template-2"}
+{"text": "Tampilkan rencana rutin pembersihan kamar minggu depan", "intent": "schedules", "split": "train", "group": "schedules-template-2"}
+{"text": "Tampilkan rencana rutin perbaikan pintu minggu depan", "intent": "schedules", "split": "train", "group": "schedules-template-2"}
+{"text": "Tampilkan rencana rutin sewa bulanan minggu depan", "intent": "schedules", "split": "train", "group": "schedules-template-2"}
+{"text": "Tampilkan rencana rutin layanan kmr 12 minggu depan", "intent": "schedules", "split": "train", "group": "schedules-template-2"}
+{"text": "Pengingat kegiatan AC bocor sudah muncul belum", "intent": "schedules", "split": "train", "group": "schedules-template-12"}
+{"text": "Pengingat kegiatan pembersihan kamar sudah muncul belum", "intent": "schedules", "split": "train", "group": "schedules-template-12"}
+{"text": "Pengingat kegiatan perbaikan pintu sudah muncul belum", "intent": "schedules", "split": "train", "group": "schedules-template-12"}
+{"text": "Pengingat kegiatan sewa bulanan sudah muncul belum", "intent": "schedules", "split": "train", "group": "schedules-template-12"}
+{"text": "Pengingat kegiatan layanan kmr 12 sudah muncul belum", "intent": "schedules", "split": "train", "group": "schedules-template-12"}
+{"text": "Kapan terakhir dan selanjutnya jdwl AC bocor", "intent": "schedules", "split": "train", "group": "schedules-template-6"}
+{"text": "Kapan terakhir dan selanjutnya jadwal pembersihan kamar", "intent": "schedules", "split": "train", "group": "schedules-template-6"}
+{"text": "Kapan terakhir dan selanjutnya jadwal perbaikan pintu", "intent": "schedules", "split": "train", "group": "schedules-template-6"}
+{"text": "Kapan terakhir dan selanjutnya jadwal sewa bulanan", "intent": "schedules", "split": "train", "group": "schedules-template-6"}
+{"text": "Kapan terakhir dan selanjutnya jdwl layanan kmr 12", "intent": "schedules", "split": "train", "group": "schedules-template-6"}
+{"text": "Daftar notifikasi kegiatan AC bocor hari ini dong", "intent": "schedules", "split": "train", "group": "schedules-template-36"}
+{"text": "Daftar notifikasi kegiatan pembersihan kamar hari ini dong", "intent": "schedules", "split": "train", "group": "schedules-template-36"}
+{"text": "Daftar notifikasi kegiatan perbaikan pintu hari ini dong", "intent": "schedules", "split": "train", "group": "schedules-template-36"}
+{"text": "Daftar notifikasi kegiatan sewa bulanan hari ini dong", "intent": "schedules", "split": "train", "group": "schedules-template-36"}
+{"text": "Daftar notifikasi kegiatan layanan kmr 12 hari ini dong", "intent": "schedules", "split": "train", "group": "schedules-template-36"}
+{"text": "Jadwal bulanan AC bocor paling dekat hari apa", "intent": "schedules", "split": "train", "group": "schedules-template-22"}
+{"text": "Jadwal bulanan pembersihan kamar paling dekat hari apa", "intent": "schedules", "split": "train", "group": "schedules-template-22"}
+{"text": "Jadwal bulanan perbaikan pintu paling dekat hari apa", "intent": "schedules", "split": "train", "group": "schedules-template-22"}
+{"text": "Jadwal bulanan sewa bulanan paling dekat hari apa", "intent": "schedules", "split": "train", "group": "schedules-template-22"}
+{"text": "Jadwal bulanan layanan kmr 12 paling dekat hari apa", "intent": "schedules", "split": "train", "group": "schedules-template-22"}
+{"text": "Ada pengingat AC bocor yang jatuh tempo", "intent": "schedules", "split": "train", "group": "schedules-template-4"}
+{"text": "Ada pengingat pembersihan kamar yang jatuh tempo", "intent": "schedules", "split": "train", "group": "schedules-template-4"}
+{"text": "Ada pengingat perbaikan pintu yang jatuh tempo", "intent": "schedules", "split": "train", "group": "schedules-template-4"}
+{"text": "Ada pengingat sewa bulanan yang jatuh tempo", "intent": "schedules", "split": "train", "group": "schedules-template-4"}
+{"text": "Ada pengingat layanan kmr 12 yang jatuh tempo", "intent": "schedules", "split": "train", "group": "schedules-template-4"}
+{"text": "Lihat kalender kegiatan AC bocor", "intent": "schedules", "split": "train", "group": "schedules-template-5"}
+{"text": "Lihat kalender kegiatan pembersihan kamar", "intent": "schedules", "split": "train", "group": "schedules-template-5"}
+{"text": "Lihat kalender kegiatan perbaikan pintu", "intent": "schedules", "split": "train", "group": "schedules-template-5"}
+{"text": "Lihat kalender kegiatan sewa bulanan", "intent": "schedules", "split": "train", "group": "schedules-template-5"}
+{"text": "Lihat kalender kegiatan layanan kmr 12", "intent": "schedules", "split": "train", "group": "schedules-template-5"}
+{"text": "Gue perlu tahu waktu pelaksanaan AC bocor", "intent": "schedules", "split": "train", "group": "schedules-template-8"}
+{"text": "Saya perlu tahu waktu pelaksanaan pembersihan kamar", "intent": "schedules", "split": "train", "group": "schedules-template-8"}
+{"text": "Saya perlu tahu waktu pelaksanaan perbaikan pintu", "intent": "schedules", "split": "train", "group": "schedules-template-8"}
+{"text": "Saya perlu tahu waktu pelaksanaan sewa bulanan", "intent": "schedules", "split": "train", "group": "schedules-template-8"}
+{"text": "Gue perlu tahu waktu pelaksanaan layanan kmr 12", "intent": "schedules", "split": "train", "group": "schedules-template-8"}
+{"text": "Sebutkan tenggat rencana AC bocor", "intent": "schedules", "split": "train", "group": "schedules-template-18"}
+{"text": "Sebutkan tenggat rencana pembersihan kamar", "intent": "schedules", "split": "train", "group": "schedules-template-18"}
+{"text": "Sebutkan tenggat rencana perbaikan pintu", "intent": "schedules", "split": "train", "group": "schedules-template-18"}
+{"text": "Sebutkan tenggat rencana sewa bulanan", "intent": "schedules", "split": "train", "group": "schedules-template-18"}
+{"text": "Sebutkan tenggat rencana layanan kmr 12", "intent": "schedules", "split": "train", "group": "schedules-template-18"}
+{"text": "Buka notifikasi untuk agenda AC bocor", "intent": "schedules", "split": "train", "group": "schedules-template-25"}
+{"text": "Buka notifikasi untuk agenda pembersihan kamar", "intent": "schedules", "split": "train", "group": "schedules-template-25"}
+{"text": "Buka notifikasi untuk agenda perbaikan pintu", "intent": "schedules", "split": "train", "group": "schedules-template-25"}
+{"text": "Buka notifikasi untuk agenda sewa bulanan", "intent": "schedules", "split": "train", "group": "schedules-template-25"}
+{"text": "Buka notifikasi untuk agenda layanan kmr 12", "intent": "schedules", "split": "train", "group": "schedules-template-25"}
+{"text": "Ada aktivitas AC bocor terjdwl pekan ini", "intent": "schedules", "split": "train", "group": "schedules-template-14"}
+{"text": "Ada aktivitas pembersihan kamar terjadwal pekan ini", "intent": "schedules", "split": "train", "group": "schedules-template-14"}
+{"text": "Ada aktivitas perbaikan pintu terjadwal pekan ini", "intent": "schedules", "split": "train", "group": "schedules-template-14"}
+{"text": "Ada aktivitas sewa bulanan terjadwal pekan ini", "intent": "schedules", "split": "train", "group": "schedules-template-14"}
+{"text": "Ada aktivitas layanan kmr 12 terjdwl pekan ini", "intent": "schedules", "split": "train", "group": "schedules-template-14"}
+{"text": "Agenda mendatang AC bocor jatuh pada tanggal apa", "intent": "schedules", "split": "train", "group": "schedules-template-20"}
+{"text": "Agenda mendatang pembersihan kamar jatuh pada tanggal apa", "intent": "schedules", "split": "train", "group": "schedules-template-20"}
+{"text": "Agenda mendatang perbaikan pintu jatuh pada tanggal apa", "intent": "schedules", "split": "train", "group": "schedules-template-20"}
+{"text": "Agenda mendatang sewa bulanan jatuh pada tanggal apa", "intent": "schedules", "split": "train", "group": "schedules-template-20"}
+{"text": "Agenda mendatang layanan kmr 12 jatuh pada tanggal apa", "intent": "schedules", "split": "train", "group": "schedules-template-20"}
+{"text": "Ingatkan saya daftar pengingat AC bocor yang terbit", "intent": "schedules", "split": "train", "group": "schedules-template-23"}
+{"text": "Ingatkan saya daftar pengingat pembersihan kamar yang terbit", "intent": "schedules", "split": "train", "group": "schedules-template-23"}
+{"text": "Ingatkan saya daftar pengingat perbaikan pintu yang terbit", "intent": "schedules", "split": "train", "group": "schedules-template-23"}
+{"text": "Ingatkan saya daftar pengingat sewa bulanan yang terbit", "intent": "schedules", "split": "train", "group": "schedules-template-23"}
+{"text": "Ingatkan saya daftar pengingat layanan kmr 12 yang terbit", "intent": "schedules", "split": "train", "group": "schedules-template-23"}
+{"text": "Ada rencana AC bocor yang harus dikerjakan hari ini", "intent": "schedules", "split": "train", "group": "schedules-template-39"}
+{"text": "Ada rencana pembersihan kamar yang harus dikerjakan hari ini", "intent": "schedules", "split": "train", "group": "schedules-template-39"}
+{"text": "Ada rencana perbaikan pintu yang harus dikerjakan hari ini", "intent": "schedules", "split": "train", "group": "schedules-template-39"}
+{"text": "Ada rencana sewa bulanan yang harus dikerjakan hari ini", "intent": "schedules", "split": "train", "group": "schedules-template-39"}
+{"text": "Ada rencana layanan kmr 12 yang harus dikerjakan hari ini", "intent": "schedules", "split": "train", "group": "schedules-template-39"}
+{"text": "Tenggat kegiatan AC bocor di kalender itu kapan", "intent": "schedules", "split": "train", "group": "schedules-template-28"}
+{"text": "Tenggat kegiatan pembersihan kamar di kalender itu kapan", "intent": "schedules", "split": "train", "group": "schedules-template-28"}
+{"text": "Tenggat kegiatan perbaikan pintu di kalender itu kapan", "intent": "schedules", "split": "train", "group": "schedules-template-28"}
+{"text": "Tenggat kegiatan sewa bulanan di kalender itu kapan", "intent": "schedules", "split": "train", "group": "schedules-template-28"}
+{"text": "Tenggat kegiatan layanan kmr 12 di kalender itu kapan", "intent": "schedules", "split": "train", "group": "schedules-template-28"}
+{"text": "Gue mencari agenda perawatan AC bocor mendatang", "intent": "schedules", "split": "train", "group": "schedules-template-34"}
+{"text": "Saya mencari agenda perawatan pembersihan kamar mendatang", "intent": "schedules", "split": "train", "group": "schedules-template-34"}
+{"text": "Saya mencari agenda perawatan perbaikan pintu mendatang", "intent": "schedules", "split": "train", "group": "schedules-template-34"}
+{"text": "Saya mencari agenda perawatan sewa bulanan mendatang", "intent": "schedules", "split": "train", "group": "schedules-template-34"}
+{"text": "Gue mencari agenda perawatan layanan kmr 12 mendatang", "intent": "schedules", "split": "train", "group": "schedules-template-34"}
+{"text": "Tanggal berapa AC bocor akan dikerjakan", "intent": "schedules", "split": "train", "group": "schedules-template-3"}
+{"text": "Tanggal berapa pembersihan kamar akan dikerjakan", "intent": "schedules", "split": "train", "group": "schedules-template-3"}
+{"text": "Tanggal berapa perbaikan pintu akan dikerjakan", "intent": "schedules", "split": "train", "group": "schedules-template-3"}
+{"text": "Tanggal berapa sewa bulanan akan dikerjakan", "intent": "schedules", "split": "train", "group": "schedules-template-3"}
+{"text": "Tanggal berapa layanan kmr 12 akan dikerjakan", "intent": "schedules", "split": "train", "group": "schedules-template-3"}
+{"text": "Rangkum agenda mendatang untuk AC bocor", "intent": "schedules", "split": "train", "group": "schedules-template-11"}
+{"text": "Rangkum agenda mendatang untuk pembersihan kamar", "intent": "schedules", "split": "train", "group": "schedules-template-11"}
+{"text": "Rangkum agenda mendatang untuk perbaikan pintu", "intent": "schedules", "split": "train", "group": "schedules-template-11"}
+{"text": "Rangkum agenda mendatang untuk sewa bulanan", "intent": "schedules", "split": "train", "group": "schedules-template-11"}
+{"text": "Rangkum agenda mendatang untuk layanan kmr 12", "intent": "schedules", "split": "train", "group": "schedules-template-11"}
+{"text": "Hari apa pelaksanaan rutin AC bocor selanjutnya", "intent": "schedules", "split": "train", "group": "schedules-template-35"}
+{"text": "Hari apa pelaksanaan rutin pembersihan kamar selanjutnya", "intent": "schedules", "split": "train", "group": "schedules-template-35"}
+{"text": "Hari apa pelaksanaan rutin perbaikan pintu selanjutnya", "intent": "schedules", "split": "train", "group": "schedules-template-35"}
+{"text": "Hari apa pelaksanaan rutin sewa bulanan selanjutnya", "intent": "schedules", "split": "train", "group": "schedules-template-35"}
+{"text": "Hari apa pelaksanaan rutin layanan kmr 12 selanjutnya", "intent": "schedules", "split": "train", "group": "schedules-template-35"}
+{"text": "Daftar pekerjaan AC bocor yang dijdwlkan besok", "intent": "schedules", "split": "validation", "group": "schedules-template-7"}
+{"text": "Daftar pekerjaan pembersihan kamar yang dijadwalkan besok", "intent": "schedules", "split": "validation", "group": "schedules-template-7"}
+{"text": "Daftar pekerjaan perbaikan pintu yang dijadwalkan besok", "intent": "schedules", "split": "validation", "group": "schedules-template-7"}
+{"text": "Daftar pekerjaan sewa bulanan yang dijadwalkan besok", "intent": "schedules", "split": "validation", "group": "schedules-template-7"}
+{"text": "Daftar pekerjaan layanan kmr 12 yang dijdwlkan besok", "intent": "schedules", "split": "validation", "group": "schedules-template-7"}
+{"text": "Apa rencana AC bocor yang mendekati tanggalnya", "intent": "schedules", "split": "validation", "group": "schedules-template-9"}
+{"text": "Apa rencana pembersihan kamar yang mendekati tanggalnya", "intent": "schedules", "split": "validation", "group": "schedules-template-9"}
+{"text": "Apa rencana perbaikan pintu yang mendekati tanggalnya", "intent": "schedules", "split": "validation", "group": "schedules-template-9"}
+{"text": "Apa rencana sewa bulanan yang mendekati tanggalnya", "intent": "schedules", "split": "validation", "group": "schedules-template-9"}
+{"text": "Apa rencana layanan kmr 12 yang mendekati tanggalnya", "intent": "schedules", "split": "validation", "group": "schedules-template-9"}
+{"text": "Sebutkan tanggal servis berkala AC bocor", "intent": "schedules", "split": "validation", "group": "schedules-template-26"}
+{"text": "Sebutkan tanggal servis berkala pembersihan kamar", "intent": "schedules", "split": "validation", "group": "schedules-template-26"}
+{"text": "Sebutkan tanggal servis berkala perbaikan pintu", "intent": "schedules", "split": "validation", "group": "schedules-template-26"}
+{"text": "Sebutkan tanggal servis berkala sewa bulanan", "intent": "schedules", "split": "validation", "group": "schedules-template-26"}
+{"text": "Sebutkan tanggal servis berkala layanan kmr 12", "intent": "schedules", "split": "validation", "group": "schedules-template-26"}
+{"text": "Pekerjaan berkala AC bocor dijalankan hari apa", "intent": "schedules", "split": "validation", "group": "schedules-template-16"}
+{"text": "Pekerjaan berkala pembersihan kamar dijalankan hari apa", "intent": "schedules", "split": "validation", "group": "schedules-template-16"}
+{"text": "Pekerjaan berkala perbaikan pintu dijalankan hari apa", "intent": "schedules", "split": "validation", "group": "schedules-template-16"}
+{"text": "Pekerjaan berkala sewa bulanan dijalankan hari apa", "intent": "schedules", "split": "validation", "group": "schedules-template-16"}
+{"text": "Pekerjaan berkala layanan kmr 12 dijalankan hari apa", "intent": "schedules", "split": "validation", "group": "schedules-template-16"}
+{"text": "Pengingat AC bocor yang belum saya baca ada apa saja", "intent": "schedules", "split": "validation", "group": "schedules-template-30"}
+{"text": "Pengingat pembersihan kamar yang belum saya baca ada apa saja", "intent": "schedules", "split": "validation", "group": "schedules-template-30"}
+{"text": "Pengingat perbaikan pintu yang belum saya baca ada apa saja", "intent": "schedules", "split": "validation", "group": "schedules-template-30"}
+{"text": "Pengingat sewa bulanan yang belum saya baca ada apa saja", "intent": "schedules", "split": "validation", "group": "schedules-template-30"}
+{"text": "Pengingat layanan kmr 12 yang belum saya baca ada apa saja", "intent": "schedules", "split": "validation", "group": "schedules-template-30"}
+{"text": "Tanggal agenda AC bocor pekan ini perlu saya lihat", "intent": "schedules", "split": "validation", "group": "schedules-template-37"}
+{"text": "Tanggal agenda pembersihan kamar pekan ini perlu saya lihat", "intent": "schedules", "split": "validation", "group": "schedules-template-37"}
+{"text": "Tanggal agenda perbaikan pintu pekan ini perlu saya lihat", "intent": "schedules", "split": "validation", "group": "schedules-template-37"}
+{"text": "Tanggal agenda sewa bulanan pekan ini perlu saya lihat", "intent": "schedules", "split": "validation", "group": "schedules-template-37"}
+{"text": "Tanggal agenda layanan kmr 12 pekan ini perlu saya lihat", "intent": "schedules", "split": "validation", "group": "schedules-template-37"}
+{"text": "Apa agenda AC bocor hari ini", "intent": "schedules", "split": "test", "group": "schedules-template-1"}
+{"text": "Apa agenda pembersihan kamar hari ini", "intent": "schedules", "split": "test", "group": "schedules-template-1"}
+{"text": "Apa agenda perbaikan pintu hari ini", "intent": "schedules", "split": "test", "group": "schedules-template-1"}
+{"text": "Apa agenda sewa bulanan hari ini", "intent": "schedules", "split": "test", "group": "schedules-template-1"}
+{"text": "Apa agenda layanan kmr 12 hari ini", "intent": "schedules", "split": "test", "group": "schedules-template-1"}
+{"text": "Rencana kegiatan AC bocor hari esok apa", "intent": "schedules", "split": "test", "group": "schedules-template-33"}
+{"text": "Rencana kegiatan pembersihan kamar hari esok apa", "intent": "schedules", "split": "test", "group": "schedules-template-33"}
+{"text": "Rencana kegiatan perbaikan pintu hari esok apa", "intent": "schedules", "split": "test", "group": "schedules-template-33"}
+{"text": "Rencana kegiatan sewa bulanan hari esok apa", "intent": "schedules", "split": "test", "group": "schedules-template-33"}
+{"text": "Rencana kegiatan layanan kmr 12 hari esok apa", "intent": "schedules", "split": "test", "group": "schedules-template-33"}
+{"text": "Kapan jdwl perawatan AC bocor berikutnya", "intent": "schedules", "split": "test", "group": "schedules-template-0"}
+{"text": "Kapan jadwal perawatan pembersihan kamar berikutnya", "intent": "schedules", "split": "test", "group": "schedules-template-0"}
+{"text": "Kapan jadwal perawatan perbaikan pintu berikutnya", "intent": "schedules", "split": "test", "group": "schedules-template-0"}
+{"text": "Kapan jadwal perawatan sewa bulanan berikutnya", "intent": "schedules", "split": "test", "group": "schedules-template-0"}
+{"text": "Kapan jdwl perawatan layanan kmr 12 berikutnya", "intent": "schedules", "split": "test", "group": "schedules-template-0"}
+{"text": "Cek rencana berulang AC bocor pekan depan", "intent": "schedules", "split": "test", "group": "schedules-template-29"}
+{"text": "Cek rencana berulang pembersihan kamar pekan depan", "intent": "schedules", "split": "test", "group": "schedules-template-29"}
+{"text": "Cek rencana berulang perbaikan pintu pekan depan", "intent": "schedules", "split": "test", "group": "schedules-template-29"}
+{"text": "Cek rencana berulang sewa bulanan pekan depan", "intent": "schedules", "split": "test", "group": "schedules-template-29"}
+{"text": "Cek rencana berulang layanan kmr 12 pekan depan", "intent": "schedules", "split": "test", "group": "schedules-template-29"}
+{"text": "Apa notifikasi jdwl tentang AC bocor yang belum dibaca", "intent": "schedules", "split": "test", "group": "schedules-template-19"}
+{"text": "Apa notifikasi jadwal tentang pembersihan kamar yang belum dibaca", "intent": "schedules", "split": "test", "group": "schedules-template-19"}
+{"text": "Apa notifikasi jadwal tentang perbaikan pintu yang belum dibaca", "intent": "schedules", "split": "test", "group": "schedules-template-19"}
+{"text": "Apa notifikasi jadwal tentang sewa bulanan yang belum dibaca", "intent": "schedules", "split": "test", "group": "schedules-template-19"}
+{"text": "Apa notifikasi jdwl tentang layanan kmr 12 yang belum dibaca", "intent": "schedules", "split": "test", "group": "schedules-template-19"}
+{"text": "Jam dan tanggal rencana aktivitas AC bocor kapan", "intent": "schedules", "split": "test", "group": "schedules-template-21"}
+{"text": "Jam dan tanggal rencana aktivitas pembersihan kamar kapan", "intent": "schedules", "split": "test", "group": "schedules-template-21"}
+{"text": "Jam dan tanggal rencana aktivitas perbaikan pintu kapan", "intent": "schedules", "split": "test", "group": "schedules-template-21"}
+{"text": "Jam dan tanggal rencana aktivitas sewa bulanan kapan", "intent": "schedules", "split": "test", "group": "schedules-template-21"}
+{"text": "Jam dan tanggal rencana aktivitas layanan kmr 12 kapan", "intent": "schedules", "split": "test", "group": "schedules-template-21"}
+{"text": "Jumlah biaya tercatat AC bocor selama tiga bulan", "intent": "finances", "split": "train", "group": "finances-template-7"}
+{"text": "Jumlah biaya tercatat pembersihan kamar selama tiga bulan", "intent": "finances", "split": "train", "group": "finances-template-7"}
+{"text": "Jumlah biaya tercatat perbaikan pintu selama tiga bulan", "intent": "finances", "split": "train", "group": "finances-template-7"}
+{"text": "Jumlah biaya tercatat sewa bulanan selama tiga bulan", "intent": "finances", "split": "train", "group": "finances-template-7"}
+{"text": "Jumlah biaya tercatat layanan kmr 12 selama tiga bulan", "intent": "finances", "split": "train", "group": "finances-template-7"}
+{"text": "Lihat transaksi keuangan untuk AC bocor", "intent": "finances", "split": "train", "group": "finances-template-12"}
+{"text": "Lihat transaksi keuangan untuk pembersihan kamar", "intent": "finances", "split": "train", "group": "finances-template-12"}
+{"text": "Lihat transaksi keuangan untuk perbaikan pintu", "intent": "finances", "split": "train", "group": "finances-template-12"}
+{"text": "Lihat transaksi keuangan untuk sewa bulanan", "intent": "finances", "split": "train", "group": "finances-template-12"}
+{"text": "Lihat transaksi keuangan untuk layanan kmr 12", "intent": "finances", "split": "train", "group": "finances-template-12"}
+{"text": "Sajikan laporan kas masuk dan keluar untuk AC bocor", "intent": "finances", "split": "train", "group": "finances-template-26"}
+{"text": "Sajikan laporan kas masuk dan keluar untuk pembersihan kamar", "intent": "finances", "split": "train", "group": "finances-template-26"}
+{"text": "Sajikan laporan kas masuk dan keluar untuk perbaikan pintu", "intent": "finances", "split": "train", "group": "finances-template-26"}
+{"text": "Sajikan laporan kas masuk dan keluar untuk sewa bulanan", "intent": "finances", "split": "train", "group": "finances-template-26"}
+{"text": "Sajikan laporan kas masuk dan keluar untuk layanan kmr 12", "intent": "finances", "split": "train", "group": "finances-template-26"}
+{"text": "Saldo arus kas tercatat dari AC bocor berapa", "intent": "finances", "split": "train", "group": "finances-template-18"}
+{"text": "Saldo arus kas tercatat dari pembersihan kamar berapa", "intent": "finances", "split": "train", "group": "finances-template-18"}
+{"text": "Saldo arus kas tercatat dari perbaikan pintu berapa", "intent": "finances", "split": "train", "group": "finances-template-18"}
+{"text": "Saldo arus kas tercatat dari sewa bulanan berapa", "intent": "finances", "split": "train", "group": "finances-template-18"}
+{"text": "Saldo arus kas tercatat dari layanan kmr 12 berapa", "intent": "finances", "split": "train", "group": "finances-template-18"}
+{"text": "Siapa yang menunggak pembayaran terkait AC bocor", "intent": "finances", "split": "train", "group": "finances-template-25"}
+{"text": "Siapa yang menunggak pembayaran terkait pembersihan kamar", "intent": "finances", "split": "train", "group": "finances-template-25"}
+{"text": "Siapa yang menunggak pembayaran terkait perbaikan pintu", "intent": "finances", "split": "train", "group": "finances-template-25"}
+{"text": "Siapa yang menunggak pembayaran terkait sewa bulanan", "intent": "finances", "split": "train", "group": "finances-template-25"}
+{"text": "Siapa yang menunggak pembayaran terkait layanan kmr 12", "intent": "finances", "split": "train", "group": "finances-template-25"}
+{"text": "Total biaya perbaikan AC bocor dibanding bulan lalu bagaimana", "intent": "finances", "split": "train", "group": "finances-template-33"}
+{"text": "Total biaya perbaikan pembersihan kamar dibanding bulan lalu bagaimana", "intent": "finances", "split": "train", "group": "finances-template-33"}
+{"text": "Total biaya perbaikan perbaikan pintu dibanding bulan lalu bagaimana", "intent": "finances", "split": "train", "group": "finances-template-33"}
+{"text": "Total biaya perbaikan sewa bulanan dibanding bulan lalu bagaimana", "intent": "finances", "split": "train", "group": "finances-template-33"}
+{"text": "Total biaya perbaikan layanan kmr 12 dibanding bulan lalu bagaimana", "intent": "finances", "split": "train", "group": "finances-template-33"}
+{"text": "Bagaimana arus kas dari AC bocor", "intent": "finances", "split": "train", "group": "finances-template-5"}
+{"text": "Bagaimana arus kas dari pembersihan kamar", "intent": "finances", "split": "train", "group": "finances-template-5"}
+{"text": "Bagaimana arus kas dari perbaikan pintu", "intent": "finances", "split": "train", "group": "finances-template-5"}
+{"text": "Bagaimana arus kas dari sewa bulanan", "intent": "finances", "split": "train", "group": "finances-template-5"}
+{"text": "Bagaimana arus kas dari layanan kmr 12", "intent": "finances", "split": "train", "group": "finances-template-5"}
+{"text": "Hitung kas bersih pemasukan dikurangi biaya AC bocor", "intent": "finances", "split": "train", "group": "finances-template-35"}
+{"text": "Hitung kas bersih pemasukan dikurangi biaya pembersihan kamar", "intent": "finances", "split": "train", "group": "finances-template-35"}
+{"text": "Hitung kas bersih pemasukan dikurangi biaya perbaikan pintu", "intent": "finances", "split": "train", "group": "finances-template-35"}
+{"text": "Hitung kas bersih pemasukan dikurangi biaya sewa bulanan", "intent": "finances", "split": "train", "group": "finances-template-35"}
+{"text": "Hitung kas bersih pemasukan dikurangi biaya layanan kmr 12", "intent": "finances", "split": "train", "group": "finances-template-35"}
+{"text": "Gue perlu nominal tagihan belum lunas AC bocor", "intent": "finances", "split": "train", "group": "finances-template-32"}
+{"text": "Saya perlu nominal tagihan belum lunas pembersihan kamar", "intent": "finances", "split": "train", "group": "finances-template-32"}
+{"text": "Saya perlu nominal tagihan belum lunas perbaikan pintu", "intent": "finances", "split": "train", "group": "finances-template-32"}
+{"text": "Saya perlu nominal tagihan belum lunas sewa bulanan", "intent": "finances", "split": "train", "group": "finances-template-32"}
+{"text": "Gue perlu nominal tagihan belum lunas layanan kmr 12", "intent": "finances", "split": "train", "group": "finances-template-32"}
+{"text": "Ada tagihan AC bocor yang belum lunas", "intent": "finances", "split": "train", "group": "finances-template-3"}
+{"text": "Ada tagihan pembersihan kamar yang belum lunas", "intent": "finances", "split": "train", "group": "finances-template-3"}
+{"text": "Ada tagihan perbaikan pintu yang belum lunas", "intent": "finances", "split": "train", "group": "finances-template-3"}
+{"text": "Ada tagihan sewa bulanan yang belum lunas", "intent": "finances", "split": "train", "group": "finances-template-3"}
+{"text": "Ada tagihan layanan kmr 12 yang belum lunas", "intent": "finances", "split": "train", "group": "finances-template-3"}
+{"text": "Gue mau rekap nominal pembayaran AC bocor", "intent": "finances", "split": "train", "group": "finances-template-6"}
+{"text": "Saya mau rekap nominal pembayaran pembersihan kamar", "intent": "finances", "split": "train", "group": "finances-template-6"}
+{"text": "Saya mau rekap nominal pembayaran perbaikan pintu", "intent": "finances", "split": "train", "group": "finances-template-6"}
+{"text": "Saya mau rekap nominal pembayaran sewa bulanan", "intent": "finances", "split": "train", "group": "finances-template-6"}
+{"text": "Gue mau rekap nominal pembayaran layanan kmr 12", "intent": "finances", "split": "train", "group": "finances-template-6"}
+{"text": "Rincian pengeluaran AC bocor per kategori dong", "intent": "finances", "split": "train", "group": "finances-template-23"}
+{"text": "Rincian pengeluaran pembersihan kamar per kategori dong", "intent": "finances", "split": "train", "group": "finances-template-23"}
+{"text": "Rincian pengeluaran perbaikan pintu per kategori dong", "intent": "finances", "split": "train", "group": "finances-template-23"}
+{"text": "Rincian pengeluaran sewa bulanan per kategori dong", "intent": "finances", "split": "train", "group": "finances-template-23"}
+{"text": "Rincian pengeluaran layanan kmr 12 per kategori dong", "intent": "finances", "split": "train", "group": "finances-template-23"}
+{"text": "Bandingkan pengeluaran AC bocor bulan lalu dan sekarang", "intent": "finances", "split": "train", "group": "finances-template-9"}
+{"text": "Bandingkan pengeluaran pembersihan kamar bulan lalu dan sekarang", "intent": "finances", "split": "train", "group": "finances-template-9"}
+{"text": "Bandingkan pengeluaran perbaikan pintu bulan lalu dan sekarang", "intent": "finances", "split": "train", "group": "finances-template-9"}
+{"text": "Bandingkan pengeluaran sewa bulanan bulan lalu dan sekarang", "intent": "finances", "split": "train", "group": "finances-template-9"}
+{"text": "Bandingkan pengeluaran layanan kmr 12 bulan lalu dan sekarang", "intent": "finances", "split": "train", "group": "finances-template-9"}
+{"text": "Cek bukti penerimaan pembayaran AC bocor", "intent": "finances", "split": "train", "group": "finances-template-30"}
+{"text": "Cek bukti penerimaan pembayaran pembersihan kamar", "intent": "finances", "split": "train", "group": "finances-template-30"}
+{"text": "Cek bukti penerimaan pembayaran perbaikan pintu", "intent": "finances", "split": "train", "group": "finances-template-30"}
+{"text": "Cek bukti penerimaan pembayaran sewa bulanan", "intent": "finances", "split": "train", "group": "finances-template-30"}
+{"text": "Cek bukti penerimaan pembayaran layanan kmr 12", "intent": "finances", "split": "train", "group": "finances-template-30"}
+{"text": "Brp rupiah yang dipakai buat AC bocor", "intent": "finances", "split": "train", "group": "finances-template-8"}
+{"text": "Berapa rupiah yang dipakai buat pembersihan kamar", "intent": "finances", "split": "train", "group": "finances-template-8"}
+{"text": "Berapa rupiah yang dipakai buat perbaikan pintu", "intent": "finances", "split": "train", "group": "finances-template-8"}
+{"text": "Berapa rupiah yang dipakai buat sewa bulanan", "intent": "finances", "split": "train", "group": "finances-template-8"}
+{"text": "Brp rupiah yang dipakai buat layanan kmr 12", "intent": "finances", "split": "train", "group": "finances-template-8"}
+{"text": "Mana bukti transaksi pembayaran AC bocor", "intent": "finances", "split": "train", "group": "finances-template-16"}
+{"text": "Mana bukti transaksi pembayaran pembersihan kamar", "intent": "finances", "split": "train", "group": "finances-template-16"}
+{"text": "Mana bukti transaksi pembayaran perbaikan pintu", "intent": "finances", "split": "train", "group": "finances-template-16"}
+{"text": "Mana bukti transaksi pembayaran sewa bulanan", "intent": "finances", "split": "train", "group": "finances-template-16"}
+{"text": "Mana bukti transaksi pembayaran layanan kmr 12", "intent": "finances", "split": "train", "group": "finances-template-16"}
+{"text": "Rangkum pembayaran lunas untuk AC bocor", "intent": "finances", "split": "train", "group": "finances-template-37"}
+{"text": "Rangkum pembayaran lunas untuk pembersihan kamar", "intent": "finances", "split": "train", "group": "finances-template-37"}
+{"text": "Rangkum pembayaran lunas untuk perbaikan pintu", "intent": "finances", "split": "train", "group": "finances-template-37"}
+{"text": "Rangkum pembayaran lunas untuk sewa bulanan", "intent": "finances", "split": "train", "group": "finances-template-37"}
+{"text": "Rangkum pembayaran lunas untuk layanan kmr 12", "intent": "finances", "split": "train", "group": "finances-template-37"}
+{"text": "Tlg jumlahkan uang keluar terkait AC bocor", "intent": "finances", "split": "train", "group": "finances-template-22"}
+{"text": "Tolong jumlahkan uang keluar terkait pembersihan kamar", "intent": "finances", "split": "train", "group": "finances-template-22"}
+{"text": "Tolong jumlahkan uang keluar terkait perbaikan pintu", "intent": "finances", "split": "train", "group": "finances-template-22"}
+{"text": "Tolong jumlahkan uang keluar terkait sewa bulanan", "intent": "finances", "split": "train", "group": "finances-template-22"}
+{"text": "Tlg jumlahkan uang keluar terkait layanan kmr 12", "intent": "finances", "split": "train", "group": "finances-template-22"}
+{"text": "Pengeluaran AC bocor masuk kategori biaya apa", "intent": "finances", "split": "train", "group": "finances-template-13"}
+{"text": "Pengeluaran pembersihan kamar masuk kategori biaya apa", "intent": "finances", "split": "train", "group": "finances-template-13"}
+{"text": "Pengeluaran perbaikan pintu masuk kategori biaya apa", "intent": "finances", "split": "train", "group": "finances-template-13"}
+{"text": "Pengeluaran sewa bulanan masuk kategori biaya apa", "intent": "finances", "split": "train", "group": "finances-template-13"}
+{"text": "Pengeluaran layanan kmr 12 masuk kategori biaya apa", "intent": "finances", "split": "train", "group": "finances-template-13"}
+{"text": "Total pemasukan dan pembayaran AC bocor berapa", "intent": "finances", "split": "train", "group": "finances-template-2"}
+{"text": "Total pemasukan dan pembayaran pembersihan kamar berapa", "intent": "finances", "split": "train", "group": "finances-template-2"}
+{"text": "Total pemasukan dan pembayaran perbaikan pintu berapa", "intent": "finances", "split": "train", "group": "finances-template-2"}
+{"text": "Total pemasukan dan pembayaran sewa bulanan berapa", "intent": "finances", "split": "train", "group": "finances-template-2"}
+{"text": "Total pemasukan dan pembayaran layanan kmr 12 berapa", "intent": "finances", "split": "train", "group": "finances-template-2"}
+{"text": "Harga biaya tercatat untuk pekerjaan AC bocor berapa", "intent": "finances", "split": "train", "group": "finances-template-28"}
+{"text": "Harga biaya tercatat untuk pekerjaan pembersihan kamar berapa", "intent": "finances", "split": "train", "group": "finances-template-28"}
+{"text": "Harga biaya tercatat untuk pekerjaan perbaikan pintu berapa", "intent": "finances", "split": "train", "group": "finances-template-28"}
+{"text": "Harga biaya tercatat untuk pekerjaan sewa bulanan berapa", "intent": "finances", "split": "train", "group": "finances-template-28"}
+{"text": "Harga biaya tercatat untuk pekerjaan layanan kmr 12 berapa", "intent": "finances", "split": "train", "group": "finances-template-28"}
+{"text": "Gue ingin rincian pemasukan biaya dan pelunasan AC bocor", "intent": "finances", "split": "train", "group": "finances-template-19"}
+{"text": "Saya ingin rincian pemasukan biaya dan pelunasan pembersihan kamar", "intent": "finances", "split": "train", "group": "finances-template-19"}
+{"text": "Saya ingin rincian pemasukan biaya dan pelunasan perbaikan pintu", "intent": "finances", "split": "train", "group": "finances-template-19"}
+{"text": "Saya ingin rincian pemasukan biaya dan pelunasan sewa bulanan", "intent": "finances", "split": "train", "group": "finances-template-19"}
+{"text": "Gue ingin rincian pemasukan biaya dan pelunasan layanan kmr 12", "intent": "finances", "split": "train", "group": "finances-template-19"}
+{"text": "Nominal biaya AC bocor di kmr ini berapa", "intent": "finances", "split": "train", "group": "finances-template-15"}
+{"text": "Nominal biaya pembersihan kamar di kamar ini berapa", "intent": "finances", "split": "train", "group": "finances-template-15"}
+{"text": "Nominal biaya perbaikan pintu di kamar ini berapa", "intent": "finances", "split": "train", "group": "finances-template-15"}
+{"text": "Nominal biaya sewa bulanan di kamar ini berapa", "intent": "finances", "split": "train", "group": "finances-template-15"}
+{"text": "Nominal biaya layanan kmr 12 di kmr ini berapa", "intent": "finances", "split": "train", "group": "finances-template-15"}
+{"text": "Penerimaan kas dari AC bocor sudah tercatat berapa rupiah", "intent": "finances", "split": "train", "group": "finances-template-20"}
+{"text": "Penerimaan kas dari pembersihan kamar sudah tercatat berapa rupiah", "intent": "finances", "split": "train", "group": "finances-template-20"}
+{"text": "Penerimaan kas dari perbaikan pintu sudah tercatat berapa rupiah", "intent": "finances", "split": "train", "group": "finances-template-20"}
+{"text": "Penerimaan kas dari sewa bulanan sudah tercatat berapa rupiah", "intent": "finances", "split": "train", "group": "finances-template-20"}
+{"text": "Penerimaan kas dari layanan kmr 12 sudah tercatat berapa rupiah", "intent": "finances", "split": "train", "group": "finances-template-20"}
+{"text": "Ada uang sewa atau biaya AC bocor yang menunggak", "intent": "finances", "split": "train", "group": "finances-template-17"}
+{"text": "Ada uang sewa atau biaya pembersihan kamar yang menunggak", "intent": "finances", "split": "train", "group": "finances-template-17"}
+{"text": "Ada uang sewa atau biaya perbaikan pintu yang menunggak", "intent": "finances", "split": "train", "group": "finances-template-17"}
+{"text": "Ada uang sewa atau biaya sewa bulanan yang menunggak", "intent": "finances", "split": "train", "group": "finances-template-17"}
+{"text": "Ada uang sewa atau biaya layanan kmr 12 yang menunggak", "intent": "finances", "split": "train", "group": "finances-template-17"}
+{"text": "Cari pembayaran AC bocor yang terlambat", "intent": "finances", "split": "train", "group": "finances-template-10"}
+{"text": "Cari pembayaran pembersihan kamar yang terlambat", "intent": "finances", "split": "train", "group": "finances-template-10"}
+{"text": "Cari pembayaran perbaikan pintu yang terlambat", "intent": "finances", "split": "train", "group": "finances-template-10"}
+{"text": "Cari pembayaran sewa bulanan yang terlambat", "intent": "finances", "split": "train", "group": "finances-template-10"}
+{"text": "Cari pembayaran layanan kmr 12 yang terlambat", "intent": "finances", "split": "train", "group": "finances-template-10"}
+{"text": "Biaya transaksi AC bocor total nominalnya berapa", "intent": "finances", "split": "train", "group": "finances-template-21"}
+{"text": "Biaya transaksi pembersihan kamar total nominalnya berapa", "intent": "finances", "split": "train", "group": "finances-template-21"}
+{"text": "Biaya transaksi perbaikan pintu total nominalnya berapa", "intent": "finances", "split": "train", "group": "finances-template-21"}
+{"text": "Biaya transaksi sewa bulanan total nominalnya berapa", "intent": "finances", "split": "train", "group": "finances-template-21"}
+{"text": "Biaya transaksi layanan kmr 12 total nominalnya berapa", "intent": "finances", "split": "train", "group": "finances-template-21"}
+{"text": "Brp total sewa belum dibayar untuk AC bocor", "intent": "finances", "split": "train", "group": "finances-template-24"}
+{"text": "Berapa total sewa belum dibayar untuk pembersihan kamar", "intent": "finances", "split": "train", "group": "finances-template-24"}
+{"text": "Berapa total sewa belum dibayar untuk perbaikan pintu", "intent": "finances", "split": "train", "group": "finances-template-24"}
+{"text": "Berapa total sewa belum dibayar untuk sewa bulanan", "intent": "finances", "split": "train", "group": "finances-template-24"}
+{"text": "Brp total sewa belum dibayar untuk layanan kmr 12", "intent": "finances", "split": "train", "group": "finances-template-24"}
+{"text": "Sewa terkait AC bocor sudah dibayar atau belum", "intent": "finances", "split": "validation", "group": "finances-template-11"}
+{"text": "Sewa terkait pembersihan kamar sudah dibayar atau belum", "intent": "finances", "split": "validation", "group": "finances-template-11"}
+{"text": "Sewa terkait perbaikan pintu sudah dibayar atau belum", "intent": "finances", "split": "validation", "group": "finances-template-11"}
+{"text": "Sewa terkait sewa bulanan sudah dibayar atau belum", "intent": "finances", "split": "validation", "group": "finances-template-11"}
+{"text": "Sewa terkait layanan kmr 12 sudah dibayar atau belum", "intent": "finances", "split": "validation", "group": "finances-template-11"}
+{"text": "Nilai uang sewa dan pelunasan AC bocor berapa", "intent": "finances", "split": "validation", "group": "finances-template-38"}
+{"text": "Nilai uang sewa dan pelunasan pembersihan kamar berapa", "intent": "finances", "split": "validation", "group": "finances-template-38"}
+{"text": "Nilai uang sewa dan pelunasan perbaikan pintu berapa", "intent": "finances", "split": "validation", "group": "finances-template-38"}
+{"text": "Nilai uang sewa dan pelunasan sewa bulanan berapa", "intent": "finances", "split": "validation", "group": "finances-template-38"}
+{"text": "Nilai uang sewa dan pelunasan layanan kmr 12 berapa", "intent": "finances", "split": "validation", "group": "finances-template-38"}
+{"text": "Tampilkan uang yang keluar untuk AC bocor", "intent": "finances", "split": "validation", "group": "finances-template-4"}
+{"text": "Tampilkan uang yang keluar untuk pembersihan kamar", "intent": "finances", "split": "validation", "group": "finances-template-4"}
+{"text": "Tampilkan uang yang keluar untuk perbaikan pintu", "intent": "finances", "split": "validation", "group": "finances-template-4"}
+{"text": "Tampilkan uang yang keluar untuk sewa bulanan", "intent": "finances", "split": "validation", "group": "finances-template-4"}
+{"text": "Tampilkan uang yang keluar untuk layanan kmr 12", "intent": "finances", "split": "validation", "group": "finances-template-4"}
+{"text": "Sebutkan biaya paling besar terkait AC bocor", "intent": "finances", "split": "validation", "group": "finances-template-39"}
+{"text": "Sebutkan biaya paling besar terkait pembersihan kamar", "intent": "finances", "split": "validation", "group": "finances-template-39"}
+{"text": "Sebutkan biaya paling besar terkait perbaikan pintu", "intent": "finances", "split": "validation", "group": "finances-template-39"}
+{"text": "Sebutkan biaya paling besar terkait sewa bulanan", "intent": "finances", "split": "validation", "group": "finances-template-39"}
+{"text": "Sebutkan biaya paling besar terkait layanan kmr 12", "intent": "finances", "split": "validation", "group": "finances-template-39"}
+{"text": "Hitung pengeluaran untuk AC bocor", "intent": "finances", "split": "validation", "group": "finances-template-1"}
+{"text": "Hitung pengeluaran untuk pembersihan kamar", "intent": "finances", "split": "validation", "group": "finances-template-1"}
+{"text": "Hitung pengeluaran untuk perbaikan pintu", "intent": "finances", "split": "validation", "group": "finances-template-1"}
+{"text": "Hitung pengeluaran untuk sewa bulanan", "intent": "finances", "split": "validation", "group": "finances-template-1"}
+{"text": "Hitung pengeluaran untuk layanan kmr 12", "intent": "finances", "split": "validation", "group": "finances-template-1"}
+{"text": "Ada transaksi draft belum dibayar untuk AC bocor", "intent": "finances", "split": "validation", "group": "finances-template-34"}
+{"text": "Ada transaksi draft belum dibayar untuk pembersihan kamar", "intent": "finances", "split": "validation", "group": "finances-template-34"}
+{"text": "Ada transaksi draft belum dibayar untuk perbaikan pintu", "intent": "finances", "split": "validation", "group": "finances-template-34"}
+{"text": "Ada transaksi draft belum dibayar untuk sewa bulanan", "intent": "finances", "split": "validation", "group": "finances-template-34"}
+{"text": "Ada transaksi draft belum dibayar untuk layanan kmr 12", "intent": "finances", "split": "validation", "group": "finances-template-34"}
+{"text": "Brp besar pengeluaran pemeliharaan AC bocor", "intent": "finances", "split": "test", "group": "finances-template-36"}
+{"text": "Berapa besar pengeluaran pemeliharaan pembersihan kamar", "intent": "finances", "split": "test", "group": "finances-template-36"}
+{"text": "Berapa besar pengeluaran pemeliharaan perbaikan pintu", "intent": "finances", "split": "test", "group": "finances-template-36"}
+{"text": "Berapa besar pengeluaran pemeliharaan sewa bulanan", "intent": "finances", "split": "test", "group": "finances-template-36"}
+{"text": "Brp besar pengeluaran pemeliharaan layanan kmr 12", "intent": "finances", "split": "test", "group": "finances-template-36"}
+{"text": "Uang yang telah dibayar untuk AC bocor berapa", "intent": "finances", "split": "test", "group": "finances-template-31"}
+{"text": "Uang yang telah dibayar untuk pembersihan kamar berapa", "intent": "finances", "split": "test", "group": "finances-template-31"}
+{"text": "Uang yang telah dibayar untuk perbaikan pintu berapa", "intent": "finances", "split": "test", "group": "finances-template-31"}
+{"text": "Uang yang telah dibayar untuk sewa bulanan berapa", "intent": "finances", "split": "test", "group": "finances-template-31"}
+{"text": "Uang yang telah dibayar untuk layanan kmr 12 berapa", "intent": "finances", "split": "test", "group": "finances-template-31"}
+{"text": "Brp biaya AC bocor bulan ini", "intent": "finances", "split": "test", "group": "finances-template-0"}
+{"text": "Berapa biaya pembersihan kamar bulan ini", "intent": "finances", "split": "test", "group": "finances-template-0"}
+{"text": "Berapa biaya perbaikan pintu bulan ini", "intent": "finances", "split": "test", "group": "finances-template-0"}
+{"text": "Berapa biaya sewa bulanan bulan ini", "intent": "finances", "split": "test", "group": "finances-template-0"}
+{"text": "Brp biaya layanan kmr 12 bulan ini", "intent": "finances", "split": "test", "group": "finances-template-0"}
+{"text": "Pembayaran sewa AC bocor terlambat berapa hari", "intent": "finances", "split": "test", "group": "finances-template-29"}
+{"text": "Pembayaran sewa pembersihan kamar terlambat berapa hari", "intent": "finances", "split": "test", "group": "finances-template-29"}
+{"text": "Pembayaran sewa perbaikan pintu terlambat berapa hari", "intent": "finances", "split": "test", "group": "finances-template-29"}
+{"text": "Pembayaran sewa sewa bulanan terlambat berapa hari", "intent": "finances", "split": "test", "group": "finances-template-29"}
+{"text": "Pembayaran sewa layanan kmr 12 terlambat berapa hari", "intent": "finances", "split": "test", "group": "finances-template-29"}
+{"text": "Ringkas penerimaan uang terkait AC bocor", "intent": "finances", "split": "test", "group": "finances-template-14"}
+{"text": "Ringkas penerimaan uang terkait pembersihan kamar", "intent": "finances", "split": "test", "group": "finances-template-14"}
+{"text": "Ringkas penerimaan uang terkait perbaikan pintu", "intent": "finances", "split": "test", "group": "finances-template-14"}
+{"text": "Ringkas penerimaan uang terkait sewa bulanan", "intent": "finances", "split": "test", "group": "finances-template-14"}
+{"text": "Ringkas penerimaan uang terkait layanan kmr 12", "intent": "finances", "split": "test", "group": "finances-template-14"}
+{"text": "Ada selisih pemasukan pengeluaran pada AC bocor", "intent": "finances", "split": "test", "group": "finances-template-27"}
+{"text": "Ada selisih pemasukan pengeluaran pada pembersihan kamar", "intent": "finances", "split": "test", "group": "finances-template-27"}
+{"text": "Ada selisih pemasukan pengeluaran pada perbaikan pintu", "intent": "finances", "split": "test", "group": "finances-template-27"}
+{"text": "Ada selisih pemasukan pengeluaran pada sewa bulanan", "intent": "finances", "split": "test", "group": "finances-template-27"}
+{"text": "Ada selisih pemasukan pengeluaran pada layanan kmr 12", "intent": "finances", "split": "test", "group": "finances-template-27"}
+{"text": "Petunjuk cara memasukkan data AC bocor apa", "intent": "guidance", "split": "train", "group": "guidance-template-24"}
+{"text": "Petunjuk cara memasukkan data pembersihan kamar apa", "intent": "guidance", "split": "train", "group": "guidance-template-24"}
+{"text": "Petunjuk cara memasukkan data perbaikan pintu apa", "intent": "guidance", "split": "train", "group": "guidance-template-24"}
+{"text": "Petunjuk cara memasukkan data sewa bulanan apa", "intent": "guidance", "split": "train", "group": "guidance-template-24"}
+{"text": "Petunjuk cara memasukkan data layanan kmr 12 apa", "intent": "guidance", "split": "train", "group": "guidance-template-24"}
+{"text": "Boleh jelaskan arti istilah AC bocor", "intent": "guidance", "split": "train", "group": "guidance-template-6"}
+{"text": "Boleh jelaskan arti istilah pembersihan kamar", "intent": "guidance", "split": "train", "group": "guidance-template-6"}
+{"text": "Boleh jelaskan arti istilah perbaikan pintu", "intent": "guidance", "split": "train", "group": "guidance-template-6"}
+{"text": "Boleh jelaskan arti istilah sewa bulanan", "intent": "guidance", "split": "train", "group": "guidance-template-6"}
+{"text": "Boleh jelaskan arti istilah layanan kmr 12", "intent": "guidance", "split": "train", "group": "guidance-template-6"}
+{"text": "Apa perbedaan konsep AC bocor dalam buku bantuan", "intent": "guidance", "split": "train", "group": "guidance-template-38"}
+{"text": "Apa perbedaan konsep pembersihan kamar dalam buku bantuan", "intent": "guidance", "split": "train", "group": "guidance-template-38"}
+{"text": "Apa perbedaan konsep perbaikan pintu dalam buku bantuan", "intent": "guidance", "split": "train", "group": "guidance-template-38"}
+{"text": "Apa perbedaan konsep sewa bulanan dalam buku bantuan", "intent": "guidance", "split": "train", "group": "guidance-template-38"}
+{"text": "Apa perbedaan konsep layanan kmr 12 dalam buku bantuan", "intent": "guidance", "split": "train", "group": "guidance-template-38"}
+{"text": "Aturan kos terkait AC bocor itu apa", "intent": "guidance", "split": "train", "group": "guidance-template-17"}
+{"text": "Aturan kos terkait pembersihan kamar itu apa", "intent": "guidance", "split": "train", "group": "guidance-template-17"}
+{"text": "Aturan kos terkait perbaikan pintu itu apa", "intent": "guidance", "split": "train", "group": "guidance-template-17"}
+{"text": "Aturan kos terkait sewa bulanan itu apa", "intent": "guidance", "split": "train", "group": "guidance-template-17"}
+{"text": "Aturan kos terkait layanan kmr 12 itu apa", "intent": "guidance", "split": "train", "group": "guidance-template-17"}
+{"text": "Kenapa kategori AC bocor dipakai", "intent": "guidance", "split": "train", "group": "guidance-template-3"}
+{"text": "Kenapa kategori pembersihan kamar dipakai", "intent": "guidance", "split": "train", "group": "guidance-template-3"}
+{"text": "Kenapa kategori perbaikan pintu dipakai", "intent": "guidance", "split": "train", "group": "guidance-template-3"}
+{"text": "Kenapa kategori sewa bulanan dipakai", "intent": "guidance", "split": "train", "group": "guidance-template-3"}
+{"text": "Kenapa kategori layanan kmr 12 dipakai", "intent": "guidance", "split": "train", "group": "guidance-template-3"}
+{"text": "Jelaskan pengertian istilah AC bocor dalam aplikasi", "intent": "guidance", "split": "train", "group": "guidance-template-23"}
+{"text": "Jelaskan pengertian istilah pembersihan kamar dalam aplikasi", "intent": "guidance", "split": "train", "group": "guidance-template-23"}
+{"text": "Jelaskan pengertian istilah perbaikan pintu dalam aplikasi", "intent": "guidance", "split": "train", "group": "guidance-template-23"}
+{"text": "Jelaskan pengertian istilah sewa bulanan dalam aplikasi", "intent": "guidance", "split": "train", "group": "guidance-template-23"}
+{"text": "Jelaskan pengertian istilah layanan kmr 12 dalam aplikasi", "intent": "guidance", "split": "train", "group": "guidance-template-23"}
+{"text": "Ajari saya prosedur AC bocor", "intent": "guidance", "split": "train", "group": "guidance-template-4"}
+{"text": "Ajari saya prosedur pembersihan kamar", "intent": "guidance", "split": "train", "group": "guidance-template-4"}
+{"text": "Ajari saya prosedur perbaikan pintu", "intent": "guidance", "split": "train", "group": "guidance-template-4"}
+{"text": "Ajari saya prosedur sewa bulanan", "intent": "guidance", "split": "train", "group": "guidance-template-4"}
+{"text": "Ajari saya prosedur layanan kmr 12", "intent": "guidance", "split": "train", "group": "guidance-template-4"}
+{"text": "Gue ingin belajar cara kerja menu AC bocor", "intent": "guidance", "split": "train", "group": "guidance-template-28"}
+{"text": "Saya ingin belajar cara kerja menu pembersihan kamar", "intent": "guidance", "split": "train", "group": "guidance-template-28"}
+{"text": "Saya ingin belajar cara kerja menu perbaikan pintu", "intent": "guidance", "split": "train", "group": "guidance-template-28"}
+{"text": "Saya ingin belajar cara kerja menu sewa bulanan", "intent": "guidance", "split": "train", "group": "guidance-template-28"}
+{"text": "Gue ingin belajar cara kerja menu layanan kmr 12", "intent": "guidance", "split": "train", "group": "guidance-template-28"}
+{"text": "Ada panduan yang membahas AC bocor", "intent": "guidance", "split": "train", "group": "guidance-template-12"}
+{"text": "Ada panduan yang membahas pembersihan kamar", "intent": "guidance", "split": "train", "group": "guidance-template-12"}
+{"text": "Ada panduan yang membahas perbaikan pintu", "intent": "guidance", "split": "train", "group": "guidance-template-12"}
+{"text": "Ada panduan yang membahas sewa bulanan", "intent": "guidance", "split": "train", "group": "guidance-template-12"}
+{"text": "Ada panduan yang membahas layanan kmr 12", "intent": "guidance", "split": "train", "group": "guidance-template-12"}
+{"text": "Ajari penggunaan menu untuk memasukkan AC bocor", "intent": "guidance", "split": "train", "group": "guidance-template-39"}
+{"text": "Ajari penggunaan menu untuk memasukkan pembersihan kamar", "intent": "guidance", "split": "train", "group": "guidance-template-39"}
+{"text": "Ajari penggunaan menu untuk memasukkan perbaikan pintu", "intent": "guidance", "split": "train", "group": "guidance-template-39"}
+{"text": "Ajari penggunaan menu untuk memasukkan sewa bulanan", "intent": "guidance", "split": "train", "group": "guidance-template-39"}
+{"text": "Ajari penggunaan menu untuk memasukkan layanan kmr 12", "intent": "guidance", "split": "train", "group": "guidance-template-39"}
+{"text": "Ajarkan langkah demi langkah untuk fitur AC bocor", "intent": "guidance", "split": "train", "group": "guidance-template-26"}
+{"text": "Ajarkan langkah demi langkah untuk fitur pembersihan kamar", "intent": "guidance", "split": "train", "group": "guidance-template-26"}
+{"text": "Ajarkan langkah demi langkah untuk fitur perbaikan pintu", "intent": "guidance", "split": "train", "group": "guidance-template-26"}
+{"text": "Ajarkan langkah demi langkah untuk fitur sewa bulanan", "intent": "guidance", "split": "train", "group": "guidance-template-26"}
+{"text": "Ajarkan langkah demi langkah untuk fitur layanan kmr 12", "intent": "guidance", "split": "train", "group": "guidance-template-26"}
+{"text": "Gue butuh tutorial menyelesaikan AC bocor", "intent": "guidance", "split": "train", "group": "guidance-template-18"}
+{"text": "Saya butuh tutorial menyelesaikan pembersihan kamar", "intent": "guidance", "split": "train", "group": "guidance-template-18"}
+{"text": "Saya butuh tutorial menyelesaikan perbaikan pintu", "intent": "guidance", "split": "train", "group": "guidance-template-18"}
+{"text": "Saya butuh tutorial menyelesaikan sewa bulanan", "intent": "guidance", "split": "train", "group": "guidance-template-18"}
+{"text": "Gue butuh tutorial menyelesaikan layanan kmr 12", "intent": "guidance", "split": "train", "group": "guidance-template-18"}
+{"text": "Langkah pengecekan aman untuk AC bocor bagaimana", "intent": "guidance", "split": "train", "group": "guidance-template-37"}
+{"text": "Langkah pengecekan aman untuk pembersihan kamar bagaimana", "intent": "guidance", "split": "train", "group": "guidance-template-37"}
+{"text": "Langkah pengecekan aman untuk perbaikan pintu bagaimana", "intent": "guidance", "split": "train", "group": "guidance-template-37"}
+{"text": "Langkah pengecekan aman untuk sewa bulanan bagaimana", "intent": "guidance", "split": "train", "group": "guidance-template-37"}
+{"text": "Langkah pengecekan aman untuk layanan kmr 12 bagaimana", "intent": "guidance", "split": "train", "group": "guidance-template-37"}
+{"text": "Penjelasan fungsi fitur AC bocor boleh", "intent": "guidance", "split": "train", "group": "guidance-template-36"}
+{"text": "Penjelasan fungsi fitur pembersihan kamar boleh", "intent": "guidance", "split": "train", "group": "guidance-template-36"}
+{"text": "Penjelasan fungsi fitur perbaikan pintu boleh", "intent": "guidance", "split": "train", "group": "guidance-template-36"}
+{"text": "Penjelasan fungsi fitur sewa bulanan boleh", "intent": "guidance", "split": "train", "group": "guidance-template-36"}
+{"text": "Penjelasan fungsi fitur layanan kmr 12 boleh", "intent": "guidance", "split": "train", "group": "guidance-template-36"}
+{"text": "Tata cara pemakaian fitur AC bocor seperti apa", "intent": "guidance", "split": "train", "group": "guidance-template-14"}
+{"text": "Tata cara pemakaian fitur pembersihan kamar seperti apa", "intent": "guidance", "split": "train", "group": "guidance-template-14"}
+{"text": "Tata cara pemakaian fitur perbaikan pintu seperti apa", "intent": "guidance", "split": "train", "group": "guidance-template-14"}
+{"text": "Tata cara pemakaian fitur sewa bulanan seperti apa", "intent": "guidance", "split": "train", "group": "guidance-template-14"}
+{"text": "Tata cara pemakaian fitur layanan kmr 12 seperti apa", "intent": "guidance", "split": "train", "group": "guidance-template-14"}
+{"text": "Gue belum paham fungsi menu AC bocor", "intent": "guidance", "split": "train", "group": "guidance-template-9"}
+{"text": "Saya belum paham fungsi menu pembersihan kamar", "intent": "guidance", "split": "train", "group": "guidance-template-9"}
+{"text": "Saya belum paham fungsi menu perbaikan pintu", "intent": "guidance", "split": "train", "group": "guidance-template-9"}
+{"text": "Saya belum paham fungsi menu sewa bulanan", "intent": "guidance", "split": "train", "group": "guidance-template-9"}
+{"text": "Gue belum paham fungsi menu layanan kmr 12", "intent": "guidance", "split": "train", "group": "guidance-template-9"}
+{"text": "Menurut buku panduan tindakan untuk AC bocor apa", "intent": "guidance", "split": "train", "group": "guidance-template-19"}
+{"text": "Menurut buku panduan tindakan untuk pembersihan kamar apa", "intent": "guidance", "split": "train", "group": "guidance-template-19"}
+{"text": "Menurut buku panduan tindakan untuk perbaikan pintu apa", "intent": "guidance", "split": "train", "group": "guidance-template-19"}
+{"text": "Menurut buku panduan tindakan untuk sewa bulanan apa", "intent": "guidance", "split": "train", "group": "guidance-template-19"}
+{"text": "Menurut buku panduan tindakan untuk layanan kmr 12 apa", "intent": "guidance", "split": "train", "group": "guidance-template-19"}
+{"text": "Bagaimana aturan pencatatan AC bocor yang benar", "intent": "guidance", "split": "train", "group": "guidance-template-32"}
+{"text": "Bagaimana aturan pencatatan pembersihan kamar yang benar", "intent": "guidance", "split": "train", "group": "guidance-template-32"}
+{"text": "Bagaimana aturan pencatatan perbaikan pintu yang benar", "intent": "guidance", "split": "train", "group": "guidance-template-32"}
+{"text": "Bagaimana aturan pencatatan sewa bulanan yang benar", "intent": "guidance", "split": "train", "group": "guidance-template-32"}
+{"text": "Bagaimana aturan pencatatan layanan kmr 12 yang benar", "intent": "guidance", "split": "train", "group": "guidance-template-32"}
+{"text": "Panduan mengisi data AC bocor dengan benar dong", "intent": "guidance", "split": "train", "group": "guidance-template-35"}
+{"text": "Panduan mengisi data pembersihan kamar dengan benar dong", "intent": "guidance", "split": "train", "group": "guidance-template-35"}
+{"text": "Panduan mengisi data perbaikan pintu dengan benar dong", "intent": "guidance", "split": "train", "group": "guidance-template-35"}
+{"text": "Panduan mengisi data sewa bulanan dengan benar dong", "intent": "guidance", "split": "train", "group": "guidance-template-35"}
+{"text": "Panduan mengisi data layanan kmr 12 dengan benar dong", "intent": "guidance", "split": "train", "group": "guidance-template-35"}
+{"text": "Definisi AC bocor menurut panduan apa", "intent": "guidance", "split": "train", "group": "guidance-template-31"}
+{"text": "Definisi pembersihan kamar menurut panduan apa", "intent": "guidance", "split": "train", "group": "guidance-template-31"}
+{"text": "Definisi perbaikan pintu menurut panduan apa", "intent": "guidance", "split": "train", "group": "guidance-template-31"}
+{"text": "Definisi sewa bulanan menurut panduan apa", "intent": "guidance", "split": "train", "group": "guidance-template-31"}
+{"text": "Definisi layanan kmr 12 menurut panduan apa", "intent": "guidance", "split": "train", "group": "guidance-template-31"}
+{"text": "Apa arti kategori dan status AC bocor", "intent": "guidance", "split": "train", "group": "guidance-template-27"}
+{"text": "Apa arti kategori dan status pembersihan kamar", "intent": "guidance", "split": "train", "group": "guidance-template-27"}
+{"text": "Apa arti kategori dan status perbaikan pintu", "intent": "guidance", "split": "train", "group": "guidance-template-27"}
+{"text": "Apa arti kategori dan status sewa bulanan", "intent": "guidance", "split": "train", "group": "guidance-template-27"}
+{"text": "Apa arti kategori dan status layanan kmr 12", "intent": "guidance", "split": "train", "group": "guidance-template-27"}
+{"text": "Berikan penjelasan umum mengenai AC bocor", "intent": "guidance", "split": "train", "group": "guidance-template-15"}
+{"text": "Berikan penjelasan umum mengenai pembersihan kamar", "intent": "guidance", "split": "train", "group": "guidance-template-15"}
+{"text": "Berikan penjelasan umum mengenai perbaikan pintu", "intent": "guidance", "split": "train", "group": "guidance-template-15"}
+{"text": "Berikan penjelasan umum mengenai sewa bulanan", "intent": "guidance", "split": "train", "group": "guidance-template-15"}
+{"text": "Berikan penjelasan umum mengenai layanan kmr 12", "intent": "guidance", "split": "train", "group": "guidance-template-15"}
+{"text": "Apa kebijakan umum kos mengenai AC bocor", "intent": "guidance", "split": "train", "group": "guidance-template-22"}
+{"text": "Apa kebijakan umum kos mengenai pembersihan kamar", "intent": "guidance", "split": "train", "group": "guidance-template-22"}
+{"text": "Apa kebijakan umum kos mengenai perbaikan pintu", "intent": "guidance", "split": "train", "group": "guidance-template-22"}
+{"text": "Apa kebijakan umum kos mengenai sewa bulanan", "intent": "guidance", "split": "train", "group": "guidance-template-22"}
+{"text": "Apa kebijakan umum kos mengenai layanan kmr 12", "intent": "guidance", "split": "train", "group": "guidance-template-22"}
+{"text": "Langkah aman ketika menghadapi AC bocor apa", "intent": "guidance", "split": "train", "group": "guidance-template-10"}
+{"text": "Langkah aman ketika menghadapi pembersihan kamar apa", "intent": "guidance", "split": "train", "group": "guidance-template-10"}
+{"text": "Langkah aman ketika menghadapi perbaikan pintu apa", "intent": "guidance", "split": "train", "group": "guidance-template-10"}
+{"text": "Langkah aman ketika menghadapi sewa bulanan apa", "intent": "guidance", "split": "train", "group": "guidance-template-10"}
+{"text": "Langkah aman ketika menghadapi layanan kmr 12 apa", "intent": "guidance", "split": "train", "group": "guidance-template-10"}
+{"text": "Tutorial penggunaan fitur AC bocor ada bagaimana", "intent": "guidance", "split": "train", "group": "guidance-template-21"}
+{"text": "Tutorial penggunaan fitur pembersihan kamar ada bagaimana", "intent": "guidance", "split": "train", "group": "guidance-template-21"}
+{"text": "Tutorial penggunaan fitur perbaikan pintu ada bagaimana", "intent": "guidance", "split": "train", "group": "guidance-template-21"}
+{"text": "Tutorial penggunaan fitur sewa bulanan ada bagaimana", "intent": "guidance", "split": "train", "group": "guidance-template-21"}
+{"text": "Tutorial penggunaan fitur layanan kmr 12 ada bagaimana", "intent": "guidance", "split": "train", "group": "guidance-template-21"}
+{"text": "Cara memakai aplikasi saat mencatat AC bocor itu apa", "intent": "guidance", "split": "train", "group": "guidance-template-30"}
+{"text": "Cara memakai aplikasi saat mencatat pembersihan kamar itu apa", "intent": "guidance", "split": "train", "group": "guidance-template-30"}
+{"text": "Cara memakai aplikasi saat mencatat perbaikan pintu itu apa", "intent": "guidance", "split": "train", "group": "guidance-template-30"}
+{"text": "Cara memakai aplikasi saat mencatat sewa bulanan itu apa", "intent": "guidance", "split": "train", "group": "guidance-template-30"}
+{"text": "Cara memakai aplikasi saat mencatat layanan kmr 12 itu apa", "intent": "guidance", "split": "train", "group": "guidance-template-30"}
+{"text": "Bacakan panduan operasional terkait AC bocor", "intent": "guidance", "split": "train", "group": "guidance-template-29"}
+{"text": "Bacakan panduan operasional terkait pembersihan kamar", "intent": "guidance", "split": "train", "group": "guidance-template-29"}
+{"text": "Bacakan panduan operasional terkait perbaikan pintu", "intent": "guidance", "split": "train", "group": "guidance-template-29"}
+{"text": "Bacakan panduan operasional terkait sewa bulanan", "intent": "guidance", "split": "train", "group": "guidance-template-29"}
+{"text": "Bacakan panduan operasional terkait layanan kmr 12", "intent": "guidance", "split": "train", "group": "guidance-template-29"}
+{"text": "Bagaimana aturan operasional tentang AC bocor", "intent": "guidance", "split": "train", "group": "guidance-template-8"}
+{"text": "Bagaimana aturan operasional tentang pembersihan kamar", "intent": "guidance", "split": "train", "group": "guidance-template-8"}
+{"text": "Bagaimana aturan operasional tentang perbaikan pintu", "intent": "guidance", "split": "train", "group": "guidance-template-8"}
+{"text": "Bagaimana aturan operasional tentang sewa bulanan", "intent": "guidance", "split": "train", "group": "guidance-template-8"}
+{"text": "Bagaimana aturan operasional tentang layanan kmr 12", "intent": "guidance", "split": "train", "group": "guidance-template-8"}
+{"text": "Cara kerja pencatatan AC bocor bagaimana", "intent": "guidance", "split": "validation", "group": "guidance-template-16"}
+{"text": "Cara kerja pencatatan pembersihan kamar bagaimana", "intent": "guidance", "split": "validation", "group": "guidance-template-16"}
+{"text": "Cara kerja pencatatan perbaikan pintu bagaimana", "intent": "guidance", "split": "validation", "group": "guidance-template-16"}
+{"text": "Cara kerja pencatatan sewa bulanan bagaimana", "intent": "guidance", "split": "validation", "group": "guidance-template-16"}
+{"text": "Cara kerja pencatatan layanan kmr 12 bagaimana", "intent": "guidance", "split": "validation", "group": "guidance-template-16"}
+{"text": "Panduan aplikasi menjelaskan AC bocor seperti apa", "intent": "guidance", "split": "validation", "group": "guidance-template-20"}
+{"text": "Panduan aplikasi menjelaskan pembersihan kamar seperti apa", "intent": "guidance", "split": "validation", "group": "guidance-template-20"}
+{"text": "Panduan aplikasi menjelaskan perbaikan pintu seperti apa", "intent": "guidance", "split": "validation", "group": "guidance-template-20"}
+{"text": "Panduan aplikasi menjelaskan sewa bulanan seperti apa", "intent": "guidance", "split": "validation", "group": "guidance-template-20"}
+{"text": "Panduan aplikasi menjelaskan layanan kmr 12 seperti apa", "intent": "guidance", "split": "validation", "group": "guidance-template-20"}
+{"text": "Apa perbedaan jenis kegiatan AC bocor", "intent": "guidance", "split": "validation", "group": "guidance-template-11"}
+{"text": "Apa perbedaan jenis kegiatan pembersihan kamar", "intent": "guidance", "split": "validation", "group": "guidance-template-11"}
+{"text": "Apa perbedaan jenis kegiatan perbaikan pintu", "intent": "guidance", "split": "validation", "group": "guidance-template-11"}
+{"text": "Apa perbedaan jenis kegiatan sewa bulanan", "intent": "guidance", "split": "validation", "group": "guidance-template-11"}
+{"text": "Apa perbedaan jenis kegiatan layanan kmr 12", "intent": "guidance", "split": "validation", "group": "guidance-template-11"}
+{"text": "Apa tata cara mengelola AC bocor", "intent": "guidance", "split": "validation", "group": "guidance-template-34"}
+{"text": "Apa tata cara mengelola pembersihan kamar", "intent": "guidance", "split": "validation", "group": "guidance-template-34"}
+{"text": "Apa tata cara mengelola perbaikan pintu", "intent": "guidance", "split": "validation", "group": "guidance-template-34"}
+{"text": "Apa tata cara mengelola sewa bulanan", "intent": "guidance", "split": "validation", "group": "guidance-template-34"}
+{"text": "Apa tata cara mengelola layanan kmr 12", "intent": "guidance", "split": "validation", "group": "guidance-template-34"}
+{"text": "Bantu saya memahami kebijakan AC bocor", "intent": "guidance", "split": "validation", "group": "guidance-template-13"}
+{"text": "Bantu saya memahami kebijakan pembersihan kamar", "intent": "guidance", "split": "validation", "group": "guidance-template-13"}
+{"text": "Bantu saya memahami kebijakan perbaikan pintu", "intent": "guidance", "split": "validation", "group": "guidance-template-13"}
+{"text": "Bantu saya memahami kebijakan sewa bulanan", "intent": "guidance", "split": "validation", "group": "guidance-template-13"}
+{"text": "Bantu saya memahami kebijakan layanan kmr 12", "intent": "guidance", "split": "validation", "group": "guidance-template-13"}
+{"text": "Bagaimana cara mencatat AC bocor", "intent": "guidance", "split": "validation", "group": "guidance-template-0"}
+{"text": "Bagaimana cara mencatat pembersihan kamar", "intent": "guidance", "split": "validation", "group": "guidance-template-0"}
+{"text": "Bagaimana cara mencatat perbaikan pintu", "intent": "guidance", "split": "validation", "group": "guidance-template-0"}
+{"text": "Bagaimana cara mencatat sewa bulanan", "intent": "guidance", "split": "validation", "group": "guidance-template-0"}
+{"text": "Bagaimana cara mencatat layanan kmr 12", "intent": "guidance", "split": "validation", "group": "guidance-template-0"}
+{"text": "Bagaimana prosedur aman merawat AC bocor", "intent": "guidance", "split": "test", "group": "guidance-template-25"}
+{"text": "Bagaimana prosedur aman merawat pembersihan kamar", "intent": "guidance", "split": "test", "group": "guidance-template-25"}
+{"text": "Bagaimana prosedur aman merawat perbaikan pintu", "intent": "guidance", "split": "test", "group": "guidance-template-25"}
+{"text": "Bagaimana prosedur aman merawat sewa bulanan", "intent": "guidance", "split": "test", "group": "guidance-template-25"}
+{"text": "Bagaimana prosedur aman merawat layanan kmr 12", "intent": "guidance", "split": "test", "group": "guidance-template-25"}
+{"text": "SOP penanganan AC bocor mohon dijelaskan", "intent": "guidance", "split": "test", "group": "guidance-template-33"}
+{"text": "SOP penanganan pembersihan kamar mohon dijelaskan", "intent": "guidance", "split": "test", "group": "guidance-template-33"}
+{"text": "SOP penanganan perbaikan pintu mohon dijelaskan", "intent": "guidance", "split": "test", "group": "guidance-template-33"}
+{"text": "SOP penanganan sewa bulanan mohon dijelaskan", "intent": "guidance", "split": "test", "group": "guidance-template-33"}
+{"text": "SOP penanganan layanan kmr 12 mohon dijelaskan", "intent": "guidance", "split": "test", "group": "guidance-template-33"}
+{"text": "Apa panduan penanganan AC bocor", "intent": "guidance", "split": "test", "group": "guidance-template-2"}
+{"text": "Apa panduan penanganan pembersihan kamar", "intent": "guidance", "split": "test", "group": "guidance-template-2"}
+{"text": "Apa panduan penanganan perbaikan pintu", "intent": "guidance", "split": "test", "group": "guidance-template-2"}
+{"text": "Apa panduan penanganan sewa bulanan", "intent": "guidance", "split": "test", "group": "guidance-template-2"}
+{"text": "Apa panduan penanganan layanan kmr 12", "intent": "guidance", "split": "test", "group": "guidance-template-2"}
+{"text": "Jelaskan langkah penggunaan aplikasi untuk AC bocor", "intent": "guidance", "split": "test", "group": "guidance-template-1"}
+{"text": "Jelaskan langkah penggunaan aplikasi untuk pembersihan kamar", "intent": "guidance", "split": "test", "group": "guidance-template-1"}
+{"text": "Jelaskan langkah penggunaan aplikasi untuk perbaikan pintu", "intent": "guidance", "split": "test", "group": "guidance-template-1"}
+{"text": "Jelaskan langkah penggunaan aplikasi untuk sewa bulanan", "intent": "guidance", "split": "test", "group": "guidance-template-1"}
+{"text": "Jelaskan langkah penggunaan aplikasi untuk layanan kmr 12", "intent": "guidance", "split": "test", "group": "guidance-template-1"}
+{"text": "Tlg beri petunjuk mengisi formulir AC bocor", "intent": "guidance", "split": "test", "group": "guidance-template-7"}
+{"text": "Tolong beri petunjuk mengisi formulir pembersihan kamar", "intent": "guidance", "split": "test", "group": "guidance-template-7"}
+{"text": "Tolong beri petunjuk mengisi formulir perbaikan pintu", "intent": "guidance", "split": "test", "group": "guidance-template-7"}
+{"text": "Tolong beri petunjuk mengisi formulir sewa bulanan", "intent": "guidance", "split": "test", "group": "guidance-template-7"}
+{"text": "Tlg beri petunjuk mengisi formulir layanan kmr 12", "intent": "guidance", "split": "test", "group": "guidance-template-7"}
+{"text": "Apa yang harus diperiksa saat AC bocor", "intent": "guidance", "split": "test", "group": "guidance-template-5"}
+{"text": "Apa yang harus diperiksa saat pembersihan kamar", "intent": "guidance", "split": "test", "group": "guidance-template-5"}
+{"text": "Apa yang harus diperiksa saat perbaikan pintu", "intent": "guidance", "split": "test", "group": "guidance-template-5"}
+{"text": "Apa yang harus diperiksa saat sewa bulanan", "intent": "guidance", "split": "test", "group": "guidance-template-5"}
+{"text": "Apa yang harus diperiksa saat layanan kmr 12", "intent": "guidance", "split": "test", "group": "guidance-template-5"}
+{"text": "Siapa pemenang pertandingan bola kemarin AC bocor", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-1"}
+{"text": "Siapa pemenang pertandingan bola kemarin pembersihan kamar", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-1"}
+{"text": "Siapa pemenang pertandingan bola kemarin perbaikan pintu", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-1"}
+{"text": "Siapa pemenang pertandingan bola kemarin sewa bulanan", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-1"}
+{"text": "Siapa pemenang pertandingan bola kemarin layanan kmr 12", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-1"}
+{"text": "Siapa presiden Amerika dan apa hubungannya dengan AC bocor", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-6"}
+{"text": "Siapa presiden Amerika dan apa hubungannya dengan pembersihan kamar", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-6"}
+{"text": "Siapa presiden Amerika dan apa hubungannya dengan perbaikan pintu", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-6"}
+{"text": "Siapa presiden Amerika dan apa hubungannya dengan sewa bulanan", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-6"}
+{"text": "Siapa presiden Amerika dan apa hubungannya dengan layanan kmr 12", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-6"}
+{"text": "Gue ingin belajar bahasa Jepang dari AC bocor", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-9"}
+{"text": "Saya ingin belajar bahasa Jepang dari pembersihan kamar", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-9"}
+{"text": "Saya ingin belajar bahasa Jepang dari perbaikan pintu", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-9"}
+{"text": "Saya ingin belajar bahasa Jepang dari sewa bulanan", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-9"}
+{"text": "Gue ingin belajar bahasa Jepang dari layanan kmr 12", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-9"}
+{"text": "Rekomendasikan film bertema AC bocor", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-2"}
+{"text": "Rekomendasikan film bertema pembersihan kamar", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-2"}
+{"text": "Rekomendasikan film bertema perbaikan pintu", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-2"}
+{"text": "Rekomendasikan film bertema sewa bulanan", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-2"}
+{"text": "Rekomendasikan film bertema layanan kmr 12", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-2"}
+{"text": "Jelaskan astronomi dan planet bernama AC bocor", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-31"}
+{"text": "Jelaskan astronomi dan planet bernama pembersihan kamar", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-31"}
+{"text": "Jelaskan astronomi dan planet bernama perbaikan pintu", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-31"}
+{"text": "Jelaskan astronomi dan planet bernama sewa bulanan", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-31"}
+{"text": "Jelaskan astronomi dan planet bernama layanan kmr 12", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-31"}
+{"text": "Bagaimana cuaca di kutub dan AC bocor", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-22"}
+{"text": "Bagaimana cuaca di kutub dan pembersihan kamar", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-22"}
+{"text": "Bagaimana cuaca di kutub dan perbaikan pintu", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-22"}
+{"text": "Bagaimana cuaca di kutub dan sewa bulanan", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-22"}
+{"text": "Bagaimana cuaca di kutub dan layanan kmr 12", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-22"}
+{"text": "Tulis novel detektif tentang AC bocor", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-34"}
+{"text": "Tulis novel detektif tentang pembersihan kamar", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-34"}
+{"text": "Tulis novel detektif tentang perbaikan pintu", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-34"}
+{"text": "Tulis novel detektif tentang sewa bulanan", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-34"}
+{"text": "Tulis novel detektif tentang layanan kmr 12", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-34"}
+{"text": "Apa resep nasi goreng dengan nama AC bocor", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-29"}
+{"text": "Apa resep nasi goreng dengan nama pembersihan kamar", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-29"}
+{"text": "Apa resep nasi goreng dengan nama perbaikan pintu", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-29"}
+{"text": "Apa resep nasi goreng dengan nama sewa bulanan", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-29"}
+{"text": "Apa resep nasi goreng dengan nama layanan kmr 12", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-29"}
+{"text": "Gue mau cerita fantasi petualangan AC bocor", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-19"}
+{"text": "Saya mau cerita fantasi petualangan pembersihan kamar", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-19"}
+{"text": "Saya mau cerita fantasi petualangan perbaikan pintu", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-19"}
+{"text": "Saya mau cerita fantasi petualangan sewa bulanan", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-19"}
+{"text": "Gue mau cerita fantasi petualangan layanan kmr 12", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-19"}
+{"text": "Prediksi skor sepak bola tim AC bocor", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-17"}
+{"text": "Prediksi skor sepak bola tim pembersihan kamar", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-17"}
+{"text": "Prediksi skor sepak bola tim perbaikan pintu", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-17"}
+{"text": "Prediksi skor sepak bola tim sewa bulanan", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-17"}
+{"text": "Prediksi skor sepak bola tim layanan kmr 12", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-17"}
+{"text": "Apakah alien suka AC bocor", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-16"}
+{"text": "Apakah alien suka pembersihan kamar", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-16"}
+{"text": "Apakah alien suka perbaikan pintu", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-16"}
+{"text": "Apakah alien suka sewa bulanan", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-16"}
+{"text": "Apakah alien suka layanan kmr 12", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-16"}
+{"text": "Bantu pilih hadiah ulang tahun bertema AC bocor", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-18"}
+{"text": "Bantu pilih hadiah ulang tahun bertema pembersihan kamar", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-18"}
+{"text": "Bantu pilih hadiah ulang tahun bertema perbaikan pintu", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-18"}
+{"text": "Bantu pilih hadiah ulang tahun bertema sewa bulanan", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-18"}
+{"text": "Bantu pilih hadiah ulang tahun bertema layanan kmr 12", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-18"}
+{"text": "Buat cerita horor dengan tokoh AC bocor", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-24"}
+{"text": "Buat cerita horor dengan tokoh pembersihan kamar", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-24"}
+{"text": "Buat cerita horor dengan tokoh perbaikan pintu", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-24"}
+{"text": "Buat cerita horor dengan tokoh sewa bulanan", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-24"}
+{"text": "Buat cerita horor dengan tokoh layanan kmr 12", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-24"}
+{"text": "Main tebak tebakan tentang AC bocor", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-8"}
+{"text": "Main tebak tebakan tentang pembersihan kamar", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-8"}
+{"text": "Main tebak tebakan tentang perbaikan pintu", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-8"}
+{"text": "Main tebak tebakan tentang sewa bulanan", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-8"}
+{"text": "Main tebak tebakan tentang layanan kmr 12", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-8"}
+{"text": "Tlg ciptakan lagu dangdut tentang AC bocor", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-27"}
+{"text": "Tolong ciptakan lagu dangdut tentang pembersihan kamar", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-27"}
+{"text": "Tolong ciptakan lagu dangdut tentang perbaikan pintu", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-27"}
+{"text": "Tolong ciptakan lagu dangdut tentang sewa bulanan", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-27"}
+{"text": "Tlg ciptakan lagu dangdut tentang layanan kmr 12", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-27"}
+{"text": "Rekomendasi drama Korea yang cocok untuk AC bocor", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-21"}
+{"text": "Rekomendasi drama Korea yang cocok untuk pembersihan kamar", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-21"}
+{"text": "Rekomendasi drama Korea yang cocok untuk perbaikan pintu", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-21"}
+{"text": "Rekomendasi drama Korea yang cocok untuk sewa bulanan", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-21"}
+{"text": "Rekomendasi drama Korea yang cocok untuk layanan kmr 12", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-21"}
+{"text": "Tulis lirik lagu baru tentang AC bocor", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-12"}
+{"text": "Tulis lirik lagu baru tentang pembersihan kamar", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-12"}
+{"text": "Tulis lirik lagu baru tentang perbaikan pintu", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-12"}
+{"text": "Tulis lirik lagu baru tentang sewa bulanan", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-12"}
+{"text": "Tulis lirik lagu baru tentang layanan kmr 12", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-12"}
+{"text": "Brp harga saham perusahaan AC bocor", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-11"}
+{"text": "Berapa harga saham perusahaan pembersihan kamar", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-11"}
+{"text": "Berapa harga saham perusahaan perbaikan pintu", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-11"}
+{"text": "Berapa harga saham perusahaan sewa bulanan", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-11"}
+{"text": "Brp harga saham perusahaan layanan kmr 12", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-11"}
+{"text": "Buat caption romantis untuk AC bocor", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-38"}
+{"text": "Buat caption romantis untuk pembersihan kamar", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-38"}
+{"text": "Buat caption romantis untuk perbaikan pintu", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-38"}
+{"text": "Buat caption romantis untuk sewa bulanan", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-38"}
+{"text": "Buat caption romantis untuk layanan kmr 12", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-38"}
+{"text": "Buat puisi tentang AC bocor", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-0"}
+{"text": "Buat puisi tentang pembersihan kamar", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-0"}
+{"text": "Buat puisi tentang perbaikan pintu", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-0"}
+{"text": "Buat puisi tentang sewa bulanan", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-0"}
+{"text": "Buat puisi tentang layanan kmr 12", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-0"}
+{"text": "Tlg kerjakan soal fisika tentang AC bocor", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-4"}
+{"text": "Tolong kerjakan soal fisika tentang pembersihan kamar", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-4"}
+{"text": "Tolong kerjakan soal fisika tentang perbaikan pintu", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-4"}
+{"text": "Tolong kerjakan soal fisika tentang sewa bulanan", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-4"}
+{"text": "Tlg kerjakan soal fisika tentang layanan kmr 12", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-4"}
+{"text": "Kasih lelucon tentang AC bocor", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-13"}
+{"text": "Kasih lelucon tentang pembersihan kamar", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-13"}
+{"text": "Kasih lelucon tentang perbaikan pintu", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-13"}
+{"text": "Kasih lelucon tentang sewa bulanan", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-13"}
+{"text": "Kasih lelucon tentang layanan kmr 12", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-13"}
+{"text": "Cari destinasi wisata luar negeri bertema AC bocor", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-28"}
+{"text": "Cari destinasi wisata luar negeri bertema pembersihan kamar", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-28"}
+{"text": "Cari destinasi wisata luar negeri bertema perbaikan pintu", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-28"}
+{"text": "Cari destinasi wisata luar negeri bertema sewa bulanan", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-28"}
+{"text": "Cari destinasi wisata luar negeri bertema layanan kmr 12", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-28"}
+{"text": "Buatkan resep kue bernama AC bocor", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-7"}
+{"text": "Buatkan resep kue bernama pembersihan kamar", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-7"}
+{"text": "Buatkan resep kue bernama perbaikan pintu", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-7"}
+{"text": "Buatkan resep kue bernama sewa bulanan", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-7"}
+{"text": "Buatkan resep kue bernama layanan kmr 12", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-7"}
+{"text": "Kasih tips make up untuk pesta AC bocor", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-32"}
+{"text": "Kasih tips make up untuk pesta pembersihan kamar", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-32"}
+{"text": "Kasih tips make up untuk pesta perbaikan pintu", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-32"}
+{"text": "Kasih tips make up untuk pesta sewa bulanan", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-32"}
+{"text": "Kasih tips make up untuk pesta layanan kmr 12", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-32"}
+{"text": "Cari tiket pesawat untuk liburan AC bocor", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-10"}
+{"text": "Cari tiket pesawat untuk liburan pembersihan kamar", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-10"}
+{"text": "Cari tiket pesawat untuk liburan perbaikan pintu", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-10"}
+{"text": "Cari tiket pesawat untuk liburan sewa bulanan", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-10"}
+{"text": "Cari tiket pesawat untuk liburan layanan kmr 12", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-10"}
+{"text": "Jelaskan sejarah kerajaan dan AC bocor", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-15"}
+{"text": "Jelaskan sejarah kerajaan dan pembersihan kamar", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-15"}
+{"text": "Jelaskan sejarah kerajaan dan perbaikan pintu", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-15"}
+{"text": "Jelaskan sejarah kerajaan dan sewa bulanan", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-15"}
+{"text": "Jelaskan sejarah kerajaan dan layanan kmr 12", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-15"}
+{"text": "Apa arti mimpi bertemu AC bocor", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-39"}
+{"text": "Apa arti mimpi bertemu pembersihan kamar", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-39"}
+{"text": "Apa arti mimpi bertemu perbaikan pintu", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-39"}
+{"text": "Apa arti mimpi bertemu sewa bulanan", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-39"}
+{"text": "Apa arti mimpi bertemu layanan kmr 12", "intent": "out-of-scope", "split": "train", "group": "out-of-scope-template-39"}
+{"text": "Ceritakan dongeng lucu tentang AC bocor", "intent": "out-of-scope", "split": "validation", "group": "out-of-scope-template-3"}
+{"text": "Ceritakan dongeng lucu tentang pembersihan kamar", "intent": "out-of-scope", "split": "validation", "group": "out-of-scope-template-3"}
+{"text": "Ceritakan dongeng lucu tentang perbaikan pintu", "intent": "out-of-scope", "split": "validation", "group": "out-of-scope-template-3"}
+{"text": "Ceritakan dongeng lucu tentang sewa bulanan", "intent": "out-of-scope", "split": "validation", "group": "out-of-scope-template-3"}
+{"text": "Ceritakan dongeng lucu tentang layanan kmr 12", "intent": "out-of-scope", "split": "validation", "group": "out-of-scope-template-3"}
+{"text": "Siapa tokoh anime yang suka AC bocor", "intent": "out-of-scope", "split": "validation", "group": "out-of-scope-template-14"}
+{"text": "Siapa tokoh anime yang suka pembersihan kamar", "intent": "out-of-scope", "split": "validation", "group": "out-of-scope-template-14"}
+{"text": "Siapa tokoh anime yang suka perbaikan pintu", "intent": "out-of-scope", "split": "validation", "group": "out-of-scope-template-14"}
+{"text": "Siapa tokoh anime yang suka sewa bulanan", "intent": "out-of-scope", "split": "validation", "group": "out-of-scope-template-14"}
+{"text": "Siapa tokoh anime yang suka layanan kmr 12", "intent": "out-of-scope", "split": "validation", "group": "out-of-scope-template-14"}
+{"text": "Sebutkan karakter kartun yang memiliki AC bocor", "intent": "out-of-scope", "split": "validation", "group": "out-of-scope-template-35"}
+{"text": "Sebutkan karakter kartun yang memiliki pembersihan kamar", "intent": "out-of-scope", "split": "validation", "group": "out-of-scope-template-35"}
+{"text": "Sebutkan karakter kartun yang memiliki perbaikan pintu", "intent": "out-of-scope", "split": "validation", "group": "out-of-scope-template-35"}
+{"text": "Sebutkan karakter kartun yang memiliki sewa bulanan", "intent": "out-of-scope", "split": "validation", "group": "out-of-scope-template-35"}
+{"text": "Sebutkan karakter kartun yang memiliki layanan kmr 12", "intent": "out-of-scope", "split": "validation", "group": "out-of-scope-template-35"}
+{"text": "Berikan tebakan nomor lotre bertema AC bocor", "intent": "out-of-scope", "split": "validation", "group": "out-of-scope-template-37"}
+{"text": "Berikan tebakan nomor lotre bertema pembersihan kamar", "intent": "out-of-scope", "split": "validation", "group": "out-of-scope-template-37"}
+{"text": "Berikan tebakan nomor lotre bertema perbaikan pintu", "intent": "out-of-scope", "split": "validation", "group": "out-of-scope-template-37"}
+{"text": "Berikan tebakan nomor lotre bertema sewa bulanan", "intent": "out-of-scope", "split": "validation", "group": "out-of-scope-template-37"}
+{"text": "Berikan tebakan nomor lotre bertema layanan kmr 12", "intent": "out-of-scope", "split": "validation", "group": "out-of-scope-template-37"}
+{"text": "Ajar saya matematika integral terkait AC bocor", "intent": "out-of-scope", "split": "validation", "group": "out-of-scope-template-23"}
+{"text": "Ajar saya matematika integral terkait pembersihan kamar", "intent": "out-of-scope", "split": "validation", "group": "out-of-scope-template-23"}
+{"text": "Ajar saya matematika integral terkait perbaikan pintu", "intent": "out-of-scope", "split": "validation", "group": "out-of-scope-template-23"}
+{"text": "Ajar saya matematika integral terkait sewa bulanan", "intent": "out-of-scope", "split": "validation", "group": "out-of-scope-template-23"}
+{"text": "Ajar saya matematika integral terkait layanan kmr 12", "intent": "out-of-scope", "split": "validation", "group": "out-of-scope-template-23"}
+{"text": "Aku mau belajar gitar dengan lagu AC bocor", "intent": "out-of-scope", "split": "validation", "group": "out-of-scope-template-33"}
+{"text": "Aku mau belajar gitar dengan lagu pembersihan kamar", "intent": "out-of-scope", "split": "validation", "group": "out-of-scope-template-33"}
+{"text": "Aku mau belajar gitar dengan lagu perbaikan pintu", "intent": "out-of-scope", "split": "validation", "group": "out-of-scope-template-33"}
+{"text": "Aku mau belajar gitar dengan lagu sewa bulanan", "intent": "out-of-scope", "split": "validation", "group": "out-of-scope-template-33"}
+{"text": "Aku mau belajar gitar dengan lagu layanan kmr 12", "intent": "out-of-scope", "split": "validation", "group": "out-of-scope-template-33"}
+{"text": "Gue mau ramalan tarot mengenai AC bocor", "intent": "out-of-scope", "split": "test", "group": "out-of-scope-template-25"}
+{"text": "Saya mau ramalan tarot mengenai pembersihan kamar", "intent": "out-of-scope", "split": "test", "group": "out-of-scope-template-25"}
+{"text": "Saya mau ramalan tarot mengenai perbaikan pintu", "intent": "out-of-scope", "split": "test", "group": "out-of-scope-template-25"}
+{"text": "Saya mau ramalan tarot mengenai sewa bulanan", "intent": "out-of-scope", "split": "test", "group": "out-of-scope-template-25"}
+{"text": "Gue mau ramalan tarot mengenai layanan kmr 12", "intent": "out-of-scope", "split": "test", "group": "out-of-scope-template-25"}
+{"text": "Prediksi kurs dolar untuk AC bocor", "intent": "out-of-scope", "split": "test", "group": "out-of-scope-template-36"}
+{"text": "Prediksi kurs dolar untuk pembersihan kamar", "intent": "out-of-scope", "split": "test", "group": "out-of-scope-template-36"}
+{"text": "Prediksi kurs dolar untuk perbaikan pintu", "intent": "out-of-scope", "split": "test", "group": "out-of-scope-template-36"}
+{"text": "Prediksi kurs dolar untuk sewa bulanan", "intent": "out-of-scope", "split": "test", "group": "out-of-scope-template-36"}
+{"text": "Prediksi kurs dolar untuk layanan kmr 12", "intent": "out-of-scope", "split": "test", "group": "out-of-scope-template-36"}
+{"text": "Tuliskan pantun cinta bertema AC bocor", "intent": "out-of-scope", "split": "test", "group": "out-of-scope-template-20"}
+{"text": "Tuliskan pantun cinta bertema pembersihan kamar", "intent": "out-of-scope", "split": "test", "group": "out-of-scope-template-20"}
+{"text": "Tuliskan pantun cinta bertema perbaikan pintu", "intent": "out-of-scope", "split": "test", "group": "out-of-scope-template-20"}
+{"text": "Tuliskan pantun cinta bertema sewa bulanan", "intent": "out-of-scope", "split": "test", "group": "out-of-scope-template-20"}
+{"text": "Tuliskan pantun cinta bertema layanan kmr 12", "intent": "out-of-scope", "split": "test", "group": "out-of-scope-template-20"}
+{"text": "Siapa pemain bola terbaik yang suka AC bocor", "intent": "out-of-scope", "split": "test", "group": "out-of-scope-template-26"}
+{"text": "Siapa pemain bola terbaik yang suka pembersihan kamar", "intent": "out-of-scope", "split": "test", "group": "out-of-scope-template-26"}
+{"text": "Siapa pemain bola terbaik yang suka perbaikan pintu", "intent": "out-of-scope", "split": "test", "group": "out-of-scope-template-26"}
+{"text": "Siapa pemain bola terbaik yang suka sewa bulanan", "intent": "out-of-scope", "split": "test", "group": "out-of-scope-template-26"}
+{"text": "Siapa pemain bola terbaik yang suka layanan kmr 12", "intent": "out-of-scope", "split": "test", "group": "out-of-scope-template-26"}
+{"text": "Bantu saya membuat game fantasi tentang AC bocor", "intent": "out-of-scope", "split": "test", "group": "out-of-scope-template-30"}
+{"text": "Bantu saya membuat game fantasi tentang pembersihan kamar", "intent": "out-of-scope", "split": "test", "group": "out-of-scope-template-30"}
+{"text": "Bantu saya membuat game fantasi tentang perbaikan pintu", "intent": "out-of-scope", "split": "test", "group": "out-of-scope-template-30"}
+{"text": "Bantu saya membuat game fantasi tentang sewa bulanan", "intent": "out-of-scope", "split": "test", "group": "out-of-scope-template-30"}
+{"text": "Bantu saya membuat game fantasi tentang layanan kmr 12", "intent": "out-of-scope", "split": "test", "group": "out-of-scope-template-30"}
+{"text": "Bagaimana ramalan zodiak AC bocor", "intent": "out-of-scope", "split": "test", "group": "out-of-scope-template-5"}
+{"text": "Bagaimana ramalan zodiak pembersihan kamar", "intent": "out-of-scope", "split": "test", "group": "out-of-scope-template-5"}
+{"text": "Bagaimana ramalan zodiak perbaikan pintu", "intent": "out-of-scope", "split": "test", "group": "out-of-scope-template-5"}
+{"text": "Bagaimana ramalan zodiak sewa bulanan", "intent": "out-of-scope", "split": "test", "group": "out-of-scope-template-5"}
+{"text": "Bagaimana ramalan zodiak layanan kmr 12", "intent": "out-of-scope", "split": "test", "group": "out-of-scope-template-5"}

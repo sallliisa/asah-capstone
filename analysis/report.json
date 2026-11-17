@@ -101,7 +101,7 @@
     "expenses": -217550000,
     "net": 221550000
   },
-  "modelVersion": "tenant-if-v2-8c4f592682da",
+  "modelVersion": "tenant-if-v2-beda105c50e9",
   "priorities": [
     {
       "tenantId": "synthetic-0116",

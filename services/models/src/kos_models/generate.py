@@ -184,6 +184,14 @@ def generate():
                 )
                 <= str(as_of)
             ]
+            visible = [dict(activity) for activity in visible]
+            for activity in visible:
+                if activity["paymentDate"] and activity["paymentDate"] > str(as_of):
+                    activity["paymentStatus"] = "draft"
+                    activity["paymentDate"] = None
+                if activity["completedDate"] and activity["completedDate"] > str(as_of):
+                    activity["workStatus"] = "planned"
+                    activity["completedDate"] = None
             value = TenantInput.model_validate(
                 {
                     "tenantId": tenant,

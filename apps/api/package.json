@@ -7,8 +7,8 @@
     "node": ">=24"
   },
   "scripts": {
-    "routes:build": "pnpm run tooling:ensure && sprindle-routes-build . src/routes",
-    "routes:compile": "pnpm run tooling:ensure && tsx scripts/compile-routes.ts",
+    "routes:build": "pnpm run knowledge:build && pnpm run tooling:ensure && sprindle-routes-build . src/routes",
+    "routes:compile": "pnpm run knowledge:build && pnpm run tooling:ensure && tsx scripts/compile-routes.ts",
     "routes:check": "pnpm run tooling:ensure && sprindle-routes-check . src/routes",
     "tooling:ensure": "node scripts/ensure-tooling.mjs",
     "dev": "node scripts/dev-launcher.mjs",
@@ -35,7 +35,11 @@
     "e2e:cleanup-incident-reports": "node --env-file=.env --env-file=.env.e2e --import tsx scripts/cleanup-e2e-incident-reports.ts",
     "e2e:prepare": "pnpm run e2e:reset && pnpm run e2e:migrate && pnpm run e2e:clear && pnpm run e2e:seed",
     "test:dev-routes": "node --test --test-concurrency=1 scripts/dev-route-reload.proof.mjs scripts/dev-runtime-reload.proof.mjs scripts/dev-source-contract.proof.mjs",
-    "jobs:run": "node --env-file-if-exists=.env --import tsx scripts/run-jobs.ts"
+    "jobs:run": "node --env-file-if-exists=.env --import tsx scripts/run-jobs.ts",
+    "knowledge:build": "tsx scripts/build-workflow-documents.ts",
+    "knowledge:ingest": "node --env-file-if-exists=.env --import tsx scripts/ingest-knowledge.ts",
+    "knowledge:verify": "node --env-file-if-exists=.env --import tsx scripts/verify-knowledge.ts",
+    "knowledge:cleanup": "node --env-file-if-exists=.env --import tsx scripts/cleanup-knowledge.ts"
   },
   "exports": {
     ".": "./src/index.ts",
@@ -49,6 +53,7 @@
     "@aws-sdk/s3-request-presigner": "^3.1106.0",
     "@better-auth/drizzle-adapter": "^1.6.23",
     "@hono/node-server": "^2.0.6",
+    "@modelcontextprotocol/sdk": "1.32.2",
     "@southneuhof/sprindle": "workspace:*",
     "better-auth": "^1.6.23",
     "capnweb": "0.12.0",

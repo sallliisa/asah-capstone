@@ -1,0 +1,1 @@
+ALTER TABLE "knowledge_index_versions" ADD COLUMN "minimum_score" double precision;

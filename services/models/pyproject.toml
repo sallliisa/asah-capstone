@@ -20,6 +20,7 @@ build-backend = "hatchling.build"
 [project.scripts]
 kos-generate = "kos_models.generate:main"
 kos-train = "kos_models.train:main"
+kos-train-intent = "kos_models.intent:train"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

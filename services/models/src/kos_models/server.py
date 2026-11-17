@@ -33,6 +33,20 @@ async def lifespan(app: FastAPI):
     ):
         raise RuntimeError("Model and serving environment are incompatible")
     app.state.artifact = artifact
+    app.state.intent = None
+    intent_path = os.environ.get("INTENT_MODEL_PATH")
+    intent_hash = os.environ.get("INTENT_MODEL_SHA256", "")
+    if intent_path:
+        intent_file = Path(intent_path)
+        if not intent_hash or not secrets.compare_digest(
+            hashlib.sha256(intent_file.read_bytes()).hexdigest(), intent_hash
+        ):
+            raise RuntimeError(
+                "INTENT_MODEL_SHA256 does not match the trusted artifact"
+            )
+        app.state.intent = joblib.load(intent_file)
+        if app.state.intent.get("sklearnVersion") != sklearn.__version__:
+            raise RuntimeError("Intent model and serving environment are incompatible")
     yield
 
 
@@ -58,6 +72,7 @@ def health():
         "ready": True,
         "modelVersion": artifact["modelVersion"],
         "featureVersion": FEATURE_VERSION,
+        "intentReady": app.state.intent is not None,
     }
 
 
@@ -81,3 +96,36 @@ def score(batch: ScoreBatch):
         result.pop("baseline")
         results.append(result)
     return {"results": results}
+
+
+class IntentQuestion(BaseModel):
+    model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
+    question: str = Field(min_length=1, max_length=2000)
+
+
+@app.post("/intent/classify", dependencies=[Depends(authorize)])
+def classify(question: IntentQuestion):
+    artifact = app.state.intent
+    if artifact is None:
+        raise HTTPException(status_code=503, detail="Intent model is unavailable")
+    probabilities = artifact["model"].predict_proba([question.question])[0]
+    order = np.argsort(probabilities)
+    confidence = float(probabilities[order[-1]])
+    margin = float(probabilities[order[-1]] - probabilities[order[-2]])
+    intent = str(artifact["model"].classes_[order[-1]])
+    accepted = (
+        confidence >= artifact["confidenceThreshold"]
+        and margin >= artifact["marginThreshold"]
+    )
+    status = (
+        ("out-of-scope" if intent == "out-of-scope" else "routed")
+        if accepted
+        else "uncertain"
+    )
+    return {
+        "status": status,
+        "intent": intent if accepted else None,
+        "confidence": confidence,
+        "margin": margin,
+        "modelVersion": artifact["modelVersion"],
+    }

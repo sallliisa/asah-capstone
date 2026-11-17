@@ -1,3 +1,4 @@
+import { modelRequest } from '../../../model-service'
 import { createHash } from 'node:crypto'
 import { and, asc, eq, inArray, isNotNull, or, sql } from 'drizzle-orm'
 import { z } from 'zod/v4'
@@ -6,20 +7,8 @@ import { businessDate } from '../activities/dates'
 import { activities } from '../activities/activities.table'
 import { recurringPlans } from '../recurring-plans/recurring-plans.table'
 import { rooms } from '../rooms/rooms.table'
-import { users } from '../users/users.table'
 import { detectorCoverageSchema, detectorResultSchema } from './schema'
 import { tenantDetectorCoverage, tenantDetectorPredictions, tenantDetectorPredictionRooms, tenantDetectorState } from './tenant-detector.table'
-
-async function modelRequest(path: string, body?: unknown) {
-  const response = await fetch(`${process.env.MODEL_SERVICE_URL?.replace(/\/$/, '')}${path}`, {
-    method: body ? 'POST' : 'GET',
-    headers: { authorization: `Bearer ${process.env.MODEL_SERVICE_TOKEN}`, 'Content-Type': 'application/json' },
-    ...(body ? { body: JSON.stringify(body) } : {}),
-    signal: AbortSignal.timeout(10000),
-  })
-  if (!response.ok) throw new Error('model_service_unavailable')
-  return response.json()
-}
 
 export async function processTenantDetector() {
   if (!process.env.MODEL_SERVICE_URL || !process.env.MODEL_SERVICE_TOKEN) return { configured: false, saved: 0 }
@@ -32,7 +21,7 @@ export async function processTenantDetector() {
   }
   const today = businessDate()
   const clock = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Jakarta', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).format(new Date())
-  const current = await getDb().selectDistinct({ tenantId: rooms.occupantId }).from(rooms).innerJoin(users, eq(users.id, rooms.occupantId)).where(and(isNotNull(rooms.occupantId), eq(users.statusCode, 'active')))
+  const current = await getDb().selectDistinct({ tenantId: rooms.occupantId }).from(rooms).where(isNotNull(rooms.occupantId))
   for (const { tenantId } of current) {
     if (!tenantId) continue
     await getDb().insert(tenantDetectorState).values({ tenantId }).onConflictDoNothing()

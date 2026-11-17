@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { z } from 'zod/v4'
 import { RouterLink } from 'vue-router'
-import { defineForm, defineTable, Form, Table, useRecord } from '@southneuhof/loom'
+import { defineForm, defineTable, Form, Table, useRecord, useFrameworkQueryClient, invalidateResourceData } from '@southneuhof/loom'
 import { detectorCoverageSchema, detectorDetailSchema, detectorHistorySchema } from '@southneuhof/api/src/routes/(authenticated)/tenant-detector/schema.ts'
 import Button from '@southneuhof/loom/components/base/Button.vue'
 import { permissions } from '@/stores/permissions'
@@ -10,7 +10,16 @@ import { loadTenantAssessment, loadTenantAssessmentHistory, refreshTenantAssessm
 
 const props = defineProps<{ tenantId: string; compact?: boolean }>()
 const access = permissions()
-const { record, loading, error, refresh } = useRecord(() => ({ id: props.tenantId, resource: 'tenant-detector', schema: detectorDetailSchema, fields: {}, load: loadTenantAssessment }))
+const queryClient = useFrameworkQueryClient()
+const refreshAssessment = () => invalidateResourceData(queryClient, { resource: 'tenant-detector' })
+let interval: ReturnType<typeof setInterval> | undefined
+onMounted(() => {
+  interval = setInterval(() => {
+    void refreshAssessment().catch(() => {})
+  }, 60000)
+})
+onBeforeUnmount(() => clearInterval(interval))
+const { record, loading, error } = useRecord(() => ({ id: props.tenantId, resource: 'tenant-detector', schema: detectorDetailSchema, fields: {}, load: loadTenantAssessment }))
 const editing = ref(false)
 const busy = ref(false)
 const message = ref('')
@@ -51,7 +60,7 @@ async function queueRefresh() {
   busy.value = true
   try {
     await refreshTenantAssessment(props.tenantId)
-    await refresh()
+    await refreshAssessment()
     message.value = 'Refresh queued. The last saved result stays available.'
   } catch {
     message.value = 'Could not queue the refresh.'
@@ -60,10 +69,15 @@ async function queueRefresh() {
   }
 }
 async function submitCoverage(input: (typeof detectorCoverageSchema)['_output']) {
-  const result = await saveTenantCoverage(props.tenantId, input)
+  return saveTenantCoverage(props.tenantId, input)
+}
+async function coverageSaved() {
   editing.value = false
-  await refresh()
-  return result
+  try {
+    await refreshAssessment()
+  } catch {
+    message.value = 'Coverage saved. Reload to read the latest state.'
+  }
 }
 </script>
 
@@ -95,7 +109,7 @@ async function submitCoverage(input: (typeof detectorCoverageSchema)['_output'])
           <Button variant="text" @click="editing = !editing">{{ editing ? 'Close coverage form' : 'Confirm recording coverage' }}</Button>
         </div>
         <p v-if="message" role="status">{{ message }}</p>
-        <Form v-if="editing && access.can('update-users')" v-bind="coverage" :initial-data="initialCoverage" :submit="submitCoverage" />
+        <Form v-if="editing && access.can('update-users')" v-bind="coverage" :initial-data="initialCoverage" :submit="submitCoverage" @submitted="coverageSaved" />
         <h3 class="font-semibold">Assessment history</h3>
         <Table v-bind="history" :load="loadTenantAssessmentHistory" resource="tenant-detector" namespace="assessment-history" :search-parameters="{ tenantId }" />
       </template>

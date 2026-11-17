@@ -1,0 +1,10 @@
+[Unit]
+Description=Run the Kos app job each minute
+
+[Timer]
+OnCalendar=*-*-* *:*:00
+Persistent=true
+Unit=kos-jobs.service
+
+[Install]
+WantedBy=timers.target

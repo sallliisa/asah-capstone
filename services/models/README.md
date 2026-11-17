@@ -15,6 +15,8 @@ ignored data and artifacts directories. The committed generator, lock file,
 manifest in evaluation.json, and seed reproduce the dataset. No tenant records
 from the app are used. The generated snapshots can be large.
 
+Read [the data dictionary](data-dictionary.md) for fields and partitions.
+
 The raw histories contain fictional tenants, room links, coverage, event dates,
 work state, payment state, and label review evidence. Plans contain the expected
 monthly rent occurrences. Snapshots contain compact inputs, eligibility reasons,
@@ -49,3 +51,17 @@ before remote use. VPS installation and resource measurements are still pending.
 Read evaluation.json and model-card.md. Parameters and grade boundaries use only
 training and validation partitions. Final test rows do not select the artifact.
 After a test-informed change, use a new held-out set and retain the old report.
+
+## Intent classifier
+
+Run uv run kos-train-intent to build the Indonesian router and its report. Read
+intent-model-card.md and intent-evaluation.json for all-class metrics, accepted
+coverage, error examples, and limits. The committed intent dataset has 1,000
+synthetic examples split by whole template groups.
+
+To serve it, add INTENT_MODEL_PATH and INTENT_MODEL_SHA256 to the service
+environment. The hash file is artifacts/intent-classifier.sha256. POST
+/intent/classify accepts one question and requires the same bearer token.
+It returns a routed intent, out-of-scope result, or uncertainty. The app owns
+private document selection and permission checks. The service has no source
+store or app database credential. Deployment templates are in ../../deploy.

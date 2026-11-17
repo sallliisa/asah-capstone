@@ -13,6 +13,6 @@ export async function piOwnerId() {
 
 export async function requirePiOwner(args: Pick<FileRequestArgs<RouteParameters, object>, 'c' | 'identity'>) {
   const actor = await requireOrgIdentity(args)
-  if (actor.userId !== await piOwnerId()) throw forbidden('Pi is available to the configured owner.')
+  if (actor.userId !== (await piOwnerId())) throw forbidden('Pi is available to the configured owner.')
   return actor
 }

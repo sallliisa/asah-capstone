@@ -1,0 +1,16 @@
+[Unit]
+Description=Kos recurring work, notifications, and assessment batch
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=kos
+Group=kos
+WorkingDirectory=/opt/kos
+ExecStart=/usr/bin/node --env-file=/etc/kos/jobs.env /opt/kos/apps/api/scripts/run-jobs.ts
+TimeoutStartSec=50
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true

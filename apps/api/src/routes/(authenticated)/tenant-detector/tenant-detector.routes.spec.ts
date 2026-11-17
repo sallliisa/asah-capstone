@@ -5,6 +5,7 @@ import { closeDb, getDb } from '../../../db'
 import { createSystemSession } from '../../../testing/session'
 import { roleAssignments, roles } from '../roles/roles.table'
 import { rooms } from '../rooms/rooms.table'
+import { users } from '../users/users.table'
 import { activities } from '../activities/activities.table'
 import { activityCategories } from '../activity-categories/activity-categories.table'
 import { tenantDetectorCoverage, tenantDetectorPredictions, tenantDetectorPredictionRooms, tenantDetectorState } from './tenant-detector.table'
@@ -40,7 +41,7 @@ afterAll(async () => {
 })
 
 it('guards tenant finance results and transactionally queues confirmed coverage and activity changes', async () => {
-  const owner = await createSystemSession(['view-users', 'view-activities', 'update-users', 'create-activities'], 'detector-owner')
+  const owner = await createSystemSession(['view-users', 'view-activities', 'update-users', 'create-activities', 'delete-rooms'], 'detector-owner')
   const occupant = await createSystemSession([], 'detector-tenant')
   tenantIds.push(occupant.userId)
   await getDb().insert(roles).values({ id: 'role-occupant', roleCode: 'occupant', name: 'Occupant', active: true }).onConflictDoNothing()
@@ -83,8 +84,23 @@ it('guards tenant finance results and transactionally queues confirmed coverage 
   const persisted = (await getDb().select().from(tenantDetectorPredictions).where(eq(tenantDetectorPredictions.tenantId, occupant.userId)))[0]
   expect(persisted.tenantId).toBe(occupant.userId)
   expect((await getDb().select().from(tenantDetectorState).where(eq(tenantDetectorState.tenantId, occupant.userId)))[0]).toMatchObject({ pending: false, latestPredictionId: persisted.id })
+  const successfulFetch = globalThis.fetch
   expect((await request(`refresh/${occupant.userId}`, 'POST', owner.cookie)).status).toBe(202)
   vi.stubGlobal('fetch', vi.fn(async () => { throw new Error('service unavailable') }))
   await processTenantDetector()
   expect((await getDb().select().from(tenantDetectorState).where(eq(tenantDetectorState.tenantId, occupant.userId)))[0]).toMatchObject({ pending: true, latestPredictionId: persisted.id })
+  vi.stubGlobal('fetch', successfulFetch)
+  vi.useFakeTimers({ toFake: ['Date'] })
+  try {
+    vi.setSystemTime(new Date('2040-01-01T05:00:00.000Z'))
+    await getDb().update(users).set({ statusCode: 'non_active' }).where(eq(users.id, occupant.userId))
+    await getDb().update(tenantDetectorState).set({ pending: false, lastAttempt: null, dailyDate: '2000-01-01' }).where(eq(tenantDetectorState.tenantId, occupant.userId))
+    expect(await processTenantDetector()).toMatchObject({ saved: 1 })
+    expect((await getDb().select().from(tenantDetectorState).where(eq(tenantDetectorState.tenantId, occupant.userId)))[0].dailyDate).toBe('2040-01-01')
+  } finally { vi.useRealTimers() }
+  const sourceActivity = original[0]
+  await getDb().delete(activities).where(eq(activities.id, sourceActivity.id))
+  const removeRoom = await app.request(`/rooms/delete/${room.id}`, { method: 'DELETE', headers: { cookie: owner.cookie } })
+  expect(removeRoom.status).toBe(409)
+  expect((await getDb().select().from(rooms).where(eq(rooms.id, room.id)))[0].id).toBe(room.id)
 })

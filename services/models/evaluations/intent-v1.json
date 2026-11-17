@@ -1,0 +1,912 @@
+{
+  "synthetic": true,
+  "modelVersion": "intent-v1-2bb7fc512488",
+  "datasetSha256": "2bb7fc5124884c755aec2f8f99179307d3cd50a6f9e1ac64c517a08511e931c1",
+  "counts": {
+    "train": {
+      "rooms": 140,
+      "schedules": 140,
+      "finances": 140,
+      "guidance": 140,
+      "out-of-scope": 140
+    },
+    "validation": {
+      "rooms": 30,
+      "schedules": 30,
+      "finances": 30,
+      "guidance": 30,
+      "out-of-scope": 30
+    },
+    "test": {
+      "rooms": 30,
+      "schedules": 30,
+      "finances": 30,
+      "guidance": 30,
+      "out-of-scope": 30
+    }
+  },
+  "labels": [
+    "rooms",
+    "schedules",
+    "finances",
+    "guidance",
+    "out-of-scope"
+  ],
+  "selected": "word-char-c4",
+  "confidenceThreshold": 0.35,
+  "marginThreshold": 0,
+  "experiments": [
+    {
+      "name": "word-baseline",
+      "confidenceThreshold": 0.35,
+      "marginThreshold": 0,
+      "validation": {
+        "macroF1": 0.6578552627971025,
+        "confusionMatrix": [
+          [
+            20,
+            0,
+            10,
+            0,
+            0
+          ],
+          [
+            0,
+            30,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            30,
+            0,
+            0
+          ],
+          [
+            3,
+            1,
+            1,
+            0,
+            25
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            30
+          ]
+        ],
+        "perClass": {
+          "rooms": {
+            "precision": 0.8695652173913043,
+            "recall": 0.6666666666666666,
+            "f1-score": 0.7547169811320755,
+            "support": 30.0
+          },
+          "schedules": {
+            "precision": 0.967741935483871,
+            "recall": 1.0,
+            "f1-score": 0.9836065573770492,
+            "support": 30.0
+          },
+          "finances": {
+            "precision": 0.7317073170731707,
+            "recall": 1.0,
+            "f1-score": 0.8450704225352113,
+            "support": 30.0
+          },
+          "guidance": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 30.0
+          },
+          "out-of-scope": {
+            "precision": 0.5454545454545454,
+            "recall": 1.0,
+            "f1-score": 0.7058823529411765,
+            "support": 30.0
+          },
+          "accuracy": 0.7333333333333333,
+          "macro avg": {
+            "precision": 0.6228938030805783,
+            "recall": 0.7333333333333333,
+            "f1-score": 0.6578552627971025,
+            "support": 150.0
+          },
+          "weighted avg": {
+            "precision": 0.6228938030805783,
+            "recall": 0.7333333333333333,
+            "f1-score": 0.6578552627971025,
+            "support": 150.0
+          }
+        },
+        "acceptedCoverage": 0.5866666666666667,
+        "acceptedAccuracy": 1.0,
+        "errors": [
+          {
+            "question": "Urutkan tenant berdasarkan perhatian untuk AC bocor",
+            "expected": "rooms",
+            "actual": "finances"
+          },
+          {
+            "question": "Urutkan tenant berdasarkan perhatian untuk pembersihan kamar",
+            "expected": "rooms",
+            "actual": "finances"
+          },
+          {
+            "question": "Urutkan tenant berdasarkan perhatian untuk perbaikan pintu",
+            "expected": "rooms",
+            "actual": "finances"
+          },
+          {
+            "question": "Urutkan tenant berdasarkan perhatian untuk sewa bulanan",
+            "expected": "rooms",
+            "actual": "finances"
+          },
+          {
+            "question": "Urutkan tenant berdasarkan perhatian untuk layanan kmr 12",
+            "expected": "rooms",
+            "actual": "finances"
+          },
+          {
+            "question": "Urutkan tenant berdasarkan perhatian untuk penggantian lampu",
+            "expected": "rooms",
+            "actual": "finances"
+          },
+          {
+            "question": "Urutkan tenant berdasarkan perhatian untuk keran air rusak",
+            "expected": "rooms",
+            "actual": "finances"
+          },
+          {
+            "question": "Urutkan tenant berdasarkan perhatian untuk servis rutin",
+            "expected": "rooms",
+            "actual": "finances"
+          },
+          {
+            "question": "Urutkan tenant berdasarkan perhatian untuk aktivitas penyewa",
+            "expected": "rooms",
+            "actual": "finances"
+          },
+          {
+            "question": "Urutkan tenant berdasarkan perhatian untuk nilai perhatian tenant",
+            "expected": "rooms",
+            "actual": "finances"
+          },
+          {
+            "question": "Cara kerja pencatatan AC bocor bagaimana",
+            "expected": "guidance",
+            "actual": "out-of-scope"
+          },
+          {
+            "question": "Cara kerja pencatatan pembersihan kamar bagaimana",
+            "expected": "guidance",
+            "actual": "out-of-scope"
+          },
+          {
+            "question": "Cara kerja pencatatan perbaikan pintu bagaimana",
+            "expected": "guidance",
+            "actual": "out-of-scope"
+          },
+          {
+            "question": "Cara kerja pencatatan sewa bulanan bagaimana",
+            "expected": "guidance",
+            "actual": "out-of-scope"
+          },
+          {
+            "question": "Cara kerja pencatatan layanan kmr 12 bagaimana",
+            "expected": "guidance",
+            "actual": "out-of-scope"
+          },
+          {
+            "question": "Cara kerja pencatatan penggantian lampu bagaimana",
+            "expected": "guidance",
+            "actual": "out-of-scope"
+          },
+          {
+            "question": "Cara kerja pencatatan keran air rusak bagaimana",
+            "expected": "guidance",
+            "actual": "out-of-scope"
+          },
+          {
+            "question": "Cara kerja pencatatan servis rutin bagaimana",
+            "expected": "guidance",
+            "actual": "out-of-scope"
+          },
+          {
+            "question": "Cara kerja pencatatan aktivitas penyewa bagaimana",
+            "expected": "guidance",
+            "actual": "out-of-scope"
+          },
+          {
+            "question": "Cara kerja pencatatan nilai perhatian tenant bagaimana",
+            "expected": "guidance",
+            "actual": "out-of-scope"
+          },
+          {
+            "question": "Berikan penjelasan umum mengenai AC bocor",
+            "expected": "guidance",
+            "actual": "out-of-scope"
+          },
+          {
+            "question": "Berikan penjelasan umum mengenai pembersihan kamar",
+            "expected": "guidance",
+            "actual": "rooms"
+          },
+          {
+            "question": "Berikan penjelasan umum mengenai perbaikan pintu",
+            "expected": "guidance",
+            "actual": "rooms"
+          },
+          {
+            "question": "Berikan penjelasan umum mengenai sewa bulanan",
+            "expected": "guidance",
+            "actual": "finances"
+          },
+          {
+            "question": "Berikan penjelasan umum mengenai layanan kmr 12",
+            "expected": "guidance",
+            "actual": "out-of-scope"
+          }
+        ]
+      }
+    },
+    {
+      "name": "word-char",
+      "confidenceThreshold": 0.35,
+      "marginThreshold": 0,
+      "validation": {
+        "macroF1": 0.7646365340117892,
+        "confusionMatrix": [
+          [
+            20,
+            0,
+            10,
+            0,
+            0
+          ],
+          [
+            0,
+            30,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            30,
+            0,
+            0
+          ],
+          [
+            9,
+            0,
+            9,
+            9,
+            3
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            29
+          ]
+        ],
+        "perClass": {
+          "rooms": {
+            "precision": 0.6666666666666666,
+            "recall": 0.6666666666666666,
+            "f1-score": 0.6666666666666666,
+            "support": 30.0
+          },
+          "schedules": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 30.0
+          },
+          "finances": {
+            "precision": 0.6122448979591837,
+            "recall": 1.0,
+            "f1-score": 0.759493670886076,
+            "support": 30.0
+          },
+          "guidance": {
+            "precision": 1.0,
+            "recall": 0.3,
+            "f1-score": 0.46153846153846156,
+            "support": 30.0
+          },
+          "out-of-scope": {
+            "precision": 0.90625,
+            "recall": 0.9666666666666667,
+            "f1-score": 0.9354838709677419,
+            "support": 30.0
+          },
+          "accuracy": 0.7866666666666666,
+          "macro avg": {
+            "precision": 0.83703231292517,
+            "recall": 0.7866666666666666,
+            "f1-score": 0.7646365340117892,
+            "support": 150.0
+          },
+          "weighted avg": {
+            "precision": 0.8370323129251701,
+            "recall": 0.7866666666666666,
+            "f1-score": 0.7646365340117891,
+            "support": 150.0
+          }
+        },
+        "acceptedCoverage": 0.72,
+        "acceptedAccuracy": 1.0,
+        "errors": [
+          {
+            "question": "Urutkan tenant berdasarkan perhatian untuk AC bocor",
+            "expected": "rooms",
+            "actual": "finances"
+          },
+          {
+            "question": "Urutkan tenant berdasarkan perhatian untuk pembersihan kamar",
+            "expected": "rooms",
+            "actual": "finances"
+          },
+          {
+            "question": "Urutkan tenant berdasarkan perhatian untuk perbaikan pintu",
+            "expected": "rooms",
+            "actual": "finances"
+          },
+          {
+            "question": "Urutkan tenant berdasarkan perhatian untuk sewa bulanan",
+            "expected": "rooms",
+            "actual": "finances"
+          },
+          {
+            "question": "Urutkan tenant berdasarkan perhatian untuk layanan kmr 12",
+            "expected": "rooms",
+            "actual": "finances"
+          },
+          {
+            "question": "Urutkan tenant berdasarkan perhatian untuk penggantian lampu",
+            "expected": "rooms",
+            "actual": "finances"
+          },
+          {
+            "question": "Urutkan tenant berdasarkan perhatian untuk keran air rusak",
+            "expected": "rooms",
+            "actual": "finances"
+          },
+          {
+            "question": "Urutkan tenant berdasarkan perhatian untuk servis rutin",
+            "expected": "rooms",
+            "actual": "finances"
+          },
+          {
+            "question": "Urutkan tenant berdasarkan perhatian untuk aktivitas penyewa",
+            "expected": "rooms",
+            "actual": "finances"
+          },
+          {
+            "question": "Urutkan tenant berdasarkan perhatian untuk nilai perhatian tenant",
+            "expected": "rooms",
+            "actual": "finances"
+          },
+          {
+            "question": "Cara kerja pencatatan AC bocor bagaimana",
+            "expected": "guidance",
+            "actual": "rooms"
+          },
+          {
+            "question": "Cara kerja pencatatan pembersihan kamar bagaimana",
+            "expected": "guidance",
+            "actual": "rooms"
+          },
+          {
+            "question": "Cara kerja pencatatan perbaikan pintu bagaimana",
+            "expected": "guidance",
+            "actual": "rooms"
+          },
+          {
+            "question": "Cara kerja pencatatan sewa bulanan bagaimana",
+            "expected": "guidance",
+            "actual": "out-of-scope"
+          },
+          {
+            "question": "Cara kerja pencatatan layanan kmr 12 bagaimana",
+            "expected": "guidance",
+            "actual": "rooms"
+          },
+          {
+            "question": "Cara kerja pencatatan penggantian lampu bagaimana",
+            "expected": "guidance",
+            "actual": "out-of-scope"
+          },
+          {
+            "question": "Cara kerja pencatatan keran air rusak bagaimana",
+            "expected": "guidance",
+            "actual": "rooms"
+          },
+          {
+            "question": "Cara kerja pencatatan servis rutin bagaimana",
+            "expected": "guidance",
+            "actual": "out-of-scope"
+          },
+          {
+            "question": "Cara kerja pencatatan aktivitas penyewa bagaimana",
+            "expected": "guidance",
+            "actual": "rooms"
+          },
+          {
+            "question": "Cara kerja pencatatan nilai perhatian tenant bagaimana",
+            "expected": "guidance",
+            "actual": "rooms"
+          },
+          {
+            "question": "Berikan penjelasan umum mengenai aktivitas penyewa",
+            "expected": "guidance",
+            "actual": "rooms"
+          },
+          {
+            "question": "Bagaimana cara mencatat AC bocor",
+            "expected": "guidance",
+            "actual": "finances"
+          },
+          {
+            "question": "Bagaimana cara mencatat pembersihan kamar",
+            "expected": "guidance",
+            "actual": "finances"
+          },
+          {
+            "question": "Bagaimana cara mencatat perbaikan pintu",
+            "expected": "guidance",
+            "actual": "finances"
+          },
+          {
+            "question": "Bagaimana cara mencatat sewa bulanan",
+            "expected": "guidance",
+            "actual": "finances"
+          }
+        ]
+      }
+    },
+    {
+      "name": "word-char-c4",
+      "confidenceThreshold": 0.35,
+      "marginThreshold": 0,
+      "validation": {
+        "macroF1": 0.7732386845494237,
+        "confusionMatrix": [
+          [
+            20,
+            0,
+            10,
+            0,
+            0
+          ],
+          [
+            0,
+            30,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            30,
+            0,
+            0
+          ],
+          [
+            12,
+            0,
+            9,
+            9,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            30
+          ]
+        ],
+        "perClass": {
+          "rooms": {
+            "precision": 0.625,
+            "recall": 0.6666666666666666,
+            "f1-score": 0.6451612903225806,
+            "support": 30.0
+          },
+          "schedules": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 30.0
+          },
+          "finances": {
+            "precision": 0.6122448979591837,
+            "recall": 1.0,
+            "f1-score": 0.759493670886076,
+            "support": 30.0
+          },
+          "guidance": {
+            "precision": 1.0,
+            "recall": 0.3,
+            "f1-score": 0.46153846153846156,
+            "support": 30.0
+          },
+          "out-of-scope": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 30.0
+          },
+          "accuracy": 0.7933333333333333,
+          "macro avg": {
+            "precision": 0.8474489795918367,
+            "recall": 0.7933333333333332,
+            "f1-score": 0.7732386845494237,
+            "support": 150.0
+          },
+          "weighted avg": {
+            "precision": 0.8474489795918367,
+            "recall": 0.7933333333333333,
+            "f1-score": 0.7732386845494237,
+            "support": 150.0
+          }
+        },
+        "acceptedCoverage": 0.74,
+        "acceptedAccuracy": 0.990990990990991,
+        "errors": [
+          {
+            "question": "Urutkan tenant berdasarkan perhatian untuk AC bocor",
+            "expected": "rooms",
+            "actual": "finances"
+          },
+          {
+            "question": "Urutkan tenant berdasarkan perhatian untuk pembersihan kamar",
+            "expected": "rooms",
+            "actual": "finances"
+          },
+          {
+            "question": "Urutkan tenant berdasarkan perhatian untuk perbaikan pintu",
+            "expected": "rooms",
+            "actual": "finances"
+          },
+          {
+            "question": "Urutkan tenant berdasarkan perhatian untuk sewa bulanan",
+            "expected": "rooms",
+            "actual": "finances"
+          },
+          {
+            "question": "Urutkan tenant berdasarkan perhatian untuk layanan kmr 12",
+            "expected": "rooms",
+            "actual": "finances"
+          },
+          {
+            "question": "Urutkan tenant berdasarkan perhatian untuk penggantian lampu",
+            "expected": "rooms",
+            "actual": "finances"
+          },
+          {
+            "question": "Urutkan tenant berdasarkan perhatian untuk keran air rusak",
+            "expected": "rooms",
+            "actual": "finances"
+          },
+          {
+            "question": "Urutkan tenant berdasarkan perhatian untuk servis rutin",
+            "expected": "rooms",
+            "actual": "finances"
+          },
+          {
+            "question": "Urutkan tenant berdasarkan perhatian untuk aktivitas penyewa",
+            "expected": "rooms",
+            "actual": "finances"
+          },
+          {
+            "question": "Urutkan tenant berdasarkan perhatian untuk nilai perhatian tenant",
+            "expected": "rooms",
+            "actual": "finances"
+          },
+          {
+            "question": "Cara kerja pencatatan AC bocor bagaimana",
+            "expected": "guidance",
+            "actual": "rooms"
+          },
+          {
+            "question": "Cara kerja pencatatan pembersihan kamar bagaimana",
+            "expected": "guidance",
+            "actual": "rooms"
+          },
+          {
+            "question": "Cara kerja pencatatan perbaikan pintu bagaimana",
+            "expected": "guidance",
+            "actual": "rooms"
+          },
+          {
+            "question": "Cara kerja pencatatan sewa bulanan bagaimana",
+            "expected": "guidance",
+            "actual": "rooms"
+          },
+          {
+            "question": "Cara kerja pencatatan layanan kmr 12 bagaimana",
+            "expected": "guidance",
+            "actual": "rooms"
+          },
+          {
+            "question": "Cara kerja pencatatan penggantian lampu bagaimana",
+            "expected": "guidance",
+            "actual": "rooms"
+          },
+          {
+            "question": "Cara kerja pencatatan keran air rusak bagaimana",
+            "expected": "guidance",
+            "actual": "rooms"
+          },
+          {
+            "question": "Cara kerja pencatatan servis rutin bagaimana",
+            "expected": "guidance",
+            "actual": "rooms"
+          },
+          {
+            "question": "Cara kerja pencatatan aktivitas penyewa bagaimana",
+            "expected": "guidance",
+            "actual": "rooms"
+          },
+          {
+            "question": "Cara kerja pencatatan nilai perhatian tenant bagaimana",
+            "expected": "guidance",
+            "actual": "rooms"
+          },
+          {
+            "question": "Berikan penjelasan umum mengenai aktivitas penyewa",
+            "expected": "guidance",
+            "actual": "rooms"
+          },
+          {
+            "question": "Bagaimana cara mencatat AC bocor",
+            "expected": "guidance",
+            "actual": "finances"
+          },
+          {
+            "question": "Bagaimana cara mencatat pembersihan kamar",
+            "expected": "guidance",
+            "actual": "finances"
+          },
+          {
+            "question": "Bagaimana cara mencatat perbaikan pintu",
+            "expected": "guidance",
+            "actual": "finances"
+          },
+          {
+            "question": "Bagaimana cara mencatat sewa bulanan",
+            "expected": "guidance",
+            "actual": "finances"
+          }
+        ]
+      }
+    }
+  ],
+  "test": {
+    "macroF1": 0.5186656480774128,
+    "confusionMatrix": [
+      [
+        10,
+        0,
+        10,
+        0,
+        10
+      ],
+      [
+        0,
+        30,
+        0,
+        0,
+        0
+      ],
+      [
+        10,
+        0,
+        20,
+        0,
+        0
+      ],
+      [
+        5,
+        10,
+        0,
+        0,
+        15
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        30
+      ]
+    ],
+    "perClass": {
+      "rooms": {
+        "precision": 0.4,
+        "recall": 0.3333333333333333,
+        "f1-score": 0.36363636363636365,
+        "support": 30.0
+      },
+      "schedules": {
+        "precision": 0.75,
+        "recall": 1.0,
+        "f1-score": 0.8571428571428571,
+        "support": 30.0
+      },
+      "finances": {
+        "precision": 0.6666666666666666,
+        "recall": 0.6666666666666666,
+        "f1-score": 0.6666666666666666,
+        "support": 30.0
+      },
+      "guidance": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 30.0
+      },
+      "out-of-scope": {
+        "precision": 0.5454545454545454,
+        "recall": 1.0,
+        "f1-score": 0.7058823529411765,
+        "support": 30.0
+      },
+      "accuracy": 0.6,
+      "macro avg": {
+        "precision": 0.47242424242424236,
+        "recall": 0.6,
+        "f1-score": 0.5186656480774128,
+        "support": 150.0
+      },
+      "weighted avg": {
+        "precision": 0.4724242424242424,
+        "recall": 0.6,
+        "f1-score": 0.5186656480774128,
+        "support": 150.0
+      }
+    },
+    "acceptedCoverage": 0.7666666666666667,
+    "acceptedAccuracy": 0.7739130434782608,
+    "errors": [
+      {
+        "question": "Gue mau lihat daftar kmr dengan AC bocor",
+        "expected": "rooms",
+        "actual": "out-of-scope"
+      },
+      {
+        "question": "Saya mau lihat daftar kamar dengan pembersihan kamar",
+        "expected": "rooms",
+        "actual": "out-of-scope"
+      },
+      {
+        "question": "Saya mau lihat daftar kamar dengan perbaikan pintu",
+        "expected": "rooms",
+        "actual": "out-of-scope"
+      },
+      {
+        "question": "Saya mau lihat daftar kamar dengan sewa bulanan",
+        "expected": "rooms",
+        "actual": "out-of-scope"
+      },
+      {
+        "question": "Gue mau lihat daftar kmr dengan layanan kmr 12",
+        "expected": "rooms",
+        "actual": "out-of-scope"
+      },
+      {
+        "question": "Saya mau lihat daftar kamar dengan penggantian lampu",
+        "expected": "rooms",
+        "actual": "out-of-scope"
+      },
+      {
+        "question": "Saya mau lihat daftar kamar dengan keran air rusak",
+        "expected": "rooms",
+        "actual": "out-of-scope"
+      },
+      {
+        "question": "Saya mau lihat daftar kamar dengan servis rutin",
+        "expected": "rooms",
+        "actual": "out-of-scope"
+      },
+      {
+        "question": "Gue mau lihat daftar kmr dengan aktivitas penyewa",
+        "expected": "rooms",
+        "actual": "out-of-scope"
+      },
+      {
+        "question": "Saya mau lihat daftar kamar dengan nilai perhatian tenant",
+        "expected": "rooms",
+        "actual": "out-of-scope"
+      },
+      {
+        "question": "Ada berapa perbaikan AC bocor yang tercatat",
+        "expected": "rooms",
+        "actual": "finances"
+      },
+      {
+        "question": "Ada berapa perbaikan pembersihan kamar yang tercatat",
+        "expected": "rooms",
+        "actual": "finances"
+      },
+      {
+        "question": "Ada berapa perbaikan perbaikan pintu yang tercatat",
+        "expected": "rooms",
+        "actual": "finances"
+      },
+      {
+        "question": "Ada berapa perbaikan sewa bulanan yang tercatat",
+        "expected": "rooms",
+        "actual": "finances"
+      },
+      {
+        "question": "Ada berapa perbaikan layanan kmr 12 yang tercatat",
+        "expected": "rooms",
+        "actual": "finances"
+      },
+      {
+        "question": "Ada berapa perbaikan penggantian lampu yang tercatat",
+        "expected": "rooms",
+        "actual": "finances"
+      },
+      {
+        "question": "Ada berapa perbaikan keran air rusak yang tercatat",
+        "expected": "rooms",
+        "actual": "finances"
+      },
+      {
+        "question": "Ada berapa perbaikan servis rutin yang tercatat",
+        "expected": "rooms",
+        "actual": "finances"
+      },
+      {
+        "question": "Ada berapa perbaikan aktivitas penyewa yang tercatat",
+        "expected": "rooms",
+        "actual": "finances"
+      },
+      {
+        "question": "Ada berapa perbaikan nilai perhatian tenant yang tercatat",
+        "expected": "rooms",
+        "actual": "finances"
+      },
+      {
+        "question": "Ringkas penerimaan uang terkait AC bocor",
+        "expected": "finances",
+        "actual": "rooms"
+      },
+      {
+        "question": "Ringkas penerimaan uang terkait pembersihan kamar",
+        "expected": "finances",
+        "actual": "rooms"
+      },
+      {
+        "question": "Ringkas penerimaan uang terkait perbaikan pintu",
+        "expected": "finances",
+        "actual": "rooms"
+      },
+      {
+        "question": "Ringkas penerimaan uang terkait sewa bulanan",
+        "expected": "finances",
+        "actual": "rooms"
+      },
+      {
+        "question": "Ringkas penerimaan uang terkait layanan kmr 12",
+        "expected": "finances",
+        "actual": "rooms"
+      }
+    ]
+  },
+  "limits": "Ten object substitutions per template are correlated. Whole template groups stay in one split. These synthetic examples do not establish real-user accuracy."
+}

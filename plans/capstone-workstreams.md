@@ -1,7 +1,7 @@
 # Capstone workstream index
 
 Designs: Approved by the user.
-Implementation: Tenant history and notification checkpoints are saved. Tenant model work is in progress.
+Implementation: Local checkpoints cover all six workstreams. External setup and final live acceptance remain in progress.
 
 The user approved this delivery order. Work proceeds through one main workstream
 at a time. Missing external access can move an independent workstream forward.
@@ -20,7 +20,7 @@ retains approval; draft details are not automatically approved by this index.
 | 3 | Tenant attention model | [Tenant assessment](room-detector/design.md), with its [delivery plan](room-detector/implementation-plan.md). | Implemented as an experimental model with saved results and app views. Repair-burst ordering and C recall limits are published; VPS/browser checks remain. |
 | 4 | Dashboard and DS analysis | [Dashboard](dashboard/design.md). | Financial filters, tenant projections, and executed analysis notebook are implemented. Authenticated browser checks remain. |
 | 5 | Pi through Wisp | [Pi chat](pi-chat/design.md). | Wisp host and server session handoff implemented. Live login and native session acceptance passed. Shared account has no workspace; owner setup and browser/chat proof remain. |
-| 6 | Intent classifier and RAG | [Intent classifier](intent-classifier/design.md) and [RAG](rag/design.md). | Not started. Separate designs within one workstream. |
+| 6 | Intent classifier and RAG | [Intent classifier](intent-classifier/design.md) and [RAG](rag/design.md). | Classifier, private context routing, read-only MCP, and RAG pipeline are implemented locally. Live Cloudflare indexing, native chat routing, and deployment remain. |
 
 ## Dependencies
 
@@ -64,3 +64,21 @@ Carta update, and instructed implementation to begin with workstream 1.
 Tenant-history checkpoint includes schema, writes, forms, tenant history,
 correction audit, tested rent ownership, and development migration. Browser
 acceptance is pending. Workstream 2 proceeds independently.
+
+## Final local checkpoint
+
+All six workstreams have local implementations. The final route run passed
+21 tests across nine files. The added saved-room deletion case also passed:
+the route returns 409 and retains the room. API production build and lint pass.
+SDK and web type checks are repeated after the last API change. Existing web
+production build, executed notebooks, and model checks remain valid.
+
+Live acceptance still needs Cloudflare Workers AI/Vectorize credentials, a
+CloudflareOS workspace with a generation model, VPS connection details, and
+a working signed-in browser window. iPhone Home Screen push remains a device
+check. Deployment files are ready; no production deployment is claimed.
+
+The tenant model misses its C-recall target and two authored burst scenarios.
+These limits are retained in the model card and report. The synthetic intent
+classifier also requires clarification for many questions. Neither report
+establishes accuracy on real tenant or owner data.

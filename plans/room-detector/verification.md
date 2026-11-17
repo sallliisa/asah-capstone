@@ -75,3 +75,32 @@ published quality gap. It is not a claim that every release target passed.
 
 The updated notebook executed, Ruff passed, and four feature tests passed.
 The app production build passed with existing large-chunk/plugin-time warnings.
+
+## Occupancy and login state
+
+A regression checks daily refresh for a still-assigned occupant whose account
+is inactive. Login state must not replace the room's actual occupant reference.
+The case failed before removing that extra filter and passes after the change.
+Former profiles also keep their saved assessment visible when current role
+assignments are removed. No past events are transferred to another tenant.
+Profile refresh now invalidates the assessment resource after an authorized
+write and polls saved results while mounted. These are read refreshes, not extra
+notifications or repeated model jobs requested by the browser.
+
+## Snapshot input audit
+
+Historical snapshot inputs now clear future terminal work/payment states rather
+than retain terminal values from the full generated history. A data audit found
+zero future terminal states after regeneration. The selected candidate and test
+metrics remain exactly equal to the prior v2 report, which is retained in
+evaluations/tenant-v2.json. The feature calculation had already excluded future
+events; this correction also makes the saved snapshot inputs match their date.
+The current artifact version is tenant-if-v2-beda105c50e9. The local service was
+reloaded with its reviewed checksum, and the notebooks were rerun.
+
+## Saved room history
+
+The room deletion regression removes its source activity first, so only the
+saved assessment protects the room. Before the fix, the real DELETE returned
+500. The route now maps the database foreign-key rejection to 409 with a clear
+message. The regression also reads the room again to check that it remains.

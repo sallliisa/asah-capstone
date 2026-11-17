@@ -1,6 +1,6 @@
 {
-  "modelVersion": "tenant-if-v2-8c4f592682da",
-  "artifactSha256": "db4f96271ff6e776d6f9ec7dcf0d13c8e558329340ca2adf8316ee5902f8e8ce",
+  "modelVersion": "tenant-if-v2-beda105c50e9",
+  "artifactSha256": "d7aa34dcae2787e65f71a32e0572c40b37f7bdfa68448df0062d2f0054ab21fc",
   "selected": "tuned-200-512-1.0",
   "selection": "Validation macro-F1, then C recall, then tree node count. Test rows excluded from selection.",
   "dataset": {
@@ -20,7 +20,7 @@
     },
     "sha256": {
       "histories.jsonl": "0a7bbfd5e085f8b5d6201e76c1f92ffecc29184ad27267b3d7cb7f06aa31552c",
-      "snapshots.jsonl": "8c4f592682da5c28c03744e72c12f3f6a6a9de676b37a1153c3a78aaaba97112",
+      "snapshots.jsonl": "beda105c50e9cf7763b11a13ca854d8bde3de8efe548644347bc1589a34598b3",
       "plans.jsonl": "a1e0ee9f5c59abb81debf61f804ecddde1e6d13927399458e3f44cb99701094c"
     }
   },

@@ -1,7 +1,7 @@
 # RAG knowledge retrieval
 
 Design: Approved
-Implementation: Not started
+Implementation: In progress
 
 The custom pipeline, hosted Workers AI embeddings, Vectorize, Indonesian
 content, and assistant-authored working guidance are approved. Indexing and

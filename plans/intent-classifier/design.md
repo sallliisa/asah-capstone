@@ -1,7 +1,7 @@
 # Intent classifier for Pi
 
 Design: Approved
-Implementation: Not started
+Implementation: In progress
 
 Routing architecture and Indonesian-only scope: Approved by the user. The full
 design remains Draft for mixed-question, uncertainty, and failure behavior.
