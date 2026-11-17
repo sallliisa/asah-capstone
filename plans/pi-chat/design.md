@@ -1,14 +1,11 @@
 # Pi through Wisp
 
-Design: Draft
-Implementation: Needs update
+Design: Approved
+Implementation: In progress
 
 CloudflareOS, Wisp, one shared account, and read-only Pi remain approved.
-The new MCP OAuth authorization section below needs approval. Existing behavior
-and completed delivery keep their approval.
-
-The user approved this document and authorized implementation at the checkpoint.
-Earlier draft labels describe proposals now included in that approval.
+The user selected direct MCP access without OAuth for internal testing.
+This current authorization scope replaces the earlier OAuth proposal.
 
 ## 1. Purpose and scope
 
@@ -83,61 +80,28 @@ workflow-document selection. The [RAG design](../rag/design.md) owns knowledge
 retrieval and citations. Pi has no independent credentials or direct listing
 access to their private source stores.
 
-### Native MCP authorization — proposed revision
+### Native MCP connection for internal testing
 
-The installed CloudflareOS custom MCP connector discovers OAuth authorization.
-It does not offer a per-connection static Authorization header. The deployed
-app tool endpoint currently accepts PI_TOOLS_SECRET, so the native connector
-cannot complete its sign-in. Wisp session handoff already works; this is the
-separate authorization from CloudflareOS to the app's private tools.
+Connect CloudflareOS directly to the public /api/pi-tools endpoint without
+OAuth or a fixed tool token. The user explicitly selected this simpler setup
+for internal testing. Anyone with that URL can invoke the two read tools.
+There is no network caller identity check on this endpoint.
 
-Replace the fixed tool token with OAuth 2.1 for this connection. Use
-@better-auth/oauth-provider 1.6.23, which supports the installed Better Auth
-1.6.23, and its supported JWT integration. Do not upgrade Carta or change
-CloudflareOS source. The two app tools and their inputs remain unchanged.
+Use the configured active app owner as the service principal. Each app read
+still checks that owner's current permissions. Expose only getQuestionContext
+and readAppData; no write, SQL, credential, or direct private-document-store
+capability is exposed. Private workflow selection stays inside the classifier
+tool. Mark the tools as read-only in their MCP metadata.
 
-1. Publish OAuth authorization-server and protected-resource metadata for the
-   existing /api/pi-tools resource. Use the provider's supported helpers.
-2. Allow the native connector to register a public client for the configured
-   CloudflareOS MCP callback. Use authorization-code flow with S256 PKCE and
-   refresh tokens. Do not enable password or client-credentials grants.
-3. Use only pi:read and offline_access. Bind tokens to the app tool resource.
-   Use the provider's default token lifetimes and record them during delivery.
-4. Reuse app sign-in. Add an owner-only Pi access/consent page that shows the
-   requesting connector and its read scope. The owner can Connect or Cancel,
-   inspect the active grant, and revoke Pi access. No new account is required.
-5. At every tool request, verify the token's issuer, audience, scope, grant,
-   and subject. The subject must still be the configured active owner. Existing
-   app read permissions still apply to each operation. Staff cannot approve or
-   use an owner grant. Revocation blocks later app reads and token renewal.
-6. Add the provider-owned OAuth client, access-token, refresh-token, consent,
-   and JWT signing-key records through reviewed Drizzle migrations. Keep
-   secrets server-side. Native tooling receives access tokens, not app login
-   passwords or the provider's signing key.
-7. Configure the native MCP connector's supported public callback base URL.
-   Connect it to the deployed app endpoint and grant exactly getQuestionContext
-   and readAppData to Kos De Mansion. Mark the real read tools as read-only in
-   their MCP annotations. Install only the base skill upstream; private area
-   documents remain behind the classifier-selected app tool.
-8. Remove the fixed PI_TOOLS_SECRET authorization path and migrate its callers.
-   Do not keep a second token bypass for the same endpoint. JOB_SECRET and
-   MODEL_SERVICE_TOKEN remain separate and continue to protect their services.
+App sign-in, owner-only Wisp session handoff, MODEL_SERVICE_TOKEN, JOB_SECRET,
+and Cloudflare server-side credentials keep their current protections. Remove
+PI_TOOLS_SECRET from the endpoint and its configuration. Do not add a second
+login or an OAuth provider for this test scope.
 
-Use existing Carta page, header, form, and button conventions for the small
-consent/access surface. Keep the native Wisp chat UI. App logout still clears
-that browser's native session. The owner can revoke the separate tool grant;
-no app activity, payment, schedule, assignment, or tenant grade is writable
-through either tool.
-
-Before release, prove the owner flow and a denied non-owner flow against the
-real database, plus PKCE/code reuse, wrong-resource or missing-scope tokens,
-revocation, and the existing read permissions. Then connect the actual native
-agent, ask Indonesian app and guidance questions, inspect classifier routing
-and citations, and reopen its conversation. Existing app forms, model serving,
-notifications, and the minute job can continue independently.
-
-This revision replaces the failed static-header assumption. It does not change
-the approved shared CloudflareOS account or add per-tenant accounts.
+Connect the custom MCP server through CloudflareOS, grant the two tools to Kos
+De Mansion, and install the base skill. Verify an Indonesian guidance answer
+with source references, an app-data answer, classifier routing records, and
+conversation reopening. iPhone push verification is deferred by the user.
 
 ### History and source authority
 

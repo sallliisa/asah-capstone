@@ -20,7 +20,6 @@ vi.mock('../../../knowledge/cloudflare', () => ({ embeddingModel: '@cf/baai/bge-
 const versionIds: string[] = []
 const documentIds: string[] = []
 const savedEmail = process.env.CARTA_ADMIN_EMAIL
-const savedSecret = process.env.PI_TOOLS_SECRET
 const activityIds: string[] = []
 const roomIds: string[] = []
 const ownerIds: string[] = []
@@ -28,8 +27,6 @@ const ownerIds: string[] = []
 afterAll(async () => {
   if (savedEmail === undefined) delete process.env.CARTA_ADMIN_EMAIL
   else process.env.CARTA_ADMIN_EMAIL = savedEmail
-  if (savedSecret === undefined) delete process.env.PI_TOOLS_SECRET
-  else process.env.PI_TOOLS_SECRET = savedSecret
   if (versionIds.length) await getDb().delete(knowledgeChunks).where(inArray(knowledgeChunks.versionId, versionIds))
   if (versionIds.length) await getDb().delete(knowledgeIndexVersions).where(inArray(knowledgeIndexVersions.id, versionIds))
   if (documentIds.length) await getDb().delete(knowledgeDocuments).where(inArray(knowledgeDocuments.id, documentIds))
@@ -41,12 +38,11 @@ afterAll(async () => {
 
 const textResult = z.object({ content: z.array(z.object({ type: z.literal('text'), text: z.string() })), isError: z.boolean().optional() })
 
-it('routes through a model-selected private context and permits only current authorized app reads through MCP', async () => {
+it('routes through a model-selected private context and applies the configured owner read permissions through the public test MCP', async () => {
   const owner = await createSystemSession(['view-activities', 'create-activities'], 'pi-tools-owner')
   ownerIds.push(owner.userId)
   const other = await createSystemSession(['view-activities'], 'pi-tools-other')
   process.env.CARTA_ADMIN_EMAIL = `${owner.userId}@example.invalid`
-  process.env.PI_TOOLS_SECRET = 'private-tool-test-secret'
   const room = (
     await getDb()
       .insert(rooms)
@@ -62,13 +58,11 @@ it('routes through a model-selected private context and permits only current aut
   expect(created.status).toBe(201)
   const record = z.object({ data: z.object({ id: z.string(), paymentDate: z.string() }) }).parse(await created.json()).data
   activityIds.push(record.id)
-  expect((await app.request('/pi-tools', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' })).status).toBe(401)
   expect(
     (await app.request('/pi/context', { method: 'POST', headers: { cookie: other.cookie, 'Content-Type': 'application/json' }, body: JSON.stringify({ question: 'Berapa biaya perbaikan?' }) })).status
   ).toBe(403)
   const client = new Client({ name: 'kos-business-proof', version: '1.0.0' })
   const transport = new StreamableHTTPClientTransport(new URL('http://localhost/pi-tools'), {
-    requestInit: { headers: { authorization: 'Bearer private-tool-test-secret' } },
     fetch: async (input, init) => app.fetch(new Request(input, init)),
   })
   try {

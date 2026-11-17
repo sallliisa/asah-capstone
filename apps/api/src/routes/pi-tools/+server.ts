@@ -1,5 +1,4 @@
-import { timingSafeEqual } from 'node:crypto'
-import { defineRoute, forbidden, unauthorized } from '@southneuhof/sprindle'
+import { defineRoute, forbidden } from '@southneuhof/sprindle'
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import { WebStandardStreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/webStandardStreamableHttp.js'
 import { resolveIdentity } from '../../authorization'
@@ -9,9 +8,6 @@ import { piReadSchema, readAppData } from '../(authenticated)/pi/read'
 
 export const POST = defineRoute({
   action: async ({ c }) => {
-    const expected = process.env.PI_TOOLS_SECRET
-    const supplied = c.req.header('authorization')?.replace(/^Bearer /, '')
-    if (!expected || !supplied || Buffer.byteLength(expected) !== Buffer.byteLength(supplied) || !timingSafeEqual(Buffer.from(expected), Buffer.from(supplied))) throw unauthorized()
     const ownerId = await piOwnerId()
     const owner = ownerId ? await resolveIdentity(ownerId) : null
     if (!owner) throw forbidden('Pi owner is unavailable.')

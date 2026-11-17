@@ -53,9 +53,9 @@ Vectorize; it is separate from Wisp's runtime account identity. The token needs
 Workers AI inference and Vectorize read/write permissions for that account.
 Run the knowledge maintenance commands described in apps/api/knowledge/README.md.
 
-Configure a CloudflareOS remote MCP resource pointing to the deployed
-/api/pi-tools endpoint. Give it Authorization: Bearer PI_TOOLS_SECRET. This is a
-restricted tool credential, not an app administrator session. Attach the base
+For the approved internal test, connect the CloudflareOS custom MCP resource
+directly to the deployed /api/pi-tools endpoint without authentication. Anyone
+with that public URL can invoke its two read-only tools. Attach the base
 skill from apps/api/knowledge/agent-skills/kos-assistant/SKILL.md to the selected
 workspace. Do not upload the private workflow documents to CloudflareOS. The
 server exposes the router and authorized reads; it exposes no document resource
@@ -111,6 +111,6 @@ not replaced.
 The user timer templates are installed as kos-jobs.service and kos-jobs.timer
 in muslik's user systemd directory. The timer is enabled and running. Its
 private environment targets the canonical /api base. Repeated actual runs
-completed successfully. The native tool connection is pending the OAuth
-proposal in the Pi design. The prior fixed-header MCP instructions above
-describe the existing endpoint, not a completed native connector setup.
+completed successfully. The user chose direct MCP access without OAuth for internal testing. The
+private model and job endpoints keep their own tokens; the MCP endpoint uses
+the configured owner read scope without checking a network caller identity.

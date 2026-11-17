@@ -80,3 +80,18 @@ It is not the proposed solution. The app's static tool token therefore cannot
 finish the native connection. The Pi design now proposes a bounded owner-only
 OAuth flow through the compatible provider package. This authorization/API
 revision is Draft; it has not been implemented.
+
+## Approved direct MCP test scope
+
+The user declined OAuth for this internal test and explicitly selected the
+simpler direct connection. The MCP endpoint no longer checks a fixed token.
+The configured active owner's per-operation read permissions remain in force,
+and private area selection remains inside the classifier tool. App-only
+/pi/context and /pi/session still reject non-owner app sessions.
+
+The existing real database/MCP tests now connect without an Authorization
+header. They still prove current read permissions, rejection of writes, strict
+context selection, routing persistence, uncertainty handling, and corpus/area
+filtering. The obsolete network-token assertion was removed because that access
+rule changed. Both cases, API build, and lint pass. No OAuth dependency, OAuth
+record, or consent page was added. Native connection proof is next.

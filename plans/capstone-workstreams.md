@@ -162,3 +162,11 @@ in the Pi design, marked Draft/Needs update. No OAuth code or migration has
 been implemented. The user chose Discuss it first. Keep this scope pending.
 The user also deferred the iPhone delivery/tap check. Do not create its temporary
 reminder until the device check resumes.
+
+## Direct MCP decision
+
+The user chose to skip OAuth for internal testing. The Pi design is Approved
+for a public, unauthenticated /api/pi-tools endpoint containing only the two
+read tools. No OAuth implementation is pending. Model/job tokens and the app
+login remain protected. Native connection and answer proof continue under this
+current scope. The iPhone check remains deferred.
