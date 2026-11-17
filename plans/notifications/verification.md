@@ -1,6 +1,7 @@
 # Notification checkpoint verification
 
-17 November 2026. Implementation is in progress until live device checks finish.
+17 November 2026. Installed-iPhone permission, registration, visible push
+delivery, and notification tapping passed. The final section records acceptance.
 
 The real notification routes and database passed two business tests. They prove
 recipient isolation, repeat-safe due notification creation, separate read/work
@@ -91,3 +92,20 @@ No subscription key, push endpoint token, or credential is recorded here.
 The user confirmed that the test notification arrived on the iPhone. Visible
 delivery now passes. Notification-tap behavior still awaits confirmation; the
 temporary Activity remains available for that check.
+
+
+## Installed iPhone acceptance complete
+
+The user requested one resend of the same temporary notification. The saved
+delivery was queued once by this explicit test action; Apple accepted attempt
+two with no error. This was a manual test resend, not an automatic unread or
+overdue resend policy. The user confirmed that tapping the notification opened
+the Activity page. Permission, device registration, visible receipt, and the
+notification link now pass on the installed iPhone app.
+
+Removed the temporary nonfinancial Activity and inactive recurring plan after
+tap confirmation. Deleting the Activity also removed its inbox entry and
+delivery rows through their existing foreign keys. A fresh read confirmed the
+Activity and inbox entry were absent. The real device subscription was retained.
+Evidence: iphone-push-resend.json and iphone-push-cleanup.json in ignored
+.local/verification. No application source change was required for this check.

@@ -79,4 +79,5 @@ These two real questions prove the connected path, not general model accuracy.
 The authored model evaluation limits remain in the model cards. The final
 production browser check was not completed because Helium was in active user
 use and there was no isolated browser connection. SDK acceptance does not prove
-browser origin handling. The user deferred installed-iPhone push testing.
+browser origin handling. Installed-iPhone push delivery and opening its Activity page passed after this
+chat check. See ../plans/notifications/verification.md.

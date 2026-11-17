@@ -77,7 +77,8 @@ Real deployed API, service readiness, minute timer, restart recovery, measured
 VPS latency/memory, owner permissions, native chat routing, sources, and Wisp
 conversation reopening pass. See cfos-verification.md and vps-verification.md.
 Final production browser origin and iPhone panel checks remain unverified.
-The user deferred iPhone Home Screen push delivery/taps. Keep the experimental
+Installed-iPhone Home Screen push delivery and tapping passed with user
+confirmation; temporary test records were removed. Keep the experimental
 model limitations visible in the demo.
 
 ## Current VPS installation

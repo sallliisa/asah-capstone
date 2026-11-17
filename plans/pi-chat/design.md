@@ -101,7 +101,7 @@ login or an OAuth provider for this test scope.
 Connect the custom MCP server through CloudflareOS, grant the two tools to Kos
 De Mansion, and install the base skill. Verify an Indonesian guidance answer
 with source references, an app-data answer, classifier routing records, and
-conversation reopening. iPhone push verification is deferred by the user.
+conversation reopening. The notification workstream owns iPhone push verification.
 
 ### History and source authority
 
