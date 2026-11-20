@@ -1,11 +1,32 @@
 ---
 name: web-ui-surfaces
-description: Build or review Carta pages, resources, routes, navigation, and workflow controls.
+description: Design, build, or review Carta web layouts, actions, forms, resources, and navigation.
 ---
 
 # Web UI surfaces
 
 Read [DESIGN.md](../../../DESIGN.md) for visual conventions.
+
+## Decide the interaction
+
+For a new or changed layout or interaction, identify the user's task, what they
+need to see or do first, and what happens next. For a workflow, include where the
+user starts, what context they need to keep, and where success or cancel leaves
+them. Capture consequential choices in existing task notes. Routine field
+bindings use the standard interaction.
+
+Read the references for the decisions the change requires.
+
+| Decision | Guidance |
+|---|---|
+| Group page content, use a card, or replace part of a View | [Page composition](../../../docs/ui/surfaces.md#page-composition) |
+| Place an action, choose a button variant, or select an icon | [Actions and icons](../../../docs/ui/actions.md) |
+| Choose an overlay, inline form, or page | [Overlays and return paths](../../../docs/ui/overlays.md) |
+| Make a warning or setup prompt visible on entry, or show results and recovery | [Status and feedback](../../../docs/ui/feedback.md) |
+| Present records or filter a collection | [Collections](../../../docs/ui/collections.md) |
+| Choose a form input or row editor | [Form controls](../../../docs/ui/forms.md#select-a-field-implementation) |
+
+## Choose the framework owner
 
 | Work | Contract |
 |---|---|
@@ -26,9 +47,11 @@ Bound commands already invalidate their resource. Add invalidation only for
 another affected resource or an unbound write.
 
 Call `resource.list()` and `resource.create()` to bind their page props. Bind
-`detail` and `update` with the record identity. Use DetailView's `body` and
-`controls` slots or `useRecord` for custom record pages. Use `useCollection`
-when a custom page owns a collection presentation.
+`detail` and `update` with the record identity. Use [View slots](../../../docs/ui/surfaces.md#view-slots)
+or `useRecord` for custom record pages. Use `useCollection` when a custom page
+owns a collection presentation.
+
+## Check the result
 
 Normal web type checks and builds validate module navigation paths.
-Use [UI review](references/verification.md) for changed wiring.
+Use [UI review](references/verification.md) for changed web pages and controls.

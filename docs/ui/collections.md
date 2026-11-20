@@ -13,12 +13,36 @@ record presentation and does not replace loading, error, or empty content.
 
 ## Table and card views
 
+| What the user needs to do | Presentation |
+|---|---|
+| Compare values across records or sort by a field | Use `Table`. Put the identifying value first. Keep the columns that support the comparison. |
+| Recognize records by image or scan short summaries | Use cards. Keep the same key facts in each card. |
+| Follow relationships between parent and child records | Use `TreeTable` when those relationships matter to the task. |
+| Follow events in time order | Use `Timeline` when the sequence is the point. Use a table when the user needs to compare attributes across events. |
+
+For example, use a table to compare stock levels across products and cards to
+identify products by photo. If the same list supports both tasks, use
+[`ListView #collection`](surfaces.md#view-slots) for the card presentation.
+Keep the user's current query and standard row actions. See the
+[collection slot contract](../../packages/loom/README.md#use-page-views).
+
 Read [DESIGN.md](../../DESIGN.md#page-structure) before adding a presentation
 switch, and use its [labels and spacing](../../DESIGN.md#text-and-spacing).
 Framework `Tabs` uses stable string values and parent-owned state.
 
 The presentation switch does not start another loader or own route query
 state.
+
+## Filter placement
+
+Use `ListView #toolbar` for a compact query control that users need often.
+Use `#filters` for visible query controls that need a separate row. Use the
+standard filter popover for less frequent filters. Use
+[`#resource-action`](actions.md#place-the-action) for commands on the collection.
+
+For example, keep a frequent status filter visible beside the search. Group
+advanced date and category filters in the filter popover. Show the active filter
+state and give users a way to clear it.
 
 ## Query ownership
 
@@ -142,10 +166,9 @@ and the full `users.update(...)` page bag to FormView. `useCollection` reads
 the same managed collection for a custom page. The page views add layout and
 navigation; they do not start a second load or form session.
 
-The [display parity fixture](../../packages/loom/src/components/core/__tests__/DisplayParity.browser.spec.ts)
-uses one joined-relation accessor in Table, TreeTable, Detail, and extracted
-resource bags. The [export fixture](../../packages/loom/src/services/__tests__/export.spec.ts)
-checks the same accessor and format in workbook output.
+Table, TreeTable, and Detail use the [display value resolver](../../packages/loom/src/display/resolveDisplay.ts).
+See [Loom exports](../../packages/loom/src/exports/README.md) for how workbook
+output uses display accessors and formats.
 
 Use the Loom and web type checks to verify surface keys and component props.
 Run web lint and focused behavior tests for changed app owners. Review route

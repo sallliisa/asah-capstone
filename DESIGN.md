@@ -29,13 +29,17 @@ clearance at the end of the scrollable content so the last controls can clear it
 
 ## Page structure
 
+Put the user's main task first. Give related information and controls a shared
+heading or container so the user can find them together.
+
 Use `ListView`, `DetailView`, and `FormView` for their standard tasks. `DetailView`
-and `FormView` own the page header through `NavigationHeader`. A custom page
-without those Views uses `NavigationHeader` directly. `ListView` renders its own
-title and toolbar header. Show one `NavigationHeader` on each page; sections
-below it keep their own titles. Add content through
-the View's supported slots or below the View. Give additional content a short
-section heading. Choose one
+and `FormView` supply `NavigationHeader` for record and form workflows. Use
+`NavigationHeader` on a custom child page with a defined Back destination.
+For a top-level destination, use the title in `ListView` or an `h1` in the
+custom page. Keep the page title separate from section headings.
+
+Add content through the View's supported slots or below the View. Give
+additional content a short section heading. Choose one
 surface treatment: an unframed section with normal page spacing, or a framework
 card when the content needs visual containment. Keep unframed sections free of
 card-like borders, backgrounds, corner rounding, and container padding. Keep
@@ -74,6 +78,10 @@ images or summaries help users compare records. Add a Table/Cards switch only
 when both views serve the task.
 
 ## Actions and forms
+
+Make the next action easy to find. Use the [action guidance](docs/ui/actions.md)
+for emphasis and icons. Use [overlay selection](docs/ui/overlays.md) when the
+task needs a new place to act.
 
 Keep standard Create controls and list row View/Edit/Delete actions in their normal
 locations. Put requested record workflow actions in the detail controls area.
@@ -134,15 +142,12 @@ Preserve reading order when columns collapse. Keep labels, errors, and long
 values accessible. Keep page scrolling usable; isolate wide table scrolling
 and avoid other nested scroll areas unless the task needs them.
 
-Keep loading, empty results, no filter matches, access denial, and failure
-distinct. Offer Create or Clear filters when applicable. Preserve input on
-failure and prevent duplicate submission. Confirm destructive actions with the
-record and consequence. Show success after the write succeeds. If refresh then
-fails, report stale data without asking the user to repeat the write.
+Show feedback where the user can understand the outcome and act on it. Use
+[status and feedback](docs/ui/feedback.md) for state and recovery choices.
 
 ## Technical references
 
-Read the applicable [UI reference](docs/ui/README.md) for surface slots, form
-selection, and collection controls. Use current source for exports and props.
+Read the applicable [UI reference](docs/ui/README.md). Use current source for
+exports and props.
 Examples show implementation facts; compare their layout with this file before
 you copy them.

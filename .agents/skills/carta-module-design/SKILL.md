@@ -30,6 +30,7 @@ Inspect permitted sources and current behavior. Use [CONTEXT.md](../../../CONTEX
 for terms. Ask only about unresolved choices that materially affect behavior,
 permissions, stored data, or scope. State the conflict, consequence, and
 recommendation. Resolve routine technical choices from current APIs and examples.
+Reconcile open questions with later replies and current decisions before asking.
 Hypothetical edge cases need concrete evidence or a user decision.
 
 Report observed flows, proposed changes, relevant owners, assumptions,
