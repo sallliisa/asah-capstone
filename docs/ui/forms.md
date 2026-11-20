@@ -159,12 +159,18 @@ show a fake detail operation to load the draft.
 ## Dialog forms
 
 Use `DialogForm` for a short contextual form. Its trigger opens the form and it
-owns ordinary visibility and completion:
+owns ordinary visibility and completion. For the choice between a dialog, an
+inline form, and a page, see [overlays and return paths](overlays.md).
+
+For an update with a static Form definition, pass the nested Form props.
 
 ```vue
-<DialogForm :key="record.id" v-bind="items.update({ id: record.id })" title="Edit item">
+<DialogForm :key="record.id" v-bind="items.update({ id: record.id }).form" title="Edit item">
   <template #trigger>
-    <Button>Edit</Button>
+    <Button type="button">
+      <template #icon><Icon name="edit" /></template>
+      Edit
+    </Button>
   </template>
 </DialogForm>
 ```
@@ -176,8 +182,9 @@ reach the native form. `class` and `style` target the dialog presentation.
 
 Use one keyed dialog for each record action. Use `v-model:open` only when
 another page control must coordinate visibility. Validation and rejected writes
-keep the dialog and draft available. A successful write closes the dialog
-before `submitted` listeners run.
+keep the dialog and draft available. Use `beforeClose` when dismissal needs
+approval. After a successful write, `DialogForm` emits `submitted` before it
+closes. Set `closeOnSubmitted: false` when the task continues in the same dialog.
 
 For a custom submit, keep the callback limited to the write. Start later refresh
 work from `submitted`. Report a refresh failure as stale data. Do not run the
@@ -194,6 +201,19 @@ The FormView ref exposes the managed Form's read-only `draft`, `dirty`,
 forwards `validate`, `submit`, `reset`, and `refresh` to that Form.
 
 ## Select a field implementation
+
+| Choice | Control |
+|---|---|
+| Set one value on or off | Use a switch for a setting. Make it clear when the change takes effect. Use a checkbox for a choice or acknowledgment in a draft. |
+| Choose one of a few options the user should see together | Use a radio group. Give each option a distinct label. |
+| Choose several independent options the user should see together | Use a checkbox group. |
+| Choose by option label | Use a select when the options need a compact presentation. Use its search for a long list. |
+| Compare records before choosing | Use `LookupInput` when the user needs fields beyond the label. The picker stages the selection until the user confirms it. |
+
+For example, use a select for a warehouse name. Use a lookup when users need to
+compare warehouse capacity and location before selecting it. See
+[LookupInput](../../packages/loom/src/components/composites/form-inputs/LookupInput.vue)
+for its searchable table and confirmation.
 
 Use a registered input renderer, a framework composite, or `TableInput` for
 editable row arrays. Build a local custom field only for a named requirement
@@ -220,6 +240,11 @@ BaseInput in the slot.
 current message links. Bind it to the actual focusable control. It keeps the
 Form label linked to that control and keeps its descriptions current when
 messages change.
+
+Use inline `TableInput` when short, repeated fields need to remain visible, such
+as the quantities on an order. Use a row dialog for a focused edit with more
+fields. Both modes update the parent draft. The parent form saves that draft.
+See the [inline TableInput contract](../../packages/loom/README.md#local-controls-and-form-state).
 
 `TableInput` keeps its table definition and submit-free row form separate. Pass
 `toDraft` to map a stored row into the row form's input shape. TableInput owns

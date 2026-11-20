@@ -36,6 +36,7 @@ Loom, and shared adapter behavior. Reuse existing proof before adding tests.
 | Changed behavior | Default proof |
 |---|---|
 | Standard CRUD, Views, inputs, resource declarations | Required lint and type checks; configuration review |
+| Changed web layout, custom UI control, or workflow | Representative rendered walkthrough through [UI review](../web-ui-surfaces/references/verification.md#walk-the-changed-interaction) |
 | Selected business rules, persistence, permissions, side effects | Real route or operation with its database |
 | Consequential business calculation or decision | Focused unit test when cheapest |
 | Business queries or data scope | Server test with distinguishing records |
@@ -64,7 +65,7 @@ unchanged. After corrections, rerun affected checks only. Broaden for a concrete
 defect, changed shared behavior, or missing critical evidence.
 
 Use [$test-audit](../test-audit/SKILL.md) for new or changed tests and
-[UI review](../web-ui-surfaces/references/verification.md) for changed web wiring.
+[UI review](../web-ui-surfaces/references/verification.md) for changed web pages and controls.
 Use production entry points. Keep browser setup on existing public form APIs,
 without test-only setters or endpoints.
 
