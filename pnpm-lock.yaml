@@ -226,11 +226,11 @@ importers:
         specifier: workspace:*
         version: link:../../packages/utilities
       '@southneuhof/wisp-core':
-        specifier: 0.3.0
-        version: 0.3.0
+        specifier: 0.3.1
+        version: 0.3.1
       '@southneuhof/wisp-vue-ui':
-        specifier: 0.3.0
-        version: 0.3.0(@assistant-ui/store@0.3.23(@assistant-ui/tap@0.9.24(@types/react@19.3.0)(react@19.1.0))(@types/react@19.3.0)(react@19.1.0))(@opentelemetry/api@1.9.1)(@types/react@19.3.0)(react@19.1.0)(vue@3.5.39(typescript@6.0.2))
+        specifier: 0.3.1
+        version: 0.3.1(@assistant-ui/store@0.3.23(@assistant-ui/tap@0.9.24(@types/react@19.3.0)(react@19.1.0))(@types/react@19.3.0)(react@19.1.0))(@opentelemetry/api@1.9.1)(@types/react@19.3.0)(react@19.1.0)(vue@3.5.39(typescript@6.0.2))
       '@tinymce/tinymce-vue':
         specifier: ^6.0.1
         version: 6.3.0(tinymce@7.9.3)(vue@3.5.39(typescript@6.0.2))
@@ -2082,18 +2082,18 @@ packages:
     resolution: {integrity: sha512-0JFs3V2y2M9tKW5na/qxe69Zv+uxLMO7QBbhxF/FHu/Gp2NFZAAL9tWl9PU02xxo07pb3G9FTyjNc6D5uZrJIg==}
     engines: {node: '>=18.0.0'}
 
-  '@southneuhof/wisp-core@0.3.0':
-    resolution: {integrity: sha512-IySSpuWkr66hPrPMGWZx8GaJAqOLDnQQl+Bj8ESOJp1Ln8Ro8wOHkjp1oucYxfh64qd9Uco1lW6OsrEbTfvz4Q==}
+  '@southneuhof/wisp-core@0.3.1':
+    resolution: {integrity: sha512-GFqg4imvUUmCQa+ikCpcOasz3l4txGqWeevIIuLue2/D8gYxSDOfLfuzNqgmXpchiEDtwDW9Oey7iPWYWcqgzA==}
     engines: {node: '>=22.14.0'}
 
-  '@southneuhof/wisp-vue-ui@0.3.0':
-    resolution: {integrity: sha512-S5LaUHGnqaDbzu1Cg+9wIPbE8+/7XGDJyTh5UhjPtLCAoHLLjlYHIXDNaHUkus+oSMUSgleIxt/E1rcbBM673Q==}
+  '@southneuhof/wisp-vue-ui@0.3.1':
+    resolution: {integrity: sha512-I3StEo5SMaZSM+V4N00BRMl2R2KJC7oyBCS7f8LuQqmXI2g4k3WCcNbFdU5L/ASdNILZsOXfmPZI0dd+gTTz9w==}
     engines: {node: '>=22.14.0'}
     peerDependencies:
       vue: ^3.5.0
 
-  '@southneuhof/wisp-vue@0.3.0':
-    resolution: {integrity: sha512-ptIC9+AOej2L4SnJ5NCUlwDQPhcwf0dLbngzcKZ0JSPjzSbGDQ+dyXqe5g48J8EFxCgFNQ8+4gV0LR8KMApFEQ==}
+  '@southneuhof/wisp-vue@0.3.1':
+    resolution: {integrity: sha512-t0xbSOe10QyyszdYCD0m4V2y398P14umN1yYnMcS1ph+Spq4WHLDkZugUIvgMIB9Euo94lfTXwwFqzLpPMjnmw==}
     engines: {node: '>=22.14.0'}
     peerDependencies:
       vue: ^3.5.0
@@ -7436,19 +7436,19 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@southneuhof/wisp-core@0.3.0':
+  '@southneuhof/wisp-core@0.3.1':
     dependencies:
       capnweb: 0.12.0
       hash-wasm: 4.12.0
       zod: 3.25.76
 
-  '@southneuhof/wisp-vue-ui@0.3.0(@assistant-ui/store@0.3.23(@assistant-ui/tap@0.9.24(@types/react@19.3.0)(react@19.1.0))(@types/react@19.3.0)(react@19.1.0))(@opentelemetry/api@1.9.1)(@types/react@19.3.0)(react@19.1.0)(vue@3.5.39(typescript@6.0.2))':
+  '@southneuhof/wisp-vue-ui@0.3.1(@assistant-ui/store@0.3.23(@assistant-ui/tap@0.9.24(@types/react@19.3.0)(react@19.1.0))(@types/react@19.3.0)(react@19.1.0))(@opentelemetry/api@1.9.1)(@types/react@19.3.0)(react@19.1.0)(vue@3.5.39(typescript@6.0.2))':
     dependencies:
       '@assistant-ui/core': 0.3.32(@assistant-ui/store@0.3.23(@assistant-ui/tap@0.9.24(@types/react@19.3.0)(react@19.1.0))(@types/react@19.3.0)(react@19.1.0))(@assistant-ui/tap@0.9.24(@types/react@19.3.0)(react@19.1.0))(@opentelemetry/api@1.9.1)(@types/react@19.3.0)(react@19.1.0)
       '@assistant-ui/tap': 0.9.24(@types/react@19.3.0)(react@19.1.0)
       '@assistant-ui/vue': 0.0.7(@opentelemetry/api@1.9.1)(@types/react@19.3.0)(react@19.1.0)(vue@3.5.39(typescript@6.0.2))
-      '@southneuhof/wisp-core': 0.3.0
-      '@southneuhof/wisp-vue': 0.3.0(vue@3.5.39(typescript@6.0.2))
+      '@southneuhof/wisp-core': 0.3.1
+      '@southneuhof/wisp-vue': 0.3.1(vue@3.5.39(typescript@6.0.2))
       marked: 17.0.6
       reka-ui: 2.11.0(vue@3.5.39(typescript@6.0.2))
       vue: 3.5.39(typescript@6.0.2)
@@ -7463,9 +7463,9 @@ snapshots:
       - react
       - redis
 
-  '@southneuhof/wisp-vue@0.3.0(vue@3.5.39(typescript@6.0.2))':
+  '@southneuhof/wisp-vue@0.3.1(vue@3.5.39(typescript@6.0.2))':
     dependencies:
-      '@southneuhof/wisp-core': 0.3.0
+      '@southneuhof/wisp-core': 0.3.1
       vue: 3.5.39(typescript@6.0.2)
 
   '@standard-schema/spec@1.1.0': {}
