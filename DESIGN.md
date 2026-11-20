@@ -33,12 +33,13 @@ Put the user's main task first. Give related information and controls a shared
 heading or container so the user can find them together.
 
 Use `ListView`, `DetailView`, and `FormView` for their standard tasks. `DetailView`
-and `FormView` own the page header through `NavigationHeader`. A custom page
-without those Views uses `NavigationHeader` directly. `ListView` renders its own
-title and toolbar header. Show one `NavigationHeader` on each page; sections
-below it keep their own titles. Add content through
-the View's supported slots or below the View. Give additional content a short
-section heading. Choose one
+and `FormView` supply `NavigationHeader` for record and form workflows. Use
+`NavigationHeader` on a custom child page with a defined Back destination.
+For a top-level destination, use the title in `ListView` or an `h1` in the
+custom page. Keep the page title separate from section headings.
+
+Add content through the View's supported slots or below the View. Give
+additional content a short section heading. Choose one
 surface treatment: an unframed section with normal page spacing, or a framework
 card when the content needs visual containment. Keep unframed sections free of
 card-like borders, backgrounds, corner rounding, and container padding. Keep

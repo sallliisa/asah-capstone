@@ -4,12 +4,28 @@
 |---|---|
 | Saved record status | Use a labelled `Chip` beside the record or value it describes. Choose color for status meaning. |
 | Field correction | Use Form's field error and helper text. |
-| Problem or condition the user still needs to act on | Show an inline message near the affected content and keep recovery beside the message. Use `Alert` when the message needs visual emphasis. |
+| Problem with one field, record, or section | Show the message and recovery action beside the affected content. |
+| Page-wide condition users must notice on entry | Use an [entry callout](#show-an-important-condition-on-entry). |
 | Brief confirmation | Use the app's notification mechanism when the result is otherwise easy to miss. Reuse the result feedback from the View when it already reports the outcome. |
 
 `Alert` supplies visual styling. For a dynamic message, choose the appropriate
 announcement semantics at the message. Use `role="status"` for routine updates
 and `role="alert"` for urgent errors that need immediate attention.
+
+## Show an important condition on entry
+
+When users need to notice a page-wide condition on arrival, put it below the
+page title and above the results or other content that grows. Give the message
+and its action a distinct framework `Alert` or `Card`. Use the warning color
+role and a visible boundary when delay has a meaningful consequence. Keep the
+agreed copy and show the next action in the callout.
+
+Show a temporary setup or recovery prompt while its condition applies. Remove
+the prompt after the user resolves the condition.
+
+For example, if a connection will expire and stop scheduled reports, put the
+warning and Renew action above the report history. Show a failure for one
+report beside that report.
 
 ## Match the state to the next action
 

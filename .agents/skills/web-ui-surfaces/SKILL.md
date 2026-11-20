@@ -22,7 +22,7 @@ Read the references for the decisions the change requires.
 | Group page content, use a card, or replace part of a View | [Page composition](../../../docs/ui/surfaces.md#page-composition) |
 | Place an action, choose a button variant, or select an icon | [Actions and icons](../../../docs/ui/actions.md) |
 | Choose an overlay, inline form, or page | [Overlays and return paths](../../../docs/ui/overlays.md) |
-| Show status, empty results, failure, or recovery | [Status and feedback](../../../docs/ui/feedback.md) |
+| Make a warning or setup prompt visible on entry, or show results and recovery | [Status and feedback](../../../docs/ui/feedback.md) |
 | Present records or filter a collection | [Collections](../../../docs/ui/collections.md) |
 | Choose a form input or row editor | [Form controls](../../../docs/ui/forms.md#select-a-field-implementation) |
 
