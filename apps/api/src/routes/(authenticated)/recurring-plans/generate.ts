@@ -1,5 +1,3 @@
-import { processTenantDetector } from '../tenant-detector/process'
-import { processNotifications } from '../notifications/deliver'
 import { and, asc, eq, lte } from 'drizzle-orm'
 import { z } from 'zod/v4'
 import { getDb } from '../../../db'
@@ -60,25 +58,4 @@ export async function generateDueActivities(asOfDate = businessDate()) {
     })
   }
   return { generated }
-}
-
-export function startRecurringActivityWorker() {
-  let running = false
-  const run = async () => {
-    if (running) return
-    running = true
-    try {
-      await generateDueActivities()
-      await processNotifications()
-      await processTenantDetector()
-    } catch (error) {
-      console.error('Recurring activity generation failed.', error)
-    } finally {
-      running = false
-    }
-  }
-  void run()
-  const timer = setInterval(() => { void run() }, 60_000)
-  timer.unref()
-  return () => clearInterval(timer)
 }

@@ -17,7 +17,7 @@ extra cleaning, and rent payments across their rooms. Keep one Activity record
 with a room reference and an optional historical tenant reference. Use one
 Isolation Forest model and save its tenant results in the app.
 
-Included: synthetic data, feature calculations, recording coverage, model
+Included: synthetic data, feature calculations, recorded activity history, model
 comparison, grade calibration, saved predictions, serving, refresh jobs, and
 tenant profiles, room context, and the dashboard priority list.
 
@@ -34,7 +34,7 @@ retraining, and automated maintenance actions. Tax reminders use owner-set dates
 | Assessment owner | Tenant. Associated events and the grade follow the tenant across room changes. A move does not reset the grade. |
 | Activity history | One activity appears in room and tenant histories. The tenant association persists after move-out, with explicit corrections allowed. No duplicate financial record. |
 | Stay records | Not required for this version. The grade is not keyed to a tenant-room period. |
-| History | Up to 12 calendar months; at least 90 days of reliable recording and three due rent occurrences for repeated-payment patterns. |
+| History | Up to 12 calendar months; at least 90 days of recorded history and three due rent occurrences for repeated-payment patterns. |
 | Refresh | Daily and after relevant activity/payment changes. |
 | Rent | Monthly payments with no grace period. |
 | Cleaning | Roughly twice a month, with flexible dates. Extra cleaning is anything outside that routine. |
@@ -56,11 +56,11 @@ need validation under those meanings.
 | Repair cost | Most ordinary repairs Rp50,000–500,000; include isolated Rp500,000–2,000,000 repairs. | Allow costly individual incidents without an automatic C. |
 | Feature owner | One Python calculation shared by training and serving. | Keep the meanings and date rules identical. |
 | Missing data | Not enough data when required inputs are unavailable. | Unknown history is different from zero incidents. |
-| Coverage | Small per-tenant tracking record confirmed by the owner. | Account and room audit dates do not prove history completeness. |
+| Observation start | Earliest dated activity linked to the tenant and a room, limited to the current window. | Use existing records for the assessment. |
 | Evaluation | Fixed 70/15/15 split by tenant and generation group. | Related tenant snapshots and shared synthetic room histories must not cross splits. |
 | Overdue override | No automatic overdue-to-C rule in the first version. | Current overdue facts remain visible independently. |
 | Service | One private Python service with one worker on the VPS. | Keep resource use small; train offline. |
-| Persistence | App-owned coverage, refresh state, and prediction history. | Saved results remain available during a service outage. |
+| Persistence | App-owned refresh state and prediction history. | Saved results remain available during a service outage. |
 | Job timing | Check pending rooms every minute; queue the daily refresh at 00:10 Jakarta time. | Work continues without an open browser and survives restarts. |
 | Occupant change | Keep previous associations and recompute the affected tenant results. | A new occupant never inherits the previous tenant's events. |
 
@@ -68,11 +68,10 @@ need validation under those meanings.
 
 | # | Capability | Access | Result |
 |---|---|---|---|
-| 1 | Read results and history | View Users and View Activities; room views also require View Rooms | Saved tenant grade, effective window, coverage, reasons, and freshness. |
+| 1 | Read results and history | View Users and View Activities; room views also require View Rooms | Saved tenant grade, effective window, reasons, and freshness. |
 | 2 | Review priorities | Same read access | C before B before A, then descending abnormality within a grade. |
-| 3 | Confirm coverage | Update Users and the read permissions above | Confirm recording dates without changing activity history. |
-| 4 | Request refresh | Same access as coverage editing | Queue a refresh and retain the last result while it runs. |
-| 5 | Process refresh | Internal authenticated job | Save a versioned result or a clear failure state. |
+| 3 | Request refresh | Update Users and the read permissions above | Queue a refresh and retain the last result while it runs. |
+| 4 | Process refresh | Internal authenticated job | Save a versioned result or a clear failure state. |
 
 Reasons can disclose financial information. Occupant room access alone must
 not grant these reads. Pi uses the same app permissions; a shared CloudflareOS
@@ -114,7 +113,7 @@ Catch up the existing recurrence generator before scoring. If its cursor has
 not passed the snapshot date, scheduled data is incomplete. Do not interpret
 missing due rows as paid rent.
 
-### 3.2 Dates and recording coverage
+### 3.2 Dates and recorded history
 
 Use Asia/Jakarta dates. A snapshot has an asOfDate; include records known by
 that date. Same-day refresh includes the records currently saved and runs again
@@ -125,38 +124,17 @@ Only completions and payments dated on or before asOfDate count as completed
 or paid in that snapshot. Future-dated money is not already received or spent.
 This snapshot rule does not edit the saved Activity state.
 
-The maximum window starts on the day after asOfDate minus 12 calendar months
-and ends on asOfDate, inclusive. The short window covers the last 90 dates
-through asOfDate. Clip both to confirmed coverage. For rates, an observed month
-means 30 observed days; the retrieval window still uses calendar months.
+The assessment uses the earliest recorded due date, completion date, or payment
+date on an activity linked to the tenant and a room. It counts dates on or before
+the assessment date. Limit the start to the day after the assessment date minus
+12 calendar months. Use the assessment date when there are no dated records.
+Clip the short 90-day window to the same start. Use 30 observed dates for one
+observed month in rate calculations.
 
-Propose one tenant_detector_coverage record per tenant:
-
-| Field | Meaning and rule |
-|---|---|
-| tenantId | Existing tenant account, unique. |
-| repairsFrom | Start of confirmed complete repair records; null until confirmed. |
-| cleaningFrom | Start of confirmed complete routine/extra-cleaning records; null until confirmed. |
-| rentFrom | Start of confirmed complete due/payment records; null until confirmed. |
-| repairCostsComplete | Owner confirms complete recording of actual repair expenses. Default false. |
-| confirmedAt / confirmedBy | Server-owned confirmation audit. |
-
-Use a short tenant-profile coverage form, with one date for all areas by default
-and optional separate dates. Account creation and room assignment do not confirm
-coverage. New tenants start unconfirmed. An isolated demo import may confirm
-its own fixture coverage, but not unrelated tenants.
-
-The usable start is the latest coverage date or window start. Require 90
-observed dates, three due rent occurrences within that usable window, known
-expected amounts for those occurrences, complete repair-cost recording, and
-complete recurrence generation. Missing requirements return Not enough data
-with specific reasons. All three area coverage dates must be present.
-
-Zero incidents is valid under confirmed coverage. Unknown money is never zero.
-No-finance repair work has no recorded expense; an actual unrecorded expense
-makes cost coverage incomplete. A genuinely expense-free repair may have zero
-recorded spend under confirmed coverage. This is recorded spend, not labour
-value or every economic cost.
+Require 90 observed dates, three due rent charges, known amounts, and complete
+recurrence generation for the assessment. The grade reflects recorded activity.
+An event with an unknown required amount produces a missing-data reason.
+Expense-free repairs contribute work and zero recorded spend.
 
 Aggregate associated activities across room changes within the same automatic
 history window. Keep the original room on every event for context. No sufficient
@@ -167,8 +145,7 @@ corrections can refresh their result; routine daily refresh targets current
 occupants. Returning tenants retain their history and use the current window.
 
 The grade describes recorded owner-attention workload, not tenant character or
-fault. Rates use confirmed recording time, not reconstructed occupied-room
-days. Multiple-room tenants can have more associated work. Include those cases
+fault. Rates use the observed date span. Multiple-room tenants can have more associated work. Include those cases
 in evaluation and show room context rather than claim an exposure-adjusted
 behavior comparison. A later requirement for occupied-room-day rates would
 need reliable occupancy history.
@@ -301,9 +278,9 @@ Propose these app-owned records using normal table/schema/entity ownership:
 
 | Record | Stored values and constraints |
 |---|---|
-| tenant_detector_coverage | The confirmation fields above; one row per tenant. |
+| tenant_detector_coverage | Retired confirmation records retained for history. |
 | tenant_detector_state | One row per tenant: source revision, pending flag, last attempt, error code, latest prediction reference. |
-| tenant_detector_predictions | Immutable asOfDate, generatedAt, tenant/source revision, input hash, model/feature versions, compact input snapshot, coverage, eligibility reasons, features, score/grade when eligible, and factual reasons. Unique on tenant, date, input hash, and artifact version. |
+| tenant_detector_predictions | Immutable asOfDate, generatedAt, tenant/source revision, input hash, model/feature versions, compact input snapshot, observation start, eligibility reasons, features, score/grade when eligible, and factual reasons. Unique on tenant, date, input hash, and artifact version. |
 
 Input snapshots omit descriptions, receipts, and personal tenant details. The
 prediction retains its tenant reference and the source activities' room links.
@@ -322,12 +299,10 @@ Internal jobs use a separate credential, not an owner session.
 2. Review a priority list below Needs attention: C, B, A, descending score within
    each grade, then stable tenant-name order. Show each tenant once, with eight
    entries and the total. Ungraded overdue rent remains in the existing due list.
-3. Open the tenant profile for the grade, window, coverage, saved time, facts,
+3. Open the tenant profile for the grade, window, saved time, facts,
    Refresh, activity history, and prediction history. Room detail shows a current
    tenant summary and links to that profile. Show source rooms beside reasons.
-4. Confirm missing coverage through a short form when authorized. Saving queues
-   refresh and does not edit activity history.
-5. Read stale results with their dates while refresh runs. Current overdue facts
+4. Read prior results with their dates while refresh runs. Current overdue facts
    still come from current records.
 
 Use existing Loom surfaces, app tokens, and language. No new top-level model
@@ -349,14 +324,13 @@ server environment values. Use HTTPS when the app API is outside the VPS.
 | Private service route | Result |
 |---|---|
 | GET /health | Readiness and loaded model/feature versions, without app data. |
-| POST /tenant-detector/score | Accept versioned date, coverage, compact attributed activities, and recurrence-completeness evidence for at most 25 tenants. Return eligibility, features, facts, and score/grade when eligible. |
+| POST /tenant-detector/score | Accept versioned assessment dates, recording-window inputs derived by the app, compact attributed activities, and recurrence-completeness evidence for at most 25 tenants. Return eligibility, features, facts, and score/grade when eligible. |
 
 | Authenticated app route under /tenant-detector | Result |
 |---|---|
 | GET /detail/:tenantId | Latest tenant result, freshness, and current authorized overdue facts. |
 | GET /list | Saved tenant priority projection, associated rooms, reasons, window, and freshness. |
 | GET /history/:tenantId | Paginated saved results, newest first. |
-| PUT /coverage/:tenantId | Validated coverage confirmation and transactional refresh queue update. |
 | POST /refresh/:tenantId | Mark pending and return Accepted; no synchronous inference. |
 
 Use existing Sprindle scopes, permissions, schemas, and the app action adapter.
@@ -367,7 +341,7 @@ index names, and internal file names can be resolved during implementation.
 
 Relevant activity writes transactionally mark affected old and new tenants pending
 and increase their source revision. Include category, room, completion/payment
-state, attribution, amounts, dates, and generated occurrences. Coverage changes do the same.
+state, attribution, amounts, dates, and generated occurrences.
 Recurring-plan changes queue their attributed tenant after generation. Renames refresh
 display labels without model retraining.
 
@@ -379,19 +353,17 @@ during inference, leave the tenant pending and do not publish that result as
 current. Clear pending only for a matching revision.
 
 The daily pass queues current tenants once each. A new occupant assignment
-queues that tenant without resetting existing history. A tenant's first
-assessment returns missing coverage until the owner confirms it.
+queues that tenant with its existing history. The worker also queues saved results from before the switch to recorded history.
 
 Use locks and unique prediction keys for repeat-safe processing. Work survives
 restart in the database. Process at most 25 tenants per batch, with one service
 request at a time and a 10-second timeout. Retry failed tenant assessments on the next pass
-and cap repeated error logs. Pending, old-date, and old-artifact results are
-stale. Staleness and Not enough data remain separate states.
+and cap repeated error logs. Report pending work, failed attempts, and source revisions separately.
 
 | Condition | Result | Next step |
 |---|---|---|
-| No saved result | Not assessed yet, with coverage requirements. | Confirm coverage or refresh when allowed. |
-| Missing inputs | Save Not enough data and show current overdue facts. | Complete records and confirm coverage. |
+| No saved result | Waiting for the first assessment. | Check after the next refresh. |
+| Missing inputs | Save Not enough data and show current overdue facts. | Record missing source events or amounts when available. |
 | Service failure | Keep the last valid result with stale/error state. | Background retry; activity entry stays usable. |
 | Source changes during scoring | Keep the previous result and pending state. | Score the new revision. |
 | Job stopped | Queue the current date after restart. | Resume without inventing missed historical predictions. |
@@ -406,7 +378,7 @@ behavior or a required departure returns for review.
 
 See the [delivery plan](implementation-plan.md) for order and proof. This work
 created no model code, migrations, packages, datasets, jobs, or deployment.
-Dataset size, repair costs, feature formulas, coverage storage, permissions,
+Dataset size, repair costs, feature formulas, permissions,
 routes, release targets, and refresh mechanics remain Draft for later review.
 
 ## References

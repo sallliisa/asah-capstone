@@ -24,7 +24,8 @@ function validatePlan(value: { financialKind: string; categoryId: string; amount
   }
 }
 
-export const recurringPlanCreateSchema = createInsertSchema(recurringPlans).omit(omitted).extend(fields).superRefine(validatePlan)
+export const recurringPlanInsertSchema = createInsertSchema(recurringPlans)
+export const recurringPlanCreateSchema = recurringPlanInsertSchema.omit(omitted).extend(fields).superRefine(validatePlan)
 export const recurringPlanUpdateSchema = createUpdateSchema(recurringPlans).omit(omitted).extend({ name: fields.name, startDate: fields.startDate, description: fields.description.removeDefault(), roomId: fields.roomId.removeDefault(), tenantId: fields.tenantId.removeDefault(), intervalCount: fields.intervalCount.removeDefault(), intervalUnit: fields.intervalUnit.removeDefault(), active: fields.active.removeDefault(), financialKind: fields.financialKind.removeDefault(), categoryId: fields.categoryId.removeDefault(), amount: fields.amount.removeDefault() }).partial()
 export const recurringPlanSelectSchema = createSelectSchema(recurringPlans).extend({ intervalUnit: intervalUnitSchema, financialKind: financialKindSchema })
 export const recurringPlanStateSchema = recurringPlanSelectSchema.superRefine(validatePlan)

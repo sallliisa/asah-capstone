@@ -24,7 +24,7 @@ const { records: unreadCounts } = useCollection(() => ({
   searchParameters: {},
 }))
 const unreadCount = computed(() => unreadCounts.value[0]?.unread ?? 0)
-const markingRead = ref(false)
+const markingRead = ref(new Set<string | undefined>())
 const readError = ref('')
 const pushState = ref<'checking' | 'unsupported' | 'blocked' | 'available' | 'enabled'>('checking')
 const savingPush = ref(false)
@@ -35,8 +35,8 @@ function toggleUnread() {
 }
 
 async function markRead(id?: string) {
-  if (markingRead.value) return
-  markingRead.value = true
+  if (markingRead.value.has(id)) return
+  markingRead.value.add(id)
   readError.value = ''
   try {
     const response = await rpc.notifications.read.$post({ json: id ? { id } : {} })
@@ -45,7 +45,7 @@ async function markRead(id?: string) {
   } catch {
     readError.value = 'Could not update the inbox. Refresh the page to check which notifications are unread.'
   } finally {
-    markingRead.value = false
+    markingRead.value.delete(id)
   }
 }
 
@@ -100,7 +100,7 @@ onMounted(async () => {
           <template #icon><Icon name="filter" size="base" /></template>
           Unread only
         </Button>
-        <Button type="button" variant="tonal" :disabled="markingRead || unreadCount === 0" @click="markRead()">
+        <Button type="button" variant="tonal" :disabled="markingRead.has(undefined) || unreadCount === 0" @click="markRead()">
           <template #icon><Icon name="check-double" size="base" /></template>
           Mark all as read
         </Button>
@@ -153,7 +153,7 @@ onMounted(async () => {
       <span v-else class="font-semibold text-primary">Unread</span>
     </template>
     <template #row-actions="{ record }">
-      <Button v-if="!record.readAt" type="button" kind="icon" variant="standard" :ariaLabel="`Mark ${record.title} as read`" :disabled="markingRead" @click="markRead(record.id)">
+      <Button v-if="!record.readAt" type="button" kind="icon" variant="standard" :ariaLabel="`Mark ${record.title} as read`" :disabled="markingRead.has(record.id)" @click="markRead(record.id)">
         <template #icon><Icon name="check" size="base" /></template>
       </Button>
     </template>

@@ -9,12 +9,7 @@ const roleSelection = z.union([z.string().trim().min(1), z.object({ id: z.string
 export const createUserFormSchema = checkedHonoCreateSchema(
   rpc.users,
   createUserSchema.extend({
-    roleIds: z
-      .array(roleSelection)
-      .min(1)
-      .superRefine((ids, context) => {
-        if (new Set(ids).size !== ids.length) context.addIssue({ code: z.ZodIssueCode.custom, message: 'Roles must be unique.' })
-      }),
+    roleIds: z.array(roleSelection).pipe(createUserSchema.shape.roleIds),
   })
 )
 

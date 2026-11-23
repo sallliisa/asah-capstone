@@ -1,4 +1,4 @@
-import { loadIdentity } from '@/framework/identity'
+import { identityStatus, loadIdentity } from '@/framework/identity'
 import { savePostLoginRedirect } from '@/utils/post-login-redirect'
 import { getDefaultAuthenticatedRouteLocation } from './navigation'
 import { evaluateResourceRouteAccess, useResourceRuntime, type AccessAdapter } from '@southneuhof/loom'
@@ -11,6 +11,7 @@ function allowsExtraordinaryRoute(meta: { permission?: string }, access: AccessA
 /** Enforces ordinary route permission metadata on direct URL entry. */
 export function createPermissionGuard(access?: AccessAdapter): NavigationGuard {
   return (to) => {
+    if (!access && identityStatus.value === 'failed') return true
     const adapter = access ?? useResourceRuntime().adapters.access
     const routeAccess = typeof to.name === 'string' ? evaluateResourceRouteAccess(to.name, adapter) : undefined
     const allowed = routeAccess ?? allowsExtraordinaryRoute(to.meta, adapter)

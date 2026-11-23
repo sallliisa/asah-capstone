@@ -187,8 +187,10 @@ onBeforeUnmount(() => clearInterval(interval))
         <ul v-else class="flex flex-col gap-2">
           <li v-for="tenant in priorities.slice(0, 8)" :key="tenant.tenantId">
             <RouterLink :to="{ name: 'settings-users-detail', params: { userId: tenant.tenantId } }" class="text-primary underline">{{ tenant.tenantName }}</RouterLink>
-            · {{ tenant.prediction?.grade ?? 'Not enough data' }}
-            <span v-if="tenant.stale"> · Needs refresh</span>
+            · {{ tenant.prediction ? (tenant.prediction.grade ?? 'Not enough data') : 'Waiting for assessment' }}
+            <span v-if="tenant.error"> · Assessment failed</span>
+            <span v-else-if="tenant.pending && tenant.prediction"> · Refresh queued</span>
+            <span v-else-if="tenant.stale"> · Records changed</span>
             <p class="text-sm text-on-surface-variant">{{ tenant.rooms.map((room) => room.name).join(', ') }}</p>
           </li>
         </ul>

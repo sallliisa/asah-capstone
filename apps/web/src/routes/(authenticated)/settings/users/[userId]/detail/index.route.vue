@@ -4,12 +4,13 @@ export default { render: () => null }
 
 <script setup lang="ts">
 import { useResourceRuntime } from '@southneuhof/loom'
+import { roleAssignments } from './role-assignments/role-assignments.resource'
 
 definePage({
   beforeEnter: (to) => {
     if (to.name !== 'settings-users-detail') return true
     if (useResourceRuntime().adapters.access.allows({ operation: 'detail', permission: 'view-activities' })) return { name: 'settings-users-detail-activities', params: { userId: to.params.userId } }
-    if (!useResourceRuntime().adapters.access.allows({ operation: 'detail', permission: 'view-role-assignments' })) return true
+    if (!useResourceRuntime().adapters.access.allows({ operation: 'list', permission: roleAssignments.permissions.list })) return true
     return {
       name: 'settings-users-detail-role-assignments',
       params: { userId: to.params.userId },

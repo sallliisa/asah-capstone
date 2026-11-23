@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { routes } from 'vue-router/auto-routes'
+import { handleHotUpdate, routes } from 'vue-router/auto-routes'
 import { createAuthGuard, createPermissionGuard } from './guards'
 import { legacyViewRedirect, normalizeLegacyHashLocation } from './legacy-urls'
 
@@ -10,6 +10,8 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 })
+
+if (import.meta.hot) handleHotUpdate(router)
 
 router.beforeEach((to) => legacyViewRedirect(to) ?? true)
 router.beforeEach(createAuthGuard())

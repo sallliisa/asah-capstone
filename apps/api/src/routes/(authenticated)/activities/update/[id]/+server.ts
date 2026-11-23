@@ -7,7 +7,7 @@ import { requirePermission } from '../../../../../identity'
 import { validateRoom } from '../../../../../room-reference'
 import { activities } from '../../activities.table'
 import { businessDate } from '../../dates'
-import { activityStateSchema, activityUpdateSchema } from '../../schema'
+import { activityStateSchema } from '../../schema'
 
 export const PATCH = update({
   authorize: requirePermission('update-activities'),
@@ -19,7 +19,7 @@ export const PATCH = update({
     return getDb().transaction(async (tx) => {
       const original = (await tx.select().from(activities).where(where).for('update'))[0]
       if (!original) return undefined
-      const input = activityUpdateSchema.parse(state.input)
+      const input = state.input
       const values = { ...input, ...state.values }
       if (input.tenantId !== undefined && input.tenantId !== original.tenantId) throw validationError('Use Change tenant to correct the association with an audit reason.')
       const merged = { ...original, ...values }

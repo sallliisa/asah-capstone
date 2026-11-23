@@ -3,7 +3,7 @@ import { eq } from 'drizzle-orm'
 import { getDb } from '../../../../../db'
 import { requirePermission } from '../../../../../identity'
 import { sessions } from '../../../../auth/auth.entity'
-import { userSelectSchema, userUpdateSchema } from '../../schema'
+import { userSelectSchema } from '../../schema'
 import { users } from '../../users.table'
 
 export const PATCH = update({
@@ -12,7 +12,7 @@ export const PATCH = update({
     const id = state.id
     const found = (await getDb().select().from(users).where(eq(users.id, id)).limit(1))[0]
     if (!found) return undefined
-    const input = userUpdateSchema.parse(state.input)
+    const input = state.input
     const updated = await getDb().transaction(async (tx) => {
       const saved = await tx.update(users).set({ ...input, ...(state.values ?? {}) }).where(eq(users.id, id)).returning()
       if (found.statusCode === 'active' && input.statusCode && input.statusCode !== 'active') {

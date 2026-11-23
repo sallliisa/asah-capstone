@@ -1,5 +1,5 @@
 import type { CollectionLoadContext, RecordLoadContext } from '@southneuhof/loom'
-import { detectorCoverageSchema, detectorDetailSchema } from '@southneuhof/api/src/routes/(authenticated)/tenant-detector/schema.ts'
+import { detectorDetailSchema } from '@southneuhof/api/src/routes/(authenticated)/tenant-detector/schema.ts'
 import { rpc } from '@/framework/rpc'
 
 const detector = rpc['tenant-detector']
@@ -24,13 +24,6 @@ export async function loadTenantAssessmentHistory(context: CollectionLoadContext
   const body = await response.json()
   if (!response.ok || !('data' in body)) throw body
   return { data: body.data, meta: { total: body.total } }
-}
-
-export async function saveTenantCoverage(tenantId: string, input: (typeof detectorCoverageSchema)['_output']) {
-  const response = await detector.coverage[':tenantId'].$put({ param: { tenantId }, json: input })
-  const body = await response.json()
-  if (!response.ok || !('data' in body)) throw body
-  return body.data
 }
 
 export async function refreshTenantAssessment(tenantId: string) {

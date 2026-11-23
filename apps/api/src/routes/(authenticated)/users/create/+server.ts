@@ -9,25 +9,16 @@ import { roleAssignments, roles } from '../../roles/roles.table'
 import { createUserSchema, userSelectSchema } from '../schema'
 import { users } from '../users.table'
 
-function initialRoleIds(roleIds: string[]) {
-  const uniqueRoleIds = [...new Set(roleIds)]
-  if (!uniqueRoleIds.length || uniqueRoleIds.length !== roleIds.length) throw new HttpError(422, 'roles_required')
-  return uniqueRoleIds
-}
-
 async function validateInitialRoles(roleIds: string[]) {
-  const uniqueRoleIds = initialRoleIds(roleIds)
-  const foundRoles = await getDb().select({ id: roles.id, active: roles.active }).from(roles).where(inArray(roles.id, uniqueRoleIds))
-  if (foundRoles.length !== uniqueRoleIds.length || foundRoles.some((row) => !row.active)) throw new HttpError(422, 'roles_required')
-  return uniqueRoleIds
+  const foundRoles = await getDb().select({ id: roles.id, active: roles.active }).from(roles).where(inArray(roles.id, roleIds))
+  if (foundRoles.length !== roleIds.length || foundRoles.some((row) => !row.active)) throw new HttpError(422, 'roles_required')
 }
 
 async function assignInitialRoles(actorUserId: string, userId: string, roleIds: string[]) {
-  const uniqueRoleIds = initialRoleIds(roleIds)
   await getDb().transaction(async (tx) => {
-    const foundRoles = await tx.select({ id: roles.id, active: roles.active }).from(roles).where(inArray(roles.id, uniqueRoleIds))
-    if (foundRoles.length !== uniqueRoleIds.length || foundRoles.some((row) => !row.active)) throw new HttpError(422, 'roles_required')
-    await tx.insert(roleAssignments).values(uniqueRoleIds.map((roleId) => ({
+    const foundRoles = await tx.select({ id: roles.id, active: roles.active }).from(roles).where(inArray(roles.id, roleIds))
+    if (foundRoles.length !== roleIds.length || foundRoles.some((row) => !row.active)) throw new HttpError(422, 'roles_required')
+    await tx.insert(roleAssignments).values(roleIds.map((roleId) => ({
       userId,
       roleId,
       active: true,

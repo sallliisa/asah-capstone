@@ -6,15 +6,12 @@ import { activities } from '../activities/activities.table'
 import { businessDate } from '../activities/dates'
 import { users } from '../users/users.table'
 import { detectorResultSchema } from './schema'
-import { tenantDetectorCoverage, tenantDetectorPredictions, tenantDetectorState } from './tenant-detector.table'
+import { tenantDetectorPredictions, tenantDetectorState } from './tenant-detector.table'
 
 export async function readTenantAssessment(tenantId: string) {
   if (!(await getDb().select({ id: users.id }).from(users).where(eq(users.id, tenantId))).length) throw notFound()
-  const [coverage, state] = await Promise.all([
-    getDb().select().from(tenantDetectorCoverage).where(eq(tenantDetectorCoverage.tenantId, tenantId)),
-    getDb().select().from(tenantDetectorState).where(eq(tenantDetectorState.tenantId, tenantId)),
-  ])
-  const prediction = state[0]?.latestPredictionId ? (await getDb().select().from(tenantDetectorPredictions).where(eq(tenantDetectorPredictions.id, state[0].latestPredictionId)))[0] : null
+  const [state] = await getDb().select().from(tenantDetectorState).where(eq(tenantDetectorState.tenantId, tenantId))
+  const prediction = state?.latestPredictionId ? (await getDb().select().from(tenantDetectorPredictions).where(eq(tenantDetectorPredictions.id, state.latestPredictionId)))[0] : null
   const today = businessDate()
   const overdue = await getDb()
     .select({ id: activities.id, roomId: activities.roomId, occurrenceDate: activities.occurrenceDate, amount: activities.amount })
@@ -30,11 +27,10 @@ export async function readTenantAssessment(tenantId: string) {
     )
   return {
     tenantId,
-    isTenant: Boolean(coverage[0] || prediction || (await readTenants(tenantId)).length),
-    coverage: coverage[0] ?? null,
-    state: state[0] ?? null,
+    isTenant: Boolean(state || (await readTenants(tenantId)).length),
+    state: state ?? null,
     prediction: prediction ? { id: prediction.id, generatedAt: prediction.generatedAt, ...detectorResultSchema.parse(prediction.result) } : null,
-    stale: !prediction || Boolean(state[0]?.pending) || prediction.asOfDate !== today,
+    stale: Boolean(prediction && state?.sourceRevision !== prediction.sourceRevision),
     overdue,
   }
 }

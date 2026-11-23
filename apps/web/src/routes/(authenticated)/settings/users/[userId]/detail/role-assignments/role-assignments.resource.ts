@@ -21,7 +21,7 @@ export const roleAssignments = defineResource({
   key: 'role-assignments',
   identity: (record: { id: string }) => record.id,
   list: {
-    permission: 'view-role-assignments',
+    permission: 'list-role-assignments',
     table: { ...roleAssignmentsTable, querySchema: roleAssignmentsQuerySchema, pagination: false, load: roleAssignmentsActions.list },
   },
   actions: {

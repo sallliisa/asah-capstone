@@ -78,6 +78,12 @@ The active RAG corpus passed 166 authored validation and 32 fresh held-out test
 questions. Held-out precision is 1.0, recall 0.7917, unsupported answers 0.
 The small authored evaluation is not evidence of general accuracy.
 
+## Follow-up
+
+Tenant assessments use recorded activity history. The manual coverage form and
+its write route are retired. The [application check audit](check-removal-audit.md)
+records the other first-pass items and lower-priority candidates.
+
 ## Delivery rules
 
 Keep domain rules in their owning designs. Activities owns attribution and

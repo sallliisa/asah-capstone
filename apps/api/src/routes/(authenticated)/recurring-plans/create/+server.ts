@@ -5,7 +5,7 @@ import { getDb } from '../../../../db'
 import { requirePermission } from '../../../../identity'
 import { validateRoom } from '../../../../room-reference'
 import { recurringPlans } from '../recurring-plans.table'
-import { recurringPlanCreateSchema, recurringPlanSelectSchema } from '../schema'
+import { recurringPlanInsertSchema, recurringPlanSelectSchema } from '../schema'
 
 export const POST = create({
   authorize: requirePermission('create-recurring-plans'),
@@ -13,9 +13,10 @@ export const POST = create({
   run: async (args) => {
     const { state } = args
     if (state.input.tenantId) await requirePermission('view-users')(args)
-    const input = recurringPlanCreateSchema.parse(state.input)
+    const input = state.input
     if (input.categoryId === 'activity-category-room-rent' && !input.tenantId) throw validationError('Select the tenant for this rent plan.')
-    const rows = await getDb().insert(recurringPlans).values({ ...input, ...state.values, nextOccurrenceDate: input.startDate }).returning()
+    const values = recurringPlanInsertSchema.parse({ ...input, ...state.values, nextOccurrenceDate: input.startDate })
+    const rows = await getDb().insert(recurringPlans).values(values).returning()
     return recurringPlanSelectSchema.parse(rows[0])
   },
 })

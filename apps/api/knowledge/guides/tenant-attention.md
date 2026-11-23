@@ -17,13 +17,13 @@ terbuka, terpisah dari pola kejadian yang sudah selesai.
 
 ## Cakupan riwayat dan perpindahan kamar
 
-Pemilik mengonfirmasi awal pencatatan yang lengkap untuk perbaikan, pembersihan,
-dan sewa, serta kelengkapan biaya perbaikan. Aplikasi memakai paling lama dua
-belas bulan kalender sampai tanggal penilaian. Paling sedikit sembilan puluh
-hari pencatatan dan tiga kejadian sewa jatuh tempo diperlukan. Riwayat tidak
-lengkap menghasilkan Not enough data, bukan A. Uang yang tidak diketahui tidak
-diganti dengan nol. Data dengan tanggal pembayaran atau penyelesaian di masa
-depan belum dihitung sebagai kejadian yang sudah terjadi.
+Aplikasi menentukan awal riwayat dari tanggal jatuh tempo, penyelesaian, atau
+pembayaran paling awal pada aktivitas yang terkait tenant dan kamar. Jendela
+penilaian memakai paling lama dua belas bulan kalender. Penilaian memerlukan
+rentang riwayat minimal sembilan puluh hari dan tiga tagihan sewa yang sudah
+jatuh tempo. Hasil memakai aktivitas yang tercatat. Jika data belum cukup,
+aplikasi menampilkan Not enough data. Tanggal di masa depan tidak dihitung
+sebagai kejadian yang sudah terjadi.
 
 Nilai mengikuti tenant di beberapa kamar. Pindah kamar tidak menghapus riwayat.
 Aktivitas tetap memiliki kamar sumber dan hubungan historis dengan tenant.

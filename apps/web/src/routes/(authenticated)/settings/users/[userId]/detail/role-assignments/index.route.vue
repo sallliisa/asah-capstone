@@ -1,4 +1,4 @@
-<route>{ "meta": { "permission": "view-role-assignments" } }</route>
+<route>{ "meta": { "permission": "list-role-assignments" } }</route>
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'

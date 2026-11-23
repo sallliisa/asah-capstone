@@ -84,6 +84,3 @@ export function legacyViewRedirect(to: RouteLocationNormalized): RouteLocationRa
 
   return undefined
 }
-
-/** @deprecated Use `legacyViewRedirect`; kept as the roles-only entry point. */
-export const legacyRolesRedirect = legacyViewRedirect

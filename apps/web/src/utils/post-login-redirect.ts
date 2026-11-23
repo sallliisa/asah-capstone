@@ -35,14 +35,3 @@ export function consumePostLoginRedirect(): string | null {
   storage.removeItem(POST_LOGIN_REDIRECT_KEY)
   return normalizeInternalRoute(storedPath)
 }
-
-export function getCurrentHashRouteForRedirect(): string | null {
-  const hash = window.location.hash || ''
-  if (hash.startsWith('#/')) {
-    return normalizeInternalRoute(hash.slice(1))
-  }
-
-  const pathname = window.location.pathname || ''
-  const search = window.location.search || ''
-  return normalizeInternalRoute(`${pathname}${search}`)
-}

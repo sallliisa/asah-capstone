@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
-import { z } from 'zod/v4'
 import { RouterLink } from 'vue-router'
-import { defineForm, defineTable, Form, Table, useRecord, useFrameworkQueryClient, invalidateResourceData } from '@southneuhof/loom'
-import { detectorCoverageSchema, detectorDetailSchema, detectorHistorySchema } from '@southneuhof/api/src/routes/(authenticated)/tenant-detector/schema.ts'
+import { defineTable, Table, useRecord, useFrameworkQueryClient, invalidateResourceData } from '@southneuhof/loom'
+import { detectorDetailSchema, detectorHistorySchema } from '@southneuhof/api/src/routes/(authenticated)/tenant-detector/schema.ts'
 import Button from '@southneuhof/loom/components/base/Button.vue'
+import Card from '@southneuhof/loom/components/base/Card.vue'
+import Chip from '@southneuhof/loom/components/base/Chip.vue'
+import Disclosure from '@southneuhof/loom/components/base/Disclosure.vue'
 import { permissions } from '@/stores/permissions'
-import { loadTenantAssessment, loadTenantAssessmentHistory, refreshTenantAssessment, saveTenantCoverage } from './tenant-detector.actions'
+import { loadTenantAssessment, loadTenantAssessmentHistory, refreshTenantAssessment } from './tenant-detector.actions'
 
-const props = defineProps<{ tenantId: string; compact?: boolean }>()
+const props = defineProps<{ tenantId: string }>()
 const access = permissions()
 const queryClient = useFrameworkQueryClient()
 const refreshAssessment = () => invalidateResourceData(queryClient, { resource: 'tenant-detector' })
@@ -20,19 +22,8 @@ onMounted(() => {
 })
 onBeforeUnmount(() => clearInterval(interval))
 const { record, loading, error } = useRecord(() => ({ id: props.tenantId, resource: 'tenant-detector', schema: detectorDetailSchema, fields: {}, load: loadTenantAssessment }))
-const editing = ref(false)
 const busy = ref(false)
 const message = ref('')
-const coverage = defineForm({
-  schema: detectorCoverageSchema.extend({ repairCostsComplete: z.union([z.boolean(), z.literal('Y'), z.literal('N')]).transform((value) => value === true || value === 'Y') }),
-  fields: {
-    repairsFrom: { label: 'Complete repair records from', renderer: 'date' },
-    cleaningFrom: { label: 'Complete cleaning records from', renderer: 'date' },
-    rentFrom: { label: 'Complete rent records from', renderer: 'date' },
-    repairCostsComplete: { label: 'Repair expense records are complete', renderer: 'checkbox' },
-  },
-})
-const initialCoverage = computed(() => record.value?.coverage ?? { repairsFrom: null, cleaningFrom: null, rentFrom: null, repairCostsComplete: false })
 const history = defineTable({
   schema: detectorHistorySchema,
   columns: {
@@ -43,19 +34,25 @@ const history = defineTable({
     modelVersion: { label: 'Model version' },
   },
 })
-const gradeLabels = { A: 'A · Routine', B: 'B · Check soon', C: 'C · Check first' }
+const grades = {
+  A: { label: 'A · Routine', color: 'neutral' },
+  B: { label: 'B · Check soon', color: 'secondary' },
+  C: { label: 'C · Check first', color: 'warning' },
+} as const
+const grade = computed(() => {
+  const prediction = record.value?.prediction
+  if (prediction?.grade) return grades[prediction.grade]
+  return { label: prediction ? 'Not enough data' : 'Not assessed yet', color: 'neutral' } as const
+})
 const factLabels: Record<string, string> = { repairs90: 'Repairs in 90 days', extraCleaning90: 'Extra cleanings in 90 days', oldestUnpaidDays: 'Oldest unpaid rent in days' }
 const eligibilityLabels: Record<string, string> = {
-  missing_repairs_coverage: 'Confirm repair history coverage.',
-  missing_cleaning_coverage: 'Confirm cleaning history coverage.',
-  missing_rent_coverage: 'Confirm rent history coverage.',
-  incomplete_repair_costs: 'Confirm complete repair expense records.',
   incomplete_recurrence: 'Rent occurrence generation must catch up.',
-  less_than_90_days: 'At least 90 days of confirmed records are required.',
-  less_than_3_due_rents: 'At least three due rent occurrences are required.',
+  less_than_90_days: 'The recorded history must span at least 90 days.',
+  less_than_3_due_rents: 'At least three rent charges must have come due.',
   unknown_rent_amount: 'Record the expected rent amounts.',
   unknown_repair_amount: 'Record the settled repair amounts.',
 }
+const eligibilityMessages = computed(() => (record.value?.prediction?.eligibilityReasons ?? []).flatMap((reason) => (Object.hasOwn(eligibilityLabels, reason) ? [eligibilityLabels[reason]] : [])))
 async function queueRefresh() {
   busy.value = true
   try {
@@ -68,51 +65,56 @@ async function queueRefresh() {
     busy.value = false
   }
 }
-async function submitCoverage(input: (typeof detectorCoverageSchema)['_output']) {
-  return saveTenantCoverage(props.tenantId, input)
-}
-async function coverageSaved() {
-  editing.value = false
-  try {
-    await refreshAssessment()
-  } catch {
-    message.value = 'Coverage saved. Reload to read the latest state.'
-  }
-}
 </script>
 
 <template>
-  <section v-if="loading || error || record?.isTenant" class="flex flex-col gap-3">
-    <h2 class="text-lg font-semibold">Tenant attention</h2>
-    <p v-if="loading">Loading assessment…</p>
-    <p v-else-if="error" role="alert">Could not load this assessment.</p>
-    <template v-else-if="record">
-      <p class="font-semibold">{{ record.prediction?.grade ? gradeLabels[record.prediction.grade] : record.prediction ? 'Not enough data' : 'Not assessed yet' }}</p>
-      <p>Experimental model trained with synthetic data. Review the source records; the grade does not establish tenant fault.</p>
-      <p v-if="record.prediction">{{ record.prediction.windowStart }} – {{ record.prediction.asOfDate }} · Saved {{ new Date(record.prediction.generatedAt).toLocaleString('id-ID') }}</p>
-      <p v-if="record.stale">This result needs a refresh.</p>
-      <p v-if="record.state?.error">The model service could not finish the assessment. The last result is retained.</p>
-      <p v-for="reason in record.prediction?.eligibilityReasons ?? []" :key="reason">{{ eligibilityLabels[reason] ?? reason }}</p>
-      <ul v-if="record.prediction?.facts.length" class="flex flex-col gap-2">
-        <li v-for="fact in record.prediction.facts" :key="fact.kind">
-          {{ factLabels[fact.kind] ?? fact.kind }}: {{ fact.value }}
-          <span v-for="(activityId, index) in fact.activityIds" :key="activityId" class="ml-2"
-            ><RouterLink :to="{ name: 'activities-detail', params: { activityId } }">Record {{ index + 1 }}</RouterLink></span
-          >
-        </li>
-      </ul>
-      <p v-if="record.overdue.length">Current overdue rent: {{ record.overdue.length }} occurrence(s). This remains visible without a grade.</p>
-      <RouterLink v-if="compact" :to="{ name: 'settings-users-detail', params: { userId: tenantId } }">Open tenant assessment</RouterLink>
-      <template v-else>
-        <div v-if="access.can('update-users')" class="flex flex-wrap gap-2">
-          <Button :disabled="busy" @click="queueRefresh">Refresh assessment</Button>
-          <Button variant="text" @click="editing = !editing">{{ editing ? 'Close coverage form' : 'Confirm recording coverage' }}</Button>
+  <Card v-if="loading || error || record?.isTenant" variant="outlined" color="surfaceContainer" class="min-w-0 p-0">
+    <section class="flex min-w-0 flex-col gap-4 p-4 sm:p-5" aria-labelledby="tenant-attention-heading">
+      <div class="flex flex-wrap items-start justify-between gap-2">
+        <div class="flex flex-wrap items-center gap-2">
+          <h2 id="tenant-attention-heading" class="text-lg font-semibold">Tenant attention</h2>
+          <Chip v-if="record && !loading && !error" :color="grade.color" variant="tonal">{{ grade.label }}</Chip>
         </div>
-        <p v-if="message" role="status">{{ message }}</p>
-        <Form v-if="editing && access.can('update-users')" v-bind="coverage" :initial-data="initialCoverage" :submit="submitCoverage" @submitted="coverageSaved" />
-        <h3 class="font-semibold">Assessment history</h3>
-        <Table v-bind="history" :load="loadTenantAssessmentHistory" resource="tenant-detector" namespace="assessment-history" :search-parameters="{ tenantId }" />
+        <div v-if="record && !loading && !error && access.can('update-users')" class="flex flex-wrap gap-2">
+          <Button variant="outlined" :disabled="busy" @click="queueRefresh">Refresh assessment</Button>
+        </div>
+      </div>
+
+      <p v-if="loading" role="status">Loading assessment…</p>
+      <p v-else-if="error" role="alert">Could not load this assessment.</p>
+      <template v-else-if="record">
+        <div class="space-y-2 text-sm">
+          <p v-if="record.state?.error" role="alert">The model service could not finish the assessment. It will retry automatically.</p>
+          <p v-else-if="record.state?.pending" role="status">{{ record.prediction ? 'Refresh queued.' : 'Waiting for the first assessment.' }}</p>
+          <p v-else-if="record.stale" role="status">Records changed after this assessment.</p>
+          <p v-if="record.overdue.length" class="font-medium">Overdue rent payments: {{ record.overdue.length }}</p>
+          <ul v-if="eligibilityMessages.length" class="list-disc space-y-1 ps-5">
+            <li v-for="reason in eligibilityMessages" :key="reason">{{ reason }}</li>
+          </ul>
+          <dl v-if="record.prediction?.facts.length" class="space-y-1">
+            <div v-for="fact in record.prediction.facts" :key="fact.kind" class="flex flex-wrap items-baseline gap-x-2">
+              <dt>{{ factLabels[fact.kind] ?? fact.kind }}</dt>
+              <dd class="font-medium tabular-nums">{{ fact.value }}</dd>
+              <dd v-if="fact.activityIds.length" class="flex flex-wrap gap-x-2">
+                <RouterLink v-for="(activityId, index) in fact.activityIds" :key="activityId" :to="{ name: 'activities-detail', params: { activityId } }" class="text-primary underline">
+                  Record {{ index + 1 }}
+                </RouterLink>
+              </dd>
+            </div>
+          </dl>
+          <p v-if="record.prediction" class="text-on-surface-variant">
+            {{ record.prediction.windowStart }} to {{ record.prediction.asOfDate }} · Saved {{ new Date(record.prediction.generatedAt).toLocaleString('id-ID') }}
+          </p>
+          <p class="max-w-prose text-on-surface-variant">Based on recorded activity. The model uses synthetic training data. Use the grade to decide which records to review first.</p>
+          <p v-if="message" role="status">{{ message }}</p>
+        </div>
+
+        <Disclosure title="Assessment history">
+          <div class="mt-2 min-w-0">
+            <Table v-bind="history" :load="loadTenantAssessmentHistory" resource="tenant-detector" namespace="assessment-history" :search-parameters="{ tenantId }" />
+          </div>
+        </Disclosure>
       </template>
-    </template>
-  </section>
+    </section>
+  </Card>
 </template>
