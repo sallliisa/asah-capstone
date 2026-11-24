@@ -8,7 +8,8 @@ import Dialog from '@southneuhof/loom/components/base/Dialog.vue'
 import Icon from '@southneuhof/loom/components/base/Icon.vue'
 import Chip from '@southneuhof/loom/components/base/Chip.vue'
 import { permissions } from '@/stores/permissions'
-import { tenantGradeDisplay } from '../../../tenant-detector/grade-display'
+import TenantGradeChip from '../../../tenant-detector/TenantGradeChip.vue'
+import { isTenantGrade } from '../../../tenant-detector/grade-display'
 import { loadTenantAssessment, loadTenantAssessmentHistory } from '../../../tenant-detector/tenant-detector.actions'
 
 const props = defineProps<{ user: { id: string; name: string; email: string } }>()
@@ -48,11 +49,7 @@ const history = defineTable({
   },
 })
 const waitingForFirstAssessment = computed(() => !assessment.value?.prediction && assessment.value?.state?.pending && !assessment.value.state.error)
-const grade = computed(() => {
-  const prediction = assessment.value?.prediction
-  if (prediction?.grade) return tenantGradeDisplay[prediction.grade]
-  return { label: prediction ? 'Not enough data' : 'Not assessed yet', color: 'neutral' } as const
-})
+const grade = computed(() => assessment.value?.prediction?.grade)
 const factLabels: Record<string, string> = { repairs90: 'Repairs in 90 days', extraCleaning90: 'Extra cleanings in 90 days', oldestUnpaidDays: 'Oldest unpaid rent in days' }
 const eligibilityLabels: Record<string, string> = {
   incomplete_recurrence: 'Rent occurrence generation must catch up.',
@@ -68,7 +65,10 @@ const eligibilityMessages = computed(() => (assessment.value?.prediction?.eligib
   <div class="min-w-0">
     <div class="flex flex-wrap items-center gap-x-2 gap-y-1">
       <h2 class="min-w-0 text-xl font-semibold [overflow-wrap:anywhere]">{{ user.name }}</h2>
-      <Chip v-if="isTenant && !error && !waitingForFirstAssessment" :color="grade.color" variant="tonal"> <span class="sr-only">Tenant attention </span>{{ grade.label }} </Chip>
+      <template v-if="isTenant && !error && !waitingForFirstAssessment">
+        <TenantGradeChip v-if="grade" :grade="grade" />
+        <Chip v-else color="neutral" variant="tonal"><span class="sr-only">Tenant attention </span>{{ assessment?.prediction ? 'Not enough data' : 'Not assessed yet' }}</Chip>
+      </template>
       <Dialog v-if="isTenant" class="w-[calc(100%-2rem)] max-w-5xl">
         <template #trigger>
           <Button type="button" kind="icon" variant="standard" ariaLabel="Assessment history">
@@ -85,7 +85,12 @@ const eligibilityMessages = computed(() => (assessment.value?.prediction?.eligib
             namespace="assessment-history"
             :search-parameters="{ tenantId: user.id }"
             :page-size-options="[10]"
-          />
+          >
+            <template #cell:grade="{ value }">
+              <TenantGradeChip v-if="isTenantGrade(value)" :grade="value" compact />
+              <span v-else>—</span>
+            </template>
+          </Table>
         </template>
       </Dialog>
     </div>

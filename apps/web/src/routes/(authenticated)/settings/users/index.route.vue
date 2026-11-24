@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ListView } from '@southneuhof/loom'
-import Chip from '@southneuhof/loom/components/base/Chip.vue'
-import { tenantGradeDisplay } from '../../tenant-detector/grade-display'
+import TenantGradeChip from '../../tenant-detector/TenantGradeChip.vue'
 import { users } from './users.resource'
 </script>
 
@@ -11,9 +10,7 @@ import { users } from './users.resource'
       <template #cell:name="{ record }">
         <div class="flex flex-wrap items-center gap-2">
           <span>{{ record.name }}</span>
-          <Chip v-if="record.tenantAttentionGrade" :color="tenantGradeDisplay[record.tenantAttentionGrade].color" variant="tonal">
-            <span class="sr-only">Tenant attention </span>{{ tenantGradeDisplay[record.tenantAttentionGrade].label }}
-          </Chip>
+          <TenantGradeChip v-if="record.tenantAttentionGrade" :grade="record.tenantAttentionGrade" />
         </div>
       </template>
     </ListView>

@@ -13,7 +13,8 @@ import { recurringPlansActions } from '../recurring-plans/recurring-plans.action
 import { recurringPlans } from '../recurring-plans/recurring-plans.resource'
 import { roomsActions } from '../rooms/rooms.actions'
 import { rooms } from '../rooms/rooms.resource'
-import { tenantGradeDisplay } from '../tenant-detector/grade-display'
+import TenantGradeChip from '../tenant-detector/TenantGradeChip.vue'
+import { isTenantGrade, tenantGradeLabels } from '../tenant-detector/grade-display'
 import { loadTenantPriorities } from '../tenant-detector/tenant-detector.actions'
 import DashboardCash from './DashboardCash.vue'
 import { loadDashboardCash } from './dashboard.actions'
@@ -87,9 +88,9 @@ const roomStatusLabels = {
   vacant: 'Vacant',
   occupied: 'Occupied',
   unassessed: 'Grade unavailable',
-  A: tenantGradeDisplay.A.label,
-  B: tenantGradeDisplay.B.label,
-  C: tenantGradeDisplay.C.label,
+  A: tenantGradeLabels.A,
+  B: tenantGradeLabels.B,
+  C: tenantGradeLabels.C,
 }
 type RoomStatus = keyof typeof roomStatusLabels
 
@@ -221,7 +222,13 @@ onBeforeUnmount(() => clearInterval(interval))
                   <li v-for="room in roomMap" :key="room.id" class="min-w-0">
                     <Popover content-class="w-56 gap-2 p-3 shadow-elevation-2">
                       <template #trigger>
-                        <Button type="button" variant="outlined" class="room-tile" :class="[`room-status-${room.status}`, { 'room-muted': highlightedRooms && !highlightedRooms.has(room.id) }]">
+                        <Button
+                          type="button"
+                          variant="outlined"
+                          class="room-tile"
+                          v-bind="{ 'data-tenant-grade': room.prediction?.grade ?? undefined }"
+                          :class="[`room-status-${room.status}`, { 'room-muted': highlightedRooms && !highlightedRooms.has(room.id) }]"
+                        >
                           <span class="sr-only">Room </span><span class="room-number">{{ room.roomCode }}</span
                           ><span class="sr-only">, {{ roomStatusLabels[room.status] }}</span>
                         </Button>
@@ -229,7 +236,8 @@ onBeforeUnmount(() => clearInterval(interval))
                       <template #content>
                         <p class="font-semibold">Room {{ room.roomCode }}</p>
                         <p v-if="room.occupantName" class="text-sm">{{ room.occupantName }}</p>
-                        <p class="text-sm text-on-surface-variant">{{ roomStatusLabels[room.status] }}</p>
+                        <TenantGradeChip v-if="room.prediction?.grade" :grade="room.prediction.grade" />
+                        <p v-else class="text-sm text-on-surface-variant">{{ roomStatusLabels[room.status] }}</p>
                         <div v-if="room.prediction && room.signals && Object.values(room.signals).some((value) => value > 0)" class="space-y-1 text-xs text-on-surface-variant">
                           <p>
                             Assessed <time :datetime="room.prediction.asOfDate">{{ fullDate.format(new Date(room.prediction.asOfDate)) }}</time>
@@ -259,7 +267,7 @@ onBeforeUnmount(() => clearInterval(interval))
                   <ul v-if="visibleRoomStatuses.length" class="room-legend" aria-label="Room status legend">
                     <li v-for="status in visibleRoomStatuses" :key="status">
                       <button type="button" class="legend-button" :aria-pressed="activeRoomFilter === status" aria-controls="room-map" @click="toggleRoomFilter(status)">
-                        <span class="grade-swatch" :class="`room-status-${status}`" aria-hidden="true"></span>
+                        <span class="grade-swatch" :class="`room-status-${status}`" v-bind="{ 'data-tenant-grade': isTenantGrade(status) ? status : undefined }" aria-hidden="true"></span>
                         <span>{{ roomStatusLabels[status] }}</span>
                         <strong>{{ roomCounts[status] }}</strong>
                       </button>
@@ -423,16 +431,13 @@ onBeforeUnmount(() => clearInterval(interval))
   gap: 0.25rem;
 }
 .room-tile {
-  @apply h-auto min-h-8 w-full min-w-0 rounded-md border-outline-variant px-0.5 py-1 text-xs font-semibold leading-tight whitespace-normal tabular-nums text-on-surface [overflow-wrap:anywhere];
+  @apply h-auto min-h-8 w-full min-w-0 rounded-md px-0.5 py-1 text-xs font-semibold leading-tight whitespace-normal tabular-nums [overflow-wrap:anywhere];
 }
-.room-status-A {
-  @apply bg-surface-container;
+.room-tile:not([data-tenant-grade]) {
+  @apply border-outline-variant text-on-surface;
 }
-.room-status-B {
-  @apply border-transparent bg-warning-container;
-}
-.room-status-C {
-  @apply border-transparent bg-error-container text-on-error-container;
+.grade-swatch:not([data-tenant-grade]) {
+  @apply border-outline-variant;
 }
 .room-status-vacant {
   @apply border-dashed text-on-surface-variant;
@@ -441,7 +446,7 @@ onBeforeUnmount(() => clearInterval(interval))
   @apply bg-surface-container-highest;
 }
 .room-tile.room-muted:not(:hover, :focus-visible) {
-  @apply border-transparent bg-transparent text-on-surface-variant;
+  @apply border-outline-variant bg-transparent text-on-surface-variant;
 }
 .room-key {
   @apply grid gap-1.5 text-xs tabular-nums;
@@ -468,7 +473,7 @@ onBeforeUnmount(() => clearInterval(interval))
   @apply ml-auto font-semibold text-on-surface;
 }
 .grade-swatch {
-  @apply size-2.5 shrink-0 rounded-sm border border-outline-variant;
+  @apply size-2.5 shrink-0 rounded-sm border;
 }
 .room-follow-up {
   display: none;

@@ -282,7 +282,7 @@ Internal jobs use a separate credential, not an owner session.
 4. Read prior results with their dates while refresh runs. Current overdue facts
    still come from current records.
 
-Use existing Loom surfaces, app tokens, and language. No new top-level model
+Use existing Loom surfaces, app tokens, and language. Use the same outlined green A, amber B, and rose C markers on the room map, legend, and grade chips. Tint the app surface with its success, warning, and error colors. Use the app text color and the same outline as Loom cards in both themes. No new top-level model
 page is needed. Financial filters do not change the detector window. Pi reads
 saved authorized results; chat does not trigger training or change grades.
 

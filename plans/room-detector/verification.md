@@ -119,3 +119,24 @@ first, then by model group, then by score. The model and operations notebooks
 ran with the new artifact. See the [reviewed evaluation](../../services/models/evaluation.json).
 
 Production activation remains open.
+
+## Grade colors in light and dark mode, 25 November 2026
+
+Chromium showed matching fills, text colors, and one-pixel outlines for the
+room map, legend, popovers, user list, tenant profile, and assessment history.
+The grade filter kept an outline on dimmed tiles. The six palettes had text
+contrast of at least 8.26:1 against their fills. Build, Vue type checking, and
+formatting passed. Focused lint reported the two existing native-toggle
+warnings. Screenshots and check output are in
+`.local/verification/tenant-grade-palette/`.
+
+The restrained palette uses lighter outlines and muted sage, amber, and rose
+fills. Text contrast against the fills is at least 7.08:1. The browser walkthrough
+confirmed the palette in both themes across the same surfaces. Updated evidence
+is in `.local/verification/tenant-grade-restrained/`.
+
+The theme-based palette uses the app text color and the same one-pixel,
+16% opacity outline as Loom cards. Chromium confirmed matching styles
+across grade surfaces in both themes. Measured text contrast against the
+fills ranged from 9.15:1 to 14.02:1. The web build and formatting check passed.
+Evidence is in `.local/verification/tenant-grade-theme-tokens/`.
