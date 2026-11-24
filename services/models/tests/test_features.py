@@ -120,7 +120,15 @@ def test_cash_and_work_dates_remain_independent_across_room_moves():
 
 def test_unknown_coverage_is_not_a_zero_incident_result():
     value = snapshot(
-        rents(),
+        rents()
+        + [
+            activity(
+                "recorded-repair",
+                "corrective-repairs",
+                workStatus="completed",
+                completedDate="2026-03-01",
+            )
+        ],
         coverage={
             "repairsFrom": None,
             "cleaningFrom": "2026-02-01",
@@ -138,6 +146,11 @@ def test_unknown_coverage_is_not_a_zero_incident_result():
         "less_than_3_due_rents",
     }
     assert result["features"] is None
+    assert result["facts"][0] == {
+        "kind": "repairs90",
+        "value": 1,
+        "activityIds": ["recorded-repair"],
+    }
 
 
 def test_one_day_delay_has_no_grace_and_settling_does_not_erase_lateness():

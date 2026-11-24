@@ -86,9 +86,10 @@ it('routes through a model-selected private context and applies the configured o
     const denied = textResult.parse(await client.callTool({ name: 'readAppData', arguments: { request: { operation: 'finances', period: 'this-month' } } }))
     expect(denied.isError).toBe(true)
     vi.mocked(modelRequest).mockResolvedValueOnce({ status: 'uncertain', intent: null, confidence: 0.3, margin: 0.01, modelVersion: 'external-intent-test' })
-    const uncertain = textResult.parse(await client.callTool({ name: 'getQuestionContext', arguments: { question: 'Yang tadi itu?' } }))
+    const uncertain = textResult.parse(await client.callTool({ name: 'getQuestionContext', arguments: { question: 'Bisa lihat rekap kas?' } }))
     const unclear = JSON.parse(uncertain.content[0].text)
     expect(unclear.status).toBe('uncertain')
+    expect(unclear.message).toBe('Rekap untuk periode mana yang ingin Anda lihat?')
     expect(unclear.document).toBeUndefined()
   } finally {
     await client.close()

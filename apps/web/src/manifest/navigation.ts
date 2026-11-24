@@ -29,6 +29,7 @@ export const navigation = defineNavigation([
     description: 'Activities and finances',
     routes: [
       { to: { name: 'notifications' }, permission: 'view-activities', title: 'Notifications', icon: 'inbox' },
+      { to: { name: 'issue-reports' }, permission: 'view-issue-reports', title: 'Issue Reports', icon: 'inbox' },
       { to: { name: 'activities' }, permission: 'view-activities', title: 'Activities', icon: 'calendar-event' },
       { to: { name: 'income-expenses' }, permission: 'view-activities', title: 'Income & Expenses', icon: 'wallet-3' },
       { to: { name: 'recurring-plans' }, permission: 'view-recurring-plans', title: 'Recurring Plans', icon: 'repeat' },
@@ -41,9 +42,9 @@ export const navigation = defineNavigation([
     icon: 'settings',
     description: 'Settings',
     routes: [
-      { to: { name: 'settings-users' }, permission: 'view-users', title: 'Users', icon: 'user-3' },
-      { to: { name: 'settings-roles' }, permission: 'view-roles', title: 'Roles', icon: 'shield-user' },
-      { to: { name: 'settings-permissions' }, permission: 'view-permissions', title: 'Permissions', icon: 'key-2' },
+      { to: { name: 'settings-users' }, permission: 'list-users', title: 'Users', icon: 'user-3' },
+      { to: { name: 'settings-roles' }, permission: 'list-roles', title: 'Roles', icon: 'shield-user' },
+      { to: { name: 'settings-permissions' }, permission: 'list-permissions', title: 'Permissions', icon: 'key-2' },
     ],
   },
 ] as const satisfies readonly NavigationModule[])

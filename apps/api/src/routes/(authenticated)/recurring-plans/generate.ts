@@ -1,8 +1,11 @@
-import { and, asc, eq, lte } from 'drizzle-orm'
+import { and, asc, eq, lte, sql } from 'drizzle-orm'
 import { z } from 'zod/v4'
-import { getDb } from '../../../db'
+import { getDb, type Tx } from '../../../db'
 import { activities } from '../activities/activities.table'
-import { businessDate } from '../activities/dates'
+import { addCalendarDays, businessDate } from '../activities/dates'
+import { defaultTaskTarget } from '../activities/schema'
+import { queueActivityNotifications } from '../notifications/deliver'
+import { notificationOwnerId } from '../notifications/owner'
 import { recurringPlans } from './recurring-plans.table'
 import { intervalUnitSchema, recurringPlanSelectSchema } from './schema'
 
@@ -19,41 +22,49 @@ export function occurrenceDate(startDate: string, intervalCount: number, interva
   return z.iso.date().parse(date.toISOString().slice(0, 10))
 }
 
+export async function generatePlanOccurrences(tx: Tx, plan: z.output<typeof recurringPlanSelectSchema>, asOfDate: string, recipientId: string | null) {
+  const through = addCalendarDays(asOfDate, plan.leadDays)
+  let index = plan.occurrenceIndex
+  let scheduledDate = plan.nextOccurrenceDate
+  const tasks: { id: string; name: string; dueDate: string }[] = []
+  for (let step = 0; step < 100 && scheduledDate <= through; step += 1) {
+    const inserted = await tx.insert(activities).values({
+      name: plan.name,
+      description: plan.description,
+      roomId: plan.roomId,
+      tenantId: plan.tenantId,
+      workStatus: 'planned',
+      financialKind: plan.financialKind,
+      categoryId: plan.categoryId,
+      amount: plan.amount,
+      paymentStatus: plan.financialKind === 'none' ? null : 'draft',
+      recurringPlanId: plan.id,
+      occurrenceDate: scheduledDate,
+      dueDate: scheduledDate,
+      taskTarget: plan.taskTarget ?? defaultTaskTarget(plan),
+      createdByUserId: plan.createdByUserId,
+      updatedByUserId: plan.updatedByUserId,
+    }).onConflictDoNothing({ target: [activities.recurringPlanId, activities.occurrenceDate] }).returning({ id: activities.id })
+    if (inserted.length) tasks.push({ id: inserted[0].id, name: plan.name, dueDate: scheduledDate })
+    index += 1
+    scheduledDate = occurrenceDate(plan.startDate, plan.intervalCount, plan.intervalUnit, index)
+  }
+  if (recipientId) await queueActivityNotifications(tx, recipientId, tasks)
+  return { count: tasks.length, occurrenceIndex: index, nextOccurrenceDate: scheduledDate }
+}
 
 export async function generateDueActivities(asOfDate = businessDate()) {
   const through = z.iso.date().parse(asOfDate)
-  const due = await getDb().select({ id: recurringPlans.id }).from(recurringPlans)
-    .where(and(eq(recurringPlans.active, true), lte(recurringPlans.nextOccurrenceDate, through))).orderBy(asc(recurringPlans.id))
+  const ready = and(eq(recurringPlans.active, true), lte(sql`${recurringPlans.nextOccurrenceDate} - ${recurringPlans.leadDays}`, through))
+  const due = await getDb().select({ id: recurringPlans.id }).from(recurringPlans).where(ready).orderBy(asc(recurringPlans.id))
+  const recipientId = due.length ? await notificationOwnerId() : null
   let generated = 0
   for (const candidate of due) {
     generated += await getDb().transaction(async (tx) => {
-      const row = (await tx.select().from(recurringPlans).where(and(eq(recurringPlans.id, candidate.id), eq(recurringPlans.active, true))).for('update', { skipLocked: true }))[0]
+      const row = (await tx.select().from(recurringPlans).where(and(eq(recurringPlans.id, candidate.id), ready)).for('update', { skipLocked: true }))[0]
       if (!row) return 0
-      const plan = recurringPlanSelectSchema.parse(row)
-      let index = plan.occurrenceIndex
-      let scheduledDate = plan.nextOccurrenceDate
-      let count = 0
-      for (let step = 0; step < 100 && scheduledDate <= through; step += 1) {
-        const inserted = await tx.insert(activities).values({
-          name: plan.name,
-          description: plan.description,
-          roomId: plan.roomId,
-          tenantId: plan.tenantId,
-          workStatus: 'planned',
-          financialKind: plan.financialKind,
-          categoryId: plan.categoryId,
-          amount: plan.amount,
-          paymentStatus: plan.financialKind === 'none' ? null : 'draft',
-          recurringPlanId: plan.id,
-          occurrenceDate: scheduledDate,
-          createdByUserId: plan.createdByUserId,
-          updatedByUserId: plan.updatedByUserId,
-        }).onConflictDoNothing({ target: [activities.recurringPlanId, activities.occurrenceDate] }).returning({ id: activities.id })
-        count += inserted.length
-        index += 1
-        scheduledDate = occurrenceDate(plan.startDate, plan.intervalCount, plan.intervalUnit, index)
-      }
-      await tx.update(recurringPlans).set({ occurrenceIndex: index, nextOccurrenceDate: scheduledDate, updatedAt: new Date().toISOString() }).where(eq(recurringPlans.id, plan.id))
+      const { count, ...cursor } = await generatePlanOccurrences(tx, recurringPlanSelectSchema.parse(row), through, recipientId)
+      await tx.update(recurringPlans).set({ ...cursor, updatedAt: new Date().toISOString() }).where(eq(recurringPlans.id, row.id))
       return count
     })
   }

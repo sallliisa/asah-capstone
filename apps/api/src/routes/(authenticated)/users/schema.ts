@@ -4,6 +4,7 @@ import {
   createUpdateSchema,
 } from 'drizzle-orm/zod'
 import { z } from 'zod/v4'
+import { detectorResultSchema } from '../tenant-detector/schema'
 import { users } from './users.table'
 
 export const userStatusCodeSchema = z.enum(['active', 'non_active', 'expired', 'expiring_soon'])
@@ -27,6 +28,7 @@ export const userUpdateSchema = createUpdateSchema(users).omit({
 }).extend({ statusCode: userStatusCodeSchema.optional() })
 
 export const userSelectSchema = createSelectSchema(users).extend({ statusCode: userStatusCodeSchema })
+export const userPublicSchema = userSelectSchema.extend({ tenantAttentionGrade: detectorResultSchema.shape.grade.optional() })
 
 export const createUserSchema = z.object({
   name: z.string().trim().min(1).max(160),

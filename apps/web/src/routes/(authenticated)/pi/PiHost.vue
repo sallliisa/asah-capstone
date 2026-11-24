@@ -26,7 +26,7 @@ watch(
       connection.value = piSessionSchema.parse(body.data)
       rememberPiEndpoint(connection.value.url)
     } catch {
-      if (current === revision) message.value = 'Pi is unavailable. The rest of the app is ready to use.'
+      if (current === revision) message.value = 'Pi is unavailable.'
     }
   },
   { immediate: true }

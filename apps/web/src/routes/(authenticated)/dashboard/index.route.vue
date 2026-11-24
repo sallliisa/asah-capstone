@@ -14,6 +14,7 @@ import { activitiesActions } from '../activities/activities.actions'
 import { recurringPlans } from '../recurring-plans/recurring-plans.resource'
 import { recurringPlansActions } from '../recurring-plans/recurring-plans.actions'
 import DashboardCash from './DashboardCash.vue'
+import DashboardSampleAnalysis from './DashboardSampleAnalysis.vue'
 import { loadDashboardCash } from './dashboard.actions'
 import { permissions } from '@/stores/permissions'
 import { loadTenantPriorities } from '../tenant-detector/tenant-detector.actions'
@@ -74,7 +75,7 @@ const cashFilters = defineForm({
     },
     from: ({ draft }) => ({ label: 'From', renderer: 'date', visible: draft.period === 'custom' }),
     to: ({ draft }) => ({ label: 'To', renderer: 'date', visible: draft.period === 'custom' }),
-    roomId: { label: 'Room (empty means all rooms)', renderer: 'select', props: { load: activitiesActions.rooms, pick: 'id', view: 'name', clearable: true } },
+    roomId: { label: 'Room', renderer: 'select', props: { load: activitiesActions.rooms, pick: 'id', view: 'name', clearable: true, placeholder: 'All rooms' } },
   },
 })
 async function applyCashFilters(input: (typeof cashFilterSchema)['_output']) {
@@ -95,7 +96,7 @@ const {
 }))
 const snapshot = computed(() => snapshots.value[0])
 const {
-  records: upcoming,
+  records: upcomingPlans,
   meta: upcomingMeta,
   loading: plansLoading,
   error: plansError,
@@ -106,7 +107,7 @@ const {
   namespace: 'dashboard-upcoming',
   query: {},
 }))
-const upcomingTotal = computed(() => upcomingMeta.value?.total ?? upcoming.value.length)
+const upcomingTotal = computed(() => upcomingMeta.value?.total ?? upcomingPlans.value.length)
 const money = (value: number) => `Rp ${value.toLocaleString('id-ID')}`
 let interval: ReturnType<typeof setInterval> | undefined
 onMounted(() => {
@@ -152,7 +153,7 @@ onBeforeUnmount(() => clearInterval(interval))
     </Card>
     <Card class="attention-panel min-h-0 min-w-0 gap-2 p-3 lg:overflow-auto">
       <h2 class="text-base font-semibold">
-        Needs attention <span v-if="snapshot" class="text-sm font-normal text-on-surface-variant">({{ snapshot.attention.total }})</span>
+        To-do <span v-if="snapshot" class="text-sm font-normal text-on-surface-variant">({{ snapshot.attention.total }})</span>
       </h2>
       <p v-if="!canActivities('list')" role="alert">You do not have permission to view activities.</p>
       <p v-else-if="cashLoading" role="status">Loading activities…</p>
@@ -161,23 +162,29 @@ onBeforeUnmount(() => clearInterval(interval))
         <Button type="button" variant="text" @click="refreshCash">Retry</Button>
       </div>
       <template v-else-if="snapshot">
-        <p v-if="!snapshot.attention.items.length" class="text-sm text-on-surface-variant">No activities need attention.</p>
+        <p v-if="!snapshot.attention.items.length" class="text-sm text-on-surface-variant">No open tasks.</p>
         <ul v-else class="divide-y divide-outline-variant">
           <li v-for="activity in snapshot.attention.items" :key="activity.id" class="py-3 first:pt-0">
             <RouterLink :to="{ name: 'activities-detail', params: { activityId: activity.id } }" class="break-words font-medium text-primary underline">{{ activity.name }}</RouterLink>
             <p class="mt-1 text-sm text-on-surface-variant">{{ activity.roomName ?? 'Shared' }} · {{ activity.categoryName }}</p>
             <p class="mt-1 text-sm">
-              {{ `Work ${workStates.find((state) => state.id === activity.workStatus)?.name.toLowerCase()}`
-              }}<template v-if="activity.paymentStatus === 'draft'">
-                · {{ activity.financialKind === 'income' ? 'Income expected' : 'Payment needed' }}<template v-if="activity.amount !== null"> {{ money(activity.amount) }}</template></template
-              >
+              <template v-if="activity.taskTarget !== 'payment'">Work {{ workStates.find((state) => state.id === activity.workStatus)?.name.toLowerCase() }}</template>
+              <template v-if="activity.paymentStatus === 'draft'">
+                <template v-if="activity.taskTarget !== 'payment'"> · </template>{{ activity.financialKind === 'income' ? 'Income expected' : 'Payment needed' }}
+                <template v-if="activity.amount !== null"> {{ money(activity.amount) }}</template>
+              </template>
             </p>
             <p v-if="activity.expectedDate" class="mt-1 text-sm" :class="activity.overdue ? 'font-medium text-error' : 'text-on-surface-variant'">
-              {{ activity.overdue ? 'Overdue' : 'Expected' }} {{ activity.expectedDate }}
+              {{ activity.overdue ? 'Overdue' : 'Due' }} <time :datetime="activity.expectedDate" class="whitespace-nowrap">{{ activity.expectedDate }}</time>
             </p>
           </li>
         </ul>
-        <RouterLink v-if="snapshot.attention.total > snapshot.attention.items.length" :to="{ name: 'activities' }" class="text-sm text-primary underline">View all activities</RouterLink>
+        <RouterLink
+          v-if="snapshot.attention.total > snapshot.attention.items.length"
+          :to="{ name: 'activities', query: { openTasks: 'true', sort_by: 'dueDate', sort: 'asc' } }"
+          class="text-sm text-primary underline"
+          >View all open tasks</RouterLink
+        >
       </template>
       <section v-if="canAssess" class="flex flex-col gap-2">
         <h3 class="font-semibold">Tenant review priorities ({{ priorities.length }})</h3>
@@ -197,28 +204,33 @@ onBeforeUnmount(() => clearInterval(interval))
       </section>
     </Card>
     <Card class="plans-panel min-h-0 min-w-0 gap-2 p-3 lg:overflow-auto">
-      <h2 class="text-base font-semibold">
-        Upcoming plans <span v-if="!plansLoading && !plansError && canPlans('list')" class="text-sm font-normal text-on-surface-variant">({{ upcomingTotal }})</span>
-      </h2>
-      <p v-if="!canPlans('list')" role="alert">You do not have permission to view recurring plans.</p>
-      <p v-else-if="plansLoading" role="status">Loading plans…</p>
-      <div v-else-if="plansError" role="alert">
+      <h2 class="text-base font-semibold">Upcoming</h2>
+      <ul v-if="snapshot?.upcoming.length" class="divide-y divide-outline-variant">
+        <li v-for="activity in snapshot.upcoming" :key="activity.id" class="py-3 first:pt-0">
+          <RouterLink :to="{ name: 'activities-detail', params: { activityId: activity.id } }" class="break-words font-medium text-primary underline">{{ activity.name }}</RouterLink>
+          <p class="mt-1 text-sm text-on-surface-variant">
+            {{ activity.roomName ?? 'Shared' }} · Due <time :datetime="activity.expectedDate" class="whitespace-nowrap">{{ activity.expectedDate }}</time>
+          </p>
+        </li>
+      </ul>
+      <p v-if="canPlans('list') && plansLoading" role="status">Loading plans…</p>
+      <div v-else-if="canPlans('list') && plansError" role="alert">
         <p>Could not load plans.</p>
         <Button type="button" variant="text" @click="refreshPlans">Retry</Button>
       </div>
-      <template v-else>
-        <p class="text-sm text-on-surface-variant">Next 7 days</p>
-        <p v-if="!upcoming.length" class="text-sm text-on-surface-variant">No upcoming plans.</p>
-        <ul v-else class="divide-y divide-outline-variant">
-          <li v-for="plan in upcoming" :key="`${plan.planId}-${plan.expectedDate}`" class="py-3 first:pt-0">
+      <template v-else-if="upcomingPlans.length">
+        <h3 class="text-sm font-semibold">Recurring plans due in the next 7 days</h3>
+        <ul class="divide-y divide-outline-variant">
+          <li v-for="plan in upcomingPlans" :key="`${plan.planId}-${plan.expectedDate}`" class="py-3 first:pt-0">
             <RouterLink :to="{ name: 'recurring-plans-detail', params: { planId: plan.planId } }" class="break-words font-medium text-primary underline">{{ plan.name }}</RouterLink>
             <p class="mt-1 text-sm text-on-surface-variant">{{ plan.roomName ?? 'Shared' }} · {{ plan.categoryName }}</p>
             <p class="mt-1 text-sm">Expected {{ plan.expectedDate }}</p>
             <p v-if="plan.amount !== null" class="mt-1 text-sm">{{ plan.financialKind === 'income' ? 'Income' : 'Expense' }} {{ money(plan.amount) }}</p>
           </li>
         </ul>
-        <RouterLink v-if="upcomingTotal > upcoming.length" :to="{ name: 'recurring-plans' }" class="text-sm text-primary underline">View all recurring plans</RouterLink>
+        <RouterLink v-if="upcomingTotal > upcomingPlans.length" :to="{ name: 'recurring-plans' }" class="text-sm text-primary underline">View all recurring plans</RouterLink>
       </template>
+      <p v-else-if="!snapshot?.upcoming.length && !cashLoading && !cashError" class="text-sm text-on-surface-variant">No upcoming activities.</p>
     </Card>
     <section aria-label="Cash overview" class="cash-panel flex min-h-0 min-w-0 flex-col gap-3 lg:overflow-auto">
       <Form v-if="canActivities('list')" v-bind="cashFilters" :submit="applyCashFilters" />
@@ -229,6 +241,7 @@ onBeforeUnmount(() => clearInterval(interval))
         <Button type="button" variant="text" @click="refreshCash">Retry</Button>
       </div>
       <DashboardCash v-else-if="snapshot" :snapshot="snapshot" />
+      <DashboardSampleAnalysis v-if="canActivities('list')" />
     </section>
   </div>
 </template>

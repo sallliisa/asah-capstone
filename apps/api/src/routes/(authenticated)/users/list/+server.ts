@@ -1,8 +1,9 @@
 import { list, validationError } from '@southneuhof/sprindle'
 import { and, asc, countDistinct, desc, eq, getTableColumns, ilike, or, type SQL } from 'drizzle-orm'
 import { getDb } from '../../../../db'
-import { requirePermission } from '../../../../identity'
-import { userSelectSchema } from '../schema'
+import { requireOrgIdentity, requirePermission } from '../../../../identity'
+import { tenantDetectorPredictions, tenantDetectorState } from '../../tenant-detector/tenant-detector.table'
+import { userPublicSchema } from '../schema'
 import { users } from '../users.table'
 
 const userColumns = getTableColumns(users) as Record<string, unknown>
@@ -54,12 +55,22 @@ export const GET = list({
     const page = Number(query.page)
     const limit = Number(query.limit)
     const db = getDb()
+    const { permissions } = await requireOrgIdentity(args)
+    const canReadGrades = permissions.has('view-users') && permissions.has('view-activities')
+    const base = db
+      .selectDistinct({ user: users, ...(canReadGrades ? { tenantAttentionGrade: tenantDetectorPredictions.grade } : {}) })
+      .from(users)
+    const usersQuery = canReadGrades
+      ? base
+        .leftJoin(tenantDetectorState, eq(tenantDetectorState.tenantId, users.id))
+        .leftJoin(tenantDetectorPredictions, eq(tenantDetectorPredictions.id, tenantDetectorState.latestPredictionId))
+      : base
     const [rows, totalRows] = await Promise.all([
-      db.selectDistinct({ user: users }).from(users).where(where).orderBy(...orderClause(query, userColumns, [asc(users.name)])).limit(limit).offset((page - 1) * limit),
+      usersQuery.where(where).orderBy(...orderClause(query, userColumns, [asc(users.name)])).limit(limit).offset((page - 1) * limit),
       db.select({ value: countDistinct(users.id) }).from(users).where(where),
     ])
     return {
-      data: rows.map(({ user: row }) => userSelectSchema.parse(row)),
+      data: rows.map(({ user: row, ...assessment }) => userPublicSchema.parse({ ...row, ...assessment })),
       total: Number(totalRows[0]?.value ?? 0),
     }
   },

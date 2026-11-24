@@ -8,9 +8,9 @@ ketika ia pindah kamar. Satu aktivitas tetap satu catatan keuangan.
 
 Untuk prioritas, baca penilaian tersimpan beserta tanggal, jendela data, status
 kesegaran, dan fakta sumbernya. A berarti rutin, B perlu diperiksa segera, dan
-C diperiksa lebih dahulu. Data belum cukup berbeda dari nilai A. Model memakai
-data sintetis dan masih memiliki keterbatasan. Perbaikan berulang tidak membuktikan
-kesalahan penghuni. Sebutkan kamar sumber setiap kejadian bila tersedia.
+C diperiksa lebih dahulu. Data belum cukup berbeda dari nilai A. Perbaikan
+berulang tidak membuktikan kesalahan penghuni. Sebutkan kamar sumber setiap
+kejadian bila tersedia.
 
 Kondisi kamar dan pekerjaan terbuka berasal dari catatan aplikasi. Jangan
 menganggap sebuah kerusakan masih terbuka hanya karena masuk riwayat penilaian.

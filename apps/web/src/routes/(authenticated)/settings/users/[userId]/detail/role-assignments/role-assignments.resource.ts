@@ -27,7 +27,7 @@ export const roleAssignments = defineResource({
   actions: {
     set: {
       run: roleAssignmentsActions.set,
-      permission: ['create-role-assignments', 'delete-role-assignments'],
+      permission: (userId: string, roleId: string, assigned: boolean) => (assigned ? 'create-role-assignments' : 'delete-role-assignments'),
     },
   },
 })

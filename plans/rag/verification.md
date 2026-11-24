@@ -100,3 +100,24 @@ actual settled cash and a record link. Wisp reopened that saved answer. See
 ../pi-chat/verification.md and ../../deploy/cfos-verification.md. This proves
 the generation, embedding, vector retrieval, classifier, and app-read connection;
 it does not increase the size or scope of the authored retrieval evaluation.
+
+## Offline comparison, 24 November 2026
+
+On 40 fresh Indonesian questions with known intent, the best lexical candidate
+and the lexical baseline each found support for 2 of 28 answerable questions.
+Both returned no passages for the 12 unanswerable questions. The candidate
+returned one wrong passage on an answerable question.
+
+On archived hosted scores, the tested cutoffs raised supported returns from
+19 to 23 of 24 on one corpus snapshot and from 18 to 22 of 24 on another.
+Both snapshots used the same archived questions. Precision stayed at 100%
+and neither version returned passages for the eight unanswerable questions.
+
+In the offline cascade, intent v4 correctly routed 3 of 13 Guidance questions
+with an identified supporting passage. Intent v3 routed none of the 13.
+The lexical confidence gate returned no supporting passages in either run.
+The archived scores do not contain the embeddings, search results, and
+reranker scores for the fresh questions. The active retrieval policy stays
+in use pending fresh hosted evidence.
+
+The comparison files are in `.local/retrieval-hillclimb-20261124/`.

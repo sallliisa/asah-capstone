@@ -47,7 +47,7 @@ describe('sdk createRpcClient', () => {
     type UpdateRequest = InferRequestType<RpcClient['users']['update'][':id']['$patch']>
     type CreateResponse = InferResponseType<RpcClient['users']['create']['$post'], 201>
 
-    expectTypeOf<ListResponse['data'][number]>().toEqualTypeOf<{ id: string; name: string; email: string; emailVerified: boolean; image: string | null; statusCode: 'active' | 'expired' | 'expiring_soon' | 'non_active'; createdAt: string; updatedAt: string }>()
+    expectTypeOf<ListResponse['data'][number]>().toEqualTypeOf<{ id: string; name: string; email: string; emailVerified: boolean; image: string | null; statusCode: 'active' | 'expired' | 'expiring_soon' | 'non_active'; createdAt: string; updatedAt: string; tenantAttentionGrade?: 'A' | 'B' | 'C' | null }>()
     expectTypeOf<CreateRequest>().toEqualTypeOf<{ json: { name: string; email: string; password: string; roleIds: string[] } }>()
     expectTypeOf<UpdateRequest>().toMatchTypeOf<{ param: { id: string }; json: { name?: string; statusCode?: 'active' | 'expired' | 'expiring_soon' | 'non_active' } }>()
     expectTypeOf<{ param: { id: string }; json: { name?: string; statusCode?: 'active' | 'expired' | 'expiring_soon' | 'non_active' } }>().toMatchTypeOf<UpdateRequest>()

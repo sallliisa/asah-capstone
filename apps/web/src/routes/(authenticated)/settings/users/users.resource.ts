@@ -61,7 +61,7 @@ export const users = defineResource({
   key: 'users',
   identity: (record: { id: string }) => record.id,
   list: {
-    permission: 'view-users',
+    permission: 'list-users',
     route: { name: 'settings-users' },
     table: { ...usersTable, load: usersActions.list },
   },
@@ -71,7 +71,7 @@ export const users = defineResource({
     form: userCreateForm,
   },
   detail: {
-    permission: 'view-users',
+    permission: 'detail-users',
     route: { name: 'settings-users-detail', params: (id) => ({ userId: String(id) }) },
     title: 'User Detail',
     detail: () => ({ ...userDetail, load: usersActions.detail }),

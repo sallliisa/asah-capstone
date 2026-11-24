@@ -19,7 +19,6 @@ vi.mock('./role-assignments.actions', () => ({
     set: mocks.set,
   },
 }))
-vi.mock('@/stores/permissions', () => ({ permissions: () => ({ can: mocks.can }) }))
 vi.mock('vue-sonner', () => ({ toast: { error: mocks.toastError } }))
 
 const Route = (await import('./index.route.vue')).default
@@ -57,7 +56,7 @@ async function mountRoute(path = '/settings/users/u1/detail/role-assignments') {
   cleanupMountedRoute = unmount
   app.use(router)
   app.use(FrameworkPlugin, {
-    adapters: resolveFrameworkAdapters({ query: createRouteQueryAdapter(router) }),
+    adapters: resolveFrameworkAdapters({ query: createRouteQueryAdapter(router), access: { allows: ({ permission }) => mocks.can(permission) } }),
     renderers: { display: appDisplayRenderers },
     queryClient,
   })
@@ -107,6 +106,19 @@ afterEach(() => {
 })
 
 describe('role assignment screen', () => {
+  it.each([
+    ['create-role-assignments', 'r4', 'r1', true],
+    ['delete-role-assignments', 'r1', 'r4', false],
+  ] as const)('allows the available action with only %s', async (permission, enabledId, disabledId, assigned) => {
+    mocks.can.mockImplementation((code) => code === 'list-role-assignments' || code === permission)
+    const view = await mountRoute()
+    expect(view.switchButton(disabledId).disabled).toBe(true)
+    const enabled = view.switchButton(enabledId)
+    expect(enabled.disabled).toBe(false)
+    enabled.click()
+    await vi.waitFor(() => expect(view.switchButton(enabledId).getAttribute('aria-checked')).toBe(String(assigned)))
+  })
+
   it('lists roles and toggles assignment without scope filters', async () => {
     const view = await mountRoute()
 

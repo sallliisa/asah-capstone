@@ -15,7 +15,7 @@ Earlier draft labels describe proposals now included in that approval.
 Help the owner choose which tenants need a review, using associated repairs,
 extra cleaning, and rent payments across their rooms. Keep one Activity record
 with a room reference and an optional historical tenant reference. Use one
-Isolation Forest model and save its tenant results in the app.
+trained tenant classifier and save its results in the app.
 
 Included: synthetic data, feature calculations, recorded activity history, model
 comparison, grade calibration, saved predictions, serving, refresh jobs, and
@@ -30,7 +30,7 @@ retraining, and automated maintenance actions. Tax reminders use owner-set dates
 | Topic | Decision |
 |---|---|
 | Grades | A · Routine; B · Check soon; C · Check first. Owner-review priority, with Not enough data separate. |
-| Model | One Isolation Forest, without a hand-made weighted combination of area scores. |
+| Model | One supervised histogram gradient-boosted tree classifier trained on synthetic A/B/C labels. |
 | Assessment owner | Tenant. Associated events and the grade follow the tenant across room changes. A move does not reset the grade. |
 | Activity history | One activity appears in room and tenant histories. The tenant association persists after move-out, with explicit corrections allowed. No duplicate financial record. |
 | Stay records | Not required for this version. The grade is not keyed to a tenant-room period. |
@@ -69,9 +69,8 @@ need validation under those meanings.
 | # | Capability | Access | Result |
 |---|---|---|---|
 | 1 | Read results and history | View Users and View Activities; room views also require View Rooms | Saved tenant grade, effective window, reasons, and freshness. |
-| 2 | Review priorities | Same read access | C before B before A, then descending abnormality within a grade. |
-| 3 | Request refresh | Update Users and the read permissions above | Queue a refresh and retain the last result while it runs. |
-| 4 | Process refresh | Internal authenticated job | Save a versioned result or a clear failure state. |
+| 2 | Review priorities | Same read access | C before B before A. Within a grade, show the most recently refreshed model group first, then sort by score within that group. |
+| 3 | Process refresh | Internal authenticated job | Save a versioned result or a clear failure state. |
 
 Reasons can disclose financial information. Occupant room access alone must
 not grant these reads. Pi uses the same app permissions; a shared CloudflareOS
@@ -109,9 +108,10 @@ payments have no expected date and cannot provide lateness. A cancelled work
 state does not cancel a Draft payment. Use actual activity amounts for past
 rent; current room-type cost must not replace historical amounts.
 
-Catch up the existing recurrence generator before scoring. If its cursor has
-not passed the snapshot date, scheduled data is incomplete. Do not interpret
-missing due rows as paid rent.
+Catch up the existing recurrence generator before scoring. A due, active Room
+Rent income plan for the tenant makes the rent data incomplete until generation
+catches up. The service returns recorded repair and cleaning facts even when it
+cannot issue a grade.
 
 ### 3.2 Dates and recorded history
 
@@ -220,47 +220,24 @@ fixture dates; normal manual-create completion dates remain server-owned.
 
 ### 3.5 Model comparison and grade calibration
 
-Use a fixed split: 420 tenant histories for training, 90 validation, and 90 final
-evaluation. Keep every tenant and related generation group in one split.
-Generate separate room groups within each split. A shared room history and
-its tenants never cross a split boundary. Moves remain within their group.
-Reserve independently written boundary/stress cases. Do not copy one template
-across splits with new tenant IDs. Freeze seeds and split manifests first.
-Assign generation groups to splits before creating their histories.
+On 24 November 2026 the user approved the boosted-tree candidate to replace
+Isolation Forest v2. The classifier uses the existing engineered inputs and
+the number of settled rent payments made after their due dates. It uses the
+same observation window and eligibility rules. It learns from synthetic A/B/C
+labels. The stored score is an expected grade index from 0 to 2. The score
+orders tenants within a grade and model version.
 
-| Experiment | Inputs | Parameters |
-|---|---|---|
-| Baseline | Usable-window repair count, repair spend, extra-cleaning count, settled-late rent count, oldest unpaid days, and overdue amount. | 100 trees, max_samples auto, max_features 1.0, contamination auto, fixed random state, one CPU thread. |
-| Feature engineering | The nine features above. | Same baseline parameters. |
-| Tuning | The same nine engineered features. | At most 12 candidates: 100/200 trees × 128/256/512 samples × 0.75/1.0 feature fractions. Clamp samples to available rows. |
+Fit on eligible snapshots in the 420-tenant training split. Use the
+90-tenant validation split and ten known cases to choose two grade
+boundaries. Keep each tenant and related room group in one split.
+Train with the parameters and boundaries in the reviewed evaluation record.
+The score and cutoffs belong to that model version.
 
-Fit the same training snapshots without passing labels to Isolation Forest.
-Keep window and coverage rules identical across experiments. Store negative
-score_samples so larger values mean more unusual inputs. This is not a
-probability or a direct measure of business severity.
-
-Choose two ordered score boundaries using validation data. Select by A/B/C
-macro-F1, then C recall, then smaller model size. Report binary precision,
-recall, and F1 for B-or-C versus A, per-grade metrics, and a confusion matrix.
-Report eligibility failures separately. Do not force a percentage of current
-tenants into B or C or retrain boundaries from the current tenant list.
-
-Proposed release targets: binary F1 at least 0.80, C recall at least 0.85, and
-at most 10% false B/C results among ordinary held-out cases. These are targets,
-not results. Inspect errors by area, history length, rent price, isolated cost,
-and recovery. Publish failures. If score ordering cannot support useful grades,
-report the limitation and recommend a focused change rather than fabricate a
-success or silently replace the model.
-
-Any change informed by final evaluation needs a fresh held-out evaluation set.
-Retain the original result. Synthetic evaluation establishes behavior under
-these assumptions, not real-business accuracy. Numerical boundaries belong to
-the versioned artifact; A/B/C meanings remain unchanged.
-
-Before calibration, give the held-out scenario labels a separate review against
-the agreed priority examples. The generator must not attach a grade merely
-because it chose a family name. Keep the final evaluation labels and cases
-unavailable to parameter and boundary selection.
+Use fresh held-out tenant groups for the paired comparison. The approved
+candidate scored 107 of 107 Grade C snapshots correctly and flagged 8 of
+2,140 ordinary snapshots, compared with 101 and 28 for Isolation Forest v2.
+Both fresh test sets use the synthetic generator. Review the input facts
+before acting on a grade. Retain the results for earlier versions.
 
 ### 3.6 Predictions, facts, and persistence
 
@@ -300,7 +277,7 @@ Internal jobs use a separate credential, not an owner session.
    each grade, then stable tenant-name order. Show each tenant once, with eight
    entries and the total. Ungraded overdue rent remains in the existing due list.
 3. Open the tenant profile for the grade, window, saved time, facts,
-   Refresh, activity history, and prediction history. Room detail shows a current
+   refresh state, activity history, and prediction history. Room detail shows a current
    tenant summary and links to that profile. Show source rooms beside reasons.
 4. Read prior results with their dates while refresh runs. Current overdue facts
    still come from current records.
@@ -331,7 +308,6 @@ server environment values. Use HTTPS when the app API is outside the VPS.
 | GET /detail/:tenantId | Latest tenant result, freshness, and current authorized overdue facts. |
 | GET /list | Saved tenant priority projection, associated rooms, reasons, window, and freshness. |
 | GET /history/:tenantId | Paginated saved results, newest first. |
-| POST /refresh/:tenantId | Mark pending and return Accepted; no synchronous inference. |
 
 Use existing Sprindle scopes, permissions, schemas, and the app action adapter.
 No framework changes are proposed. Concrete HTTP adapter, package pins, SQL
@@ -383,7 +359,7 @@ routes, release targets, and refresh mechanics remain Draft for later review.
 
 ## References
 
-- [Isolation Forest](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html): estimator parameters and score direction.
+- [Current model and evaluation](../../services/models/model-card.md).
 - [GroupShuffleSplit](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GroupShuffleSplit.html): group split mechanics; separating generator groups is our additional rule.
 - [Model persistence](https://scikit-learn.org/stable/model_persistence.html): artifact trust and compatible serving environments.
 - [Dataset review](../anomaly-dataset-review.md): public-source fit and synthetic-data rationale.

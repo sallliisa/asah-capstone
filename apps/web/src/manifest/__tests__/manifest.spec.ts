@@ -31,11 +31,11 @@ describe('navigation entrypoints', () => {
     expect(targets.length).toBeGreaterThan(0)
   })
 
-  it('keeps dashboard and settings entrypoints with their grants', () => {
-    const settings = navigation.find((module) => module.name === 'settings')!
-    expect(settings.routes).toContainEqual({ to: { name: 'settings-users' }, permission: 'view-users', title: 'Users', icon: 'user-3' })
-    expect(settings.routes).toContainEqual({ to: { name: 'settings-roles' }, permission: 'view-roles', title: 'Roles', icon: 'shield-user' })
-    expect(settings.routes).toContainEqual({ to: { name: 'settings-permissions' }, permission: 'view-permissions', title: 'Permissions', icon: 'key-2' })
+  it.each(['users', 'roles', 'permissions'])('shows the %s menu with only its list grant', (module) => {
+    const canList = visibleNavigation((permission) => permission === `list-${module}`)
+    expect(canList.flatMap(({ routes }) => routes.map(({ name }) => name))).toEqual([`settings-${module}`])
+    const canViewDetails = visibleNavigation((permission) => permission === `detail-${module}` || permission === `view-${module}`)
+    expect(canViewDetails.find(({ name }) => name === 'settings')).toBeUndefined()
   })
 
   it('matches entrypoint subtrees at segment boundaries and prefers longest target', () => {
@@ -52,14 +52,10 @@ describe('navigation entrypoints', () => {
     expect(matchesNavigationPath('/settings/users-archived', '/settings/users')).toBe(false)
   })
 
-  it('keeps only open menus visible without grants', () => {
-    const visible = visibleNavigation(() => false)
-    const routes = visible
-      .flatMap((module) => module.routes)
-      .filter((entry) => !('separator' in entry))
-      .map((entry) => entry.name)
-
-    expect(routes).toEqual(['dashboard'])
+  it('shows Dashboard when the user can view rooms', () => {
+    expect(visibleNavigation(() => false).map(({ name }) => name)).not.toContain('dashboard')
+    const visible = visibleNavigation((permission) => permission === 'view-rooms')
+    expect(visible.map(({ name }) => name)).toContain('dashboard')
   })
 
   it('uses active catalog codes for every guarded entrypoint', () => {

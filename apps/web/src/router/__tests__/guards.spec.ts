@@ -170,8 +170,8 @@ describe('permission guard', () => {
     const denied = createPermissionGuard(denyAll)({ meta: { permission: 'view-roles' } } as any, {} as any, next)
 
     expect(allowed).toBe(true)
-    expect(denied).toEqual({ name: 'dashboard' })
-    expect(getDefaultRouteSpy).toHaveBeenCalledOnce()
+    expect(denied).toEqual({ path: '/access-denied', replace: true })
+    expect(getDefaultRouteSpy).not.toHaveBeenCalled()
   })
 
   it('allows unregistered routes without explicit permission', () => {
@@ -181,19 +181,19 @@ describe('permission guard', () => {
   it('checks a registered project create action through the access adapter', () => {
     createResource('project-create-route', 'create-quality-inspection', 'settings-users-create')
 
-    expect(createPermissionGuard(denyAll)({ name: 'settings-users-create', meta: {} } as any, {} as any, next)).toEqual({ name: 'dashboard' })
+    expect(createPermissionGuard(denyAll)({ name: 'settings-users-create', meta: {} } as any, {} as any, next)).toEqual({ path: '/access-denied', replace: true })
   })
 
   it('checks a registered project update action through the access adapter', () => {
     updateResource('project-update-route', 'update-quality-inspection')
 
-    expect(createPermissionGuard(denyAll)({ name: 'settings-users-edit', meta: {} } as any, {} as any, next)).toEqual({ name: 'dashboard' })
+    expect(createPermissionGuard(denyAll)({ name: 'settings-users-edit', meta: {} } as any, {} as any, next)).toEqual({ path: '/access-denied', replace: true })
   })
 
   it('still rejects denied browser access for a registered system create action', () => {
     createResource('system-create-route', 'create-users', 'settings-roles-create')
 
-    expect(createPermissionGuard(denyAll)({ name: 'settings-roles-create', meta: {} } as any, {} as any, next)).toEqual({ name: 'dashboard' })
+    expect(createPermissionGuard(denyAll)({ name: 'settings-roles-create', meta: {} } as any, {} as any, next)).toEqual({ path: '/access-denied', replace: true })
   })
 
   it('requires every static command permission with the registered operation', () => {
@@ -228,11 +228,11 @@ describe('permission guard', () => {
     const guard = createPermissionGuard(access)
     const to = { name: 'settings-users', meta: {} } as any
 
-    expect(guard(to, {} as any, next)).toEqual({ name: 'dashboard' })
+    expect(guard(to, {} as any, next)).toEqual({ path: '/access-denied', replace: true })
     expectBothPermissions()
     granted.add('records.audit')
     requests.length = 0
-    expect(guard(to, {} as any, next)).toEqual({ name: 'dashboard' })
+    expect(guard(to, {} as any, next)).toEqual({ path: '/access-denied', replace: true })
     expectBothPermissions()
     granted.add('records.read')
     requests.length = 0
@@ -262,7 +262,7 @@ describe('permission guard', () => {
     const router = createRouter({
       history: createMemoryHistory(),
       routes: [
-        { path: '/dashboard', name: 'dashboard', component: { template: '<main>dashboard</main>' } },
+        { path: '/access-denied', name: 'access-denied', component: { template: '<main>denied</main>' } },
         {
           path: '/detail/:id',
           name: 'settings-roles-detail',
@@ -277,12 +277,12 @@ describe('permission guard', () => {
 
     await router.push('/detail/7')
 
-    expect(router.currentRoute.value.name).toBe('dashboard')
+    expect(router.currentRoute.value.name).toBe('access-denied')
   })
 
-  it('falls back to root when no accessible route exists', () => {
+  it('gives denied direct links an explicit destination when there is no home', () => {
     getDefaultRouteSpy.mockReturnValue(null as any)
     const result = createPermissionGuard(denyAll)({ meta: { permission: 'view-roles' } } as any, {} as any, next)
-    expect(result).toEqual({ path: '/' })
+    expect(result).toEqual({ path: '/access-denied', replace: true })
   })
 })

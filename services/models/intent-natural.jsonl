@@ -1,0 +1,322 @@
+{"text": "Yg tinggal di 11B namanya siapa ya", "intent": "rooms", "split": "train"}
+{"text": "Unit blok D yang bisa dialokasikan sekarang?", "intent": "rooms", "split": "train"}
+{"text": "daftar penghuni dan unit tinggalnya dong", "intent": "rooms", "split": "train"}
+{"text": "Berapa unit terisi di lantai dasar?", "intent": "rooms", "split": "train"}
+{"text": "Lantai paling atas ada unit tersedia nggak", "intent": "rooms", "split": "train"}
+{"text": "Nomor 10 sedang kosong atau ditutup?", "intent": "rooms", "split": "train"}
+{"text": "Adakah unit yang masih dibuka untuk ditawarkan?", "intent": "rooms", "split": "train"}
+{"text": "Info pencatatannya si Reza sekarang tinggal di mana", "intent": "rooms", "split": "train"}
+{"text": "Siapa penghuni terakhir sebelum B12 kosong?", "intent": "rooms", "split": "train"}
+{"text": "Bisa cari unit yang pernah ditinggali Salsa?", "intent": "rooms", "split": "train"}
+{"text": "Tampilkan profil Tania dari daftar tenant.", "intent": "rooms", "split": "train"}
+{"text": "Nama dan status kamar dari data terbaru.", "intent": "rooms", "split": "train"}
+{"text": "Siapa saja tenant masuk dan keluar bulan ini?", "intent": "rooms", "split": "train"}
+{"text": "Berapa kali Dewi pindah unit menurut catatan?", "intent": "rooms", "split": "train"}
+{"text": "Histori penggunaan unit A9 ada siapa aja?", "intent": "rooms", "split": "train"}
+{"text": "Lihat kapasitas kamar yang belum terisi.", "intent": "rooms", "split": "train"}
+{"text": "Kamar yang tidak bisa dipakai sementara ada berapa?", "intent": "rooms", "split": "train"}
+{"text": "Periksa apa kamar 17 sudah kembali tersedia.", "intent": "rooms", "split": "train"}
+{"text": "Cek isi daftar tenant yang menempati blok S.", "intent": "rooms", "split": "train"}
+{"text": "Penghuninya siapa dan cocok dengan kamar berapa?", "intent": "rooms", "split": "train"}
+{"text": "Bisa buka detail unit C2?", "intent": "rooms", "split": "train"}
+{"text": "Gerendel di F2 pernah rusak sebelumnya enggak?", "intent": "rooms", "split": "train"}
+{"text": "Kerusakan dinding yang belum ditangani ada di ruang mana?", "intent": "rooms", "split": "train"}
+{"text": "Temuan pintu berderit pernah dilaporkan siapa?", "intent": "rooms", "split": "train"}
+{"text": "Cek laporan lampu mati buat kamar A-8.", "intent": "rooms", "split": "train"}
+{"text": "Dari catatan unitnya Sari, masalah jendela udah kelar belum?", "intent": "rooms", "split": "train"}
+{"text": "Pipa mampet itu ada riwayat penanganan di unit mana?", "intent": "rooms", "split": "train"}
+{"text": "Berapa keluhan fasilitas yang pernah tercatat untuk B7?", "intent": "rooms", "split": "train"}
+{"text": "Ambil histori perawatan untuk penghuni Niko.", "intent": "rooms", "split": "train"}
+{"text": "Di daftar komplain gedung, mana yg terkait Ema?", "intent": "rooms", "split": "train"}
+{"text": "Masalah yang dilaporkan orang dari unit 21 itu apa saja?", "intent": "rooms", "split": "train"}
+{"text": "Gimana kondisi unit 4A dari laporan terakhir?", "intent": "rooms", "split": "train"}
+{"text": "Penghuni terdampak listrik padam itu siapa saja?", "intent": "rooms", "split": "train"}
+{"text": "Rinci aktivitas perawatan dari unit paling dekat pintu masuk.", "intent": "rooms", "split": "train"}
+{"text": "Status laporan hama sekarang sudah ditindaklanjuti?", "intent": "rooms", "split": "train"}
+{"text": "Ada perawatan atau kerusakan berulang selama Nuri tinggal?", "intent": "rooms", "split": "train"}
+{"text": "Periksa rating perhatian penghuni Wawan.", "intent": "rooms", "split": "train"}
+{"text": "Nilai yang tersimpan buat Dinda terakhir apa?", "intent": "rooms", "split": "train"}
+{"text": "Dari hasil penilaian terkini, siapa yang harus saya periksa lebih dulu?", "intent": "rooms", "split": "train"}
+{"text": "Ada tenant dengan grade B belum saya tinjau?", "intent": "rooms", "split": "train"}
+{"text": "Tunjukkan fakta sumber penilaian untuk tenant Revi.", "intent": "rooms", "split": "train"}
+{"text": "Sejak pindah kamar, apakah grade Gina di data sudah berubah?", "intent": "rooms", "split": "train"}
+{"text": "Siapa saja yang nilai perhatiannya belum tersedia?", "intent": "rooms", "split": "train"}
+{"text": "Tenant mana yang perlu perhatian segera menurut data?", "intent": "rooms", "split": "train"}
+{"text": "Baru pakai aplikasi. Mulai dari menu apa untuk daftar penghuni?", "intent": "guidance", "split": "train"}
+{"text": "Prosedur membuat akun untuk orang yang baru masuk gimana?", "intent": "guidance", "split": "train"}
+{"text": "Kalau salah masukin nomor kamar, bagaimana memperbaikinya?", "intent": "guidance", "split": "train"}
+{"text": "Langkah menghubungkan akun yang sudah ada dengan unit kosong apa?", "intent": "guidance", "split": "train"}
+{"text": "Bagaimana memindahkan penghuni tanpa menghapus data sebelum pindah?", "intent": "guidance", "split": "train"}
+{"text": "Apa saja yang perlu dicatat sewaktu orang keluar dari kos?", "intent": "guidance", "split": "train"}
+{"text": "Klo mau menutup unit sementara, masuk halaman apa?", "intent": "guidance", "split": "train"}
+{"text": "Status terisi itu muncul otomatis atau saya ubah sendiri?", "intent": "guidance", "split": "train"}
+{"text": "Apa definisi penghuni aktif di pengaturan?", "intent": "guidance", "split": "train"}
+{"text": "Ada tutorial memilih kamar waktu menambah tenant?", "intent": "guidance", "split": "train"}
+{"text": "Riskan gak kalau edit data orang saat dia pindah unit?", "intent": "guidance", "split": "train"}
+{"text": "Beri instruksi supaya unit yang lama tersedia lagi setelah penghuninya keluar.", "intent": "guidance", "split": "train"}
+{"text": "Dimana caranya perbarui kontak orang kalau akunnya sudah aktif?", "intent": "guidance", "split": "train"}
+{"text": "Ganti nomor WhatsApp penyewa dari menu apa?", "intent": "guidance", "split": "train"}
+{"text": "Caranya benerin entri profil yang namanya salah ketik?", "intent": "guidance", "split": "train"}
+{"text": "Dokumen apa yang sebaiknya diminta saat serah kunci?", "intent": "guidance", "split": "train"}
+{"text": "Bisa jelaskan arti grade B buat admin kos?", "intent": "guidance", "split": "train"}
+{"text": "Grade A sama belum dinilai bedanya di mana?", "intent": "guidance", "split": "train"}
+{"text": "Seperti apa interpretasi kategori perhatian C?", "intent": "guidance", "split": "train"}
+{"text": "Kenapa data tenant yang baru sebentar tinggal belum dinilai?", "intent": "guidance", "split": "train"}
+{"text": "Bagaimana memakai hasil penilaian tanpa menyalahkan penghuni?", "intent": "guidance", "split": "train"}
+{"text": "Label penilaian kedaluwarsa artinya apa?", "intent": "guidance", "split": "train"}
+{"text": "Bagaimana sistem menentukan urutan perhatian penghuni?", "intent": "guidance", "split": "train"}
+{"text": "Langkah untuk koreksi aktivitas yang salah terhubung ke orang lain?", "intent": "guidance", "split": "train"}
+{"text": "Jelaskan hubungan catatan perbaikan dan riwayat unit.", "intent": "guidance", "split": "train"}
+{"text": "Di aplikasi ini indikator mana yang menyatakan kerja selesai?", "intent": "guidance", "split": "train"}
+{"text": "Untuk satu perbaikan, perlu input pengeluaran di dua tempat?", "intent": "guidance", "split": "train"}
+{"text": "Apa yang harus diisi sebagai bukti transaksi?", "intent": "guidance", "split": "train"}
+{"text": "Dimana saya bisa menaruh lampiran struk pembelian?", "intent": "guidance", "split": "train"}
+{"text": "Cara pakai kolom tanggal pembayaran yang benar?", "intent": "guidance", "split": "train"}
+{"text": "Kapan biaya masih harus diberi status draf?", "intent": "guidance", "split": "train"}
+{"text": "Kenapa transfer yang belum diselesaikan jangan masuk kas nyata?", "intent": "guidance", "split": "train"}
+{"text": "Bedanya uang diterima dan saldo bersih itu apa?", "intent": "guidance", "split": "train"}
+{"text": "Jelaskan maksud perbedaan tanggal kegiatan dan tanggal bayar.", "intent": "guidance", "split": "train"}
+{"text": "Kalau tagihan sudah dibuat tapi duit baru masuk besok, isinya bagaimana?", "intent": "guidance", "split": "train"}
+{"text": "Gimana klasifikasi pembelian selang sebagai pengeluaran?", "intent": "guidance", "split": "train"}
+{"text": "Dimana mulai mencatat uang yang diterima dari penyewaan parkir?", "intent": "guidance", "split": "train"}
+{"text": "Dapatkah saya ubah kategori setelah menyimpan transaksi? Kasih langkahnya.", "intent": "guidance", "split": "train"}
+{"text": "Dibayar penuh lewat cicilan, cara dokumentasinya bagaimana sebaiknya?", "intent": "guidance", "split": "train"}
+{"text": "Supaya kwitansi gampang dicari lagi, kolom mana yang perlu dilengkapi?", "intent": "guidance", "split": "train"}
+{"text": "Kapan tanggal mulai rencana dan tenggat harus dibedakan?", "intent": "guidance", "split": "train"}
+{"text": "Cara bikin agenda servis tiap tiga bulan di aplikasi?", "intent": "guidance", "split": "train"}
+{"text": "Apakah munculnya notifikasi berarti tugas itu sudah selesai?", "intent": "guidance", "split": "train"}
+{"text": "Bagaimana mematikan rencana berulang kalau kontraknya berakhir?", "intent": "guidance", "split": "train"}
+{"text": "Buat apa memilih interval minggu versus bulan?", "intent": "guidance", "split": "train"}
+{"text": "Ceritain langkah awal saat ada kabel terkelupas di unit.", "intent": "guidance", "split": "train"}
+{"text": "Jika ada kebocoran kecil, apa tindakan pertama yang disarankan?", "intent": "guidance", "split": "train"}
+{"text": "Apa prosedur saat penyewa mencium bau terbakar?", "intent": "guidance", "split": "train"}
+{"text": "Supaya aman, apa langkah setelah melihat percikan dari panel?", "intent": "guidance", "split": "train"}
+{"text": "Apa yang harus dilakukan sebelum menyentuh meter air bocor?", "intent": "guidance", "split": "train"}
+{"text": "Kalau pipa pecah, kapan harus telepon petugas?", "intent": "guidance", "split": "train"}
+{"text": "Mohon petunjuk standar dokumentasi kebocoran atap.", "intent": "guidance", "split": "train"}
+{"text": "Keterangan kerusakan perlu memuat nama siapa dan lokasi apa?", "intent": "guidance", "split": "train"}
+{"text": "Gmn mengelola duplikat laporan rusak tentang satu kejadian?", "intent": "guidance", "split": "train"}
+{"text": "Cara lapor masalah lantai licin setelah hujan?", "intent": "guidance", "split": "train"}
+{"text": "Perlu cek apa ketika penyewa baru menerima kunci?", "intent": "guidance", "split": "train"}
+{"text": "Beri prosedur blokir kartu akses hilang.", "intent": "guidance", "split": "train"}
+{"text": "Boleh jelaskan aturan simpan bukti penggantian barang?", "intent": "guidance", "split": "train"}
+{"text": "Menurut tata kelola kos, gimana prosedur pemeriksaan unit sebelum pindah?", "intent": "guidance", "split": "train"}
+{"text": "Apa yang perlu didokumentasikan ketika penghuni mengadu gangguan listrik?", "intent": "guidance", "split": "train"}
+{"text": "Kapan pompa air diservis lagi?", "intent": "schedules", "split": "train"}
+{"text": "Pekerjaan apa saja buat minggu ini di agenda?", "intent": "schedules", "split": "train"}
+{"text": "Ada yang tenggatnya sudah terlewati?", "intent": "schedules", "split": "train"}
+{"text": "lihat list tugas buat hari Selasa depan", "intent": "schedules", "split": "train"}
+{"text": "Cari semua rencana yang masih aktif.", "intent": "schedules", "split": "train"}
+{"text": "Bisa tampilkan notifikasi baru untuk jadwal kos?", "intent": "schedules", "split": "train"}
+{"text": "Besok tanggal 17 tim pemeliharaan ditugaskan ke mana?", "intent": "schedules", "split": "train"}
+{"text": "Kapan jadwal cuci tandon paling dekat?", "intent": "schedules", "split": "train"}
+{"text": "Dalam 10 hari ke depan ada pengecekan apa saja?", "intent": "schedules", "split": "train"}
+{"text": "Aku mau lihat deadline agenda pembayaran pajak.", "intent": "schedules", "split": "train"}
+{"text": "Agenda berkala yang tercatat untuk bersih lorong.", "intent": "schedules", "split": "train"}
+{"text": "Berapa hari sebelum pekerjaan berkala selanjutnya?", "intent": "schedules", "split": "train"}
+{"text": "Tolong urutkan daftar kegiatan dari tenggat terdekat.", "intent": "schedules", "split": "train"}
+{"text": "Siang ini ada janji untuk pengecekan gedung?", "intent": "schedules", "split": "train"}
+{"text": "Lihat pemberitahuan jadwal yang masih baru.", "intent": "schedules", "split": "train"}
+{"text": "Kegiatan apa yang belum dikerjakan dan lewat tenggat?", "intent": "schedules", "split": "train"}
+{"text": "Hari apa inspeksi saluran limbah dijadwalkan?", "intent": "schedules", "split": "train"}
+{"text": "Ada agenda rutin untuk bulan ini yang belum muncul?", "intent": "schedules", "split": "train"}
+{"text": "Keluarkan rencana mingguan pemeriksaan selang.", "intent": "schedules", "split": "train"}
+{"text": "Daftar reminder yang aktif dan kapan jatuh tempo.", "intent": "schedules", "split": "train"}
+{"text": "Setelah servis minggu ini, servis selanjutnya tanggal berapa?", "intent": "schedules", "split": "train"}
+{"text": "Apakah ada tugas untuk tanggal merah berikutnya?", "intent": "schedules", "split": "train"}
+{"text": "Deadline resmi pekerjaan bersih halaman kapan?", "intent": "schedules", "split": "train"}
+{"text": "Kapan jadwal perawatan sampai akhir tahun?", "intent": "schedules", "split": "train"}
+{"text": "Tolong baca apa saja notifikasi yang belum pernah saya lihat.", "intent": "schedules", "split": "train"}
+{"text": "Rekap rencana aktivitas untuk tiga hari mendatang.", "intent": "schedules", "split": "train"}
+{"text": "Rekap uang yang masuk dari sewa selama kuartal ini.", "intent": "finances", "split": "train"}
+{"text": "Masih ada penyewa yang kurang bayar?", "intent": "finances", "split": "train"}
+{"text": "Pembelian rak menghabiskan berapa rupiah menurut catatan?", "intent": "finances", "split": "train"}
+{"text": "Tampilkan pengeluaran tercatat untuk tukang cat.", "intent": "finances", "split": "train"}
+{"text": "Penghuni mana yang sudah nyetor bulan Juni?", "intent": "finances", "split": "train"}
+{"text": "Tolong cek apakah pembayaran listrik bulan ini sudah selesai.", "intent": "finances", "split": "train"}
+{"text": "Duit kas kos bersih berapa untuk pekan ini?", "intent": "finances", "split": "train"}
+{"text": "Bukti transfer tukang listrik yang sudah tersimpan ada?", "intent": "finances", "split": "train"}
+{"text": "Total bon perawatan periode sebelumnya.", "intent": "finances", "split": "train"}
+{"text": "Coba lihat penerimaan sewa tanggal kemarin.", "intent": "finances", "split": "train"}
+{"text": "Mana transaksi yang masih tertahan di draf?", "intent": "finances", "split": "train"}
+{"text": "Uang keluar terbanyak dicatat untuk item apa?", "intent": "finances", "split": "train"}
+{"text": "Udah keluar duit berapa buat servis mesin cuci?", "intent": "finances", "split": "train"}
+{"text": "Uang masuk atas nama Rini tercatat di tanggal berapa?", "intent": "finances", "split": "train"}
+{"text": "Ada pemasukan dari orang yang nyewa gudang?", "intent": "finances", "split": "train"}
+{"text": "Ada sewa kamar yang belum dilunasi bulan lalu?", "intent": "finances", "split": "train"}
+{"text": "Tampilkan lampiran struk material di transaksi.", "intent": "finances", "split": "train"}
+{"text": "Siapa yang transfer biaya kebersihan hari ini?", "intent": "finances", "split": "train"}
+{"text": "Sudah lunas nggak tagihan langganan air?", "intent": "finances", "split": "train"}
+{"text": "Gambaran pembukuan kas dari semua unit bulan ini.", "intent": "finances", "split": "train"}
+{"text": "Laporan netto bulan ini lebih besar dari bulan lalu?", "intent": "finances", "split": "train"}
+{"text": "Akun mana yang masih punya utang sewa tercatat?", "intent": "finances", "split": "train"}
+{"text": "Tolong ambil total pemasukan dari 1 sampai 15 Februari.", "intent": "finances", "split": "train"}
+{"text": "Apakah pengeluaran genting dicatat di pembukuan?", "intent": "finances", "split": "train"}
+{"text": "Tanggal pelunasan transaksi wifi yang terakhir apa?", "intent": "finances", "split": "train"}
+{"text": "Dana masuk dari penjualan galon berapa?", "intent": "finances", "split": "train"}
+{"text": "Apa langkah membuat paspor untuk pergi liburan?", "intent": "out-of-scope", "split": "train"}
+{"text": "Resep mie ayam ala abang gerobak gimana?", "intent": "out-of-scope", "split": "train"}
+{"text": "Jadwal semifinal Piala Dunia kapan?", "intent": "out-of-scope", "split": "train"}
+{"text": "Pilihkan jurusan kuliah yang prospeknya bagus.", "intent": "out-of-scope", "split": "train"}
+{"text": "Nasihat mengurus visa tinggal di Portugal apa?", "intent": "out-of-scope", "split": "train"}
+{"text": "Berapa nilai tukar rupiah ke dolar hari ini?", "intent": "out-of-scope", "split": "train"}
+{"text": "Tolong rangkum novel Laskar Pelangi.", "intent": "out-of-scope", "split": "train"}
+{"text": "Siapa perdana menteri Australia sekarang?", "intent": "out-of-scope", "split": "train"}
+{"text": "Ada saran nama ig buat vlog jalan-jalan?", "intent": "out-of-scope", "split": "train"}
+{"text": "Cara masak sayur asem supaya tidak hambar?", "intent": "out-of-scope", "split": "train"}
+{"text": "Dimana beli tiket kereta Jakarta Solo?", "intent": "out-of-scope", "split": "train"}
+{"text": "Cari jadwal praktik dokter kulit di Bandung.", "intent": "out-of-scope", "split": "train"}
+{"text": "Film apa yang lagi populer minggu ini?", "intent": "out-of-scope", "split": "train"}
+{"text": "Tips pakai motor kopling untuk pemula.", "intent": "out-of-scope", "split": "train"}
+{"text": "Kapan pengumuman penerimaan mahasiswa baru kampus A?", "intent": "out-of-scope", "split": "train"}
+{"text": "Berapa harga saham Tesla saat ini?", "intent": "out-of-scope", "split": "train"}
+{"text": "Buat caption medsos untuk foto gunung.", "intent": "out-of-scope", "split": "train"}
+{"text": "Lowongan kerja barista sekitar Surabaya ada apa saja?", "intent": "out-of-scope", "split": "train"}
+{"text": "Minta tutorial unduh video dari Facebook.", "intent": "out-of-scope", "split": "train"}
+{"text": "Siaran badminton tayang di kanal berapa?", "intent": "out-of-scope", "split": "train"}
+{"text": "Urutkan lagu K-pop yang paling terkenal sekarang.", "intent": "out-of-scope", "split": "train"}
+{"text": "Cara top up koin di game mobile itu bagaimana?", "intent": "out-of-scope", "split": "train"}
+{"text": "Kasih rekomendasi kamar hotel murah dekat bandara.", "intent": "out-of-scope", "split": "train"}
+{"text": "Jelaskan pajak penjualan mobil bekas sebagai pengetahuan umum.", "intent": "out-of-scope", "split": "train"}
+{"text": "Bagaimana proses pindah kartu keluarga ke kabupaten lain?", "intent": "out-of-scope", "split": "train"}
+{"text": "Bandingkan biaya langganan Netflix dan Disney Plus.", "intent": "out-of-scope", "split": "train"}
+{"text": "Siapa pemain nomor punggung sembilan di Barcelona?", "intent": "out-of-scope", "split": "train"}
+{"text": "Informasi konser dan cara dapat tiket paling murah.", "intent": "out-of-scope", "split": "train"}
+{"text": "Cek prakiraan hujan untuk libur akhir pekan.", "intent": "out-of-scope", "split": "train"}
+{"text": "Saya mau buat sewa mobil untuk wisata, biayanya berapa?", "intent": "out-of-scope", "split": "train"}
+{"text": "Tarik daftar siapa yang masih tinggal di blok belakang.", "intent": "rooms", "split": "validation"}
+{"text": "Kamar mana yang baru dilepas sama penyewa bulan lalu?", "intent": "rooms", "split": "validation"}
+{"text": "Apa data penghuni Jihan di waktu sebelum ia pindah?", "intent": "rooms", "split": "validation"}
+{"text": "Brp unit terisi di sisi timur?", "intent": "rooms", "split": "validation"}
+{"text": "Siapa yg terdaftar di unit pojok?", "intent": "rooms", "split": "validation"}
+{"text": "Kamar 1 mengalami gangguan apa di laporan yang sudah ada?", "intent": "rooms", "split": "validation"}
+{"text": "Boleh lihat status laporan bau pipa di lantai 3?", "intent": "rooms", "split": "validation"}
+{"text": "Cek rekaman tembok rembes untuk penghuni itu.", "intent": "rooms", "split": "validation"}
+{"text": "Ranking perhatian terkini atas nama Imas berapa?", "intent": "rooms", "split": "validation"}
+{"text": "Kategori C saat ini di data ada siapa?", "intent": "rooms", "split": "validation"}
+{"text": "Siapa penghuni yang catatannya belum memenuhi syarat penilaian?", "intent": "rooms", "split": "validation"}
+{"text": "Kamar terbaru yang ditempati oleh Edo apa?", "intent": "rooms", "split": "validation"}
+{"text": "Rincian peristiwa terkait penilaian Rina bisa dilihat?", "intent": "rooms", "split": "validation"}
+{"text": "Periksa histori unit yang sekarang dipakai Guntur.", "intent": "rooms", "split": "validation"}
+{"text": "Keluarkan catatan masalah untuk kamar yang tersedia.", "intent": "rooms", "split": "validation"}
+{"text": "Kalau mau mengosongkan status unit setelah kontrak habis, lewat mana?", "intent": "guidance", "split": "validation"}
+{"text": "Saat penghuni ganti kamar, harus membuka akun dari awal?", "intent": "guidance", "split": "validation"}
+{"text": "Apa beda pengguna aktif dan pengguna diarsipkan?", "intent": "guidance", "split": "validation"}
+{"text": "Bagaimana memilih kategori untuk servis saluran air?", "intent": "guidance", "split": "validation"}
+{"text": "Apa yang disebut transaksi draf?", "intent": "guidance", "split": "validation"}
+{"text": "Mau ubah tanggal transaksi setelah keliru, gimana?", "intent": "guidance", "split": "validation"}
+{"text": "Di layar mana bukti penerimaan uang bisa saya tambahkan?", "intent": "guidance", "split": "validation"}
+{"text": "Cara dokumentasi saat uang yang diterima belum penuh?", "intent": "guidance", "split": "validation"}
+{"text": "Setelah lihat nilai B, prosedur lanjutnya apa?", "intent": "guidance", "split": "validation"}
+{"text": "Gmn tahu arti rentang data di penilaian?", "intent": "guidance", "split": "validation"}
+{"text": "Apakah laporan kerusakan otomatis membuat nilai tenant berubah?", "intent": "guidance", "split": "validation"}
+{"text": "Kalau stop kontak berbau hangus, apa tindakan awal yang aman?", "intent": "guidance", "split": "validation"}
+{"text": "Apa yang disarankan kalau pegangan pintu lepas?", "intent": "guidance", "split": "validation"}
+{"text": "Apakah harus panggil teknisi saat AC menyala tetapi menetes?", "intent": "guidance", "split": "validation"}
+{"text": "Bagaimana menentukan tanggal tenggat agenda di formulir?", "intent": "guidance", "split": "validation"}
+{"text": "Minggu depan ada tanggal apa saja untuk perawatan?", "intent": "schedules", "split": "validation"}
+{"text": "Yang jatuh tempo sebelum Jumat ini apa?", "intent": "schedules", "split": "validation"}
+{"text": "Saya mau cek pemberitahuan belum terbaca untuk tugas.", "intent": "schedules", "split": "validation"}
+{"text": "Kos ada agenda bersih talang yang aktif?", "intent": "schedules", "split": "validation"}
+{"text": "Geledah rencana kunjungan teknisi bulan ini.", "intent": "schedules", "split": "validation"}
+{"text": "hari apa waktu cek tabung pemadam paling dekat", "intent": "schedules", "split": "validation"}
+{"text": "Tunjukkan rencana berkala untuk perbaikan pagar.", "intent": "schedules", "split": "validation"}
+{"text": "Daftar pekerjaan yang mesti selesai hari Rabu.", "intent": "schedules", "split": "validation"}
+{"text": "Buka jadwal tugas yang terulang setiap semester.", "intent": "schedules", "split": "validation"}
+{"text": "Kegiatan terjadwal untuk Selasa depan ada berapa?", "intent": "schedules", "split": "validation"}
+{"text": "Sewa unit terakhir yang dibayar tunai tercatat berapa rupiah?", "intent": "finances", "split": "validation"}
+{"text": "Lihat rincian bulan ini dari kas masuk dan kas keluar.", "intent": "finances", "split": "validation"}
+{"text": "Transaksi lunas untuk tagihan listrik letaknya mana?", "intent": "finances", "split": "validation"}
+{"text": "Cek pengeluaran sebelum tanggal dua, ada berapa?", "intent": "finances", "split": "validation"}
+{"text": "Apa kasus tunggakan yang masih tercatat?", "intent": "finances", "split": "validation"}
+{"text": "Bisa lihat lampiran pembayaran air September?", "intent": "finances", "split": "validation"}
+{"text": "Apakah pencatatan sudah menerima uangnya Lukman?", "intent": "finances", "split": "validation"}
+{"text": "Apakah belanja papan dibayar dua kali menurut catatan?", "intent": "finances", "split": "validation"}
+{"text": "Total pembelian alat bersih-bersih lima pekan berapa?", "intent": "finances", "split": "validation"}
+{"text": "Di catatan pemasukan, nominal sewa gudang berapa?", "intent": "finances", "split": "validation"}
+{"text": "Yang itu gimana tadi?", "intent": "uncertain", "split": "validation"}
+{"text": "bisa nggak dicek", "intent": "uncertain", "split": "validation"}
+{"text": "udah saya belum ya", "intent": "uncertain", "split": "validation"}
+{"text": "Yang sekarang dong.", "intent": "uncertain", "split": "validation"}
+{"text": "Apa betul gitu?", "intent": "uncertain", "split": "validation"}
+{"text": "Saya mau tanya sesuatu.", "intent": "uncertain", "split": "validation"}
+{"text": "gmna sama yg itu", "intent": "uncertain", "split": "validation"}
+{"text": "Jelasin operasi, jadwal, dan saldo itu.", "intent": "uncertain", "split": "validation"}
+{"text": "Biaya kamar.", "intent": "uncertain", "split": "validation"}
+{"text": "Perbaikan sama agenda.", "intent": "uncertain", "split": "validation"}
+{"text": "Begitu maksudnya?", "intent": "uncertain", "split": "validation"}
+{"text": "Nah terus?", "intent": "uncertain", "split": "validation"}
+{"text": "Bisa beri informasi jam tayang basket NBA besok?", "intent": "out-of-scope", "split": "validation"}
+{"text": "Caranya bikin martabak manis rumahan?", "intent": "out-of-scope", "split": "validation"}
+{"text": "Transfer antar bank digital yang lebih hemat mana?", "intent": "out-of-scope", "split": "validation"}
+{"text": "Tolong buat cerita lucu tentang lift di hotel Jepang.", "intent": "out-of-scope", "split": "validation"}
+{"text": "Kapan penayangan musim baru anime favoritku?", "intent": "out-of-scope", "split": "validation"}
+{"text": "Apa arti tanda dalam hasil tes psikologi online?", "intent": "out-of-scope", "split": "validation"}
+{"text": "Siapa penghuni Istana Bogor pada masa penjajahan?", "intent": "out-of-scope", "split": "validation"}
+{"text": "Mau cetak motor dengan printer 3D, langkah mulainya apa?", "intent": "out-of-scope", "split": "validation"}
+{"text": "Saham perusahaan teknologi mana yang naik paling tinggi?", "intent": "out-of-scope", "split": "validation"}
+{"text": "Cara registrasi kartu SIM baru ke operator?", "intent": "out-of-scope", "split": "validation"}
+{"text": "Tolong tunjukkan urutan planet dari Matahari.", "intent": "out-of-scope", "split": "validation"}
+{"text": "Lihat jam buka museum di hari Minggu.", "intent": "out-of-scope", "split": "validation"}
+{"text": "Siapa yang tinggal di gedung parlemen fiksi dalam serial itu?", "intent": "out-of-scope", "split": "train"}
+{"text": "Lihat daftar penghuni hutan di dongeng tradisional.", "intent": "out-of-scope", "split": "train"}
+{"text": "Siapa yang menempati Istana Merdeka saat ini?", "intent": "out-of-scope", "split": "train"}
+{"text": "Tolong sebutkan penghuni mansion di level gim ini.", "intent": "out-of-scope", "split": "train"}
+{"text": "Siapa penyewa ruang studio di variety show Korea?", "intent": "out-of-scope", "split": "train"}
+{"text": "Tampilkan status kamar hotel di situs reservasi wisata.", "intent": "out-of-scope", "split": "train"}
+{"text": "Kamar asrama untuk peserta olimpiade disediakan di mana?", "intent": "out-of-scope", "split": "train"}
+{"text": "Siapa yang tinggal di kamar utama rumah dari film Parasite?", "intent": "out-of-scope", "split": "train"}
+{"text": "Jumlah kamar tidur di istana kerajaan Inggris berapa?", "intent": "out-of-scope", "split": "train"}
+{"text": "Lihat pilihan kamar di kapal pesiar untuk pasangan.", "intent": "out-of-scope", "split": "train"}
+{"text": "Apa agenda festival kuliner tahun depan?", "intent": "out-of-scope", "split": "train"}
+{"text": "Bus yang dijadwalkan ke Yogyakarta berangkat jam berapa?", "intent": "out-of-scope", "split": "train"}
+{"text": "Kapan konser band indie di Bandung mulai?", "intent": "out-of-scope", "split": "train"}
+{"text": "Kapan pengumuman pemenang audisi menyanyi?", "intent": "out-of-scope", "split": "train"}
+{"text": "Tolong lihat jadwal latihan sepak bola timnas.", "intent": "out-of-scope", "split": "train"}
+{"text": "Buka kalender bulan purnama untuk pemotretan.", "intent": "out-of-scope", "split": "train"}
+{"text": "Tanggal berapa bursa saham Jepang mulai buka lagi?", "intent": "out-of-scope", "split": "train"}
+{"text": "Bisa cek agenda pemutaran film untuk akhir pekan?", "intent": "out-of-scope", "split": "train"}
+{"text": "Tenggat pendaftaran kursus memasak kapan?", "intent": "out-of-scope", "split": "train"}
+{"text": "Jam buka kebun binatang malam hari ada?", "intent": "out-of-scope", "split": "train"}
+{"text": "Berapa biaya transportasi umum di Oslo?", "intent": "out-of-scope", "split": "train"}
+{"text": "Uang keluar untuk berlibur di pulau Jeju kira-kira berapa?", "intent": "out-of-scope", "split": "train"}
+{"text": "Nominal biaya hidup mahasiswa di Jerman berapa?", "intent": "out-of-scope", "split": "train"}
+{"text": "Masuk akal berapa rupiah untuk beli mobil balap di gim?", "intent": "out-of-scope", "split": "train"}
+{"text": "Apakah pemain sudah menerima uang dari klub basketnya?", "intent": "out-of-scope", "split": "train"}
+{"text": "Tolong hitung PPN impor produk elektronik dari luar negeri.", "intent": "out-of-scope", "split": "train"}
+{"text": "Total pendapatan konser band itu menurut berita berapa?", "intent": "out-of-scope", "split": "train"}
+{"text": "Bantu pilih kartu kredit dengan biaya tahunan termurah.", "intent": "out-of-scope", "split": "train"}
+{"text": "Apa metode pembayaran kereta cepat di Singapura?", "intent": "out-of-scope", "split": "train"}
+{"text": "Panduan instal distro Linux untuk laptop lama dong.", "intent": "out-of-scope", "split": "train"}
+{"text": "Langkah pertama merakit sepeda gunung bekas apa?", "intent": "out-of-scope", "split": "train"}
+{"text": "Di mana tombol setting privasi pada Instagram?", "intent": "out-of-scope", "split": "train"}
+{"text": "Bagaimana menulis sajak tentang laut?", "intent": "out-of-scope", "split": "train"}
+{"text": "Menurut kamus, apa arti ungkapan buah bibir?", "intent": "out-of-scope", "split": "train"}
+{"text": "Bisa jelaskan bedanya bintang katai putih dan bintang neutron?", "intent": "out-of-scope", "split": "train"}
+{"text": "Cerita saya perlu judul. Ada saran apa?", "intent": "out-of-scope", "split": "train"}
+{"text": "Kalau ingin membuat album foto daring, caranya bagaimana?", "intent": "out-of-scope", "split": "train"}
+{"text": "Apa yang perlu disiapkan ketika memperpanjang paspor?", "intent": "out-of-scope", "split": "train"}
+{"text": "Jelaskan konsep tata bahasa Inggris past tense.", "intent": "out-of-scope", "split": "train"}
+{"text": "Apa langkah mendaftarkan usaha makanan di marketplace?", "intent": "out-of-scope", "split": "train"}
+{"text": "Di situs streaming itu letak tombol agar bisa unduh seri apa?", "intent": "out-of-scope", "split": "train"}
+{"text": "Bagaimana menyetem biola tanpa alat elektronik?", "intent": "out-of-scope", "split": "train"}
+{"text": "Apa arti data jarak tempuh di aplikasi lari?", "intent": "out-of-scope", "split": "train"}
+{"text": "Tutor cara menata rambut untuk pesta keluarga.", "intent": "out-of-scope", "split": "train"}
+{"text": "Bisa jelaskan apakah sistem menilai lagi setiap kali kegiatan diperbarui?", "intent": "guidance", "split": "train"}
+{"text": "Bagaimana aturan memilih tanggal rencana kalau teknisi belum memberi kepastian?", "intent": "guidance", "split": "train"}
+{"text": "Pengarsipan bukti setor sewa itu mulai dari layar yang mana?", "intent": "guidance", "split": "train"}
+{"text": "Waktu mengisi rencana bulanan, kolom berulang dan hari batas dipakai bagaimana?", "intent": "guidance", "split": "train"}
+{"text": "Jelaskan proses pemilik meninjau data yang memberi grade tenant.", "intent": "guidance", "split": "train"}
+{"text": "Bukti uang kembali harus ditempel ke formulir yang sama atau terpisah?", "intent": "guidance", "split": "train"}
+{"text": "Dari halaman mana cara input bukti transaksi pengganti?", "intent": "guidance", "split": "train"}
+{"text": "Butuh contoh isi kolom tanggal pada aktivitas yang belum selesai.", "intent": "guidance", "split": "train"}
+{"text": "Siapa yang meninggalkan unit 103 pada awal tahun?", "intent": "rooms", "split": "train"}
+{"text": "Kamar mana yang kembali tersedia setelah penghuni keluar?", "intent": "rooms", "split": "train"}
+{"text": "Tunjukkan urutan kamar yang terdaftar atas nama Zahra.", "intent": "rooms", "split": "train"}
+{"text": "Penghuni blok tengah bulan lalu terdaftar siapa aja?", "intent": "rooms", "split": "train"}
+{"text": "Tarik satu laporan kondisi dari unit yang dekat tangga.", "intent": "rooms", "split": "train"}
+{"text": "Status keluhan kebersihan yang masuk dari kamar C8 apa sekarang?", "intent": "rooms", "split": "train"}
+{"text": "Ada berapa kali pembayaran pemasangan router menurut transaksi?", "intent": "finances", "split": "train"}
+{"text": "Uang sewa atas nama Anwar yang masuk ke kas terdaftar berapa?", "intent": "finances", "split": "train"}
+{"text": "Cek apakah biaya genteng sudah diterima tukang.", "intent": "finances", "split": "train"}
+{"text": "Dari riwayat pembayaran, terima tunai dua kali untuk pembelian air?", "intent": "finances", "split": "train"}

@@ -138,7 +138,6 @@ onBeforeUnmount(() => document.removeEventListener('keydown', onGlobalKeydown))
     @click="openPalette"
   >
     <Icon name="search" size="lg" />
-    <span class="sr-only">Open navigation</span>
   </button>
 
   <Dialog v-model:open="open">
@@ -161,7 +160,6 @@ onBeforeUnmount(() => document.removeEventListener('keydown', onGlobalKeydown))
           class="min-h-14 min-w-0 flex-1 bg-transparent text-base text-on-surface outline-none placeholder:text-on-surface-variant"
           @keydown="onInputKeydown"
         />
-        <kbd class="hidden shrink-0 rounded-md bg-surface-container-highest px-2 py-1 text-xs font-medium text-on-surface-variant sm:inline">Esc</kbd>
       </div>
 
       <div v-if="filteredRoutes.length" id="command-palette-list" role="listbox" aria-label="Navigation pages" class="max-h-[min(28rem,calc(100vh-12rem))] overflow-y-auto p-2">
@@ -191,22 +189,18 @@ onBeforeUnmount(() => document.removeEventListener('keydown', onGlobalKeydown))
               <Icon :name="entry.icon" size="base" />
             </span>
             <span class="min-w-0 flex-1 truncate">{{ entry.title }}</span>
-            <span class="max-w-[35%] truncate text-xs" :class="selectedIndex === index ? 'text-on-primary-container/[72%]' : 'text-on-surface-variant'">{{ entry.moduleTitle }}</span>
           </button>
         </template>
       </div>
       <div v-else class="flex min-h-32 items-center justify-center px-6 text-center text-sm text-on-surface-variant">No navigation results</div>
 
-      <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-t border-outline-variant px-4 py-3 text-xs text-on-surface-variant">
-        <span>Navigate to a page</span>
-        <span class="flex flex-wrap items-center gap-2">
-          <span
-            ><kbd class="rounded-md bg-surface-container-highest px-1.5 py-0.5 font-medium">↑</kbd
-            ><kbd class="ml-1 rounded-md bg-surface-container-highest px-1.5 py-0.5 font-medium">↓</kbd> Select</span
-          >
-          <span><kbd class="rounded-md bg-surface-container-highest px-1.5 py-0.5 font-medium">Enter</kbd> Open</span>
-          <span><kbd class="rounded-md bg-surface-container-highest px-1.5 py-0.5 font-medium">Esc</kbd> Close</span>
-        </span>
+      <div class="flex flex-wrap items-center justify-end gap-2 border-t border-outline-variant px-4 py-3 text-xs text-on-surface-variant">
+        <span
+          ><kbd class="rounded-md bg-surface-container-highest px-1.5 py-0.5 font-medium">↑</kbd
+          ><kbd class="ml-1 rounded-md bg-surface-container-highest px-1.5 py-0.5 font-medium">↓</kbd> Select</span
+        >
+        <span><kbd class="rounded-md bg-surface-container-highest px-1.5 py-0.5 font-medium">Enter</kbd> Open</span>
+        <span><kbd class="rounded-md bg-surface-container-highest px-1.5 py-0.5 font-medium">Esc</kbd> Close</span>
       </div>
     </DialogContent>
   </Dialog>

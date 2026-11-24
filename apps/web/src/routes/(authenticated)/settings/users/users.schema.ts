@@ -1,4 +1,4 @@
-import { createUserSchema, userSelectSchema, userUpdateSchema } from '@southneuhof/api/src/routes/(authenticated)/users/schema.ts'
+import { createUserSchema, userPublicSchema, userUpdateSchema } from '@southneuhof/api/src/routes/(authenticated)/users/schema.ts'
 import { z } from 'zod/v4'
 import { collectionQueryFields } from '@/framework/hono/collectionQuery'
 import { rpc } from '@/framework/rpc'
@@ -13,7 +13,7 @@ export const createUserFormSchema = checkedHonoCreateSchema(
   })
 )
 
-export const userRecordSchema = checkedHonoRecordSchema(rpc.users, userSelectSchema)
+export const userRecordSchema = checkedHonoRecordSchema(rpc.users, userPublicSchema)
 export const userUpdateFormSchema = checkedHonoUpdateSchema(rpc.users, userUpdateSchema)
 export const usersQuerySchema = z.object({
   ...collectionQueryFields,

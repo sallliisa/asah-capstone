@@ -1,11 +1,26 @@
-import { and, eq, isNotNull, lte, sql } from 'drizzle-orm'
+import { and, eq, isNotNull, lte, or, sql } from 'drizzle-orm'
 import * as webpush from 'web-push'
-import { getDb } from '../../../db'
+import { getDb, type Tx } from '../../../db'
 import { activities } from '../activities/activities.table'
 import { users } from '../users/users.table'
 import { businessDate } from '../activities/dates'
 import { notificationOwnerId } from './owner'
 import { notifications, notificationDeliveries, pushSubscriptions } from './notifications.table'
+
+export async function queueActivityNotifications(tx: Tx, recipientId: string, tasks: readonly { id: string; name: string; dueDate: string }[]) {
+  if (!tasks.length) return 0
+  const inserted = await tx.insert(notifications)
+    .values(tasks.map((task) => ({ recipientId, activityId: task.id, title: task.name, body: `New task due ${task.dueDate}` })))
+    .onConflictDoNothing({ target: [notifications.recipientId, notifications.activityId] })
+    .returning({ id: notifications.id })
+  if (!inserted.length) return 0
+  const subscriptions = await tx.select({ id: pushSubscriptions.id }).from(pushSubscriptions).where(eq(pushSubscriptions.recipientId, recipientId))
+  if (subscriptions.length) {
+    await tx.insert(notificationDeliveries)
+      .values(inserted.flatMap((entry) => subscriptions.map((subscription) => ({ notificationId: entry.id, subscriptionId: subscription.id }))))
+  }
+  return inserted.length
+}
 
 export async function createDueNotifications(asOfDate = businessDate()) {
   const recipientId = await notificationOwnerId()
@@ -13,33 +28,19 @@ export async function createDueNotifications(asOfDate = businessDate()) {
   return getDb().transaction(async (tx) => {
     await tx.execute(sql`select pg_advisory_xact_lock(hashtext('carta-due-notifications'))`)
     const due = await tx
-      .select({ id: activities.id, name: activities.name, date: activities.occurrenceDate })
+      .select({ id: activities.id, name: activities.name, dueDate: activities.dueDate, occurrenceDate: activities.occurrenceDate })
       .from(activities)
       .where(
         and(
-          isNotNull(activities.recurringPlanId),
-          lte(activities.occurrenceDate, asOfDate),
+          or(isNotNull(activities.dueDate), lte(activities.occurrenceDate, asOfDate)),
           sql`not exists (select 1 from ${notifications} where ${notifications.activityId} = ${activities.id} and ${notifications.recipientId} = ${recipientId})`
         )
       )
       .limit(100)
-    let created = 0
-    for (const activity of due) {
-      const inserted = await tx
-        .insert(notifications)
-        .values({ recipientId, activityId: activity.id, title: activity.name, body: `Activity due ${activity.date}` })
-        .onConflictDoNothing()
-        .returning()
-      if (!inserted.length) continue
-      created += 1
-      const subscriptions = await tx.select({ id: pushSubscriptions.id }).from(pushSubscriptions).where(eq(pushSubscriptions.recipientId, recipientId))
-      if (subscriptions.length)
-        await tx
-          .insert(notificationDeliveries)
-          .values(subscriptions.map((subscription) => ({ notificationId: inserted[0].id, subscriptionId: subscription.id })))
-          .onConflictDoNothing()
-    }
-    return created
+    return queueActivityNotifications(tx, recipientId, due.flatMap(({ id, name, dueDate, occurrenceDate }) => {
+      const deadline = dueDate ?? occurrenceDate
+      return deadline ? [{ id, name, dueDate: deadline }] : []
+    }))
   })
 }
 

@@ -42,3 +42,30 @@ The shared CloudflareOS account has no workspace at the last live check.
 Native answer generation, conversation reopening, resource grants, actual
 classifier-driven native tool use, and citations remain unverified. The owner
 was asked to prepare the workspace/model. VPS deployment is also pending.
+
+## Local v4 comparison
+
+24 November 2026. The same 114 frozen Indonesian questions went through the
+protected model route for both versions. The test verified all responses.
+
+- Correct Rooms routes increased from 6 to 12 of 30.
+- Correct Guidance routes increased from 0 to 8 of 30.
+- Wrong workflow routes fell from 8 to 1. The one remaining route also failed
+  in v3.
+- All 16 ambiguous questions returned uncertainty, compared with 15 in v3.
+  Explicit out-of-scope results increased from 0 to 6 of 14.
+- The original 150 grouped test questions had zero wrong accepted results in
+  both versions. Acceptance increased from 76 to 82. Finances acceptance fell
+  from 24 to 21 of 30 on the grouped test. On the fresh test it increased from
+  4 to 6 of 12.
+
+Two local training runs wrote identical reports and returned identical
+predictions for the 114 questions. Artifact bytes differed between runs.
+Each checksum identifies its own artifact. The service loads v4 at the
+existing artifact path with the checksum from its build. The notebook
+executed, the four existing Python tests passed, and Ruff passed for the
+classifier.
+
+The [model card](../../services/models/intent-model-card.md) records training
+data, checks, and limits. The fresh test is synthetic. These results cover
+the local model route.

@@ -104,3 +104,18 @@ The room deletion regression removes its source activity first, so only the
 saved assessment protects the room. Before the fix, the real DELETE returned
 500. The route now maps the database foreign-key rejection to 409 with a clear
 message. The regression also reads the room again to check that it remains.
+
+## Boosted-tree adoption, 24 November 2026
+
+The standard generator and trainer built `tenant-hgb-v3-17176ab74210` from
+the reviewed snapshot hash. The saved artifact reproduced all 2,371 scores
+of the approved candidate on the two synthetic holdouts. The authenticated
+model endpoint returned the expected grade on all ten known cases and left
+the ineligible input ungraded.
+
+The app API type check and route compilation passed. An authenticated request
+against isolated PostgreSQL 18 confirmed that the priority list orders by grade
+first, then by model group, then by score. The model and operations notebooks
+ran with the new artifact. See the [reviewed evaluation](../../services/models/evaluation.json).
+
+Production activation remains open.

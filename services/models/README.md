@@ -48,16 +48,20 @@ before remote use. VPS installation and resource measurements are still pending.
 
 ## Evaluation
 
-Read evaluation.json and model-card.md. Parameters and grade boundaries use only
-training and validation partitions. Final test rows do not select the artifact.
-After a test-informed change, use a new held-out set and retain the old report.
+Read [the evaluation](evaluation.json) and [the model card](model-card.md).
+`kos-train` checks the generated snapshot hash, fits the approved boosted-tree
+model, and writes the artifact and checksum. The reviewed grade cutoffs come
+from validation and the known cases. The paired comparison uses two fresh
+synthetic test sets. Retain the earlier report after each revision.
 
 ## Intent classifier
 
 Run uv run kos-train-intent to build the Indonesian router and its report. Read
 intent-model-card.md and intent-evaluation.json for all-class metrics, accepted
-coverage, error examples, and limits. The committed intent dataset has 1,000
-synthetic examples split by whole template groups.
+coverage, error examples, and limits. The original intent dataset contains 1,000
+synthetic examples split by whole template groups. The natural dataset adds
+handwritten training and validation questions. The frozen test has 114
+handwritten questions.
 
 To serve it, add INTENT_MODEL_PATH and INTENT_MODEL_SHA256 to the service
 environment. The hash file is artifacts/intent-classifier.sha256. POST
