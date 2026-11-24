@@ -140,3 +140,37 @@ The theme-based palette uses the app text color and the same one-pixel,
 across grade surfaces in both themes. Measured text contrast against the
 fills ranged from 9.15:1 to 14.02:1. The web build and formatting check passed.
 Evidence is in `.local/verification/tenant-grade-theme-tokens/`.
+
+The Users list showed only A, B, or C on the chip. The full grade label
+remained available to screen readers. Deep red C with light text measured
+11.54:1 in light mode and 12.68:1 in dark mode. Chromium confirmed the
+same palette and card outline across the map and grade chips. The web build
+and focused lint passed. Evidence is in
+`.local/verification/tenant-grade-compact-users/`.
+
+The brighter grade C fill is visibly red in both themes. Chromium measured
+text contrast of 8.64:1 in light mode and 7.20:1 in dark mode. The outline
+still matched the card outline across grade surfaces. The build and CSS
+format check passed. Evidence is in `.local/verification/tenant-grade-red/`.
+
+The stronger green, yellow, and red fills matched across the map, legend,
+popovers, Users list, profiles, and assessment history in both themes.
+Chromium measured text contrast from 4.88:1 to 10.50:1. The grade outlines
+matched the card outlines. Build and formatting passed. Evidence is in
+`.local/verification/tenant-grade-strong-colors/`.
+
+The lighter fills retained distinct green, yellow, and red hues. Chromium
+verified at least 6.24:1 text contrast across both themes, with the same
+card outlines and matching colors on every grade surface. Build and
+formatting passed. Evidence is in `.local/verification/tenant-grade-lighter/`.
+
+Chromium showed white C lettering with a dark red edge in both themes.
+The red fill and card outline matched the previous palette. The white
+lettering measured 9.95:1 against its edge. The room map removed the text
+edge when a filter dimmed a C tile. Build and formatting passed. Evidence
+is in `.local/verification/tenant-grade-white-text/`.
+
+Removed the text outline from grade C. Chromium confirmed plain white
+text on the existing red fill in both themes. Text-to-fill contrast was
+2.76:1 in light mode and 2.59:1 in dark mode. Build and formatting passed.
+Evidence is in `.local/verification/tenant-grade-plain-white/`.

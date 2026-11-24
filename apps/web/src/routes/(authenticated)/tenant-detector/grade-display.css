@@ -1,19 +1,33 @@
 [data-tenant-grade='A'] {
-  --tenant-grade-tint: rgb(var(--md-sys-color-success));
-  --tenant-grade-strength: 7%;
+  --tenant-grade-fill: #65bf88;
 }
 
 [data-tenant-grade='B'] {
-  --tenant-grade-tint: rgb(var(--md-sys-color-warning));
-  --tenant-grade-strength: 17%;
+  --tenant-grade-fill: #f4cc49;
 }
 
 [data-tenant-grade='C'] {
-  --tenant-grade-tint: rgb(var(--md-sys-color-error));
-  --tenant-grade-strength: 24%;
+  --tenant-grade-fill: #f27673;
+}
+
+.dark [data-tenant-grade='A'] {
+  --tenant-grade-fill: #78cf94;
+}
+
+.dark [data-tenant-grade='B'] {
+  --tenant-grade-fill: #f7d15c;
+}
+
+.dark [data-tenant-grade='C'] {
+  --tenant-grade-fill: #f47e78;
 }
 
 :root [data-tenant-grade] {
-  @apply border border-outline-variant text-on-surface;
-  background-color: color-mix(in srgb, rgb(var(--md-sys-color-surface-container)), var(--tenant-grade-tint) var(--tenant-grade-strength));
+  @apply border border-outline-variant;
+  background-color: var(--tenant-grade-fill);
+  color: #1c1b19;
+}
+
+:root [data-tenant-grade='C'] {
+  color: #fff;
 }

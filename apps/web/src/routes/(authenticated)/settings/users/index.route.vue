@@ -10,7 +10,7 @@ import { users } from './users.resource'
       <template #cell:name="{ record }">
         <div class="flex flex-wrap items-center gap-2">
           <span>{{ record.name }}</span>
-          <TenantGradeChip v-if="record.tenantAttentionGrade" :grade="record.tenantAttentionGrade" />
+          <TenantGradeChip v-if="record.tenantAttentionGrade" :grade="record.tenantAttentionGrade" compact />
         </div>
       </template>
     </ListView>
