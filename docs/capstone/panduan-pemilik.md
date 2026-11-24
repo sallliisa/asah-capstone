@@ -8,7 +8,7 @@ Gunakan aplikasi untuk mengatur kamar, jadwal, pembayaran, dan pengingat. Gunaka
 2. Di **Room Types**, buat tipe kamar dan isi tarifnya.
 3. Di **Settings â†’ Users**, pilih akun penghuni dengan peran **Occupant** atau buat akun baru.
 4. Di **Rooms**, buat kamar dengan kode unik. Pilih tipe kamar dan penghuninya.
-5. Buka **Dashboard**. Pilih kotak kamar untuk melihat detail dan status hunian.
+5. Buka **Dashboard**. Di **Room occupancy**, lihat semua kamar dan nilai penghuninya. Pilih nomor kamar untuk melihat nama penghuni dan nilainya. Pilih **Room details** untuk membuka data kamar.
 
 ## Buat jadwal dan catat pembayaran
 
@@ -24,7 +24,7 @@ Untuk pekerjaan yang sudah selesai tanpa jadwal berulang, gunakan **Activities â
 ## Periksa kas dan riwayat
 
 - **Income & Expenses** menampilkan transaksi. Pilih transaksi untuk membuka aktivitas dan bukti pembayaran.
-- Di **Dashboard**, pilih periode dan kamar untuk memeriksa arus kas. Ringkasan memakai transaksi **Settled** dan tanggal pembayaran.
+- Di **Dashboard**, gulir ke **Settled cash** untuk melihat pemasukan, pengeluaran, dan selisih kas. Ubah tanggal mulai, tanggal akhir, atau kamar. Nilai kas langsung diperbarui. Pilih nominal untuk membuka transaksi **Settled** yang sesuai.
 - Di profil penghuni, buka **Activity History** untuk memeriksa aktivitas terkait. Pilih ikon riwayat di samping nilai untuk membuka **Assessment history**.
 - Nilai **A**, **B**, dan **C** menunjukkan urutan pemeriksaan. Periksa catatan sumber sebelum membuat keputusan. Jika data belum cukup, aplikasi menampilkan status tersebut secara terpisah.
 

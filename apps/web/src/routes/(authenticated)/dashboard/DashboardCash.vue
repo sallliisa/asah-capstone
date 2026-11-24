@@ -1,185 +1,230 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { RouterLink, type RouteLocationRaw } from 'vue-router'
+import { computed, onBeforeUnmount, onMounted, ref, type Ref } from 'vue'
+import { RouterLink } from 'vue-router'
 import type { ChartConfiguration } from 'chart.js'
 import type { z } from 'zod/v4'
-import type { activityDashboardSchema } from '@southneuhof/api/src/routes/(authenticated)/activities/schema.ts'
+import type { activityDashboardQuerySchema } from '@southneuhof/api/src/routes/(authenticated)/activities/schema.ts'
+import { useCollection } from '@southneuhof/loom'
+import Button from '@southneuhof/loom/components/base/Button.vue'
 import Card from '@southneuhof/loom/components/base/Card.vue'
-import Disclosure from '@southneuhof/loom/components/base/Disclosure.vue'
+import DateInput from '@southneuhof/loom/components/inputs/DateInput.vue'
+import SelectInput from '@southneuhof/loom/components/inputs/SelectInput.vue'
+import Tabs from '@southneuhof/loom/components/composites/Tabs.vue'
+import { activitiesActions } from '../activities/activities.actions'
+import { activityToday } from '../activities/activities.schema'
 import DashboardChart from './DashboardChart.vue'
+import { loadDashboardCash } from './dashboard.actions'
 
-const props = defineProps<{ snapshot: z.output<typeof activityDashboardSchema> }>()
-const money = (value: number) => `Rp ${value.toLocaleString('id-ID')}`
+type CashQuery = z.output<typeof activityDashboardQuerySchema>
+type Snapshot = Awaited<ReturnType<typeof loadDashboardCash>>['data'][number]
+const today = ref(activityToday())
+const monthStart = computed(() => `${today.value.slice(0, 7)}-01`)
+const startDate = ref(monthStart.value)
+const endDate = ref(today.value)
+const roomId = ref<string | null>(null)
+const startInputError = ref<string>()
+const endInputError = ref<string>()
+
+function calendarModel(date: Ref<string>) {
+  return computed<string | null | undefined>({
+    get: () => (date.value ? `${date.value}T00:00:00` : null),
+    set: (value: string | null | undefined) => {
+      date.value = value ?? ''
+    },
+  })
+}
+
+const startInput = calendarModel(startDate)
+const endInput = calendarModel(endDate)
+const dateError = computed(() => {
+  if (startInputError.value || endInputError.value) return startInputError.value || endInputError.value
+  if (!startDate.value || !endDate.value) return 'Enter both dates.'
+  if (endDate.value > today.value) return 'End date must be today or earlier.'
+  if (startDate.value > endDate.value) return 'End date must be on or after the start date.'
+  return ''
+})
+const query = computed<CashQuery>(() => ({
+  ...(startDate.value === monthStart.value && endDate.value === today.value ? { period: 'this-month' } : { period: 'custom', from: startDate.value, to: endDate.value }),
+  ...(roomId.value ? { roomId: roomId.value } : {}),
+}))
+
+const { records, loading, error, refresh } = useCollection(() => ({
+  ...(dateError.value ? { data: [] } : { load: loadDashboardCash }),
+  resource: 'activities',
+  namespace: 'operational-dashboard',
+  query: query.value,
+}))
+const snapshot = computed(() => records.value[0])
+const money = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 })
+const compactMoney = new Intl.NumberFormat('id-ID', { notation: 'compact' })
+const compact = (value: string | number) => (typeof value === 'number' ? compactMoney.format(value) : value)
 const palette = ['#397c72', '#cf7352', '#7976ab', '#b18c3b', '#5688ad', '#af6485', '#7e9850', '#9b7962']
-const compact = (value: string | number) => (typeof value === 'number' ? new Intl.NumberFormat('id-ID', { notation: 'compact' }).format(value) : value)
-const topRooms = computed(() => props.snapshot.expensesByRoom.filter((room) => room.id !== null).slice(0, 3))
+const metrics = [
+  { field: 'income', label: 'Income', kind: 'income' },
+  { field: 'expenses', label: 'Expenses', kind: 'expense' },
+  { field: 'net', label: 'Net cash', kind: undefined },
+] as const
+
+function settledRecords(snapshot: Snapshot, kind?: 'income' | 'expense') {
+  return {
+    name: 'income-expenses' as const,
+    query: {
+      'activities.paymentFrom': snapshot.periodStart,
+      'activities.paymentTo': snapshot.periodEnd,
+      'activities.roomId': snapshot.roomId ?? undefined,
+      'activities.paymentStatus': 'settled',
+      'activities.financialKind': kind,
+    },
+  }
+}
+
 const charts = computed(() => {
-  const snapshot = props.snapshot
-  const dates = snapshot.daily.map((day) => day.date)
-  const options = { scales: { x: { ticks: { callback: (value: string | number) => dates[Number(value)]?.slice(5) } }, y: { ticks: { callback: compact } } } }
-  const datesWithPayments = snapshot.daily.filter((day) => day.income || day.expenses).length
-  const largestCategory = snapshot.expensesByCategory[0]
-  const largestRoom = snapshot.expensesByRoom[0]
+  const data = snapshot.value
+  if (!data) return []
+  const dates = data.daily.map((day) => day.date)
+  const options = { scales: { x: { ticks: { maxTicksLimit: 8, maxRotation: 0, callback: (value: string | number) => dates[Number(value)]?.slice(5) } }, y: { ticks: { callback: compact } } } }
+  const hasPayments = data.daily.some((day) => day.income || day.expenses)
+  const biggestCategory = data.expensesByCategory[0]
+  const biggestRoom = data.expensesByRoom[0]
+
   return [
     {
-      title: 'Daily income and expenses',
-      rowHeading: 'Date',
-      dataLabel: 'View daily cash data',
-      summary: `Settled payments on ${datesWithPayments} of ${dates.length} days.`,
-      empty: snapshot.income === 0 && snapshot.expenses === 0,
+      label: 'Daily cash',
+      title: 'Daily settled income and expenses',
+      summary: hasPayments ? '' : 'No settled payments in this period.',
+      empty: !hasPayments,
       configuration: {
         type: 'bar',
         data: {
           labels: dates,
           datasets: [
-            { label: 'Income', data: snapshot.daily.map((day) => day.income), backgroundColor: palette[0] },
-            { label: 'Expenses', data: snapshot.daily.map((day) => day.expenses), backgroundColor: palette[1] },
+            { label: 'Income', data: data.daily.map((day) => day.income), backgroundColor: palette[0] },
+            { label: 'Expenses', data: data.daily.map((day) => day.expenses), backgroundColor: palette[1] },
           ],
         },
         options,
       },
     },
     {
+      label: 'Cumulative net',
       title: 'Cumulative net cash',
-      rowHeading: 'Date',
-      dataLabel: 'View net cash data',
-      summary: `The period ended with ${money(snapshot.net)} in net cash movement.`,
-      empty: snapshot.income === 0 && snapshot.expenses === 0,
+      summary: hasPayments ? '' : 'No settled payments in this period.',
+      empty: !hasPayments,
       configuration: {
         type: 'line',
         data: {
           labels: dates,
-          datasets: [{ label: 'Net cash', data: snapshot.daily.map((day) => day.cumulativeNet), borderColor: palette[0], pointRadius: 2, tension: 0.15 }],
+          datasets: [{ label: 'Net cash', data: data.daily.map((day) => day.cumulativeNet), borderColor: palette[0], pointRadius: dates.length === 1 ? 3 : 0, stepped: true }],
         },
         options,
       },
     },
     {
-      title: 'Expenses by category',
-      rowHeading: 'Category',
-      dataLabel: 'View category data',
-      summary: largestCategory ? `${largestCategory.name} had the most expenses at ${money(largestCategory.amount)}.` : '',
-      empty: snapshot.expensesByCategory.length === 0,
+      label: 'Expenses by category',
+      title: 'Settled expenses by category',
+      summary: biggestCategory ? `${biggestCategory.name} had the most expenses at ${money.format(biggestCategory.amount)}.` : 'No settled expenses in this period.',
+      empty: !biggestCategory,
       configuration: {
         type: 'doughnut',
         data: {
-          labels: snapshot.expensesByCategory.map((group) => group.name),
-          datasets: [{ label: 'Expenses', data: snapshot.expensesByCategory.map((group) => group.amount), backgroundColor: palette }],
+          labels: data.expensesByCategory.map((group) => group.name),
+          datasets: [{ label: 'Expenses', data: data.expensesByCategory.map((group) => group.amount), backgroundColor: palette }],
         },
       },
     },
     {
-      title: 'Expenses by room',
-      rowHeading: 'Room',
-      dataLabel: 'View room data',
-      summary: largestRoom ? `${largestRoom.name} had the most expenses at ${money(largestRoom.amount)}.` : '',
-      empty: snapshot.expensesByRoom.length === 0,
+      label: 'Expenses by room',
+      title: 'Settled expenses by room',
+      summary: biggestRoom ? `${biggestRoom.name} had the most expenses at ${money.format(biggestRoom.amount)}.` : 'No settled expenses in this period.',
+      empty: !biggestRoom,
       configuration: {
         type: 'bar',
         data: {
-          labels: snapshot.expensesByRoom.map((group) => group.name),
-          datasets: [{ label: 'Expenses', data: snapshot.expensesByRoom.map((group) => group.amount), backgroundColor: palette[1] }],
+          labels: data.expensesByRoom.map((group) => group.name),
+          datasets: [{ label: 'Expenses', data: data.expensesByRoom.map((group) => group.amount), backgroundColor: palette[1] }],
         },
         options: { indexAxis: 'y', scales: { x: { ticks: { callback: compact } }, y: {} } },
       },
     },
-  ] satisfies {
-    title: string
-    rowHeading: string
-    dataLabel: string
-    summary: string
-    empty: boolean
-    configuration: ChartConfiguration<'bar' | 'line' | 'doughnut'>
-  }[]
+  ] satisfies { label: string; title: string; summary: string; empty: boolean; configuration: ChartConfiguration<'bar' | 'line' | 'doughnut'> }[]
 })
-function financeLink(kind?: 'income' | 'expense'): RouteLocationRaw {
-  return {
-    name: 'income-expenses',
-    query: {
-      'activities.paymentFrom': props.snapshot.periodStart,
-      'activities.paymentTo': props.snapshot.periodEnd,
-      ...(props.snapshot.roomId ? { 'activities.roomId': props.snapshot.roomId } : {}),
-      'activities.paymentStatus': 'settled',
-      ...(kind ? { 'activities.financialKind': kind } : {}),
-    },
-  }
-}
+const selectedChart = ref('Daily cash')
+const chartOptions = computed(() => charts.value.map(({ label }) => ({ label, value: label })))
+const chart = computed(() => charts.value.find(({ label }) => label === selectedChart.value))
+
+let interval: ReturnType<typeof setInterval> | undefined
+onMounted(() => {
+  interval = setInterval(() => {
+    const wasCurrentMonth = query.value.period === 'this-month'
+    today.value = activityToday()
+    if (wasCurrentMonth) {
+      startDate.value = monthStart.value
+      endDate.value = today.value
+    }
+    if (!dateError.value && (!wasCurrentMonth || roomId.value)) void refresh().catch(() => {})
+  }, 60000)
+})
+onBeforeUnmount(() => clearInterval(interval))
 </script>
 
 <template>
-  <div class="grid min-w-0 shrink-0 grid-cols-6 gap-3">
-    <Card class="col-span-6 min-w-0 gap-3 p-3">
-      <h2 class="text-base font-semibold">Settled cash</h2>
-      <p class="text-sm text-on-surface-variant">{{ snapshot.periodStart }} to {{ snapshot.periodEnd }}</p>
-      <div class="grid grid-cols-3 gap-3">
-        <Card
-          v-for="metric in [
-            { title: 'Income', value: snapshot.income, kind: 'income' as const },
-            { title: 'Expenses', value: snapshot.expenses, kind: 'expense' as const },
-            { title: 'Net cash movement', value: snapshot.net, kind: undefined },
-          ]"
-          :key="metric.title"
-          color="surfaceContainerHigh"
-          class="min-w-0 gap-1 p-3"
-        >
-          <h3 class="text-sm text-on-surface-variant">{{ metric.title }}</h3>
-          <RouterLink :to="financeLink(metric.kind)" class="break-words font-semibold text-primary underline tabular-nums">{{ money(metric.value) }}</RouterLink>
-        </Card>
+  <section aria-labelledby="cash-heading" class="min-w-0">
+    <Card variant="outlined" color="surfaceContainerLowest" class="gap-3 p-3 sm:p-4">
+      <h2 id="cash-heading" class="text-base font-semibold sm:text-lg">Settled cash</h2>
+      <div class="cash-filters">
+        <DateInput v-model="startInput" label="Start date" locale="en-GB" :error="startInputError" @validation:error="startInputError = $event" />
+        <DateInput v-model="endInput" label="End date" locale="en-GB" :error="endInputError || (startInputError ? undefined : dateError)" @validation:error="endInputError = $event" />
+        <SelectInput
+          label="Room"
+          :load="activitiesActions.rooms"
+          pick="id"
+          view="name"
+          placeholder="All rooms"
+          :model-value="roomId"
+          @update:model-value="roomId = typeof $event === 'string' ? $event : null"
+        />
       </div>
-    </Card>
-    <Card v-for="chart in charts" :key="chart.title" class="col-span-6 min-w-0 gap-2 p-3 sm:col-span-3">
-      <h3 class="text-sm font-semibold">{{ chart.title }}</h3>
-      <p v-if="chart.empty" class="flex min-h-40 items-center justify-center text-sm text-on-surface-variant">
-        No settled {{ chart.title.startsWith('Expenses') ? 'expenses' : 'payments' }} in this period.
+      <p v-if="error" role="alert" class="text-sm text-on-surface-variant">
+        {{ snapshot ? 'Could not refresh settled cash.' : 'Could not load settled cash.' }}
+        <Button type="button" variant="text" @click="refresh">Retry</Button>
       </p>
-      <template v-else>
-        <p class="text-sm text-on-surface-variant">{{ chart.summary }}</p>
-        <div class="flex min-w-0" style="height: clamp(10rem, 24dvh, 15rem)">
-          <DashboardChart :configuration="chart.configuration" :label="chart.title" />
-        </div>
-        <Disclosure :title="chart.dataLabel">
-          <div :aria-label="chart.title + ' data'" class="max-h-64 overflow-auto pt-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" role="region" tabindex="0">
-            <table class="w-full text-left text-sm">
-              <caption class="sr-only">
-                {{
-                  chart.title
-                }}
-              </caption>
-              <thead>
-                <tr class="border-b border-outline-variant">
-                  <th class="p-2" scope="col">{{ chart.rowHeading }}</th>
-                  <th v-for="dataset in chart.configuration.data.datasets" :key="dataset.label" class="p-2 text-right" scope="col">{{ dataset.label }}</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-outline-variant">
-                <tr v-for="(label, index) in chart.configuration.data.labels" :key="index">
-                  <th class="p-2 font-normal" scope="row">{{ label }}</th>
-                  <td v-for="dataset in chart.configuration.data.datasets" :key="dataset.label" class="whitespace-nowrap p-2 text-right tabular-nums">
-                    {{ money(dataset.data[index]) }}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+      <p v-else-if="loading && !snapshot" role="status" class="text-sm text-on-surface-variant">Loading settled cash…</p>
+      <template v-if="snapshot">
+        <dl class="grid grid-cols-3 gap-2 border-y border-outline-variant py-2">
+          <div v-for="metric in metrics" :key="metric.field" class="min-w-0">
+            <dt class="text-xs font-medium text-on-surface-variant">{{ metric.label }}</dt>
+            <dd class="mt-0.5 text-sm font-semibold tabular-nums sm:text-lg">
+              <RouterLink
+                :to="settledRecords(snapshot, metric.kind)"
+                :aria-label="`${metric.label}, ${money.format(snapshot[metric.field])}. View settled records`"
+                class="rounded underline decoration-outline-variant underline-offset-2 hover:decoration-current focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary [overflow-wrap:anywhere]"
+              >
+                {{ money.format(snapshot[metric.field]) }}
+              </RouterLink>
+            </dd>
           </div>
-        </Disclosure>
+        </dl>
+        <Tabs v-model="selectedChart" label="Cash chart" variant="tonal" :items="chartOptions" />
+        <template v-if="chart">
+          <p v-if="chart.summary" aria-live="polite" class="text-sm text-on-surface-variant">{{ chart.summary }}</p>
+          <div v-if="!chart.empty" class="flex h-56 min-w-0 sm:h-64">
+            <DashboardChart :configuration="chart.configuration" :label="chart.title" />
+          </div>
+        </template>
       </template>
     </Card>
-    <Card class="col-span-6 min-w-0 gap-2 p-3">
-      <h3 class="text-sm font-semibold">Room costs</h3>
-      <p v-if="!topRooms.length" class="text-sm text-on-surface-variant">No settled room expenses in this period.</p>
-      <ol v-else class="divide-y divide-outline-variant">
-        <li v-for="(room, index) in topRooms" :key="room.id ?? 'shared'" class="py-2 first:pt-0">
-          <div class="flex items-baseline justify-between gap-2 text-sm font-semibold">
-            <span>{{ index + 1 }}. Room {{ room.name }}</span>
-            <span class="tabular-nums">{{ money(room.amount) }}</span>
-          </div>
-          <ul class="mt-1 flex flex-wrap gap-x-2 gap-y-1 text-xs">
-            <li v-for="activity in room.activities" :key="activity.id">
-              <RouterLink :to="{ name: 'activities-detail', params: { activityId: activity.id } }" class="text-primary underline">{{ activity.name }} · {{ money(activity.amount) }}</RouterLink>
-            </li>
-          </ul>
-        </li>
-      </ol>
-    </Card>
-  </div>
+  </section>
 </template>
+
+<style scoped>
+.cash-filters {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.75rem;
+}
+@container (min-width: 34rem) {
+  .cash-filters {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.5fr);
+  }
+}
+</style>
