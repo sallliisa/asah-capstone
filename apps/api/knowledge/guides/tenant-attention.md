@@ -5,9 +5,9 @@
 A berarti perhatian rutin. B berarti perlu diperiksa segera. C berarti diperiksa
 lebih dahulu. Nilai menyatakan prioritas pemeriksaan dari beban kegiatan dan
 pembayaran yang terkait tenant. Nilai tidak menyatakan watak atau membuktikan
-bahwa tenant menyebabkan kerusakan. Model bersifat eksperimental, dilatih dengan
-contoh sintetis, dan dapat menempatkan lonjakan perbaikan terlalu rendah. Periksa
-fakta sumber sebelum mengambil keputusan.
+bahwa tenant menyebabkan kerusakan. Model bersifat eksperimental dan dapat
+menempatkan lonjakan perbaikan terlalu rendah. Periksa fakta sumber sebelum
+mengambil keputusan.
 
 Data mencakup perbaikan insidental selesai, pengeluaran perbaikan yang sudah
 dibayar, pembersihan tambahan, dan ketepatan pembayaran sewa. Pembersihan rutin
@@ -29,6 +29,6 @@ Nilai mengikuti tenant di beberapa kamar. Pindah kamar tidak menghapus riwayat.
 Aktivitas tetap memiliki kamar sumber dan hubungan historis dengan tenant.
 Kegiatan tersebut muncul dalam riwayat kamar dan tenant tanpa menjadi dua
 transaksi. Tenant sebelumnya tetap dapat ditinjau setelah pindah atau tidak
-aktif. Koreksi hubungan tenant memerlukan alasan dan dicatat dalam audit.
+aktif. Perubahan tenant pada aktivitas tercatat otomatis. Catatan alasan bersifat opsional.
 Nilai tersimpan menampilkan tanggal dan jendela penilaiannya. Hasil lama tetap
 tersedia saat layanan model gagal atau pembaruan sedang menunggu.

@@ -5,6 +5,7 @@ import { app } from '../../../app'
 import { closeDb, getDb } from '../../../db'
 import { createSystemSession } from '../../../testing/session'
 import { activities } from '../activities/activities.table'
+import { generateDueActivities } from '../recurring-plans/generate'
 import { recurringPlans } from '../recurring-plans/recurring-plans.table'
 import { notifications, notificationDeliveries, pushSubscriptions } from './notifications.table'
 import { createDueNotifications, deliverPendingNotifications } from './deliver'
@@ -13,6 +14,7 @@ import * as webpush from 'web-push'
 vi.mock('web-push', () => ({ sendNotification: vi.fn().mockResolvedValue({ statusCode: 201 }) }))
 const ownerIds: string[] = []
 const planIds: string[] = []
+const activityIds: string[] = []
 const savedOwner = process.env.NOTIFICATION_OWNER_USER_ID
 const savedKeys = [process.env.WEB_PUSH_PUBLIC_KEY, process.env.WEB_PUSH_PRIVATE_KEY, process.env.WEB_PUSH_SUBJECT]
 
@@ -33,11 +35,13 @@ async function setup() {
 afterEach(async () => {
   if (ownerIds.length) await getDb().delete(notifications).where(inArray(notifications.recipientId, ownerIds))
   if (ownerIds.length) await getDb().delete(pushSubscriptions).where(inArray(pushSubscriptions.recipientId, ownerIds))
+  if (activityIds.length) await getDb().delete(activities).where(inArray(activities.id, activityIds))
   if (planIds.length) {
     await getDb().delete(activities).where(inArray(activities.recurringPlanId, planIds))
     await getDb().delete(recurringPlans).where(inArray(recurringPlans.id, planIds))
   }
   planIds.length = 0
+  activityIds.length = 0
 })
 
 afterAll(async () => {
@@ -98,4 +102,31 @@ it('queues new notifications immediately and sends each logical delivery once', 
   expect((await app.request('/api/auth/sign-out', { method: 'POST', headers: { cookie: owner.cookie, 'Content-Type': 'application/json' }, body: '{}' })).status).toBe(200)
   expect(await getDb().select().from(pushSubscriptions).where(eq(pushSubscriptions.recipientId, owner.userId))).toHaveLength(0)
   expect(await getDb().select().from(notifications).where(eq(notifications.recipientId, owner.userId))).toHaveLength(6)
+})
+
+it('saves one notification at task creation for both scheduling paths', async () => {
+  const owner = await createSystemSession(['view-activities', 'create-activities', 'update-activities'], 'notification-scheduling')
+  ownerIds.push(owner.userId)
+  process.env.NOTIFICATION_OWNER_USER_ID = owner.userId
+  const headers = { cookie: owner.cookie, 'Content-Type': 'application/json' }
+  const scheduled = await app.request('/activities/create', {
+    method: 'POST', headers, body: JSON.stringify({ name: 'Scheduled plumbing', dueDate: '2042-01-20' }),
+  })
+  expect(scheduled.status).toBe(201)
+  const { data: activity } = await scheduled.json()
+  activityIds.push(activity.id)
+  const [plan] = await getDb().insert(recurringPlans).values({
+    name: 'Scheduled tax', startDate: '2042-01-10', nextOccurrenceDate: '2042-01-10', intervalUnit: 'month', leadDays: 30,
+  }).returning()
+  planIds.push(plan.id)
+  const read = () => getDb().select().from(notifications).where(eq(notifications.recipientId, owner.userId))
+  expect((await read()).map((row) => row.activityId)).toEqual([activity.id])
+  await generateDueActivities('2041-12-11')
+  expect((await read()).map((row) => row.title).sort()).toEqual(['Scheduled plumbing', 'Scheduled tax'])
+  expect((await app.request(`/activities/update/${activity.id}`, {
+    method: 'PATCH', headers, body: JSON.stringify({ dueDate: '2042-01-27' }),
+  })).status).toBe(200)
+  await generateDueActivities('2041-12-11')
+  await createDueNotifications('2042-01-27')
+  expect((await read()).map((row) => row.title).sort()).toEqual(['Scheduled plumbing', 'Scheduled tax'])
 })

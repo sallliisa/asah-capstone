@@ -1,4 +1,29 @@
-# Carta
+# Kos De Mansion
+
+Kos De Mansion is a mobile web app for the owner of a boarding house. It tracks rooms and tenants, recurring work, settled payments, and receipts. The owner can review the dashboard, receive reminders, and ask Pi about records and operating procedures.
+
+This is Asah 2026 capstone project A26-CS299. Use sample records for the demo.
+
+| Resource | What it covers |
+| --- | --- |
+| [App](https://asah-capstone-nu.vercel.app) | Hosted application |
+| [Project plan](Project%20Plan%20-%20A26-CS299.md) | Business scope, team, schedule, and acceptance criteria |
+| [Project brief](docs/capstone/project-brief.md) | Business need, product, and demo plan |
+| [Owner guide](docs/capstone/panduan-pemilik.pdf) | Instructions in Indonesian |
+| [Presentation slides](docs/capstone/presentasi-capstone.pdf) | Business need, workflow, architecture, and evaluation |
+| [Captioned demo](docs/capstone/demo-capstone.webm) | Dashboard, occupant reports, and API reference with sample data |
+| [Workstream status](plans/capstone-workstreams.md) | Implementation, verification evidence, and open checks |
+| [Verification record](docs/capstone/verification.md) | Local checks and the owner trial |
+| [Interactive API reference](apps/api/README.md#explore-the-api) | How to open the reference and run a request |
+| [API schema](https://asah-capstone-nu.vercel.app/api/openapi.json) | Published OpenAPI contract |
+| [Database migrations](apps/api/drizzle) | PostgreSQL schema and changes |
+| [Operational analysis](analysis/README.md) | Synthetic records, notebook, and findings |
+| [Model documentation](services/models/README.md) | Dataset, evaluation, serving, and model cards |
+| [Deployment runbook](deploy/README.md) | App, model service, and scheduled jobs |
+
+Tenant grades set a review order for related activity and payment records. Grade A means Routine, B means Check soon, and C means Check first. The app shows insufficient data separately. The model evaluation uses synthetic records. See the [tenant model card](services/models/model-card.md) for the measured limits.
+
+## Carta framework
 
 Carta is a full-stack TypeScript framework and project template for building information systems.
 

@@ -101,12 +101,12 @@
     "expenses": -217550000,
     "net": 221550000
   },
-  "modelVersion": "tenant-if-v2-beda105c50e9",
+  "modelVersion": "tenant-hgb-v3-17176ab74210",
   "priorities": [
     {
       "tenantId": "synthetic-0116",
       "grade": "C",
-      "score": 0.7869665487150374,
+      "score": 1.9998209884635842,
       "windowStart": "2025-07-01",
       "facts": [
         {
@@ -155,7 +155,7 @@
     {
       "tenantId": "synthetic-0264",
       "grade": "C",
-      "score": 0.7841576450321789,
+      "score": 1.9998206472141606,
       "windowStart": "2025-07-01",
       "facts": [
         {
@@ -197,94 +197,26 @@
       ]
     },
     {
-      "tenantId": "synthetic-0027",
+      "tenantId": "synthetic-0314",
       "grade": "C",
-      "score": 0.7606484653253143,
+      "score": 1.9997612265433637,
       "windowStart": "2025-07-01",
       "facts": [
         {
           "kind": "repairs90",
-          "value": 0,
-          "activityIds": []
-        },
-        {
-          "kind": "extraCleaning90",
-          "value": 0,
-          "activityIds": []
-        },
-        {
-          "kind": "oldestUnpaidDays",
-          "value": 289,
-          "activityIds": [
-            "synthetic-0027-activity-23",
-            "synthetic-0027-activity-28",
-            "synthetic-0027-activity-32",
-            "synthetic-0027-activity-34",
-            "synthetic-0027-activity-38",
-            "synthetic-0027-activity-42",
-            "synthetic-0027-activity-48",
-            "synthetic-0027-activity-50",
-            "synthetic-0027-activity-55"
-          ]
-        }
-      ]
-    },
-    {
-      "tenantId": "synthetic-0190",
-      "grade": "C",
-      "score": 0.6804697629355831,
-      "windowStart": "2025-07-01",
-      "facts": [
-        {
-          "kind": "repairs90",
-          "value": 4,
-          "activityIds": [
-            "synthetic-0190-activity-72",
-            "synthetic-0190-activity-76",
-            "synthetic-0190-activity-77",
-            "synthetic-0190-activity-82"
-          ]
-        },
-        {
-          "kind": "extraCleaning90",
           "value": 3,
           "activityIds": [
-            "synthetic-0190-activity-78",
-            "synthetic-0190-activity-83",
-            "synthetic-0190-activity-84"
+            "synthetic-0314-activity-65",
+            "synthetic-0314-activity-66",
+            "synthetic-0314-activity-74"
           ]
-        },
-        {
-          "kind": "oldestUnpaidDays",
-          "value": 0,
-          "activityIds": []
-        }
-      ]
-    },
-    {
-      "tenantId": "synthetic-0309",
-      "grade": "C",
-      "score": 0.6735160991883684,
-      "windowStart": "2025-07-01",
-      "facts": [
-        {
-          "kind": "repairs90",
-          "value": 0,
-          "activityIds": []
         },
         {
           "kind": "extraCleaning90",
-          "value": 9,
+          "value": 2,
           "activityIds": [
-            "synthetic-0309-activity-63",
-            "synthetic-0309-activity-64",
-            "synthetic-0309-activity-65",
-            "synthetic-0309-activity-69",
-            "synthetic-0309-activity-70",
-            "synthetic-0309-activity-71",
-            "synthetic-0309-activity-77",
-            "synthetic-0309-activity-78",
-            "synthetic-0309-activity-79"
+            "synthetic-0314-activity-75",
+            "synthetic-0314-activity-76"
           ]
         },
         {
@@ -295,29 +227,57 @@
       ]
     },
     {
-      "tenantId": "synthetic-0407",
+      "tenantId": "synthetic-0266",
       "grade": "C",
-      "score": 0.6713308017392964,
+      "score": 1.9996871994442489,
       "windowStart": "2025-07-01",
       "facts": [
         {
           "kind": "repairs90",
-          "value": 0,
-          "activityIds": []
+          "value": 1,
+          "activityIds": [
+            "synthetic-0266-activity-55"
+          ]
         },
         {
           "kind": "extraCleaning90",
+          "value": 0,
+          "activityIds": []
+        },
+        {
+          "kind": "oldestUnpaidDays",
+          "value": 0,
+          "activityIds": []
+        }
+      ]
+    },
+    {
+      "tenantId": "synthetic-0189",
+      "grade": "C",
+      "score": 1.9996662660204432,
+      "windowStart": "2025-07-01",
+      "facts": [
+        {
+          "kind": "repairs90",
           "value": 9,
           "activityIds": [
-            "synthetic-0407-activity-62",
-            "synthetic-0407-activity-63",
-            "synthetic-0407-activity-64",
-            "synthetic-0407-activity-68",
-            "synthetic-0407-activity-69",
-            "synthetic-0407-activity-74",
-            "synthetic-0407-activity-75",
-            "synthetic-0407-activity-76",
-            "synthetic-0407-activity-77"
+            "synthetic-0189-activity-69",
+            "synthetic-0189-activity-70",
+            "synthetic-0189-activity-75",
+            "synthetic-0189-activity-76",
+            "synthetic-0189-activity-77",
+            "synthetic-0189-activity-84",
+            "synthetic-0189-activity-85",
+            "synthetic-0189-activity-86",
+            "synthetic-0189-activity-87"
+          ]
+        },
+        {
+          "kind": "extraCleaning90",
+          "value": 2,
+          "activityIds": [
+            "synthetic-0189-activity-78",
+            "synthetic-0189-activity-88"
           ]
         },
         {
@@ -328,59 +288,89 @@
       ]
     },
     {
-      "tenantId": "synthetic-0512",
+      "tenantId": "synthetic-0230",
       "grade": "C",
-      "score": 0.668776149004287,
+      "score": 1.999662590492344,
       "windowStart": "2025-07-01",
       "facts": [
         {
           "kind": "repairs90",
-          "value": 0,
-          "activityIds": []
+          "value": 10,
+          "activityIds": [
+            "synthetic-0230-activity-77",
+            "synthetic-0230-activity-78",
+            "synthetic-0230-activity-79",
+            "synthetic-0230-activity-85",
+            "synthetic-0230-activity-86",
+            "synthetic-0230-activity-87",
+            "synthetic-0230-activity-88",
+            "synthetic-0230-activity-92",
+            "synthetic-0230-activity-93",
+            "synthetic-0230-activity-94"
+          ]
         },
         {
           "kind": "extraCleaning90",
           "value": 1,
           "activityIds": [
-            "synthetic-0512-activity-50"
+            "synthetic-0230-activity-80"
           ]
         },
         {
           "kind": "oldestUnpaidDays",
-          "value": 311,
-          "activityIds": [
-            "synthetic-0512-activity-21",
-            "synthetic-0512-activity-24",
-            "synthetic-0512-activity-21-second",
-            "synthetic-0512-activity-24-second"
-          ]
+          "value": 0,
+          "activityIds": []
         }
       ]
     },
     {
-      "tenantId": "synthetic-0478",
+      "tenantId": "synthetic-0098",
       "grade": "C",
-      "score": 0.6672301260598874,
+      "score": 1.9996380221545795,
       "windowStart": "2025-07-01",
       "facts": [
         {
           "kind": "repairs90",
-          "value": 3,
+          "value": 9,
           "activityIds": [
-            "synthetic-0478-activity-52",
-            "synthetic-0478-activity-53",
-            "synthetic-0478-activity-64"
+            "synthetic-0098-activity-52",
+            "synthetic-0098-activity-53",
+            "synthetic-0098-activity-54",
+            "synthetic-0098-activity-58",
+            "synthetic-0098-activity-59",
+            "synthetic-0098-activity-60",
+            "synthetic-0098-activity-64",
+            "synthetic-0098-activity-65",
+            "synthetic-0098-activity-66"
           ]
         },
         {
           "kind": "extraCleaning90",
-          "value": 4,
-          "activityIds": [
-            "synthetic-0478-activity-54",
-            "synthetic-0478-activity-55",
-            "synthetic-0478-activity-65",
-            "synthetic-0478-activity-66"
-          ]
+          "value": 0,
+          "activityIds": []
+        },
+        {
+          "kind": "oldestUnpaidDays",
+          "value": 0,
+          "activityIds": []
+        }
+      ]
+    },
+    {
+      "tenantId": "synthetic-0450",
+      "grade": "C",
+      "score": 1.9993939230021474,
+      "windowStart": "2025-07-01",
+      "facts": [
+        {
+          "kind": "repairs90",
+          "value": 0,
+          "activityIds": []
+        },
+        {
+          "kind": "extraCleaning90",
+          "value": 0,
+          "activityIds": []
         },
         {
           "kind": "oldestUnpaidDays",

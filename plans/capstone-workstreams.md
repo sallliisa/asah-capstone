@@ -9,6 +9,11 @@ The [final review](capstone-final-review.md) records the agreed scope. The
 [working notes](capstone-working-notes.md) record the discussion. Each design
 owns its feature rules. Git contains the earlier delivery checkpoints.
 
+The [24 November local verification record](../docs/capstone/verification.md)
+covers the Settings permission fixes, dashboard additions, interactive API
+reference, and tenant issue reports. The production checkpoint below records
+the earlier deployment.
+
 | Order | Workstream | Owning designs | Current delivery |
 |---|---|---|---|
 | 1 | Tenant activity history | [Activities](activities/design.md), [Rooms](rooms/design.md) | Implemented. Database checks prove historical attribution, moves, corrections, and former-tenant selection. Final authenticated form interaction remains unverified. |
@@ -84,9 +89,27 @@ Tenant assessments use recorded activity history. The manual coverage form and
 its write route are retired. The [application check audit](check-removal-audit.md)
 records the other first-pass items and lower-priority candidates.
 
+### Local scheduling and model work, 24 November 2026
+
+- Schedule once creates a Planned Activity with an editable deadline. Recurring
+  plans open tasks early by a configurable number of days. Each scheduled
+  Activity gets one inbox notification when it opens. See the
+  [Activity contract](activities/design.md) and the
+  [notification contract](notifications/design.md).
+- The local tenant model found 107 of 107 C cases in a fresh synthetic set,
+  compared with 101 for the baseline. False positives fell from 28 to 8.
+  See the [tenant model card](../services/models/model-card.md).
+- On 114 fresh Indonesian questions, intent v4 raised correct Rooms routes from
+  6 to 12 of 30 and Guidance routes from 0 to 8 of 30. Wrong tool routes fell
+  from 8 to 1. See the [intent verification](intent-classifier/verification.md).
+- The offline RAG comparison retains the active retrieval policy. A cutoff
+  candidate recovered four supported answers on each archived score snapshot
+  with no unsupported returns. The same question set was used in both snapshots.
+  Fresh hosted retrieval and the hosted cascade remain unverified.
+
 ## Delivery rules
 
 Keep domain rules in their owning designs. Activities owns attribution and
-recurrence. Notifications observes saved occurrences. Dashboard and Pi project
+recurrence. Notifications queues one inbox entry when the task opens. Dashboard and Pi project
 existing records and assessments. Keep verification records with actual proof,
 failed checks, limits, and unfinished acceptance. Commit each completed checkpoint.

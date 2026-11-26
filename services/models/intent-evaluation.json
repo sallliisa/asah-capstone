@@ -1,7 +1,9 @@
 {
   "synthetic": true,
-  "modelVersion": "intent-v3-9e81e53d0fdd",
+  "modelVersion": "intent-v4-a73dd8e45793",
   "datasetSha256": "9e81e53d0fdd03aaace3066bc7492fad196b6cc650f71c0334611018f13c971e",
+  "naturalDatasetSha256": "f81346d50d1462fc7c0b816088ea3cdfb64394a0d91b61f6f1a65787d5668dac",
+  "freshEvaluationSha256": "7c97fd0d4b62e2e330479e17aeb99f30aae6964e5fae5a48bb82a51645b3627a",
   "counts": {
     "train": {
       "rooms": 140,
@@ -25,6 +27,23 @@
       "out-of-scope": 30
     }
   },
+  "naturalCounts": {
+    "train": {
+      "rooms": 50,
+      "guidance": 68,
+      "schedules": 26,
+      "finances": 30,
+      "out-of-scope": 74
+    },
+    "validation": {
+      "rooms": 15,
+      "guidance": 15,
+      "schedules": 10,
+      "finances": 10,
+      "uncertain": 12,
+      "out-of-scope": 12
+    }
+  },
   "labels": [
     "rooms",
     "schedules",
@@ -32,627 +51,54 @@
     "guidance",
     "out-of-scope"
   ],
-  "selected": "word-char",
-  "confidenceThreshold": 0.65,
-  "marginThreshold": 0,
-  "experiments": [
-    {
-      "name": "word-baseline",
-      "confidenceThreshold": 0.65,
-      "marginThreshold": 0,
-      "validation": {
-        "macroF1": 0.7993006993006994,
-        "confusionMatrix": [
-          [
-            20,
-            5,
-            0,
-            0,
-            5
-          ],
-          [
-            5,
-            25,
-            0,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            30,
-            0,
-            0
-          ],
-          [
-            0,
-            5,
-            0,
-            25,
-            0
-          ],
-          [
-            5,
-            0,
-            0,
-            5,
-            20
-          ]
-        ],
-        "perClass": {
-          "rooms": {
-            "precision": 0.6666666666666666,
-            "recall": 0.6666666666666666,
-            "f1-score": 0.6666666666666666,
-            "support": 30.0
-          },
-          "schedules": {
-            "precision": 0.7142857142857143,
-            "recall": 0.8333333333333334,
-            "f1-score": 0.7692307692307693,
-            "support": 30.0
-          },
-          "finances": {
-            "precision": 1.0,
-            "recall": 1.0,
-            "f1-score": 1.0,
-            "support": 30.0
-          },
-          "guidance": {
-            "precision": 0.8333333333333334,
-            "recall": 0.8333333333333334,
-            "f1-score": 0.8333333333333334,
-            "support": 30.0
-          },
-          "out-of-scope": {
-            "precision": 0.8,
-            "recall": 0.6666666666666666,
-            "f1-score": 0.7272727272727273,
-            "support": 30.0
-          },
-          "accuracy": 0.8,
-          "macro avg": {
-            "precision": 0.8028571428571428,
-            "recall": 0.8,
-            "f1-score": 0.7993006993006994,
-            "support": 150.0
-          },
-          "weighted avg": {
-            "precision": 0.8028571428571428,
-            "recall": 0.8,
-            "f1-score": 0.7993006993006994,
-            "support": 150.0
-          }
-        },
-        "acceptedCoverage": 0.03333333333333333,
-        "acceptedAccuracy": 1.0,
-        "errors": [
-          {
-            "question": "Gue ingin mengecek keadaan AC bocor di kmr",
-            "expected": "rooms",
-            "actual": "out-of-scope"
-          },
-          {
-            "question": "Saya ingin mengecek keadaan pembersihan kamar di kamar",
-            "expected": "rooms",
-            "actual": "out-of-scope"
-          },
-          {
-            "question": "Saya ingin mengecek keadaan perbaikan pintu di kamar",
-            "expected": "rooms",
-            "actual": "out-of-scope"
-          },
-          {
-            "question": "Saya ingin mengecek keadaan sewa bulanan di kamar",
-            "expected": "rooms",
-            "actual": "out-of-scope"
-          },
-          {
-            "question": "Gue ingin mengecek keadaan layanan kmr 12 di kmr",
-            "expected": "rooms",
-            "actual": "out-of-scope"
-          },
-          {
-            "question": "Ringkasan histori kegiatan AC bocor per tenant dong",
-            "expected": "rooms",
-            "actual": "schedules"
-          },
-          {
-            "question": "Ringkasan histori kegiatan pembersihan kamar per tenant dong",
-            "expected": "rooms",
-            "actual": "schedules"
-          },
-          {
-            "question": "Ringkasan histori kegiatan perbaikan pintu per tenant dong",
-            "expected": "rooms",
-            "actual": "schedules"
-          },
-          {
-            "question": "Ringkasan histori kegiatan sewa bulanan per tenant dong",
-            "expected": "rooms",
-            "actual": "schedules"
-          },
-          {
-            "question": "Ringkasan histori kegiatan layanan kmr 12 per tenant dong",
-            "expected": "rooms",
-            "actual": "schedules"
-          },
-          {
-            "question": "Daftar pekerjaan AC bocor yang dijdwlkan besok",
-            "expected": "schedules",
-            "actual": "rooms"
-          },
-          {
-            "question": "Daftar pekerjaan pembersihan kamar yang dijadwalkan besok",
-            "expected": "schedules",
-            "actual": "rooms"
-          },
-          {
-            "question": "Daftar pekerjaan perbaikan pintu yang dijadwalkan besok",
-            "expected": "schedules",
-            "actual": "rooms"
-          },
-          {
-            "question": "Daftar pekerjaan sewa bulanan yang dijadwalkan besok",
-            "expected": "schedules",
-            "actual": "rooms"
-          },
-          {
-            "question": "Daftar pekerjaan layanan kmr 12 yang dijdwlkan besok",
-            "expected": "schedules",
-            "actual": "rooms"
-          },
-          {
-            "question": "Apa perbedaan jenis kegiatan AC bocor",
-            "expected": "guidance",
-            "actual": "schedules"
-          },
-          {
-            "question": "Apa perbedaan jenis kegiatan pembersihan kamar",
-            "expected": "guidance",
-            "actual": "schedules"
-          },
-          {
-            "question": "Apa perbedaan jenis kegiatan perbaikan pintu",
-            "expected": "guidance",
-            "actual": "schedules"
-          },
-          {
-            "question": "Apa perbedaan jenis kegiatan sewa bulanan",
-            "expected": "guidance",
-            "actual": "schedules"
-          },
-          {
-            "question": "Apa perbedaan jenis kegiatan layanan kmr 12",
-            "expected": "guidance",
-            "actual": "schedules"
-          },
-          {
-            "question": "Sebutkan karakter kartun yang memiliki AC bocor",
-            "expected": "out-of-scope",
-            "actual": "rooms"
-          },
-          {
-            "question": "Sebutkan karakter kartun yang memiliki pembersihan kamar",
-            "expected": "out-of-scope",
-            "actual": "rooms"
-          },
-          {
-            "question": "Sebutkan karakter kartun yang memiliki perbaikan pintu",
-            "expected": "out-of-scope",
-            "actual": "rooms"
-          },
-          {
-            "question": "Sebutkan karakter kartun yang memiliki sewa bulanan",
-            "expected": "out-of-scope",
-            "actual": "rooms"
-          },
-          {
-            "question": "Sebutkan karakter kartun yang memiliki layanan kmr 12",
-            "expected": "out-of-scope",
-            "actual": "rooms"
-          }
-        ]
-      }
-    },
-    {
-      "name": "word-char",
-      "confidenceThreshold": 0.65,
-      "marginThreshold": 0,
-      "validation": {
-        "macroF1": 0.8651282051282051,
-        "confusionMatrix": [
-          [
-            25,
-            0,
-            0,
-            5,
-            0
-          ],
-          [
-            0,
-            30,
-            0,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            30,
-            0,
-            0
-          ],
-          [
-            0,
-            5,
-            0,
-            25,
-            0
-          ],
-          [
-            5,
-            0,
-            0,
-            5,
-            20
-          ]
-        ],
-        "perClass": {
-          "rooms": {
-            "precision": 0.8333333333333334,
-            "recall": 0.8333333333333334,
-            "f1-score": 0.8333333333333334,
-            "support": 30.0
-          },
-          "schedules": {
-            "precision": 0.8571428571428571,
-            "recall": 1.0,
-            "f1-score": 0.9230769230769231,
-            "support": 30.0
-          },
-          "finances": {
-            "precision": 1.0,
-            "recall": 1.0,
-            "f1-score": 1.0,
-            "support": 30.0
-          },
-          "guidance": {
-            "precision": 0.7142857142857143,
-            "recall": 0.8333333333333334,
-            "f1-score": 0.7692307692307693,
-            "support": 30.0
-          },
-          "out-of-scope": {
-            "precision": 1.0,
-            "recall": 0.6666666666666666,
-            "f1-score": 0.8,
-            "support": 30.0
-          },
-          "accuracy": 0.8666666666666667,
-          "macro avg": {
-            "precision": 0.880952380952381,
-            "recall": 0.8666666666666668,
-            "f1-score": 0.8651282051282051,
-            "support": 150.0
-          },
-          "weighted avg": {
-            "precision": 0.8809523809523809,
-            "recall": 0.8666666666666667,
-            "f1-score": 0.8651282051282052,
-            "support": 150.0
-          }
-        },
-        "acceptedCoverage": 0.36,
-        "acceptedAccuracy": 1.0,
-        "errors": [
-          {
-            "question": "Gue ingin mengecek keadaan AC bocor di kmr",
-            "expected": "rooms",
-            "actual": "guidance"
-          },
-          {
-            "question": "Saya ingin mengecek keadaan pembersihan kamar di kamar",
-            "expected": "rooms",
-            "actual": "guidance"
-          },
-          {
-            "question": "Saya ingin mengecek keadaan perbaikan pintu di kamar",
-            "expected": "rooms",
-            "actual": "guidance"
-          },
-          {
-            "question": "Saya ingin mengecek keadaan sewa bulanan di kamar",
-            "expected": "rooms",
-            "actual": "guidance"
-          },
-          {
-            "question": "Gue ingin mengecek keadaan layanan kmr 12 di kmr",
-            "expected": "rooms",
-            "actual": "guidance"
-          },
-          {
-            "question": "Apa perbedaan jenis kegiatan AC bocor",
-            "expected": "guidance",
-            "actual": "schedules"
-          },
-          {
-            "question": "Apa perbedaan jenis kegiatan pembersihan kamar",
-            "expected": "guidance",
-            "actual": "schedules"
-          },
-          {
-            "question": "Apa perbedaan jenis kegiatan perbaikan pintu",
-            "expected": "guidance",
-            "actual": "schedules"
-          },
-          {
-            "question": "Apa perbedaan jenis kegiatan sewa bulanan",
-            "expected": "guidance",
-            "actual": "schedules"
-          },
-          {
-            "question": "Apa perbedaan jenis kegiatan layanan kmr 12",
-            "expected": "guidance",
-            "actual": "schedules"
-          },
-          {
-            "question": "Sebutkan karakter kartun yang memiliki AC bocor",
-            "expected": "out-of-scope",
-            "actual": "rooms"
-          },
-          {
-            "question": "Sebutkan karakter kartun yang memiliki pembersihan kamar",
-            "expected": "out-of-scope",
-            "actual": "rooms"
-          },
-          {
-            "question": "Sebutkan karakter kartun yang memiliki perbaikan pintu",
-            "expected": "out-of-scope",
-            "actual": "rooms"
-          },
-          {
-            "question": "Sebutkan karakter kartun yang memiliki sewa bulanan",
-            "expected": "out-of-scope",
-            "actual": "rooms"
-          },
-          {
-            "question": "Sebutkan karakter kartun yang memiliki layanan kmr 12",
-            "expected": "out-of-scope",
-            "actual": "rooms"
-          },
-          {
-            "question": "Ajar saya matematika integral terkait AC bocor",
-            "expected": "out-of-scope",
-            "actual": "guidance"
-          },
-          {
-            "question": "Ajar saya matematika integral terkait pembersihan kamar",
-            "expected": "out-of-scope",
-            "actual": "guidance"
-          },
-          {
-            "question": "Ajar saya matematika integral terkait perbaikan pintu",
-            "expected": "out-of-scope",
-            "actual": "guidance"
-          },
-          {
-            "question": "Ajar saya matematika integral terkait sewa bulanan",
-            "expected": "out-of-scope",
-            "actual": "guidance"
-          },
-          {
-            "question": "Ajar saya matematika integral terkait layanan kmr 12",
-            "expected": "out-of-scope",
-            "actual": "guidance"
-          }
-        ]
-      }
-    },
-    {
-      "name": "word-char-c4",
-      "confidenceThreshold": 0.65,
-      "marginThreshold": 0,
-      "validation": {
-        "macroF1": 0.8651282051282051,
-        "confusionMatrix": [
-          [
-            25,
-            0,
-            0,
-            5,
-            0
-          ],
-          [
-            0,
-            30,
-            0,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            30,
-            0,
-            0
-          ],
-          [
-            0,
-            5,
-            0,
-            25,
-            0
-          ],
-          [
-            5,
-            0,
-            0,
-            5,
-            20
-          ]
-        ],
-        "perClass": {
-          "rooms": {
-            "precision": 0.8333333333333334,
-            "recall": 0.8333333333333334,
-            "f1-score": 0.8333333333333334,
-            "support": 30.0
-          },
-          "schedules": {
-            "precision": 0.8571428571428571,
-            "recall": 1.0,
-            "f1-score": 0.9230769230769231,
-            "support": 30.0
-          },
-          "finances": {
-            "precision": 1.0,
-            "recall": 1.0,
-            "f1-score": 1.0,
-            "support": 30.0
-          },
-          "guidance": {
-            "precision": 0.7142857142857143,
-            "recall": 0.8333333333333334,
-            "f1-score": 0.7692307692307693,
-            "support": 30.0
-          },
-          "out-of-scope": {
-            "precision": 1.0,
-            "recall": 0.6666666666666666,
-            "f1-score": 0.8,
-            "support": 30.0
-          },
-          "accuracy": 0.8666666666666667,
-          "macro avg": {
-            "precision": 0.880952380952381,
-            "recall": 0.8666666666666668,
-            "f1-score": 0.8651282051282051,
-            "support": 150.0
-          },
-          "weighted avg": {
-            "precision": 0.8809523809523809,
-            "recall": 0.8666666666666667,
-            "f1-score": 0.8651282051282052,
-            "support": 150.0
-          }
-        },
-        "acceptedCoverage": 0.5666666666666667,
-        "acceptedAccuracy": 1.0,
-        "errors": [
-          {
-            "question": "Gue ingin mengecek keadaan AC bocor di kmr",
-            "expected": "rooms",
-            "actual": "guidance"
-          },
-          {
-            "question": "Saya ingin mengecek keadaan pembersihan kamar di kamar",
-            "expected": "rooms",
-            "actual": "guidance"
-          },
-          {
-            "question": "Saya ingin mengecek keadaan perbaikan pintu di kamar",
-            "expected": "rooms",
-            "actual": "guidance"
-          },
-          {
-            "question": "Saya ingin mengecek keadaan sewa bulanan di kamar",
-            "expected": "rooms",
-            "actual": "guidance"
-          },
-          {
-            "question": "Gue ingin mengecek keadaan layanan kmr 12 di kmr",
-            "expected": "rooms",
-            "actual": "guidance"
-          },
-          {
-            "question": "Apa perbedaan jenis kegiatan AC bocor",
-            "expected": "guidance",
-            "actual": "schedules"
-          },
-          {
-            "question": "Apa perbedaan jenis kegiatan pembersihan kamar",
-            "expected": "guidance",
-            "actual": "schedules"
-          },
-          {
-            "question": "Apa perbedaan jenis kegiatan perbaikan pintu",
-            "expected": "guidance",
-            "actual": "schedules"
-          },
-          {
-            "question": "Apa perbedaan jenis kegiatan sewa bulanan",
-            "expected": "guidance",
-            "actual": "schedules"
-          },
-          {
-            "question": "Apa perbedaan jenis kegiatan layanan kmr 12",
-            "expected": "guidance",
-            "actual": "schedules"
-          },
-          {
-            "question": "Sebutkan karakter kartun yang memiliki AC bocor",
-            "expected": "out-of-scope",
-            "actual": "rooms"
-          },
-          {
-            "question": "Sebutkan karakter kartun yang memiliki pembersihan kamar",
-            "expected": "out-of-scope",
-            "actual": "rooms"
-          },
-          {
-            "question": "Sebutkan karakter kartun yang memiliki perbaikan pintu",
-            "expected": "out-of-scope",
-            "actual": "rooms"
-          },
-          {
-            "question": "Sebutkan karakter kartun yang memiliki sewa bulanan",
-            "expected": "out-of-scope",
-            "actual": "rooms"
-          },
-          {
-            "question": "Sebutkan karakter kartun yang memiliki layanan kmr 12",
-            "expected": "out-of-scope",
-            "actual": "rooms"
-          },
-          {
-            "question": "Ajar saya matematika integral terkait AC bocor",
-            "expected": "out-of-scope",
-            "actual": "guidance"
-          },
-          {
-            "question": "Ajar saya matematika integral terkait pembersihan kamar",
-            "expected": "out-of-scope",
-            "actual": "guidance"
-          },
-          {
-            "question": "Ajar saya matematika integral terkait perbaikan pintu",
-            "expected": "out-of-scope",
-            "actual": "guidance"
-          },
-          {
-            "question": "Ajar saya matematika integral terkait sewa bulanan",
-            "expected": "out-of-scope",
-            "actual": "guidance"
-          },
-          {
-            "question": "Ajar saya matematika integral terkait layanan kmr 12",
-            "expected": "out-of-scope",
-            "actual": "guidance"
-          }
-        ]
+  "selected": "word-char-c4-natural",
+  "confidenceThreshold": 0.8,
+  "marginThreshold": 0.0,
+  "validation": {
+    "total": 74,
+    "wrongTool": 0,
+    "perClass": {
+      "finances": {
+        "total": 10,
+        "correct": 4,
+        "wrongTool": 0
+      },
+      "guidance": {
+        "total": 15,
+        "correct": 4,
+        "wrongTool": 0
+      },
+      "out-of-scope": {
+        "total": 12,
+        "correct": 1,
+        "wrongTool": 0
+      },
+      "rooms": {
+        "total": 15,
+        "correct": 5,
+        "wrongTool": 0
+      },
+      "schedules": {
+        "total": 10,
+        "correct": 4,
+        "wrongTool": 0
+      },
+      "uncertain": {
+        "total": 12,
+        "correct": 12,
+        "wrongTool": 0
       }
     }
-  ],
+  },
   "test": {
-    "macroF1": 0.8326340326340326,
+    "macroF1": 0.9183781735505875,
     "confusionMatrix": [
       [
-        25,
+        28,
         0,
         0,
         0,
-        5
+        2
       ],
       [
         0,
@@ -669,10 +115,10 @@
         0
       ],
       [
-        10,
         0,
         0,
-        20,
+        0,
+        30,
         0
       ],
       [
@@ -685,9 +131,9 @@
     ],
     "perClass": {
       "rooms": {
-        "precision": 0.7142857142857143,
-        "recall": 0.8333333333333334,
-        "f1-score": 0.7692307692307693,
+        "precision": 1.0,
+        "recall": 0.9333333333333333,
+        "f1-score": 0.9655172413793104,
         "support": 30.0
       },
       "schedules": {
@@ -703,32 +149,32 @@
         "support": 30.0
       },
       "guidance": {
-        "precision": 0.6666666666666666,
-        "recall": 0.6666666666666666,
-        "f1-score": 0.6666666666666666,
+        "precision": 0.75,
+        "recall": 1.0,
+        "f1-score": 0.8571428571428571,
         "support": 30.0
       },
       "out-of-scope": {
-        "precision": 0.8,
+        "precision": 0.9090909090909091,
         "recall": 0.6666666666666666,
-        "f1-score": 0.7272727272727273,
+        "f1-score": 0.7692307692307693,
         "support": 30.0
       },
-      "accuracy": 0.8333333333333334,
+      "accuracy": 0.92,
       "macro avg": {
-        "precision": 0.8361904761904763,
-        "recall": 0.8333333333333334,
-        "f1-score": 0.8326340326340326,
+        "precision": 0.9318181818181819,
+        "recall": 0.9200000000000002,
+        "f1-score": 0.9183781735505875,
         "support": 150.0
       },
       "weighted avg": {
-        "precision": 0.8361904761904762,
-        "recall": 0.8333333333333334,
-        "f1-score": 0.8326340326340327,
+        "precision": 0.9318181818181819,
+        "recall": 0.92,
+        "f1-score": 0.9183781735505873,
         "support": 150.0
       }
     },
-    "acceptedCoverage": 0.5066666666666667,
+    "acceptedCoverage": 0.5466666666666666,
     "acceptedAccuracy": 1.0,
     "errors": [
       {
@@ -737,74 +183,9 @@
         "actual": "out-of-scope"
       },
       {
-        "question": "Saya mau lihat daftar kamar dengan pembersihan kamar",
-        "expected": "rooms",
-        "actual": "out-of-scope"
-      },
-      {
-        "question": "Saya mau lihat daftar kamar dengan perbaikan pintu",
-        "expected": "rooms",
-        "actual": "out-of-scope"
-      },
-      {
-        "question": "Saya mau lihat daftar kamar dengan sewa bulanan",
-        "expected": "rooms",
-        "actual": "out-of-scope"
-      },
-      {
         "question": "Gue mau lihat daftar kmr dengan layanan kmr 12",
         "expected": "rooms",
         "actual": "out-of-scope"
-      },
-      {
-        "question": "SOP penanganan AC bocor mohon dijelaskan",
-        "expected": "guidance",
-        "actual": "rooms"
-      },
-      {
-        "question": "SOP penanganan pembersihan kamar mohon dijelaskan",
-        "expected": "guidance",
-        "actual": "rooms"
-      },
-      {
-        "question": "SOP penanganan perbaikan pintu mohon dijelaskan",
-        "expected": "guidance",
-        "actual": "rooms"
-      },
-      {
-        "question": "SOP penanganan sewa bulanan mohon dijelaskan",
-        "expected": "guidance",
-        "actual": "rooms"
-      },
-      {
-        "question": "SOP penanganan layanan kmr 12 mohon dijelaskan",
-        "expected": "guidance",
-        "actual": "rooms"
-      },
-      {
-        "question": "Apa yang harus diperiksa saat AC bocor",
-        "expected": "guidance",
-        "actual": "rooms"
-      },
-      {
-        "question": "Apa yang harus diperiksa saat pembersihan kamar",
-        "expected": "guidance",
-        "actual": "rooms"
-      },
-      {
-        "question": "Apa yang harus diperiksa saat perbaikan pintu",
-        "expected": "guidance",
-        "actual": "rooms"
-      },
-      {
-        "question": "Apa yang harus diperiksa saat sewa bulanan",
-        "expected": "guidance",
-        "actual": "rooms"
-      },
-      {
-        "question": "Apa yang harus diperiksa saat layanan kmr 12",
-        "expected": "guidance",
-        "actual": "rooms"
       },
       {
         "question": "Gue mau ramalan tarot mengenai AC bocor",
@@ -858,5 +239,41 @@
       }
     ]
   },
-  "limits": "Five object substitutions per template are correlated. Whole template groups stay in one split. These synthetic examples do not establish real-user accuracy."
+  "fresh": {
+    "total": 114,
+    "wrongTool": 1,
+    "perClass": {
+      "finances": {
+        "total": 12,
+        "correct": 6,
+        "wrongTool": 0
+      },
+      "guidance": {
+        "total": 30,
+        "correct": 8,
+        "wrongTool": 1
+      },
+      "out-of-scope": {
+        "total": 14,
+        "correct": 6,
+        "wrongTool": 0
+      },
+      "rooms": {
+        "total": 30,
+        "correct": 12,
+        "wrongTool": 0
+      },
+      "schedules": {
+        "total": 12,
+        "correct": 6,
+        "wrongTool": 0
+      },
+      "uncertain": {
+        "total": 16,
+        "correct": 16,
+        "wrongTool": 0
+      }
+    }
+  },
+  "limits": "The grouped and natural questions are synthetic. Grouped object substitutions are correlated. These results do not establish real-user accuracy."
 }

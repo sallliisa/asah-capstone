@@ -7,6 +7,7 @@ import { accounts, sessions } from '../../auth/auth.entity'
 import { getAuth } from '../../auth/auth'
 import { permissions } from '../permissions/permissions.table'
 import { rolePermissions, roles, roleAssignments } from '../roles/roles.table'
+import { tenantDetectorPredictions, tenantDetectorState } from '../tenant-detector/tenant-detector.table'
 import { users } from './users.table'
 
 function id(prefix: string) {
@@ -48,8 +49,38 @@ function request(body: unknown, cookie = '') {
   })
 }
 
-describe('user credential creation route', () => {
+describe('user routes', () => {
   afterAll(() => closeDb())
+
+  it('only includes the current saved tenant grade for users who can read assessments', async () => {
+    const viewer = await session(true, ['list-users', 'view-users', 'view-activities'])
+    const listOnly = await session(true, ['list-users', 'view-users'])
+    const noUserDetail = await session(true, ['list-users', 'view-activities'])
+    const tenantId = viewer.userId
+    const currentId = id('current-assessment')
+    const prediction = { tenantId, asOfDate: '2026-11-24', modelVersion: 'test-model', featureVersion: 'tenant-v1', sourceRevision: 1, input: {}, result: {} }
+    const db = getDb()
+    try {
+      await db.insert(tenantDetectorPredictions).values([
+        { ...prediction, id: currentId, inputHash: currentId, grade: 'B' },
+        { ...prediction, id: id('history'), inputHash: 'other', grade: 'C' },
+      ])
+      await db.insert(tenantDetectorState).values({ tenantId, latestPredictionId: currentId, pending: false })
+      const read = async (cookie: string) => {
+        const response = await app.request(`/users/list?id=${tenantId}`, { headers: { Cookie: cookie } })
+        expect(response.status).toBe(200)
+        const { data } = await response.json()
+        expect(data).toHaveLength(1)
+        return data[0]
+      }
+      expect(await read(viewer.cookie)).toMatchObject({ id: tenantId, tenantAttentionGrade: 'B' })
+      expect(await read(listOnly.cookie)).not.toHaveProperty('tenantAttentionGrade')
+      expect(await read(noUserDetail.cookie)).not.toHaveProperty('tenantAttentionGrade')
+    } finally {
+      await db.delete(tenantDetectorState).where(eq(tenantDetectorState.tenantId, tenantId))
+      await db.delete(tenantDetectorPredictions).where(eq(tenantDetectorPredictions.tenantId, tenantId))
+    }
+  })
 
   it('creates a user with a valid credential payload', async () => {
     const sessionState = await session(true)

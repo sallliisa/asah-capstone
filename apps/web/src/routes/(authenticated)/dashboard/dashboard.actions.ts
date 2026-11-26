@@ -5,7 +5,7 @@ import { rpc } from '@/framework/rpc'
 
 export async function loadDashboardCash(context: CollectionLoadContext<(typeof activityDashboardQuerySchema)['_output']>) {
   const query = activityDashboardQuerySchema.parse(context.query)
-  const response = await rpc.activities.dashboard.$get({ query })
+  const response = await rpc.activities.dashboard.$get({ query }, { init: { signal: context.signal } })
   const body = await response.json()
   if (!response.ok) throw body
   const result = z.object({ data: z.array(activityDashboardSchema), total: z.number() }).parse(body)

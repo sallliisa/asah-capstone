@@ -1,6 +1,6 @@
 import {
   activityCreateSchema,
-  activityUpdateSchema,
+  activityEditSchema,
   activityPublicSchema,
   financialKindSchema,
   paymentStatusSchema,
@@ -25,12 +25,19 @@ const draftFields = {
   receipt: activityPublicSchema.shape.receipt.default(null),
 }
 
-const createDraftSchema = z.object(draftFields).transform((draft, context) => {
+const createDraft = z.object({
+  ...draftFields,
+  dueDate: activityCreateSchema.shape.dueDate.nullable(),
+  taskTarget: activityCreateSchema.shape.taskTarget,
+})
+
+function createInput({ dueDate, taskTarget, ...draft }: z.output<typeof createDraft>, context: z.RefinementCtx, scheduled: boolean) {
   const value = {
     ...draft,
     amount: draft.financialKind === 'none' ? null : draft.amount,
-    paymentDate: draft.financialKind === 'none' ? null : (draft.paymentDate ?? activityToday()),
-    receipt: draft.financialKind === 'none' ? null : draft.receipt,
+    paymentDate: scheduled || draft.financialKind === 'none' ? null : (draft.paymentDate ?? activityToday()),
+    receipt: scheduled || draft.financialKind === 'none' ? null : draft.receipt,
+    ...(scheduled ? { dueDate: dueDate ?? undefined, taskTarget: draft.financialKind === 'none' ? undefined : taskTarget } : {}),
   }
   const result = activityCreateSchema.safeParse(value)
   if (!result.success) {
@@ -38,13 +45,20 @@ const createDraftSchema = z.object(draftFields).transform((draft, context) => {
     return z.NEVER
   }
   return value
-})
+}
+
+const createDraftSchema = createDraft.transform((draft, context) => createInput(draft, context, false))
+const scheduleDraftSchema = createDraft.refine((draft) => Boolean(draft.dueDate), { path: ['dueDate'], message: 'Enter a due date.' }).transform((draft, context) => createInput(draft, context, true))
 
 const updateDraftSchema = z
   .object({
     ...draftFields,
+    tenantId: activityEditSchema.shape.tenantId,
     workStatus: workStatusSchema,
+    tenantNote: activityEditSchema.shape.tenantNote,
     paymentStatus: paymentStatusSchema.nullable().default(null),
+    dueDate: activityEditSchema.shape.dueDate,
+    taskTarget: activityEditSchema.shape.taskTarget,
   })
   .transform((draft, context) => {
     const value = {
@@ -53,8 +67,9 @@ const updateDraftSchema = z
       paymentStatus: draft.financialKind === 'none' ? null : draft.paymentStatus,
       paymentDate: draft.financialKind !== 'none' && draft.paymentStatus === 'settled' ? (draft.paymentDate ?? activityToday()) : null,
       receipt: draft.financialKind === 'none' ? null : draft.receipt,
+      taskTarget: draft.taskTarget && draft.financialKind === 'none' ? ('work' as const) : draft.taskTarget,
     }
-    const result = activityUpdateSchema.safeParse(value)
+    const result = activityEditSchema.safeParse(value)
     if (!result.success) {
       for (const issue of result.error.issues) context.addIssue({ code: 'custom', message: issue.message, path: issue.path })
       return z.NEVER
@@ -63,6 +78,7 @@ const updateDraftSchema = z
   })
 
 export const activitiesCreateSchema = checkedHonoCreateSchema(rpc.activities, createDraftSchema)
+export const activitiesScheduleSchema = checkedHonoCreateSchema(rpc.activities, scheduleDraftSchema)
 export const activitiesUpdateSchema = checkedHonoUpdateSchema(rpc.activities, updateDraftSchema)
 
 const optionalFilter = z
@@ -71,7 +87,7 @@ const optionalFilter = z
   .transform((value) => value || undefined)
 export const activitiesQuerySchema = z.object({
   ...collectionQueryFields,
-  sort_by: z.enum(['name', 'occurrenceDate', 'paymentDate', 'amount', 'createdAt']).optional(),
+  sort_by: z.enum(['name', 'dueDate', 'occurrenceDate', 'paymentDate', 'amount', 'createdAt']).optional(),
   financialOnly: z.union([z.boolean(), z.enum(['true', 'false']).transform((value) => value === 'true')]).optional(),
   financialKind: financialKindSchema.optional(),
   paymentStatus: paymentStatusSchema.optional(),
@@ -82,7 +98,9 @@ export const activitiesQuerySchema = z.object({
   paymentFrom: z.iso.date().optional(),
   paymentTo: z.iso.date().optional(),
 })
-export const activitiesListQuerySchema = activitiesQuerySchema.omit({ financialOnly: true })
+export const activitiesListQuerySchema = activitiesQuerySchema.omit({ financialOnly: true }).extend({
+  openTasks: z.literal('true').optional(),
+})
 
 export const activityFiltersSchema = z
   .object({
@@ -94,6 +112,11 @@ export const activityFiltersSchema = z
     categoryId: optionalFilter,
     paymentFrom: optionalFilter,
     paymentTo: optionalFilter,
+    openTasks: z
+      .literal('true')
+      .or(z.literal(''))
+      .nullish()
+      .transform((value) => value || undefined),
   })
   .transform((values, context) => {
     const result = activitiesListQuerySchema.safeParse(values)

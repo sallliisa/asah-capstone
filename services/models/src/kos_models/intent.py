@@ -15,6 +15,7 @@ from sklearn.metrics import classification_report, confusion_matrix, f1_score
 from kos_models.generate import ROOT
 
 LABELS = ["rooms", "schedules", "finances", "guidance", "out-of-scope"]
+MIN_GROUPED_VALIDATION_ACCEPTED = 54
 TEMPLATES = {
     "rooms": [
         "Tunjukkan riwayat kerusakan {item}",
@@ -291,39 +292,70 @@ def dataset():
     return rows
 
 
-def thresholds(probabilities, truth, classes, unclear_probabilities):
-    ordered = np.sort(probabilities, axis=1)
-    confidence = ordered[:, -1]
-    gap = ordered[:, -1] - ordered[:, -2]
-    predictions = classes[probabilities.argmax(axis=1)]
-    unclear_ordered = np.sort(unclear_probabilities, axis=1)
+def scores(model, rows):
+    truth = np.array([row["intent"] for row in rows])
+    probabilities = model.predict_proba([row["text"] for row in rows])
+    order = np.argsort(probabilities, axis=1)
+    index = np.arange(len(rows))
+    confidence = probabilities[index, order[:, -1]]
+    margin = confidence - probabilities[index, order[:, -2]]
+    return truth, model.classes_[order[:, -1]], confidence, margin
+
+
+def route(prediction, confidence, margin, cutoff, minimum_margin):
+    return np.where(
+        (confidence >= cutoff) & (margin >= minimum_margin), prediction, "uncertain"
+    )
+
+
+def thresholds(model, grouped, natural):
+    grouped_truth, *grouped_scores = scores(model, grouped)
+    natural_truth, *natural_scores = scores(model, natural)
     choices = []
     for cutoff, margin in itertools.product(
-        (0.35, 0.45, 0.55, 0.65, 0.75), (0, 0.05, 0.1, 0.15, 0.2, 0.25)
+        (value / 100 for value in range(30, 81, 5)),
+        (value / 100 for value in range(0, 31, 5)),
     ):
-        accepted = (confidence >= cutoff) & (gap >= margin)
-        precision = (
-            float((predictions[accepted] == np.array(truth)[accepted]).mean())
-            if accepted.any()
-            else 0
+        grouped_route = route(*grouped_scores, cutoff, margin)
+        natural_route = route(*natural_scores, cutoff, margin)
+        if np.any((grouped_route != "uncertain") & (grouped_route != grouped_truth)):
+            continue
+        if np.any((natural_route != "uncertain") & (natural_route != natural_truth)):
+            continue
+        grouped_correct = int((grouped_route == grouped_truth).sum())
+        if grouped_correct < MIN_GROUPED_VALIDATION_ACCEPTED:
+            continue
+        correct = natural_route == natural_truth
+        priority = min(
+            int((correct & (natural_truth == label)).sum())
+            for label in ("rooms", "guidance")
         )
-        unclear_accepted = (unclear_ordered[:, -1] >= cutoff) & (
-            unclear_ordered[:, -1] - unclear_ordered[:, -2] >= margin
-        )
-        reliable = precision >= 0.9 and float(unclear_accepted.mean()) <= 0.1
         choices.append(
-            (
-                reliable,
-                float(accepted.mean())
-                if reliable
-                else precision - float(unclear_accepted.mean()),
-                precision,
-                -cutoff,
-                -margin,
-            )
+            (priority, int(correct.sum()), grouped_correct, -cutoff, -margin)
         )
-    selected = max(choices)
-    return -selected[3], -selected[4]
+    if not choices:
+        raise ValueError("No threshold pair preserves safe validation coverage")
+    _, _, _, cutoff, margin = max(choices)
+    return -cutoff, -margin
+
+
+def routing_report(model, rows, cutoff, margin):
+    truth, *row_scores = scores(model, rows)
+    routed = route(*row_scores, cutoff, margin)
+    correct = routed == truth
+    calls_workflow = np.isin(routed, ["rooms", "schedules", "finances", "guidance"])
+    return {
+        "total": len(rows),
+        "wrongTool": int((~correct & calls_workflow).sum()),
+        "perClass": {
+            label: {
+                "total": int((truth == label).sum()),
+                "correct": int((correct & (truth == label)).sum()),
+                "wrongTool": int((~correct & calls_workflow & (truth == label)).sum()),
+            }
+            for label in sorted(set(truth))
+        },
+    }
 
 
 def report(model, rows, cutoff, margin):
@@ -354,114 +386,100 @@ def report(model, rows, cutoff, margin):
     }
 
 
+def read_rows(path):
+    return [json.loads(line) for line in path.read_text().splitlines()]
+
+
 def train():
     rows = dataset()
     splits = {
-        name: [r for r in rows if r["split"] == name]
+        name: [row for row in rows if row["split"] == name]
         for name in ["train", "validation", "test"]
     }
-    groups = {name: {r["group"] for r in values} for name, values in splits.items()}
+    groups = {name: {row["group"] for row in values} for name, values in splits.items()}
     if any(groups[a] & groups[b] for a, b in itertools.combinations(groups, 2)):
         raise ValueError("Paraphrase group crosses splits")
-    candidates = []
-    for name, c, combined in [
-        ("word-baseline", 1, False),
-        ("word-char", 1, True),
-        ("word-char-c4", 4, True),
-    ]:
-        word = TfidfVectorizer(ngram_range=(1, 2), sublinear_tf=True)
-        features = (
-            FeatureUnion(
-                [
-                    ("word", word),
-                    (
-                        "char",
-                        TfidfVectorizer(
-                            analyzer="char_wb", ngram_range=(3, 5), sublinear_tf=True
-                        ),
-                    ),
-                ]
-            )
-            if combined
-            else word
-        )
-        model = Pipeline(
-            [
-                ("features", features),
-                (
-                    "classifier",
-                    LogisticRegression(
-                        C=c, class_weight="balanced", max_iter=1000, random_state=29941
-                    ),
-                ),
-            ]
-        )
-        model.fit(
-            [r["text"] for r in splits["train"]], [r["intent"] for r in splits["train"]]
-        )
-        probabilities = model.predict_proba([r["text"] for r in splits["validation"]])
-        cutoff, margin = thresholds(
-            probabilities,
-            [r["intent"] for r in splits["validation"]],
-            model.classes_,
-            model.predict_proba(
-                [
-                    "itu gimana",
-                    "yang tadi itu",
-                    "ada nggak",
-                    "berapa",
-                    "kapan",
-                    "kok gitu",
-                    "tolong cek",
-                    "sudah atau belum",
-                    "yang mana",
-                    "jadi?",
-                ]
-            ),
-        )
-        candidates.append(
+    natural_path = ROOT / "intent-natural.jsonl"
+    natural_rows = read_rows(natural_path)
+    natural_train = [row for row in natural_rows if row["split"] == "train"]
+    natural_validation = [row for row in natural_rows if row["split"] == "validation"]
+    train_rows = splits["train"] + natural_train
+    features = FeatureUnion(
+        [
+            ("word", TfidfVectorizer(ngram_range=(1, 2), sublinear_tf=True)),
             (
-                model,
-                {
-                    "name": name,
-                    "confidenceThreshold": cutoff,
-                    "marginThreshold": margin,
-                    "validation": report(model, splits["validation"], cutoff, margin),
-                },
-            )
-        )
-    model, choice = max(candidates, key=lambda pair: pair[1]["validation"]["macroF1"])
-    cutoff, margin = choice["confidenceThreshold"], choice["marginThreshold"]
-    digest = hashlib.sha256((ROOT / "intent-dataset.jsonl").read_bytes()).hexdigest()
+                "char",
+                TfidfVectorizer(
+                    analyzer="char_wb", ngram_range=(3, 5), sublinear_tf=True
+                ),
+            ),
+        ]
+    )
+    model = Pipeline(
+        [
+            ("features", features),
+            (
+                "classifier",
+                LogisticRegression(
+                    C=4, class_weight="balanced", max_iter=1000, random_state=29941
+                ),
+            ),
+        ]
+    )
+    model.fit(
+        [row["text"] for row in train_rows],
+        [row["intent"] for row in train_rows],
+        classifier__sample_weight=[1] * len(splits["train"]) + [3] * len(natural_train),
+    )
+    cutoff, margin = thresholds(model, splits["validation"], natural_validation)
+    dataset_bytes = (ROOT / "intent-dataset.jsonl").read_bytes()
+    natural_bytes = natural_path.read_bytes()
+    digest = hashlib.sha256(dataset_bytes + natural_bytes).hexdigest()
     artifact = {
         "model": model,
-        "modelVersion": "intent-v3-" + digest[:12],
+        "modelVersion": "intent-v4-" + digest[:12],
         "confidenceThreshold": cutoff,
         "marginThreshold": margin,
         "labels": LABELS,
         "sklearnVersion": sklearn.__version__,
+    }
+    fresh_path = ROOT / "evaluations/intent-fresh-v4.jsonl"
+    fresh = [
+        {"text": row["text"], "intent": row["expected"]}
+        for row in read_rows(fresh_path)
+    ]
+    if {row["text"].lower() for row in fresh} & {
+        row["text"].lower() for row in rows + natural_rows
+    }:
+        raise ValueError("Fresh evaluation question occurs in the development dataset")
+    result = {
+        "synthetic": True,
+        "modelVersion": artifact["modelVersion"],
+        "datasetSha256": hashlib.sha256(dataset_bytes).hexdigest(),
+        "naturalDatasetSha256": hashlib.sha256(natural_bytes).hexdigest(),
+        "freshEvaluationSha256": hashlib.sha256(fresh_path.read_bytes()).hexdigest(),
+        "counts": {
+            name: dict(Counter(row["intent"] for row in values))
+            for name, values in splits.items()
+        },
+        "naturalCounts": {
+            "train": dict(Counter(row["intent"] for row in natural_train)),
+            "validation": dict(Counter(row["intent"] for row in natural_validation)),
+        },
+        "labels": LABELS,
+        "selected": "word-char-c4-natural",
+        "confidenceThreshold": cutoff,
+        "marginThreshold": margin,
+        "validation": routing_report(model, natural_validation, cutoff, margin),
+        "test": report(model, splits["test"], cutoff, margin),
+        "fresh": routing_report(model, fresh, cutoff, margin),
+        "limits": "The grouped and natural questions are synthetic. Grouped object substitutions are correlated. These results do not establish real-user accuracy.",
     }
     target = ROOT / "artifacts/intent-classifier.joblib"
     joblib.dump(artifact, target)
     (ROOT / "artifacts/intent-classifier.sha256").write_text(
         hashlib.sha256(target.read_bytes()).hexdigest() + "\n"
     )
-    result = {
-        "synthetic": True,
-        "modelVersion": artifact["modelVersion"],
-        "datasetSha256": digest,
-        "counts": {
-            name: dict(Counter(r["intent"] for r in values))
-            for name, values in splits.items()
-        },
-        "labels": LABELS,
-        "selected": choice["name"],
-        "confidenceThreshold": cutoff,
-        "marginThreshold": margin,
-        "experiments": [item for _, item in candidates],
-        "test": report(model, splits["test"], cutoff, margin),
-        "limits": "Five object substitutions per template are correlated. Whole template groups stay in one split. These synthetic examples do not establish real-user accuracy.",
-    }
     (ROOT / "intent-evaluation.json").write_text(
         json.dumps(result, indent=2, ensure_ascii=False) + "\n"
     )

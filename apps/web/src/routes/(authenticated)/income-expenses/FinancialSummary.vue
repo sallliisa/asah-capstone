@@ -15,6 +15,7 @@ async function loadSummary(context: CollectionLoadContext<Record<string, never>>
 const { records, loading, error, refresh } = useCollection(() => ({ load: loadSummary, resource: 'activities', namespace: 'financial-summary', query: {}, searchParameters: summaryQuery.value }))
 const summary = computed(() => records.value[0])
 const number = (value: number) => value.toLocaleString('id-ID')
+const rupiah = (value: number) => `Rp ${number(value)}`
 </script>
 
 <template>
@@ -26,16 +27,16 @@ const number = (value: number) => value.toLocaleString('id-ID')
     </div>
     <dl v-else-if="summary" class="grid grid-cols-1 gap-2 sm:grid-cols-2 xl:grid-cols-4">
       <Card>
-        <dt class="text-sm text-on-surface-variant">Income</dt>
-        <dd class="break-words text-lg font-semibold tabular-nums">{{ number(summary.income) }}</dd>
+        <dt class="text-sm text-on-surface-variant">Settled income</dt>
+        <dd class="break-words text-lg font-semibold tabular-nums">{{ rupiah(summary.income) }}</dd>
       </Card>
       <Card>
-        <dt class="text-sm text-on-surface-variant">Expenses</dt>
-        <dd class="break-words text-lg font-semibold tabular-nums">{{ number(summary.expenses) }}</dd>
+        <dt class="text-sm text-on-surface-variant">Settled expenses</dt>
+        <dd class="break-words text-lg font-semibold tabular-nums">{{ rupiah(summary.expenses) }}</dd>
       </Card>
       <Card>
-        <dt class="text-sm text-on-surface-variant">Net cash movement</dt>
-        <dd class="break-words text-lg font-semibold tabular-nums">{{ number(summary.net) }}</dd>
+        <dt class="text-sm text-on-surface-variant">Net cash</dt>
+        <dd class="break-words text-lg font-semibold tabular-nums">{{ rupiah(summary.net) }}</dd>
       </Card>
       <Card>
         <dt class="text-sm text-on-surface-variant">Draft payments</dt>

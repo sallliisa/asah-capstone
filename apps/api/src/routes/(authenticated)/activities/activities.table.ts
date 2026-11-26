@@ -22,6 +22,8 @@ export const activities = pgTable('activities', {
   receipt: text('receipt'),
   recurringPlanId: text('recurring_plan_id').references(() => recurringPlans.id, { onDelete: 'restrict' }),
   occurrenceDate: date('occurrence_date'),
+  dueDate: date('due_date'),
+  taskTarget: text('task_target', { enum: ['work', 'payment'] }),
   ...auditFields,
 }, (table) => [
   uniqueIndex('activities_plan_occurrence_unique').on(table.recurringPlanId, table.occurrenceDate),
@@ -29,6 +31,7 @@ export const activities = pgTable('activities', {
   check('activities_completion', sql`(${table.workStatus} = 'completed' and ${table.completedDate} is not null) or (${table.workStatus} <> 'completed' and ${table.completedDate} is null)`),
   check('activities_finance', sql`(${table.financialKind} = 'none' and ${table.amount} is null and ${table.paymentStatus} is null and ${table.paymentDate} is null and ${table.receipt} is null) or (${table.financialKind} in ('income','expense') and ${table.paymentStatus} is not null and (${table.amount} is null or ${table.amount} > 0) and ((${table.paymentStatus} = 'draft' and ${table.paymentDate} is null) or (${table.paymentStatus} = 'settled' and ${table.amount} is not null and ${table.paymentDate} is not null)))`),
   check('activities_occurrence', sql`(${table.recurringPlanId} is null and ${table.occurrenceDate} is null) or (${table.recurringPlanId} is not null and ${table.occurrenceDate} is not null)`),
+  check('activities_schedule', sql`(${table.dueDate} is null and ${table.taskTarget} is null) or (${table.dueDate} is not null and ${table.taskTarget} is not null and (${table.taskTarget} = 'work' or (${table.taskTarget} = 'payment' and ${table.financialKind} <> 'none')))`),
 ])
 
 export const activityTenantAttributionChanges = pgTable('activity_tenant_attribution_changes', {

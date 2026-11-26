@@ -21,14 +21,13 @@ const roomId = computed(() => route.params.roomId)
               {{ record.description }}
             </p>
           </section>
-          <section>
-            <h2 class="mb-2 text-base font-semibold text-on-surface">Room information</h2>
+          <div>
             <Detail v-bind="detail" :fields="{ roomTypeName: {}, occupantName: {}, createdAt: detail.fields?.createdAt ?? {} }">
               <template #value:occupantName>
                 {{ record.occupantName ?? 'Unoccupied' }}
               </template>
             </Detail>
-          </section>
+          </div>
         </div>
       </Card>
     </template>

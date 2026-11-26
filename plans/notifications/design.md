@@ -12,14 +12,13 @@ Earlier draft labels describe proposals now included in that approval.
 
 ## 1. Purpose and scope
 
-Show the owner due activities without requiring the owner to remember each
-schedule. Reuse recurring activity generation. Save each notification before
-attempting push so the inbox remains available when delivery fails.
+Notify the owner when a scheduled Activity opens. Save each notification
+before attempting push so the inbox remains available when delivery fails.
 
 Included:
 
 - Authenticated /notifications inbox, unread count, All/Unread, and Mark all as read.
-- Due-activity notifications linked to the existing Activity detail.
+- One notification linked to each scheduled Activity when it opens.
 - Per-device push subscriptions, service worker, and installable iPhone PWA.
 - Background processing that does not require an open app.
 
@@ -37,7 +36,7 @@ Excluded:
 | 2 | Read/mark all | Same recipient | Update notification read state without changing the activity. |
 | 3 | Enable this device | Same recipient, through a user action | Register a supported push subscription. Declining leaves the inbox usable. |
 | 4 | Follow notification | Recipient with Activity read permission | Open the activity, with login first if the session expired. |
-| 5 | Generate due reminder | Authenticated internal job | Save one notification per recipient and generated activity. |
+| 5 | Notify when a task opens | Configured owner | Save one notification when a recurring task opens or Schedule once creates a task. |
 
 Recipient ownership applies to every read and write, even if an ID is known.
 Tenant accounts do not receive owner reminders. Notification access does not
@@ -50,15 +49,13 @@ identity, work state, and payment state. Notifications do not duplicate them.
 
 | Proposed record | Meaning and constraints |
 |---|---|
-| notifications | ID, recipient user reference, activity reference, type, title, body, createdAt, readAt. Unique recipient/activity/type for a due reminder. ReadAt is nullable and server-owned. |
+| notifications | ID, recipient user reference, activity reference, title, body, createdAt, readAt. The recipient and Activity identify one notification. ReadAt is nullable and server-owned. |
 | push_subscriptions | Recipient, endpoint, encryption keys, and audit dates. One endpoint has one current recipient. Subscription keys stay on the backend. |
 | notification_deliveries | Notification/subscription pair, delivery state, attempt time, and bounded error code. One pair represents one logical device delivery. |
 
-Whenever a new notification is saved, attempt push immediately after the
-transaction commits. A repeated scheduler run does not create another copy or
-send a fresh reminder for the same occurrence. Read state does not trigger push.
-Notifications created after downtime follow the same creation-triggered rule,
-regardless of how old their source occurrence is.
+The Activity transaction saves the inbox entry and queues push for registered
+devices. The background job sends queued deliveries. Repeated job runs,
+rescheduling, and reading the inbox entry leave the notification count unchanged.
 
 Keep a pending delivery record so process termination does not lose a saved
 notification's send attempt. The worker can resume unprocessed delivery work.
@@ -85,10 +82,10 @@ of display or reading.
 1. The owner installs the PWA on the iPhone Home Screen and signs in.
 2. The owner taps Enable push notifications on this device. Request permission
    from that action. Show install/support/settings guidance when needed.
-3. Recurrence generates a due Activity. The job saves its notification and
-   pending device deliveries without duplicating a previous occurrence.
-4. Saving the notification triggers the push attempt. The inbox and navigation
-   unread count already include it.
+3. A recurring task opens or the owner selects Schedule once. The Activity
+   transaction saves its notification and pending device deliveries.
+4. The job attempts push delivery. The inbox and navigation unread count
+   already include the notification.
 5. The owner taps the push or inbox entry and opens the authorized Activity.
 6. Reading the notification updates only read state. Work and payment follow-up
    remain explicit Activity operations.

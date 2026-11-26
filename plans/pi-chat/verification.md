@@ -169,3 +169,34 @@ Prompts, visible answers, routing outcomes, and the original failures are in
 evidence; normal saved conversations and the cited domain control remain.
 Browser origin, forms/filters, and iPhone chat panel layout remain unverified by
 explicit user choice. Installed-iPhone push delivery and tapping passed.
+
+## Local Wisp 0.4.2 check
+
+The lockfile resolves Wisp Core, Vue, and Vue UI to 0.4.2. The frozen
+install and web build passed. The built app opened and closed the composer
+in Chromium at desktop and mobile widths. Closing restored launcher focus,
+and reopening kept the draft. The mobile composer cleared the navigation
+pill. Reduced motion skipped the morph animation.
+
+The app signed in to the local API. A local CloudflareOS fixture supplied the
+session and WebSocket responses. This check did not contact the live instance.
+Evidence is in `.local/verification/wisp-0.4.2/`.
+
+## Live Wisp 0.4.2 check, 24 November 2026
+
+The locally built app passed the owner session handoff to the existing
+CloudflareOS instance in Chromium at desktop and 390 px widths. I selected
+Kos De Mansion in Wisp. The mobile composer cleared the navigation pill.
+The conversation picker reopened an existing verification chat and its source
+citation. An anonymous session request returned HTTP 401. A simulated HTTP 503
+showed the Pi error while the dashboard remained usable.
+
+The live rent-policy question cited Prosedur operasional kos, Sewa dan
+pencatatan uang. The hosted routing audit confirmed intent v3, Finances, and
+that passage. A separate question about air-conditioner servicing reached the
+same classifier and returned uncertainty. The two new test conversations were
+removed. Both focused API context tests passed.
+
+Evidence is in `.local/verification/hosted-rag-pi-wisp-20261124/`. The live
+connector still uses intent v3. Physical iPhone and deployed-origin checks
+for the new build remain open.

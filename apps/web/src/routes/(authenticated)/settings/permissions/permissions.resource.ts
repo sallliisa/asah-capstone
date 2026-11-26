@@ -32,12 +32,12 @@ export const permissionResource = defineResource({
   key: 'permissions',
   identity: (record: { id: string }) => record.id,
   list: {
-    permission: 'view-permissions',
+    permission: 'list-permissions',
     route: { name: 'settings-permissions' },
     table: { ...permissionsTable, load: permissionsActions.list },
   },
   detail: {
-    permission: 'view-permissions',
+    permission: 'detail-permissions',
     route: { name: 'settings-permissions-detail', params: (id) => ({ permissionId: String(id) }) },
     title: 'Permission',
     detail: () => ({ ...permissionDetail, load: permissionsActions.detail }),

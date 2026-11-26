@@ -109,3 +109,25 @@ delivery rows through their existing foreign keys. A fresh read confirmed the
 Activity and inbox entry were absent. The real device subscription was retained.
 Evidence: iphone-push-resend.json and iphone-push-cleanup.json in ignored
 .local/verification. No application source change was required for this check.
+
+## Warning card for device reminders
+
+When reminders are off and can be enabled, the Notifications route shows a
+Loom Card with a warning icon, a short message, and Enable notifications at
+the right edge. The route owns browser permission and subscription actions.
+The browser check covers desktop and 390 px widths, simulated permission
+dismissal, and blocked permission. Evidence is in
+`.local/verification/notification-warning-card-20261124/`.
+
+The live Notifications page showed a simulated browser push registration
+failure once in an error toast. The enable button was available for another
+attempt. Evidence is in `.local/verification/notification-push-error-toast-20261124/`.
+
+## Scheduled task notifications, 24 November 2026
+
+The local browser run read one owner inbox entry immediately after Schedule
+once created its Activity. A deadline edit, payment, and completion left the
+count at one. The API checks also opened a recurring task thirty days before
+its deadline and verified that a repeated job added no notification. The
+delivery test exercised queued sends with a mocked push provider. The new
+scheduling flow has no live device delivery result.

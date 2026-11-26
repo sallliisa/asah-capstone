@@ -46,6 +46,15 @@ export const authorizationModules = [
   },
 
   {
+    code: "issue-reports", name: "Issue Reports", active: true,
+    permissions: [
+      { code: "view-issue-reports", name: "View Issue Reports", description: "View issue reports within the user's access scope.", targetType: "global", active: true },
+      { code: "create-issue-reports", name: "Create Issue Reports", description: "Report a problem in an assigned room.", targetType: "global", active: true },
+      { code: "manage-issue-reports", name: "Manage Issue Reports", description: "Review all issue reports and update their follow-up.", targetType: "global", active: true },
+    ],
+  },
+
+  {
     code: "room-types", name: "Room Types", active: true,
     permissions: [
       { code: "view-room-types", name: "View Room Types", description: "View room types.", targetType: "global", active: true },

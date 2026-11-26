@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
 import { RouterLink } from 'vue-router'
+import { toast } from 'vue-sonner'
 import { invalidateResourceData, ListView, useCollection, useFrameworkQueryClient, useNamespacedQuery } from '@southneuhof/loom'
-import Alert from '@southneuhof/loom/components/base/Alert.vue'
 import Button from '@southneuhof/loom/components/base/Button.vue'
+import Card from '@southneuhof/loom/components/base/Card.vue'
 import Icon from '@southneuhof/loom/components/base/Icon.vue'
+import { errorMessage } from '@/framework/adapters/data/normalize'
 import { rpc } from '@/framework/rpc'
 import { notificationActions, notifications } from './notifications.resource'
 import { disablePush, enablePush, pushSupported } from './push'
@@ -28,7 +30,12 @@ const markingRead = ref(new Set<string | undefined>())
 const readError = ref('')
 const pushState = ref<'checking' | 'unsupported' | 'blocked' | 'available' | 'enabled'>('checking')
 const savingPush = ref(false)
-const pushError = ref('')
+const pushSetupError = ref('')
+const pushHelp = computed(() => {
+  if (pushState.value === 'blocked') return 'Allow notifications in your browser or device settings.'
+  if (pushState.value === 'unsupported') return 'This browser does not support push notifications. On iPhone, add the app to your Home Screen and open it there.'
+  return ''
+})
 
 function toggleUnread() {
   inboxQuery.update({ unread: unreadOnly.value ? undefined : 'true', page: 1 })
@@ -64,16 +71,19 @@ async function readPushState() {
 async function updatePush() {
   if (savingPush.value) return
   savingPush.value = true
-  pushError.value = ''
+  pushSetupError.value = ''
   const enabled = pushState.value === 'enabled'
   try {
     if (enabled) await disablePush()
     else await enablePush()
     pushState.value = enabled ? 'available' : 'enabled'
   } catch (error) {
-    pushError.value = error instanceof Error ? error.message : 'Could not update push notifications for this device.'
-    if (Notification.permission === 'denied') pushState.value = 'blocked'
-    else if (enabled)
+    if (Notification.permission === 'denied') {
+      pushState.value = 'blocked'
+      return
+    }
+    toast.error(errorMessage(error, 'Could not update push notifications for this device.'))
+    if (enabled)
       await readPushState().catch(() => {
         pushState.value = 'available'
       })
@@ -87,7 +97,7 @@ onMounted(async () => {
     await readPushState()
   } catch {
     pushState.value = 'available'
-    pushError.value = 'Could not check push setup on this device.'
+    pushSetupError.value = 'Could not check push setup on this device.'
   }
 })
 </script>
@@ -107,36 +117,23 @@ onMounted(async () => {
       </div>
     </template>
 
-    <template #context="{ error }">
-      <div v-if="!error && (pushState !== 'checking' || readError)" class="grid gap-2">
-        <Alert v-if="pushState === 'available'" type="warning">
-          <section class="flex flex-wrap items-center gap-3">
-            <div>
-              <h2 class="font-semibold">Push notifications are off</h2>
-              <p class="mt-1 text-sm">Get a reminder on this device when an activity is due.</p>
-            </div>
-            <Button type="button" color="warning" class="h-auto min-h-10 whitespace-normal py-2 text-center" :disabled="savingPush" @click="updatePush">
-              <template #icon><Icon name="notification" size="base" /></template>
-              Enable push notifications on this device
-            </Button>
-          </section>
-        </Alert>
-        <section v-else-if="pushState === 'enabled'" class="flex flex-wrap items-center gap-2 text-sm">
-          <p role="status">Push notifications are on for this device.</p>
-          <Button type="button" variant="text" :disabled="savingPush" @click="updatePush">
-            <template #icon><Icon name="notification-off" size="base" /></template>
-            Turn off push notifications
-          </Button>
-        </section>
-        <Alert v-else-if="pushState === 'blocked'" type="info">
-          <p>Notifications are blocked. To enable push, allow notifications in your device settings.</p>
-        </Alert>
-        <Alert v-else-if="pushState === 'unsupported'" type="info">
-          <p>On iPhone, add this app to the Home Screen and open it there to enable notifications.</p>
-        </Alert>
-        <p v-if="pushError" role="alert" class="text-sm text-error">{{ pushError }}</p>
-        <p v-if="readError" role="alert" class="text-sm text-error">{{ readError }}</p>
-      </div>
+    <template #context>
+      <Card v-if="pushState === 'available'" variant="outlined" color="warningContainer" class="gap-2 px-5 py-3 sm:px-6">
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+          <div class="flex min-w-0 items-center gap-3">
+            <Icon name="error-warning" size="2xl" class="shrink-0" v-bind="{ 'aria-hidden': true }" />
+            <p class="text-sm font-medium">Activity reminders are off on this device.</p>
+          </div>
+          <Button type="button" class="ml-auto shrink-0" :disabled="savingPush" @click="updatePush">Enable notifications</Button>
+        </div>
+      </Card>
+      <Button v-else-if="pushState === 'enabled'" type="button" variant="text" class="self-start" :disabled="savingPush" @click="updatePush">
+        <template #icon><Icon name="notification-off" size="base" /></template>
+        Turn off notifications
+      </Button>
+      <p v-else-if="pushHelp" role="status" class="text-sm text-on-surface-variant">{{ pushHelp }}</p>
+      <p v-if="pushSetupError" role="alert" class="text-sm text-error">{{ pushSetupError }}</p>
+      <p v-if="readError" role="alert" class="text-sm text-error">{{ readError }}</p>
     </template>
 
     <template #cell:title="{ record }">

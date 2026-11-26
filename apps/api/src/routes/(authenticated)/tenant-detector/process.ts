@@ -1,6 +1,6 @@
 import { modelRequest } from '../../../model-service'
 import { createHash } from 'node:crypto'
-import { and, asc, between, eq, inArray, isNotNull, or, sql, type SQLWrapper } from 'drizzle-orm'
+import { and, asc, between, eq, inArray, isNotNull, lte, or, sql, type SQLWrapper } from 'drizzle-orm'
 import { z } from 'zod/v4'
 import { getDb } from '../../../db'
 import { businessDate } from '../activities/dates'
@@ -22,9 +22,10 @@ export async function processTenantDetector() {
   const today = businessDate()
   const withinWindow = (date: SQLWrapper) => between(date, sql`${today}::date - interval '1 year' + interval '1 day'`, sql`${today}::date`)
   const observedByToday = (date: SQLWrapper) => sql`case when ${date} <= ${today}::date then ${date} end`
-  const observationDate = sql`least(${observedByToday(activities.occurrenceDate)}, ${observedByToday(activities.completedDate)}, ${observedByToday(activities.paymentDate)})`
+  const recurringDueDate = sql<string | null>`case when ${activities.occurrenceDate} is not null then coalesce(${activities.dueDate}, ${activities.occurrenceDate}) end`
+  const observationDate = sql`least(${observedByToday(recurringDueDate)}, ${observedByToday(activities.completedDate)}, ${observedByToday(activities.paymentDate)})`
   const scoringActivity = or(
-    and(eq(activities.categoryId, 'activity-category-room-rent'), eq(activities.financialKind, 'income'), withinWindow(activities.occurrenceDate)),
+    and(eq(activities.categoryId, 'activity-category-room-rent'), eq(activities.financialKind, 'income'), withinWindow(recurringDueDate)),
     and(eq(activities.categoryId, 'activity-category-extra-cleaning'), eq(activities.workStatus, 'completed'), withinWindow(activities.completedDate)),
     and(eq(activities.categoryId, 'activity-category-corrective-repairs'), or(
       and(eq(activities.workStatus, 'completed'), withinWindow(activities.completedDate)),
@@ -52,8 +53,8 @@ export async function processTenantDetector() {
       await tx.update(tenantDetectorState).set({ lastAttempt: new Date().toISOString() }).where(eq(tenantDetectorState.tenantId, state.tenantId))
       const associated = and(eq(activities.tenantId, state.tenantId), isNotNull(activities.roomId))
       const [{ observationStart }] = await tx.select({ observationStart: sql<string>`greatest(coalesce(min(${observationDate}), ${today}::date), ${today}::date - interval '1 year' + interval '1 day')::date::text` }).from(activities).where(associated)
-      const records = await tx.select({ id: activities.id, roomId: activities.roomId, categoryId: activities.categoryId, workStatus: activities.workStatus, completedDate: activities.completedDate, financialKind: activities.financialKind, amount: activities.amount, paymentStatus: activities.paymentStatus, paymentDate: activities.paymentDate, occurrenceDate: activities.occurrenceDate }).from(activities).where(and(associated, scoringActivity)).orderBy(asc(activities.id))
-      const incomplete = await tx.select({ id: recurringPlans.id }).from(recurringPlans).where(and(eq(recurringPlans.tenantId, state.tenantId), eq(recurringPlans.active, true), sql`${recurringPlans.nextOccurrenceDate} <= ${today}`)).limit(1)
+      const records = await tx.select({ id: activities.id, roomId: activities.roomId, categoryId: activities.categoryId, workStatus: activities.workStatus, completedDate: activities.completedDate, financialKind: activities.financialKind, amount: activities.amount, paymentStatus: activities.paymentStatus, paymentDate: activities.paymentDate, occurrenceDate: recurringDueDate }).from(activities).where(and(associated, scoringActivity)).orderBy(asc(activities.id))
+      const incomplete = await tx.select({ id: recurringPlans.id }).from(recurringPlans).where(and(eq(recurringPlans.tenantId, state.tenantId), isNotNull(recurringPlans.roomId), eq(recurringPlans.active, true), eq(recurringPlans.categoryId, 'activity-category-room-rent'), eq(recurringPlans.financialKind, 'income'), lte(recurringPlans.nextOccurrenceDate, today))).limit(1)
       const modelInput = {
         tenantId: state.tenantId,
         asOfDate: today,

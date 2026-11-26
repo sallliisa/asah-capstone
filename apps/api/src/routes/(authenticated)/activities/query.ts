@@ -1,4 +1,4 @@
-import { and, asc, desc, eq, gte, ilike, lte, ne, or, type SQL } from 'drizzle-orm'
+import { and, asc, desc, eq, gte, ilike, isNull, lte, ne, or, sql, type SQL } from 'drizzle-orm'
 import { z } from 'zod/v4'
 import { activities } from './activities.table'
 import { financialKindSchema, paymentStatusSchema, workStatusSchema } from './schema'
@@ -7,9 +7,10 @@ export const activityQuerySchema = z.object({
   page: z.coerce.number().int().positive().default(1),
   limit: z.coerce.number().int().positive().max(1000).default(10),
   search: z.string().optional(),
-  sort: z.enum(['name', 'occurrenceDate', 'paymentDate', 'amount', 'createdAt']).default('createdAt'),
+  sort: z.enum(['name', 'dueDate', 'occurrenceDate', 'paymentDate', 'amount', 'createdAt']).default('createdAt'),
   order: z.enum(['asc', 'desc']).default('desc'),
   financialOnly: z.enum(['true', 'false']).transform((value) => value === 'true').or(z.boolean()).optional(),
+  openTasks: z.enum(['true', 'false']).transform((value) => value === 'true').or(z.boolean()).optional(),
   financialKind: financialKindSchema.optional(),
   workStatus: workStatusSchema.optional(),
   paymentStatus: paymentStatusSchema.optional(),
@@ -20,10 +21,21 @@ export const activityQuerySchema = z.object({
   paymentTo: z.iso.date().optional(),
 }).strict().refine((value) => !value.paymentFrom || !value.paymentTo || value.paymentFrom <= value.paymentTo, { path: ['paymentTo'], message: 'The end date must not precede the start date.' })
 
+export const activityDueDate = sql<string | null>`coalesce(${activities.dueDate}, ${activities.occurrenceDate})`
+
+const openWork = or(eq(activities.workStatus, 'planned'), eq(activities.workStatus, 'in_progress'))
+const draftPayment = eq(activities.paymentStatus, 'draft')
+export const openActivityTask = and(ne(activities.workStatus, 'cancelled'), or(
+  and(eq(activities.taskTarget, 'work'), openWork),
+  and(eq(activities.taskTarget, 'payment'), draftPayment),
+  and(isNull(activities.taskTarget), or(openWork, draftPayment)),
+))
+
 export function activityWhere(query: z.output<typeof activityQuerySchema>, scope?: SQL) {
   return and(scope,
     query.search ? or(ilike(activities.name, `%${query.search}%`), ilike(activities.description, `%${query.search}%`)) : undefined,
     query.financialOnly ? ne(activities.financialKind, 'none') : undefined,
+    query.openTasks ? openActivityTask : undefined,
     query.financialKind ? eq(activities.financialKind, query.financialKind) : undefined,
     query.workStatus ? eq(activities.workStatus, query.workStatus) : undefined,
     query.paymentStatus ? eq(activities.paymentStatus, query.paymentStatus) : undefined,
@@ -35,6 +47,7 @@ export function activityWhere(query: z.output<typeof activityQuerySchema>, scope
 }
 
 export function activityOrder(query: z.output<typeof activityQuerySchema>) {
-  const column = activities[query.sort]
-  return [query.order === 'desc' ? desc(column) : asc(column), asc(activities.id)]
+  const column = query.sort === 'dueDate' ? activityDueDate : activities[query.sort]
+  const order = query.order === 'desc' ? desc(column) : asc(column)
+  return [query.sort === 'dueDate' ? sql`${order} nulls last` : order, asc(activities.id)]
 }

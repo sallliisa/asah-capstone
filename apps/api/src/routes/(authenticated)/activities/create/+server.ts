@@ -6,25 +6,34 @@ import { requirePermission } from '../../../../identity'
 import { validateRoom } from '../../../../room-reference'
 import { activities } from '../activities.table'
 import { businessDate } from '../dates'
-import { activityInsertSchema, activityStateSchema } from '../schema'
+import { activityCreateSchema, activityInsertSchema, activityStateSchema, defaultTaskTarget } from '../schema'
+import { queueActivityNotifications } from '../../notifications/deliver'
+import { notificationOwnerId } from '../../notifications/owner'
 
 export const POST = create({
   authorize: requirePermission('create-activities'),
   validate: [({ state }) => validateTenant(state.input.tenantId), ({ state }) => validateRoom(state.input.roomId), ({ state }) => validateActivityCategory(state.input.categoryId)],
   run: async (args) => {
     const { state } = args
-    if (state.input.tenantId) await requirePermission('view-users')(args)
-    const values = { ...state.input, ...state.values }
+    const input = activityCreateSchema.parse(state.input)
+    if (input.tenantId) await requirePermission('view-users')(args)
     const today = businessDate()
-    const paymentStatus = values.financialKind === 'none' ? null : 'settled'
+    const scheduled = input.dueDate !== undefined
+    const paymentStatus = input.financialKind === 'none' ? null : scheduled ? 'draft' : 'settled'
     const row = activityInsertSchema.parse({
-      ...values,
-      workStatus: 'completed',
-      completedDate: today,
+      ...input,
+      ...state.values,
+      workStatus: scheduled ? 'planned' : 'completed',
+      completedDate: scheduled ? null : today,
+      taskTarget: scheduled ? (input.taskTarget ?? defaultTaskTarget(input)) : null,
       paymentStatus,
-      paymentDate: paymentStatus === 'settled' ? (values.paymentDate ?? today) : values.paymentDate,
+      paymentDate: paymentStatus === 'settled' ? (input.paymentDate ?? today) : input.paymentDate,
     })
-    const rows = await getDb().insert(activities).values(row).returning()
-    return activityStateSchema.parse(rows[0])
+    const recipientId = scheduled ? await notificationOwnerId() : null
+    return getDb().transaction(async (tx) => {
+      const [record] = await tx.insert(activities).values(row).returning()
+      if (recipientId && record.dueDate) await queueActivityNotifications(tx, recipientId, [{ ...record, dueDate: record.dueDate }])
+      return activityStateSchema.parse(record)
+    })
   },
 })

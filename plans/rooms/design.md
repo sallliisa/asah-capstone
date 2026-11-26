@@ -40,7 +40,7 @@ A room is one rentable unit in the boarding house.
 |---|---|---|
 | ID | Record identity | Generated; cannot be edited. |
 | Room code | Label on the room map | Required; trimmed; unique; maximum 30 characters. |
-| Occupant ID | Assigned user | Optional user reference; writes must select a user with an active Occupant role and active role assignment. Clearing it makes the room unoccupied. One user can occupy more than one room. |
+| Occupant ID | Assigned user | Optional user reference. A new assignment needs a user with an active Occupant role and role assignment. Clearing it makes the room unoccupied. One user can occupy more than one room. |
 | Room Type ID | Assigned room type | Required stored reference; defaults to Standard. Existing rooms are assigned Standard by migration. |
 | Name | Room name | Required; trimmed; maximum 100 characters. |
 | Description | Additional room information | Optional; maximum 1000 characters. |

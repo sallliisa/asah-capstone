@@ -1,0 +1,114 @@
+{"id": "rooms-01", "text": "Unit 205 itu sekarang ditempati siapa?", "expected": "rooms"}
+{"id": "rooms-02", "text": "Unit mana yang masih belum ada penghuninya?", "expected": "rooms"}
+{"id": "rooms-03", "text": "Bisa ambil nomor kamar yang dihuni Fira sebelum dia pindah ke lantai atas?", "expected": "rooms"}
+{"id": "rooms-04", "text": "Atas nama siapa kontrakan di B4 tercatat?", "expected": "rooms"}
+{"id": "rooms-05", "text": "mau liat penghuni aktif lantai 2", "expected": "rooms"}
+{"id": "rooms-06", "text": "Kos kita sisa kamar kosong berapa, ya?", "expected": "rooms"}
+{"id": "rooms-07", "text": "Antara 07 dan 09 mana yang sudah ditempati?", "expected": "rooms"}
+{"id": "rooms-08", "text": "Ada keluhan fasilitas dari kamar ujung lorong?", "expected": "rooms"}
+{"id": "rooms-09", "text": "Kmr 3 masih kosong apa udah isi?", "expected": "rooms"}
+{"id": "rooms-10", "text": "Riwayat pindahnya Bu Nisa dari unit mana ke mana?", "expected": "rooms"}
+{"id": "rooms-11", "text": "Penghuninya Riko. Buka detail orangnya dong.", "expected": "rooms"}
+{"id": "rooms-12", "text": "Cek apakah kamar C01 tercatat nonaktif.", "expected": "rooms"}
+{"id": "rooms-13", "text": "Unit yang sedang diblokir karena renovasi apa aja?", "expected": "rooms"}
+{"id": "rooms-14", "text": "Ada temuan apa dari pengecekan kondisi unit 303?", "expected": "rooms"}
+{"id": "rooms-15", "text": "Dari laporan penghuni, masalah plafon itu dilaporkan dari unit berapa?", "expected": "rooms"}
+{"id": "rooms-16", "text": "Atas nama siapa laporan dispenser rusak kemarin?", "expected": "rooms"}
+{"id": "rooms-17", "text": "Perbaikan pompa di kamar belakang sudah beres?", "expected": "rooms"}
+{"id": "rooms-18", "text": "Status retur kunci untuk penghuni yang keluar tercatat apa?", "expected": "rooms"}
+{"id": "rooms-19", "text": "Yg nempatin C-8 sekarang tenant baru apa lama?", "expected": "rooms"}
+{"id": "rooms-20", "text": "Unit 08 pernah ada masalah stop kontak gak?", "expected": "rooms"}
+{"id": "rooms-21", "text": "Ada laporan lembap yang masih terbuka di kamar milik Tio?", "expected": "rooms"}
+{"id": "rooms-22", "text": "Penghuni mana yang perlu dicek dulu hari ini?", "expected": "rooms"}
+{"id": "rooms-23", "text": "Nilai perhatian Susi saat ini A, B, atau C?", "expected": "rooms"}
+{"id": "rooms-24", "text": "Kok Pak Joko dapat nilai C, catatan sumbernya apa?", "expected": "rooms"}
+{"id": "rooms-25", "text": "Bisa keluarin daftar penilaian penghuni yang masih segar?", "expected": "rooms"}
+{"id": "rooms-26", "text": "Cocokkan nama Ana di profil penghuni dengan nomor unitnya yang sekarang.", "expected": "rooms"}
+{"id": "rooms-27", "text": "Yang penghuniannya terisi dan pernah komplain air itu kamar mana?", "expected": "rooms"}
+{"id": "rooms-28", "text": "Tolong cek status unit A2 dan siapa yang tinggal di situ saat ini.", "expected": "rooms"}
+{"id": "rooms-29", "text": "Dari catatan tenant, siapa yang terakhir pakai unit K6?", "expected": "rooms"}
+{"id": "rooms-30", "text": "Ada rekaman penanganan hama atas nama Adit di unit lama?", "expected": "rooms"}
+{"id": "guidance-01", "text": "Di halaman Kamar, apa beda status tidak tersedia sama kosong?", "expected": "guidance"}
+{"id": "guidance-02", "text": "Kalau tenant pindah, aktivitas lamanya ikut pindah atau tetap muncul?", "expected": "guidance"}
+{"id": "guidance-03", "text": "Misalnya unit sedang direnovasi, statusnya sebaiknya saya pilih apa?", "expected": "guidance"}
+{"id": "guidance-04", "text": "Boleh jelasin bedanya pekerjaan sudah selesai dan pembayaran sudah lunas?", "expected": "guidance"}
+{"id": "guidance-05", "text": "Gmn masukin bukti transfer ke pencatatan?", "expected": "guidance"}
+{"id": "guidance-06", "text": "Di mana tombol untuk menugaskan penghuni ke kamar?", "expected": "guidance"}
+{"id": "guidance-07", "text": "Kalau muncul label data belum cukup, itu maksudnya apa?", "expected": "guidance"}
+{"id": "guidance-08", "text": "Apakah nilai C berarti penyewa pasti yang bikin kerusakan?", "expected": "guidance"}
+{"id": "guidance-09", "text": "Angka arus kas bersih itu dihitung dari komponen apa?", "expected": "guidance"}
+{"id": "guidance-10", "text": "Mau input pengeluaran internet sekaligus buktinya, mulai dari layar mana?", "expected": "guidance"}
+{"id": "guidance-11", "text": "Gimana cara mencatat iuran yang masuknya pakai dua kali transfer?", "expected": "guidance"}
+{"id": "guidance-12", "text": "Ketika isi formulir rencana rutin, apa gunanya tanggal mulai?", "expected": "guidance"}
+{"id": "guidance-13", "text": "Kalau sengaja ingin kamar tak bisa dihuni sementara, harus ubah apa?", "expected": "guidance"}
+{"id": "guidance-14", "text": "Saya baru pegang operasional, urutan membuka akun penghuni dan memilih unitnya gimana?", "expected": "guidance"}
+{"id": "guidance-15", "text": "Langkah edit nama tenant yang keliru inputnya lewat mana?", "expected": "guidance"}
+{"id": "guidance-16", "text": "Pengeluaran biaya perbaikan dipisah kategori dari kebersihan nggak secara aturan?", "expected": "guidance"}
+{"id": "guidance-17", "text": "Gimana menangani bau gas dari kamar sebelum petugas datang?", "expected": "guidance"}
+{"id": "guidance-18", "text": "Apa tindakan awal yang aman jika ada air dekat stopkontak?", "expected": "guidance"}
+{"id": "guidance-19", "text": "Jika AC menetes, tindakan pertama yang aman buat penghuni apa?", "expected": "guidance"}
+{"id": "guidance-20", "text": "Sebelum listrik dinyalakan lagi habis banjir, apa yang mesti diperiksa?", "expected": "guidance"}
+{"id": "guidance-21", "text": "Kapan sebaiknya pemilik minta teknisi untuk masalah pipa?", "expected": "guidance"}
+{"id": "guidance-22", "text": "Tenant melapor pintu macet. Langkah dokumentasi yang disarankan apa aja?", "expected": "guidance"}
+{"id": "guidance-23", "text": "Apa saja isi catatan serah terima unit supaya lengkap?", "expected": "guidance"}
+{"id": "guidance-24", "text": "Jika alamat email pengguna salah, menu mana buat mengoreksi?", "expected": "guidance"}
+{"id": "guidance-25", "text": "Di aplikasi ini bedanya kategori transaksi dengan jenis pemasukan atau pengeluaran apa?", "expected": "guidance"}
+{"id": "guidance-26", "text": "Supaya laporan pajak bisa dicek lagi, dokumen kegiatan apa yang perlu disimpan?", "expected": "guidance"}
+{"id": "guidance-27", "text": "Keterangan perbaikan yang baik itu harus mencantumkan apa?", "expected": "guidance"}
+{"id": "guidance-28", "text": "Gimana prosedur kalau kartu akses kamar hilang?", "expected": "guidance"}
+{"id": "guidance-29", "text": "Apakah kotak masuk pengingat harus dibaca sebelum sebuah pekerjaan selesai?", "expected": "guidance"}
+{"id": "guidance-30", "text": "Untuk menghindari salah atribusi, apa yang perlu dicatat saat tenant bertukar kamar?", "expected": "guidance"}
+{"id": "schedules-01", "text": "Servis tangki air yang berikut, tanggal berapa?", "expected": "schedules"}
+{"id": "schedules-02", "text": "Apa yang harus dikerjain petugas sebelum akhir pekan ini?", "expected": "schedules"}
+{"id": "schedules-03", "text": "Cek agenda tanggal 14; ada pekerjaan apa?", "expected": "schedules"}
+{"id": "schedules-04", "text": "Tampilkan item mingguan untuk bersih-bersih lorong yang belum jatuh tempo.", "expected": "schedules"}
+{"id": "schedules-05", "text": "Sedot septic tank masuk jadwal paling dekat kapan ya?", "expected": "schedules"}
+{"id": "schedules-06", "text": "Bisa lihat pengingat kos yang belum dibuka?", "expected": "schedules"}
+{"id": "schedules-07", "text": "tenggat inspeksi listrik kapan", "expected": "schedules"}
+{"id": "schedules-08", "text": "Kegiatan rutin yang aktif apa saja?", "expected": "schedules"}
+{"id": "schedules-09", "text": "Kegiatan apa yang direncanakan berulang di bulan Desember?", "expected": "schedules"}
+{"id": "schedules-10", "text": "Apa saja yang direncanain buat besok pagi?", "expected": "schedules"}
+{"id": "schedules-11", "text": "Tolong list pekerjaan yang tenggatnya sudah lewat sampai sekarang.", "expected": "schedules"}
+{"id": "schedules-12", "text": "Jadwal mana yang akan muncul lagi minggu depan?", "expected": "schedules"}
+{"id": "finances-01", "text": "Pemasukan terakhir dari sewa kamar B6 tercatat kapan?", "expected": "finances"}
+{"id": "finances-02", "text": "Total uang keluar buat bahan bangunan sejauh bulan ini?", "expected": "finances"}
+{"id": "finances-03", "text": "Tunggakan yang open masih berapa duit?", "expected": "finances"}
+{"id": "finances-04", "text": "Transfer dari Mbak Aisyah kemarin udah masuk pembukuan belum?", "expected": "finances"}
+{"id": "finances-05", "text": "Tolong lihat bukti bayar invoice tukang ledeng.", "expected": "finances"}
+{"id": "finances-06", "text": "Cek selisih uang masuk sama keluar buat Oktober.", "expected": "finances"}
+{"id": "finances-07", "text": "Studi kasus kita ada pembelian toren, nominal yang tercatat di transaksi berapa?", "expected": "finances"}
+{"id": "finances-08", "text": "Sewa bulan ini atas nama Kris yang sudah diterima berapa?", "expected": "finances"}
+{"id": "finances-09", "text": "Pengeluaran yang paling gede 30 hari terakhir buat apa?", "expected": "finances"}
+{"id": "finances-10", "text": "Jumlah transaksi yang masih draf di pembukuan sekarang ada berapa?", "expected": "finances"}
+{"id": "finances-11", "text": "Kontraktor listrik sudah dibayar sesuai catatan?", "expected": "finances"}
+{"id": "finances-12", "text": "Rekap pemasukan yang berasal dari deposit kamar aja.", "expected": "finances"}
+{"id": "uncertain-01", "text": "cek yang kemaren", "expected": "uncertain"}
+{"id": "uncertain-02", "text": "Yang A itu gimana ya?", "expected": "uncertain"}
+{"id": "uncertain-03", "text": "bisa sekali lagi?", "expected": "uncertain"}
+{"id": "uncertain-04", "text": "Remotnya gimana?", "expected": "uncertain"}
+{"id": "uncertain-05", "text": "Sudah masuk belum?", "expected": "uncertain"}
+{"id": "uncertain-06", "text": "di situ yang mana sih", "expected": "uncertain"}
+{"id": "uncertain-07", "text": "lihat yang baru", "expected": "uncertain"}
+{"id": "uncertain-08", "text": "dah aman?", "expected": "uncertain"}
+{"id": "uncertain-09", "text": "Soal pembayaran itu.", "expected": "uncertain"}
+{"id": "uncertain-10", "text": "Lanjutin dong.", "expected": "uncertain"}
+{"id": "uncertain-11", "text": "Bisa dibantu?", "expected": "uncertain"}
+{"id": "uncertain-12", "text": "Penyewa sama AC itu maksudnya gimana?", "expected": "uncertain"}
+{"id": "uncertain-13", "text": "Jadwal sama catatan uang, semuanya gimana?", "expected": "uncertain"}
+{"id": "uncertain-14", "text": "Ya udah, terus?", "expected": "uncertain"}
+{"id": "uncertain-15", "text": "buat besok yg itu", "expected": "uncertain"}
+{"id": "uncertain-16", "text": "Ini dihitung gak?", "expected": "uncertain"}
+{"id": "out-of-scope-01", "text": "Liga Inggris hari ini main jam berapa?", "expected": "out-of-scope"}
+{"id": "out-of-scope-02", "text": "Pilihkan HP lima jutaan untuk foto kamar hotel liburan.", "expected": "out-of-scope"}
+{"id": "out-of-scope-03", "text": "Gimana cara bikin ayam geprek buat jualan?", "expected": "out-of-scope"}
+{"id": "out-of-scope-04", "text": "Siapa yang menyanyi di video viral itu?", "expected": "out-of-scope"}
+{"id": "out-of-scope-05", "text": "Ada ide nama kucing putih?", "expected": "out-of-scope"}
+{"id": "out-of-scope-06", "text": "Kalau mau daftar visa Korea langkahnya apa?", "expected": "out-of-scope"}
+{"id": "out-of-scope-07", "text": "Tolong terjemahin pidato wisuda ini ke bahasa Korea.", "expected": "out-of-scope"}
+{"id": "out-of-scope-08", "text": "Harga Bitcoin sekarang berapa?", "expected": "out-of-scope"}
+{"id": "out-of-scope-09", "text": "Kasih daftar pantai untuk jalan-jalan di Bali.", "expected": "out-of-scope"}
+{"id": "out-of-scope-10", "text": "Nama penghuni planet Mars di komik Tintin siapa?", "expected": "out-of-scope"}
+{"id": "out-of-scope-11", "text": "Di mana saya bisa nonton siaran ulang MotoGP?", "expected": "out-of-scope"}
+{"id": "out-of-scope-12", "text": "Kapan jadwal konser Taylor Swift di Singapura?", "expected": "out-of-scope"}
+{"id": "out-of-scope-13", "text": "Di mana lokasi kamar hotel tempat film itu syuting?", "expected": "out-of-scope"}
+{"id": "out-of-scope-14", "text": "Bagaimana memperpanjang SIM untuk motor pribadi?", "expected": "out-of-scope"}

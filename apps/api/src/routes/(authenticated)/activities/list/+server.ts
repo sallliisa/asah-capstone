@@ -8,10 +8,8 @@ import { activitySelectSchema } from '../schema'
 
 export const GET = list({
   authorize: requirePermission('view-activities'),
-  run: async (args) => {
-    const { state } = args
+  run: async ({ state }) => {
     const query = activityQuerySchema.parse(state.query)
-    if (query.tenantId) await requirePermission('view-users')(args)
     if (state.where !== undefined && !(state.where instanceof SQL)) throw validationError('Unsupported activity scope.')
     const where = activityWhere(query, state.where)
     const [rows, totals] = await Promise.all([

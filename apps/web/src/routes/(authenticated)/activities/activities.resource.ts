@@ -1,4 +1,5 @@
 import { defineDetail, defineForm, defineResource, defineTable, type DetailFieldContext, type FormFieldContext, type ListFilters } from '@southneuhof/loom'
+import { permissions } from '@/stores/permissions'
 import { activitiesActions } from './activities.actions'
 import { activitiesCreateSchema, activitiesRecordSchema, activitiesUpdateSchema, activitiesListQuerySchema, activityFiltersSchema, activityToday } from './activities.schema'
 
@@ -17,6 +18,13 @@ export const paymentStates = [
   { id: 'draft', name: 'Draft' },
   { id: 'settled', name: 'Settled' },
 ] as const
+export const taskTargets = [
+  { id: 'work', name: 'Work is completed' },
+  { id: 'payment', name: 'Payment is recorded' },
+] as const
+const taskTargetDisplay = {
+  read: (record: { taskTarget: string | null }) => taskTargets.find(({ id }) => id === record.taskTarget)?.name,
+}
 const workDisplay = {
   renderer: 'chip',
   props: {
@@ -51,6 +59,8 @@ const labels = {
   receipt: 'Receipt',
   planName: 'Recurring plan',
   occurrenceDate: 'Expected date',
+  dueDate: 'Due date',
+  taskTarget: 'Close task when',
 }
 const amountDisplay = { format: 'number' }
 const table = defineTable({
@@ -65,7 +75,7 @@ const table = defineTable({
     categoryName: {},
     amount: { ...amountDisplay, sortable: true },
     paymentStatus: paymentDisplay,
-    occurrenceDate: { format: 'date', sortable: true },
+    dueDate: { format: 'date', sortable: true },
     paymentDate: { format: 'date', sortable: true },
   },
 })
@@ -87,10 +97,12 @@ const detail = defineDetail({
       ({ label: record.financialKind === 'income' ? 'Date received' : 'Date paid', format: 'date' }) as const,
     receipt: { renderer: 'file' },
     planName: {},
-    occurrenceDate: { format: 'date' },
+    dueDate: { format: 'date' },
+    taskTarget: taskTargetDisplay,
   },
 })
 type CreateInput = (typeof activitiesCreateSchema)['_input']
+type CreateContext = { scheduled?: boolean }
 type UpdateInput = (typeof activitiesUpdateSchema)['_input']
 const activityFields = {
   name: { renderer: 'text' },
@@ -100,21 +112,28 @@ const activityFields = {
     props: { load: activitiesActions.categories, resource: 'activity-categories', pick: 'id', view: 'name', clearable: false },
   },
   roomId: { renderer: 'select', props: { load: activitiesActions.rooms, pick: 'id', view: 'name', clearable: true } },
-  tenantId: { renderer: 'select', props: { load: activitiesActions.tenants, resource: 'users', pick: 'id', view: 'name', clearable: true } },
+  tenantId: { renderer: 'select', props: { load: activitiesActions.tenants, pick: 'id', view: 'name', clearable: true } },
   description: { renderer: 'textarea' },
 } as const
 const financialKindField = { renderer: 'radio', initialValue: 'none', props: { data: financialKinds, pick: 'id', view: 'name', direction: 'column' } } as const
+const taskTargetField = { renderer: 'radio', props: { data: taskTargets, pick: 'id', view: 'name', direction: 'column' } } as const
 const createFields = {
   ...activityFields,
+  dueDate: ({ context }: FormFieldContext<CreateInput, CreateContext>) => ({ renderer: 'date', visible: Boolean(context.scheduled) }) as const,
   financialKind: financialKindField,
   amount: ({ draft }: FormFieldContext<CreateInput, {}>) => ({ renderer: 'number', visible: draft.financialKind !== 'none' }) as const,
-  paymentDate: ({ draft }: FormFieldContext<CreateInput, {}>) =>
-    ({ renderer: 'date', label: draft.financialKind === 'income' ? 'Date received' : 'Date paid', visible: draft.financialKind !== 'none', initialValue: activityToday }) as const,
-  receipt: ({ draft }: FormFieldContext<CreateInput, {}>) => ({ renderer: 'file', visible: draft.financialKind !== 'none' }) as const,
+  taskTarget: ({ context, draft }: FormFieldContext<CreateInput, CreateContext>) => ({ ...taskTargetField, visible: Boolean(context.scheduled) && draft.financialKind !== 'none' }),
+  paymentDate: ({ context, draft }: FormFieldContext<CreateInput, CreateContext>) =>
+    ({
+      renderer: 'date',
+      label: draft.financialKind === 'income' ? 'Date received' : 'Date paid',
+      visible: !context.scheduled && draft.financialKind !== 'none',
+      initialValue: activityToday,
+    }) as const,
+  receipt: ({ context, draft }: FormFieldContext<CreateInput, CreateContext>) => ({ renderer: 'file', visible: !context.scheduled && draft.financialKind !== 'none' }) as const,
 } as const
 const updateFields = {
   ...activityFields,
-  tenantId: { ...activityFields.tenantId, props: { ...activityFields.tenantId.props, disabled: true } },
   workStatus: { renderer: 'radio', props: { data: workStates, pick: 'id', view: 'name', direction: 'column' } },
   financialKind: financialKindField,
   paymentStatus: ({ draft }: FormFieldContext<UpdateInput, {}>) =>
@@ -130,11 +149,24 @@ const updateFields = {
   receipt: ({ draft }: FormFieldContext<UpdateInput, {}>) => ({ renderer: 'file', visible: draft.financialKind !== 'none' }) as const,
 } as const
 const createForm = defineForm({ schema: activitiesCreateSchema, labels, fields: createFields })
-const updateForm = defineForm({ schema: activitiesUpdateSchema, labels, fields: updateFields })
 
 export const activityFilters: ListFilters<(typeof activitiesListQuerySchema)['_output'], (typeof activityFiltersSchema)['_input'], {}> = {
   schema: activityFiltersSchema,
   fields: {
+    openTasks: {
+      label: 'Tasks',
+      renderer: 'radio',
+      initialValue: '',
+      props: {
+        data: [
+          { id: '', name: 'All activities' },
+          { id: 'true', name: 'Open tasks' },
+        ],
+        pick: 'id',
+        view: 'name',
+        direction: 'column',
+      },
+    },
     financialKind: { label: 'Financial details', renderer: 'radio', initialValue: '', props: { data: [{ id: '', name: 'All' }, ...financialKinds], pick: 'id', view: 'name', direction: 'column' } },
     paymentStatus: { label: 'Payment status', renderer: 'radio', initialValue: '', props: { data: [{ id: '', name: 'All' }, ...paymentStates], pick: 'id', view: 'name', direction: 'column' } },
     workStatus: { label: 'Work status', renderer: 'radio', initialValue: '', props: { data: [{ id: '', name: 'All' }, ...workStates], pick: 'id', view: 'name', direction: 'column' } },
@@ -143,9 +175,10 @@ export const activityFilters: ListFilters<(typeof activitiesListQuerySchema)['_o
     paymentTo: { label: 'Actual date to', renderer: 'date' },
     categoryId: { label: 'Category', renderer: 'select', props: { load: activitiesActions.categories, resource: 'activity-categories', pick: 'id', view: 'name' } },
   },
-  queryKeys: ['financialKind', 'paymentStatus', 'workStatus', 'roomId', 'categoryId', 'paymentFrom', 'paymentTo'],
+  queryKeys: ['openTasks', 'financialKind', 'paymentStatus', 'workStatus', 'roomId', 'categoryId', 'paymentFrom', 'paymentTo'],
   toDraft: (query) => ({
     categoryId: typeof query.categoryId === 'string' ? query.categoryId : undefined,
+    openTasks: query.openTasks === 'true' ? 'true' : undefined,
     financialKind: typeof query.financialKind === 'string' ? query.financialKind : undefined,
     paymentStatus: typeof query.paymentStatus === 'string' ? query.paymentStatus : undefined,
     workStatus: typeof query.workStatus === 'string' ? query.workStatus : undefined,
@@ -159,7 +192,21 @@ const activityParams = (id: string) => ({ activityId: id })
 const activityDetail = () => ({ ...detail, load: activitiesActions.detail })
 const saveNewActivity = (input: (typeof activitiesCreateSchema)['_output']): Promise<ActivityRecord> => activitiesActions.create(input)
 const activityUpdateForm = ({ id, record }: { id: string; record: Readonly<ActivityRecord> }) => ({
-  ...updateForm,
+  ...defineForm({
+    schema: activitiesUpdateSchema,
+    labels,
+    fields: {
+      ...updateFields,
+      dueDate: { renderer: 'date', visible: record.dueDate !== null },
+      taskTarget: ({ draft }: FormFieldContext<UpdateInput, {}>) => ({ ...taskTargetField, visible: record.dueDate !== null && draft.financialKind !== 'none' }),
+      tenantId: { ...activityFields.tenantId, visible: permissions().can('view-users') },
+      tenantNote: ({ draft }: FormFieldContext<UpdateInput, {}>) => ({
+        renderer: 'textarea',
+        label: 'Tenant change note (optional)',
+        visible: draft.tenantId !== undefined && draft.tenantId !== record.tenantId,
+      }),
+    },
+  }),
   initialData: {
     name: record.name,
     description: record.description,
@@ -170,6 +217,7 @@ const activityUpdateForm = ({ id, record }: { id: string; record: Readonly<Activ
     categoryId: record.categoryId,
     amount: record.amount,
     paymentStatus: record.paymentStatus,
+    ...(record.dueDate ? { dueDate: record.dueDate, taskTarget: record.taskTarget ?? undefined } : {}),
     ...(record.paymentDate ? { paymentDate: record.paymentDate } : {}),
     receipt: record.receipt,
   },
@@ -178,7 +226,7 @@ const activityUpdateForm = ({ id, record }: { id: string; record: Readonly<Activ
 export const activities = defineResource({
   key: 'activities',
   identity: (record: { id: string }) => record.id,
-  actions: { tenants: activitiesActions.tenants, rooms: activitiesActions.rooms, summary: activitiesActions.summary },
+  actions: { tenants: activitiesActions.tenants, rooms: activitiesActions.rooms, summary: activitiesActions.summary, attributions: activitiesActions.attributions },
   list: { permission: 'view-activities', route: { name: 'activities' }, table: { ...table, load: activitiesActions.list } },
   create: { permission: 'create-activities', route: { name: 'activities-create' }, form: { ...createForm, submit: saveNewActivity } },
   detail: { permission: 'view-activities', route: { name: 'activities-detail', params: activityParams }, title: 'Activity', detail: activityDetail },

@@ -122,10 +122,7 @@ def calculate(value: TenantInput) -> dict:
         "eligibilityReasons": missing,
         "features": None,
         "baseline": None,
-        "facts": [],
     }
-    if missing:
-        return result
 
     def completed(rows, since):
         return [
@@ -136,10 +133,25 @@ def calculate(value: TenantInput) -> dict:
             and since <= a.completedDate <= end
         ]
 
-    done_repairs = completed(repairs, start)
-    done_extra = completed(extra, start)
     repair90 = completed(repairs, short)
     extra90 = completed(extra, short)
+    result["facts"] = [
+        {
+            "kind": "repairs90",
+            "value": len(repair90),
+            "activityIds": [a.id for a in repair90],
+        },
+        {
+            "kind": "extraCleaning90",
+            "value": len(extra90),
+            "activityIds": [a.id for a in extra90],
+        },
+    ]
+    if missing:
+        return result
+
+    done_repairs = completed(repairs, start)
+    done_extra = completed(extra, start)
     spend = sum(
         a.amount or 0
         for a in repairs
@@ -165,6 +177,14 @@ def calculate(value: TenantInput) -> dict:
     overdue = sum(a.amount or 0 for a in unpaid)
     expected = sum(a.amount or 0 for a in rent)
     oldest = max([(end - a.occurrenceDate).days for a in unpaid], default=0)
+    result["facts"].append(
+        {
+            "kind": "oldestUnpaidDays",
+            "value": oldest,
+            "activityIds": [a.id for a in unpaid],
+        }
+    )
+
     result["features"] = dict(
         zip(
             FEATURE_NAMES,
@@ -187,21 +207,4 @@ def calculate(value: TenantInput) -> dict:
             [len(done_repairs), spend, len(done_extra), len(late), oldest, overdue],
         )
     )
-    result["facts"] = [
-        {
-            "kind": "repairs90",
-            "value": len(repair90),
-            "activityIds": [a.id for a in repair90],
-        },
-        {
-            "kind": "extraCleaning90",
-            "value": len(extra90),
-            "activityIds": [a.id for a in extra90],
-        },
-        {
-            "kind": "oldestUnpaidDays",
-            "value": oldest,
-            "activityIds": [a.id for a in unpaid],
-        },
-    ]
     return result

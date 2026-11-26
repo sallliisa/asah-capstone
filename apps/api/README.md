@@ -46,10 +46,22 @@ It does not prove that a third-party declaration matches its runtime. It
 checks route imports with literal specifiers; computed imports and direct
 compiler or editor checks bypass this command gate.
 
-Auth is served at `/api/auth/*`. All routes except `/health`, `/openapi.json`, and
-`/api/auth/*` require a valid Better Auth session cookie.
+## Explore the API
 
-`src/routes/` is the public API surface. Group related route files in folders.
+1. Sign in to the web app.
+2. Open `/api/docs` on the same origin.
+3. Expand an operation and select **Try it out**.
+4. Enter the parameters and select **Execute**.
+
+The reference uses your current session cookie. API permissions apply to each
+request. Use a sample database when you try write operations.
+Use `/api/openapi.json` to download the OpenAPI document.
+
+When you run the API separately, use `/docs` and `/openapi.json` on the API
+origin. Sign-in routes use `/api/auth/*` in both setups.
+
+`src/routes/` is the API route source. Group related route files in folders.
+
 ## Direct S3/MinIO uploads
 
 The API can issue an authenticated, short-lived `PUT` URL. The API does not

@@ -9,6 +9,7 @@ import { users } from '../users/users.table'
 import { activities } from '../activities/activities.table'
 import { businessDate } from '../activities/dates'
 import { activityCategories } from '../activity-categories/activity-categories.table'
+import { recurringPlans } from '../recurring-plans/recurring-plans.table'
 import { tenantDetectorPredictions, tenantDetectorPredictionRooms, tenantDetectorState } from './tenant-detector.table'
 import { processTenantDetector } from './process'
 
@@ -34,6 +35,7 @@ afterAll(async () => {
     if (predictions.length) await getDb().delete(tenantDetectorPredictionRooms).where(inArray(tenantDetectorPredictionRooms.predictionId, predictions.map((row) => row.id)))
     await getDb().delete(tenantDetectorPredictions).where(inArray(tenantDetectorPredictions.tenantId, tenantIds))
     await getDb().delete(activities).where(inArray(activities.tenantId, tenantIds))
+    await getDb().delete(recurringPlans).where(inArray(recurringPlans.tenantId, tenantIds))
   }
   if (roomIds.length) await getDb().delete(rooms).where(inArray(rooms.id, roomIds))
   if (categoryIds.length) await getDb().delete(activityCategories).where(inArray(activityCategories.id, categoryIds))
@@ -51,8 +53,12 @@ it('guards tenant finance results and derives assessment history from activity r
   const limited = await createSystemSession(['view-users'], 'detector-limited')
   expect((await request(`detail/${occupant.userId}`, 'GET', limited.cookie)).status).toBe(403)
   expect((await request(`coverage/${occupant.userId}`, 'PUT', owner.cookie, {})).status).toBe(404)
-  const insertedCategories = await getDb().insert(activityCategories).values({ id: 'activity-category-corrective-repairs', name: 'Corrective Repairs' }).onConflictDoNothing().returning()
+  const insertedCategories = await getDb().insert(activityCategories).values([
+    { id: 'activity-category-corrective-repairs', name: 'Corrective Repairs' },
+    { id: 'activity-category-extra-cleaning', name: 'Extra Cleaning' },
+  ]).onConflictDoNothing().returning()
   categoryIds.push(...insertedCategories.map((row) => row.id))
+  const [cleaningPlan] = await getDb().insert(recurringPlans).values({ name: 'Due cleaning', tenantId: occupant.userId, roomId: room.id, categoryId: 'activity-category-extra-cleaning', startDate: businessDate(), nextOccurrenceDate: businessDate() }).returning()
   const before = (await getDb().select().from(tenantDetectorState).where(eq(tenantDetectorState.tenantId, occupant.userId)))[0]
   const created = await app.request('/activities/create', { method: 'POST', headers: { cookie: owner.cookie, 'Content-Type': 'application/json' }, body: JSON.stringify({ name: 'Detector source repair', tenantId: occupant.userId, roomId: room.id, categoryId: 'activity-category-corrective-repairs' }) })
   expect(created.status).toBe(201)
@@ -93,6 +99,7 @@ it('guards tenant finance results and derives assessment history from activity r
   const earliestDate = windowStart.toISOString().slice(0, 10)
   expect(persisted.input).toMatchObject({
     observationStart: earliestDate,
+    recurrenceComplete: true,
     coverage: { repairsFrom: earliestDate, cleaningFrom: earliestDate, rentFrom: earliestDate, repairCostsComplete: true },
     activities: relevantIds.map((id) => ({ id })),
   })
@@ -106,7 +113,7 @@ it('guards tenant finance results and derives assessment history from activity r
     expect(await list.json()).toMatchObject({ data: expect.arrayContaining([expect.objectContaining({ tenantId: occupant.userId, stale: false, pending: false })]) })
   } finally { vi.useRealTimers() }
   const successfulFetch = globalThis.fetch
-  expect((await request(`refresh/${occupant.userId}`, 'POST', owner.cookie)).status).toBe(202)
+  await getDb().update(activities).set({ name: 'Source changed after assessment' }).where(eq(activities.tenantId, occupant.userId))
   vi.stubGlobal('fetch', vi.fn(async () => { throw new Error('service unavailable') }))
   await processTenantDetector()
   expect((await getDb().select().from(tenantDetectorState).where(eq(tenantDetectorState.tenantId, occupant.userId)))[0]).toMatchObject({ pending: true, latestPredictionId: persisted.id })
@@ -120,6 +127,7 @@ it('guards tenant finance results and derives assessment history from activity r
     expect((await getDb().select().from(tenantDetectorState).where(eq(tenantDetectorState.tenantId, occupant.userId)))[0].dailyDate).toBe('2040-01-01')
   } finally { vi.useRealTimers() }
   await getDb().delete(activities).where(eq(activities.tenantId, occupant.userId))
+  await getDb().delete(recurringPlans).where(eq(recurringPlans.id, cleaningPlan.id))
   const removeRoom = await app.request(`/rooms/delete/${room.id}`, { method: 'DELETE', headers: { cookie: owner.cookie } })
   expect(removeRoom.status).toBe(409)
   expect((await getDb().select().from(rooms).where(eq(rooms.id, room.id)))[0].id).toBe(room.id)

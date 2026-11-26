@@ -19,7 +19,8 @@ Included:
 
 - Activities list, create, detail, and edit.
 - Income & Expenses as a filtered view of the same activity records, with totals and filters.
-- Recurring Plans list, create, detail, edit, and automatic due generation.
+- One-off scheduling and recurring tasks with a configurable opening date.
+- Dashboard To-do and Upcoming views of scheduled Activities.
 - Optional room and receipt links. Separate work and payment states for follow-up.
 - A historical tenant reference alongside the room, without a duplicate activity.
 - Tenant-bound rent plans, stable past associations, and audited corrections.
@@ -43,7 +44,9 @@ contract remains Draft for review. This document does not start implementation.
 | 2 | Record work without money | Same as requirement 1 | Cleaning can be scheduled and completed with no financial details. No zero-cost expense exists. |
 | 3 | Record income or expenses | Same as requirement 1 | Record drafts with an unknown or positive amount, or settle a positive amount with its payment date. |
 | 4 | View finances | Users with activity read permission | Income & Expenses shows only activities with financial details. Both menus open the same record. Totals use settled payments and the full filtered collection. |
-| 5 | Schedule recurring work | Users with recurring-plan permissions | Define an interval and start date. The server generates due activities without duplicates. |
+| 5 | Schedule recurring work | Users with recurring-plan permissions | Set the first due date, interval, and number of days to open each task before it is due. |
+| 6 | Schedule once | Users with activity create permission | Create a Planned Activity with a due date. Financial tasks start Draft. |
+| 7 | Follow up on tasks | Users with activity read and update permissions | See open tasks in To-do and future deadlines in Upcoming. Record payment, complete work, cancel, or edit the deadline on the Activity. |
 
 ## 3. Data and business rules
 
@@ -55,9 +58,11 @@ contract remains Draft for review. This document does not start implementation.
 | Name | Activity name | Required; trimmed; bounded text. |
 | Description | Additional details | Optional; bounded text. |
 | Room | Related room | Optional existing room. Only the activity owns this link. Public records show a room name. |
-| Tenant | Historical association | Optional tenant account reference. Preserved across room moves and deactivation. Changing a saved association requires an audited correction. |
+| Tenant | Historical association | Optional tenant account reference. Preserved across room moves and deactivation. Edit Activity records any change to the saved tenant. |
 | Work status | Work progress | Set to Completed for manual creation. Existing activities can be Planned, In progress, Completed, or Cancelled through follow-up. Create accepts no work-status input. |
-| Expected date | Due date from a recurring plan | Stored as occurrenceDate. Read-only. For a non-financial activity, work is expected then. For an expense, payment is expected then. For income, receipt of money is expected then. Ad-hoc activities have no expected date. |
+| Due date | Task deadline | Editable on a scheduled Activity. A task is overdue after this date in Asia/Jakarta. |
+| Occurrence date | Original date on a recurring plan | The server retains this date and plan ID to identify the occurrence when its due date changes. |
+| Close task when | Completion rule | Work tasks close on work completion. Payment tasks close when the payment is recorded. Cancelling the Activity closes either type. |
 | Completion date | Work completion date | Set to today in Asia/Jakarta when work becomes Completed. Retained on unrelated edits, cleared on reopening, and refreshed on a later completion. Read-only. |
 | Financial kind | Financial involvement | No financial details, Income, or Expense. |
 | Category | Activity classification | Required master reference for every activity, independent of money. Defaults to General. Public records show its current master name. |
@@ -70,7 +75,9 @@ contract remains Draft for review. This document does not start implementation.
 
 No financial details requires amount, payment state, payment date, and receipt to be null. Category remains selected and stored. This is the absence of financial involvement, not an expense with amount zero.
 
-Manual activities have no expected-date input. Scheduled activities receive their expected date from their source plan. The source occurrence and completion dates cannot be supplied through activity create or update commands.
+Create Activity records past work. Schedule once accepts a due date and opens the task immediately. A recurring task starts with its occurrence date as the due date. Editing the due date keeps the same Activity, recurring identity, and notification.
+
+Repairs, servicing, and cleaning are work tasks by default. Other financial tasks close when payment is recorded unless the user selects work completion. Paying for a repair leaves the repair task open until work is complete. Cancelling a task preserves its recorded payment. Reading its notification leaves the task open.
 
 Existing work and payment states remain independent during follow-up. Manual create has no status controls or status fields in its command. It records completed work, with settled money when financial details are present. Actual financial date defaults to today and stays editable. Completion date is recorded by the server. Recurring generation continues to create Planned work and Draft money.
 
@@ -95,17 +102,16 @@ changes. A historical or late-entered event needs the correct tenant selected
 by the owner. Do not backfill existing events from today's occupant. Unknown
 historical attribution stays unassigned and outside tenant-model inputs.
 
-An explicit attribution correction records who changed it and why. It refreshes
+An attribution correction records who changed it and any note they supply. It refreshes
 both affected tenant results. Changes to an activity's amount or payment state
 appear in both histories. Preserve earlier saved prediction inputs and the
 attribution correction history.
 
 Rent plans carry the intended tenant reference. Generated rent keeps that
-reference even if generation is late. Moving a tenant closes or replaces the
-relevant rent plan for future obligations. Existing unpaid rent stays with the
-original tenant. Catch up due rent before retiring an old plan. Check the new
-plan's start date to avoid missing or duplicate obligations. No-finance or
-shared activities can remain unassigned.
+reference even if generation is late. Edit the relevant rent plan when a tenant
+moves. The edit generates any old occurrences already due before it applies
+the new tenant. Existing unpaid rent stays with the original tenant. No-finance
+or shared activities can remain unassigned.
 
 Deactivation preserves the tenant's activity and prediction history. Restrict
 hard deletion of an account referenced by these records. A tenant moving rooms
@@ -117,17 +123,16 @@ inactive accounts. Do not require that a historical tenant is today's occupant.
 Normal creation can suggest the current occupant, but the owner confirms the
 selection. A shared activity can remain unassigned.
 
-Propose activity_tenant_attribution_changes with activityId, previousTenantId,
-newTenantId, changedBy, changedAt, and reason. A change to saved attribution
-requires a reason and writes its audit record in the same transaction. Initial
+Activity tenant changes write activityId, previousTenantId, newTenantId,
+changedBy, changedAt, and an optional reason in the same transaction. Initial
 creation uses ordinary create audit. Later room assignment changes never
 rewrite these references. Restrict hard deletion of referenced tenant accounts.
 
-A rent plan's tenant can be set explicitly while it has no generated history.
-After generation starts, replace the plan to change its tenant. Deactivation
-preserves every generated payment. Do not reactivate a former tenant's rent
-plan as the new tenant's plan. Existing unassigned activities remain unassigned
-until the owner explicitly corrects them with an audit reason.
+Edit a rent plan's tenant or schedule for future occurrences. An edited start
+date starts the revised schedule. It replaces the ungenerated old schedule after
+today, including any dates before the new start. A tenant-only edit keeps the
+next upcoming date on an active plan. Deactivation preserves every generated
+payment. Existing unassigned activities stay unassigned until an owner edits them.
 
 Tenant profiles show their authorized associated activity history across rooms.
 Room history shows the same records with their historical tenant labels. These
@@ -145,13 +150,14 @@ continues to be owned by Rooms.
 | Start date | First occurrence date | Required calendar date. |
 | Interval count | Repeat interval | Positive integer up to 366. |
 | Interval unit | Calendar unit | Day, Week, or Month. |
+| Open task days before due | Lead time for each occurrence | An integer from 0 to 366. Existing plans start at 0. The new-plan form starts at 7. |
 | Active | Generation enabled | Defaults to true. Turning it off preserves existing activities. |
 | Category | Activity classification template | Required category reference, independent of money. Defaults to General and copies into each new activity. |
 | Financial kind and amount | Optional financial template | No financial details by default. Financial templates generate Draft payments without a payment date or receipt. |
-| Generation cursor | Next due occurrence | Server-owned. |
+| Generation cursor | Next occurrence to generate | Server-owned. |
 | Created/updated actor and time | Audit values | Set by the system. |
 
-The server checks due plans at startup and periodically while the API runs. It uses calendar dates in Asia/Jakarta. The operation locks the plan, writes occurrences, and advances its cursor in one transaction. A bounded backlog continues on later runs. Repeated runs cannot duplicate a plan occurrence. Month intervals retain the original start-day anchor and clamp only when a month is shorter. After the first occurrence, the start date and interval cannot change. Deactivate the plan and create another plan to change its schedule. Reactivating a plan includes missed due dates.
+The recurring job checks opening dates in Asia/Jakarta. It subtracts the lead time from each due date. The operation locks the plan, writes occurrences and notifications, and advances its cursor in one transaction. The job processes a bounded backlog on each run. The plan ID and original occurrence date identify one occurrence. Month intervals retain the original start-day anchor and clamp in shorter months. Changes to the recurring schedule preserve tasks already opened.
 
 ## 4. User journeys and workflows
 
@@ -164,8 +170,8 @@ The server checks due plans at startup and periodically while the API runs. It u
 
 ### Schedule and complete recurring work
 
-1. For work with an explicit schedule, create a no-finance recurring plan with a room, optional tenant, start date, and owner-selected interval. Routine cleaning has no mandatory fixed interval.
-2. The server creates a Planned activity when each occurrence is due.
+1. Create a recurring plan with the first due date, interval, and lead time. For example, open rent seven days before its due date and tax thirty days before its due date.
+2. The server creates a Planned Activity when the task opens. It retains the due date and queues one notification.
 3. Open the activity, set Completed, and submit. The server records its completion date automatically.
 4. Cleaning remains absent from Income & Expenses.
 

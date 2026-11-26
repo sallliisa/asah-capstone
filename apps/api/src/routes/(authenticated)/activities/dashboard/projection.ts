@@ -1,10 +1,11 @@
 import { validationError } from '@southneuhof/sprindle'
-import { and, asc, desc, eq, gte, lte, or, sql } from 'drizzle-orm'
+import { and, asc, eq, gte, lte, sql } from 'drizzle-orm'
 import { getDb } from '../../../../db'
 import { activityCategories } from '../../activity-categories/activity-categories.table'
 import { rooms } from '../../rooms/rooms.table'
 import { activities } from '../activities.table'
 import { businessDate } from '../dates'
+import { activityDueDate, openActivityTask } from '../query'
 import { activityDashboardSchema, activityDashboardQuerySchema } from '../schema'
 
 export async function readCashDashboard(query: ReturnType<typeof activityDashboardQuerySchema.parse>) {
@@ -25,11 +26,7 @@ export async function readCashDashboard(query: ReturnType<typeof activityDashboa
     periodEnd = query.to > today ? today : query.to
     if (periodStart > periodEnd) throw validationError('The start date must be on or before the end date and today.')
   }
-  const openWork = or(eq(activities.workStatus, 'planned'), eq(activities.workStatus, 'in_progress'))
-  const draftMoney = and(sql`${activities.financialKind} <> 'none'`, eq(activities.paymentStatus, 'draft'))
-  const needsAttention = or(openWork, draftMoney)
-  const overdue = sql<boolean>`coalesce(${activities.occurrenceDate} < ${today} and ((${activities.financialKind} = 'none' and ${openWork}) or (${draftMoney})), false)`
-  const [cash, pending, counts] = await Promise.all([
+  const [cash, pending, counts, upcoming] = await Promise.all([
     getDb()
       .select({
         id: activities.id,
@@ -57,19 +54,34 @@ export async function readCashDashboard(query: ReturnType<typeof activityDashboa
         financialKind: activities.financialKind,
         workStatus: activities.workStatus,
         paymentStatus: activities.paymentStatus,
-        expectedDate: activities.occurrenceDate,
+        expectedDate: activityDueDate,
+        taskTarget: activities.taskTarget,
         amount: activities.amount,
       })
       .from(activities)
       .innerJoin(activityCategories, eq(activities.categoryId, activityCategories.id))
       .leftJoin(rooms, eq(activities.roomId, rooms.id))
-      .where(needsAttention)
-      .orderBy(desc(overdue), asc(sql`coalesce(${activities.occurrenceDate}, '9999-12-31'::date)`), asc(activities.id))
+      .where(openActivityTask)
+      .orderBy(sql`${activityDueDate} asc nulls last`, asc(activities.id))
       .limit(8),
     getDb()
       .select({ total: sql<number>`count(*)::int` })
       .from(activities)
-      .where(needsAttention),
+      .where(openActivityTask),
+    getDb()
+      .select({
+        id: activities.id,
+        name: activities.name,
+        roomName: rooms.roomCode,
+        expectedDate: activityDueDate,
+        financialKind: activities.financialKind,
+        amount: activities.amount,
+      })
+      .from(activities)
+      .leftJoin(rooms, eq(activities.roomId, rooms.id))
+      .where(and(openActivityTask, gte(activityDueDate, today)))
+      .orderBy(asc(activityDueDate), asc(activities.id))
+      .limit(8),
   ])
   const firstDay = new Date(`${periodStart}T00:00:00.000Z`).getTime()
   const finalDay = new Date(`${periodEnd}T00:00:00.000Z`).getTime()
@@ -110,13 +122,7 @@ export async function readCashDashboard(query: ReturnType<typeof activityDashboa
     cumulativeNet += day.net
     day.cumulativeNet = cumulativeNet
   }
-  const attention = pending
-    .map((row) => ({
-      ...row,
-      overdue:
-        row.expectedDate !== null && row.expectedDate < today && (row.financialKind === 'none' ? row.workStatus === 'planned' || row.workStatus === 'in_progress' : row.paymentStatus === 'draft'),
-    }))
-    .sort((a, b) => Number(b.overdue) - Number(a.overdue) || (a.expectedDate ?? '9999').localeCompare(b.expectedDate ?? '9999') || a.id.localeCompare(b.id))
+  const attention = pending.map((row) => ({ ...row, overdue: row.expectedDate !== null && row.expectedDate < today }))
   const byAmount = (a: { amount: number; name: string }, b: { amount: number; name: string }) => b.amount - a.amount || a.name.localeCompare(b.name)
   const snapshot = activityDashboardSchema.parse({
     today,
@@ -130,6 +136,7 @@ export async function readCashDashboard(query: ReturnType<typeof activityDashboa
     expensesByCategory: [...categories.values()].sort(byAmount),
     expensesByRoom: [...roomGroups.values()].sort(byAmount),
     attention: { total: counts[0]?.total ?? 0, items: attention },
+    upcoming,
   })
   return snapshot
 }

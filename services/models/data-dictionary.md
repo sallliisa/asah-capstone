@@ -14,6 +14,8 @@ Activity, recurring-plan occurrence, user, room, and coverage fields.
 | data/snapshots.jsonl | Monthly as-of inputs, eligibility, feature vectors, synthetic priority label, and its independent scenario rationale. Future terminal payment/work states are removed from snapshot inputs. |
 | data/manifest.json | Seed, tenant/snapshot counts, partition counts, eligible label counts, and SHA-256 digests. |
 | intent-dataset.jsonl | Indonesian question, intent, partition, and paraphrase/template group. |
+| intent-natural.jsonl | Handwritten Indonesian question, intent, and training or validation partition. |
+| evaluations/intent-fresh-v4.jsonl | Frozen Indonesian evaluation question, expected route, and stable ID. |
 
 Every tenant and related room group stays in one 420/90/90 tenant partition.
 Monthly snapshots from a tenant are correlated. Room IDs and tenant IDs are

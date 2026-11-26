@@ -97,6 +97,16 @@ export async function seedAuthorization() {
       target: [rolePermissions.roleId, rolePermissions.permissionId],
       set: { active: true },
     })
+
+  const [occupant] = await db.select({ id: roles.id }).from(roles).where(eq(roles.roleCode, 'occupant'))
+  if (occupant) {
+    const occupantGrants = permissionRows
+      .filter(({ code }) => code === 'view-issue-reports' || code === 'create-issue-reports')
+      .map(({ id }) => ({ roleId: occupant.id, permissionId: id, active: true }))
+    await db.insert(rolePermissions).values(occupantGrants).onConflictDoNothing({
+      target: [rolePermissions.roleId, rolePermissions.permissionId],
+    })
+  }
 }
 
 export async function seedAdministrator(): Promise<string> {

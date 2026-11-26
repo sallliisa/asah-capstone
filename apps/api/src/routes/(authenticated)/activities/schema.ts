@@ -7,6 +7,17 @@ export const workStatusSchema = z.enum(['planned', 'in_progress', 'completed', '
 export const financialKindSchema = z.enum(['none', 'income', 'expense'])
 export const paymentStatusSchema = z.enum(['draft', 'settled'])
 export const activityDateSchema = z.iso.date()
+export const taskTargetSchema = z.enum(['work', 'payment'])
+const workCategories = new Set([
+  'activity-category-corrective-repairs',
+  'activity-category-scheduled-servicing',
+  'activity-category-routine-cleaning',
+  'activity-category-extra-cleaning',
+])
+
+export function defaultTaskTarget({ categoryId, financialKind }: { categoryId: string; financialKind: string }): z.output<typeof taskTargetSchema> {
+  return financialKind === 'none' || workCategories.has(categoryId) ? 'work' : 'payment'
+}
 const text = z.string().trim().max(4000).nullable()
 const write = {
   name: z.string().trim().min(1).max(160),
@@ -26,6 +37,8 @@ const omitted = {
   completedDate: true,
   recurringPlanId: true,
   occurrenceDate: true,
+  dueDate: true,
+  taskTarget: true,
   createdByUserId: true,
   updatedByUserId: true,
   createdAt: true,
@@ -83,9 +96,20 @@ export const activityCreateSchema = activityInsertSchema.omit({ ...omitted, work
   amount: write.amount,
   paymentDate: write.paymentDate,
   receipt: write.receipt,
+  dueDate: activityDateSchema.optional(),
+  taskTarget: taskTargetSchema.optional(),
 }).strict().superRefine((value, context) => {
-  validateFinancialState({ ...value, paymentStatus: value.financialKind === 'none' ? null : 'settled' }, context)
+  validateFinancialState({ ...value, paymentStatus: value.financialKind === 'none' ? null : value.dueDate ? 'draft' : 'settled' }, context)
+  if (value.taskTarget && !value.dueDate)
+    context.addIssue({ code: 'custom', path: ['dueDate'], message: 'Enter a due date for this task.' })
+  validateTaskTarget(value, context)
 })
+
+export function validateTaskTarget(value: { taskTarget?: string | null; financialKind: string }, context: z.RefinementCtx) {
+  if (value.taskTarget === 'payment' && value.financialKind === 'none')
+    context.addIssue({ code: 'custom', path: ['taskTarget'], message: 'A payment task requires financial details.' })
+}
+
 export const activityUpdateSchema = createUpdateSchema(activities)
   .omit(omitted)
   .extend({
@@ -100,16 +124,21 @@ export const activityUpdateSchema = createUpdateSchema(activities)
     paymentStatus: write.paymentStatus.removeDefault(),
     paymentDate: write.paymentDate.removeDefault(),
     receipt: write.receipt.removeDefault(),
+    dueDate: activityDateSchema,
+    taskTarget: taskTargetSchema,
   })
   .partial()
   .strict()
+export const activityEditSchema = activityUpdateSchema.extend({ tenantNote: z.string().trim().max(1000).nullish() })
 export const activitySelectSchema = createSelectSchema(activities).extend({
   workStatus: workStatusSchema,
   financialKind: financialKindSchema,
   paymentStatus: paymentStatusSchema.nullable(),
+  taskTarget: taskTargetSchema.nullable(),
 })
 export const activityStateSchema = activitySelectSchema.superRefine((value, context) => {
   validateFinancialState(value, context)
+  validateTaskTarget(value, context)
   if (value.paymentStatus === 'settled' && !value.paymentDate)
     context.addIssue({
       code: 'custom',
@@ -153,12 +182,15 @@ export const activityDashboardSchema = z.object({
     items: z.array(z.object({
       id: z.string(), name: z.string(), roomName: z.string().nullable(), categoryName: z.string(),
       financialKind: financialKindSchema, workStatus: workStatusSchema, paymentStatus: paymentStatusSchema.nullable(),
+      taskTarget: taskTargetSchema.nullable(),
       expectedDate: z.iso.date().nullable(), amount: z.number().nullable(), overdue: z.boolean(),
     })),
   }),
+  upcoming: z.array(z.object({
+    id: z.string(), name: z.string(), roomName: z.string().nullable(), expectedDate: z.iso.date(),
+    financialKind: financialKindSchema, amount: z.number().nullable(),
+  })),
 })
-
-export const activityAttributionSchema = z.object({ tenantId: z.string().min(1).nullable(), reason: z.string().trim().min(1).max(1000) }).strict()
 
 export const activityDashboardQuerySchema = z.object({
   period: z.enum(['this-month', 'last-month', 'last-three-months', 'custom']).default('this-month'),

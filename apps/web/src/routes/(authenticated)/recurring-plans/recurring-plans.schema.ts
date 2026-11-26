@@ -14,13 +14,15 @@ const draft = z
     startDate: recurringPlanCreateSchema.shape.startDate,
     intervalCount: recurringPlanCreateSchema.shape.intervalCount,
     intervalUnit: recurringPlanCreateSchema.shape.intervalUnit,
+    leadDays: recurringPlanCreateSchema.shape.leadDays,
     active: recurringPlanCreateSchema.shape.active,
     financialKind: recurringPlanCreateSchema.shape.financialKind,
     categoryId: recurringPlanCreateSchema.shape.categoryId,
     amount: z.number().nullable().default(null),
+    taskTarget: recurringPlanCreateSchema.shape.taskTarget,
   })
   .transform((draft, context) => {
-    const value = { ...draft, amount: draft.financialKind === 'none' ? null : draft.amount }
+    const value = { ...draft, amount: draft.financialKind === 'none' ? null : draft.amount, taskTarget: draft.financialKind === 'none' ? null : draft.taskTarget }
     const result = recurringPlanCreateSchema.safeParse(value)
     if (!result.success) {
       for (const issue of result.error.issues) context.addIssue({ code: 'custom', message: issue.message, path: issue.path })

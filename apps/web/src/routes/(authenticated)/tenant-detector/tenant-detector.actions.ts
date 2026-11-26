@@ -25,8 +25,3 @@ export async function loadTenantAssessmentHistory(context: CollectionLoadContext
   if (!response.ok || !('data' in body)) throw body
   return { data: body.data, meta: { total: body.total } }
 }
-
-export async function refreshTenantAssessment(tenantId: string) {
-  const response = await detector.refresh[':tenantId'].$post({ param: { tenantId } })
-  if (!response.ok) throw await response.json()
-}

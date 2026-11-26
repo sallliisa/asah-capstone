@@ -62,12 +62,39 @@ it('reports actual month cash, fills days, and keeps work and payment follow-up 
     expect(after.daily[9]!.cumulativeNet - before.daily[9]!.cumulativeNet).toBe(1100)
     expect(after.expensesByRoom.reduce((sum, row) => sum + row.amount, 0)).toBe(after.expenses)
     expect(after.expensesByCategory.reduce((sum, row) => sum + row.amount, 0)).toBe(after.expenses)
-    expect(after.attention.total).toBe(before.attention.total + 5)
+    expect(after.attention.total).toBe(before.attention.total + 3)
     expect(after.attention.items.find((row) => row.name === `${prefix}-clean`)).toMatchObject({ overdue: true })
-    expect(after.attention.items.find((row) => row.name === `${prefix}-paid-work`)).toMatchObject({ overdue: false })
-    expect(after.attention.items.find((row) => row.name === `${prefix}-unpaid-cancelled`)).toMatchObject({ overdue: true })
+    expect(after.attention.items.find((row) => row.name === `${prefix}-paid-work`)).toMatchObject({ overdue: true })
+    expect(after.attention.items.some((row) => row.name === `${prefix}-unpaid-cancelled`)).toBe(false)
     expect(after.attention.items.find((row) => row.id === paid.id)).toMatchObject({ workStatus: 'in_progress', paymentStatus: 'settled', overdue: false })
-    expect(after.attention.items.find((row) => row.id === draft.id)).toMatchObject({ workStatus: 'cancelled', paymentStatus: 'draft', overdue: false })
+    expect(after.attention.items.some((row) => row.id === draft.id)).toBe(false)
+  } finally {
+    vi.useRealTimers()
+  }
+})
+
+it('keeps scheduled tasks open until their own completion event and uses the same record for payment', async () => {
+  const manager = await createSystemSession(['view-activities', 'create-activities', 'update-activities'], 'dashboard-schedule-once')
+  vi.useFakeTimers({ toFake: ['Date'] })
+  try {
+    vi.setSystemTime(new Date('2026-11-09T18:00:00.000Z'))
+    const taskPrefix = `${prefix}-schedule`
+    const rent = await create(manager.cookie, { name: `${taskPrefix}-rent`, financialKind: 'income', amount: 600, dueDate: '2026-11-12' })
+    const repair = await create(manager.cookie, { name: `${taskPrefix}-repair`, financialKind: 'expense', amount: 200, dueDate: '2026-11-11', taskTarget: 'work' })
+    expect(rent).toMatchObject({ workStatus: 'planned', paymentStatus: 'draft', occurrenceDate: null })
+    const dashboard = async () => z.object({ data: z.array(activityDashboardSchema) }).parse(await (await request('/activities/dashboard', manager.cookie)).json()).data[0]
+    const listed = async (query: string) => z.object({ data: z.array(activityPublicSchema) }).parse(await (await request(`/activities/list?${query}&search=${taskPrefix}`, manager.cookie)).json()).data
+    const edit = async (id: string, data: object) => {
+      expect((await request(`/activities/update/${id}`, manager.cookie, data, 'PATCH')).status).toBe(200)
+    }
+    expect((await dashboard()).upcoming).toEqual(expect.arrayContaining([expect.objectContaining({ id: rent.id }), expect.objectContaining({ id: repair.id })]))
+    expect((await listed('openTasks=true&sort=dueDate&order=asc')).map((row) => row.id)).toEqual([repair.id, rent.id])
+    await edit(repair.id, { dueDate: '2026-11-15', paymentStatus: 'settled' })
+    await edit(rent.id, { paymentStatus: 'settled' })
+    expect((await listed('openTasks=true')).map((row) => row.id)).toEqual([repair.id])
+    expect((await listed('financialOnly=true')).find((row) => row.id === repair.id)).toMatchObject({ paymentStatus: 'settled', dueDate: '2026-11-15' })
+    await edit(repair.id, { workStatus: 'completed' })
+    expect(await listed('openTasks=true')).toEqual([])
   } finally {
     vi.useRealTimers()
   }

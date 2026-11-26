@@ -142,3 +142,20 @@ recognize saved historical Activity and rent-plan associations. The same route
 case passes after the correction, including retained history and audited
 reattribution. Users without a tenant role or historical association remain
 outside the selector. No migration or copied financial row was added.
+
+## Local scheduling verification, 24 November 2026
+
+A signed-in owner used Schedule once in the built web app. The Activity
+appeared in To-do and Upcoming on desktop and mobile. The owner changed the
+deadline and settled the expense on the same Activity. The task stayed open
+until the owner marked the work Completed. The financial list retained the
+same Activity ID.
+
+The owner also created a recurring plan with a seven-day lead. The job opened
+the Activity seven days before its due date. A second run kept one occurrence.
+Focused API tests cover the opening boundary, calendar month anchors, task
+completion, cancellation, and notification deduplication. An upgrade of a copy
+of the local database preserved Activity IDs and payment states. It assigned
+deadlines and completion rules to old recurring Activities.
+
+Evidence is in `.local/verification/activity-task-schedule-20261124/`.

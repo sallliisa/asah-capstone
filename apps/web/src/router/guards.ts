@@ -3,6 +3,7 @@ import { savePostLoginRedirect } from '@/utils/post-login-redirect'
 import { getDefaultAuthenticatedRouteLocation } from './navigation'
 import { evaluateResourceRouteAccess, useResourceRuntime, type AccessAdapter } from '@southneuhof/loom'
 import type { NavigationGuard } from 'vue-router'
+import { toast } from 'vue-sonner'
 
 function allowsExtraordinaryRoute(meta: { permission?: string }, access: AccessAdapter): boolean {
   return !meta.permission || access.allows({ operation: 'detail', permission: meta.permission })
@@ -10,12 +11,17 @@ function allowsExtraordinaryRoute(meta: { permission?: string }, access: AccessA
 
 /** Enforces ordinary route permission metadata on direct URL entry. */
 export function createPermissionGuard(access?: AccessAdapter): NavigationGuard {
-  return (to) => {
+  return (to, from) => {
     if (!access && identityStatus.value === 'failed') return true
     const adapter = access ?? useResourceRuntime().adapters.access
     const routeAccess = typeof to.name === 'string' ? evaluateResourceRouteAccess(to.name, adapter) : undefined
     const allowed = routeAccess ?? allowsExtraordinaryRoute(to.meta, adapter)
-    return allowed ? true : ((getDefaultAuthenticatedRouteLocation() ?? { path: '/' }) as never)
+    if (allowed) return true
+    if (from.matched?.length && from.name !== 'auth-login') {
+      toast.error('You do not have access to this page.')
+      return false
+    }
+    return { path: '/access-denied', replace: true }
   }
 }
 

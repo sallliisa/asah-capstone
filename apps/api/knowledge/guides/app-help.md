@@ -14,21 +14,29 @@ Pilih apakah aktivitas tidak mempunyai rincian uang, merupakan pemasukan, atau
 pengeluaran. Catatan uang yang sudah dibayar memerlukan nominal dan tanggal
 pembayaran sebenarnya. Simpan bukti pembayaran jika tersedia. Aktivitas manual
 langsung tercatat selesai; catatan uang manual merupakan pembayaran yang sudah
-terjadi. Gunakan rencana berulang untuk kejadian terjadwal yang masih menunggu.
+terjadi. Gunakan Schedule once pada halaman Activities untuk membuat satu
+aktivitas terjadwal dengan tanggal jatuh tempo. Aktivitas langsung berstatus
+Planned dan pembayaran berstatus Draft jika ada rincian keuangan.
 Penyelesaian pekerjaan dan pelunasan pembayaran tetap dua hal terpisah. Pekerjaan
 yang dibatalkan tidak otomatis melunasi pembayaran draft. Jangan memasukkan
 nominal yang belum diketahui sebagai nol.
 
 ## Rencana berulang dan kotak masuk
 
-Buka Recurring Plans untuk membuat rencana dengan tanggal awal dan interval.
-Rencana menerbitkan aktivitas ketika tanggalnya tiba. Gunakan interval bulanan
+Buka Recurring Plans untuk membuat rencana dengan tanggal jatuh tempo pertama,
+interval, dan jumlah hari untuk membuka tugas sebelum jatuh tempo.
+Gunakan interval bulanan
 untuk sewa dan empat bulan untuk servis AC rutin. Pilih tenant untuk rencana
 sewa. Setelah aktivitas diterbitkan, hubungan tenant pada rencana sewa tidak
-dipindahkan; buat rencana yang sesuai untuk tenant berikutnya. Daftar mendatang
-menampilkan rencana tanpa menerbitkan aktivitas lebih awal.
+dipindahkan; buat rencana yang sesuai untuk tenant berikutnya. Dashboard
+menampilkan tugas terbuka di To-do dan tanggal mendatang di Upcoming.
+Ubah tanggal jatuh tempo melalui Edit Activity untuk menjadwalkan ulang tugas.
 
-Notifikasi pemilik ada di Notifications. Membuka atau menandai notifikasi sebagai
+Tugas pembayaran selesai ketika pembayaran dicatat. Tugas pekerjaan selesai
+ketika pekerjaan ditandai Completed. Pembayaran perbaikan tidak menutup tugas
+perbaikan. Pembatalan menutup tugas.
+
+Pemilik mendapat satu notifikasi ketika tugas terjadwal dibuat. Membuka atau menandai notifikasi sebagai
 dibaca hanya mengubah status baca. Pekerjaan dan pembayaran tetap harus diperbarui
 melalui aktivitasnya. Push di iPhone diaktifkan dari aplikasi yang sudah ditambahkan
 ke Home Screen. Izin diberikan melalui tombol Enable push notifications. Push

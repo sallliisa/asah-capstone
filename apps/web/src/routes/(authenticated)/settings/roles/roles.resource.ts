@@ -57,7 +57,7 @@ export const roles = defineResource({
   identity: (record: { id: string }) => record.id,
   actions: { list: rolesActions.list },
   list: {
-    permission: 'view-roles',
+    permission: 'list-roles',
     route: { name: 'settings-roles' },
     table: { ...rolesTable, load: rolesActions.list },
   },
@@ -67,7 +67,7 @@ export const roles = defineResource({
     form: roleForm,
   },
   detail: {
-    permission: 'view-roles',
+    permission: 'detail-roles',
     route: { name: 'settings-roles-detail', params: (id) => ({ roleId: String(id) }) },
     title: 'Detail Role',
     detail: () => ({ ...roleDetail, load: rolesActions.detail }),

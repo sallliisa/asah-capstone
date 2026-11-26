@@ -4,7 +4,7 @@ import { z } from 'zod/v4'
 import { getDb } from '../../../../db'
 import { requirePermission } from '../../../../identity'
 import { activityCategories } from '../../activity-categories/activity-categories.table'
-import { businessDate } from '../../activities/dates'
+import { addCalendarDays, businessDate } from '../../activities/dates'
 import { rooms } from '../../rooms/rooms.table'
 import { occurrenceDate } from '../generate'
 import { recurringPlans } from '../recurring-plans.table'
@@ -14,9 +14,7 @@ export const GET = defineRoute({
   authorize: requirePermission('view-recurring-plans'),
   action: async () => {
     const today = businessDate()
-    const throughDate = new Date(`${today}T00:00:00.000Z`)
-    throughDate.setUTCDate(throughDate.getUTCDate() + 6)
-    const through = throughDate.toISOString().slice(0, 10)
+    const through = addCalendarDays(today, 6)
     const rows = await getDb().select({ plan: recurringPlans, roomName: rooms.roomCode, categoryName: activityCategories.name }).from(recurringPlans)
       .innerJoin(activityCategories, eq(recurringPlans.categoryId, activityCategories.id)).leftJoin(rooms, eq(recurringPlans.roomId, rooms.id))
       .where(and(eq(recurringPlans.active, true), lte(recurringPlans.nextOccurrenceDate, through)))

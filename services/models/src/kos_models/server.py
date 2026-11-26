@@ -13,7 +13,8 @@ import sklearn
 from fastapi import Depends, FastAPI, Header, HTTPException
 from pydantic import BaseModel, ConfigDict, Field
 
-from kos_models.features import FEATURE_NAMES, FEATURE_VERSION, TenantInput, calculate
+from kos_models.features import FEATURE_VERSION, TenantInput, calculate
+from kos_models.tenant_model import MODEL_FEATURE_NAMES, score_tenants
 
 logger = logging.getLogger(__name__)
 
@@ -28,11 +29,18 @@ def load_artifact(path: str, expected: str, *, tenant: bool = False):
         artifact = joblib.load(BytesIO(content))
         if artifact["sklearnVersion"] != sklearn.__version__:
             raise ValueError("Model and serving environment are incompatible")
-        if tenant and (
-            artifact["featureVersion"] != FEATURE_VERSION
-            or artifact["featureNames"] != list(FEATURE_NAMES)
-        ):
-            raise ValueError("Tenant model feature contract is incompatible")
+        if tenant:
+            model = artifact["model"]
+            low, high = artifact["boundaries"]
+            if (
+                artifact["featureVersion"] != FEATURE_VERSION
+                or artifact["featureNames"] != list(MODEL_FEATURE_NAMES)
+                or model.n_features_in_ != len(MODEL_FEATURE_NAMES)
+                or not np.array_equal(model.classes_, np.arange(3))
+                or not callable(model.predict_proba)
+                or not 0 <= low < high <= 2
+            ):
+                raise ValueError("Tenant model feature contract is incompatible")
         return artifact
     except Exception:
         logger.exception("Could not load model artifact %s", path)
@@ -91,20 +99,19 @@ def score(batch: ScoreBatch):
     artifact = app.state.artifact
     if artifact is None:
         raise HTTPException(status_code=503, detail="Tenant model is unavailable")
-    results = []
-    for tenant in batch.tenants:
-        result = calculate(tenant)
+    results = [calculate(tenant) for tenant in batch.tenants]
+    eligible = [result for result in results if not result["eligibilityReasons"]]
+    for result in results:
         result.update(modelVersion=artifact["modelVersion"], score=None, grade=None)
-        if not result["eligibilityReasons"]:
-            features = np.array([[result["features"][name] for name in FEATURE_NAMES]])
-            abnormality = float(-artifact["model"].score_samples(features)[0])
-            low, high = artifact["boundaries"]
-            result.update(
-                score=abnormality,
-                grade="A" if abnormality < low else "B" if abnormality < high else "C",
-            )
+    if eligible:
+        scores, grades = score_tenants(artifact, eligible)
+        for result, priority, grade in zip(eligible, scores, grades, strict=True):
+            result["features"]["settledLateCount"] = result["baseline"][
+                "settledLateCount"
+            ]
+            result.update(score=float(priority), grade=str(grade))
+    for result in results:
         result.pop("baseline")
-        results.append(result)
     return {"results": results}
 
 

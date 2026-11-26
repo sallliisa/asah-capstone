@@ -100,3 +100,114 @@ actual settled cash and a record link. Wisp reopened that saved answer. See
 ../pi-chat/verification.md and ../../deploy/cfos-verification.md. This proves
 the generation, embedding, vector retrieval, classifier, and app-read connection;
 it does not increase the size or scope of the authored retrieval evaluation.
+
+## Offline comparison, 24 November 2026
+
+On 40 fresh Indonesian questions with known intent, the best lexical candidate
+and the lexical baseline each found support for 2 of 28 answerable questions.
+Both returned no passages for the 12 unanswerable questions. The candidate
+returned one wrong passage on an answerable question.
+
+On archived hosted scores, the tested cutoffs raised supported returns from
+19 to 23 of 24 on one corpus snapshot and from 18 to 22 of 24 on another.
+Both snapshots used the same archived questions. Precision stayed at 100%
+and neither version returned passages for the eight unanswerable questions.
+
+In the offline cascade, intent v4 correctly routed 3 of 13 Guidance questions
+with an identified supporting passage. Intent v3 routed none of the 13.
+The lexical confidence gate returned no supporting passages in either run.
+The archived scores do not contain the embeddings, search results, and
+reranker scores for the fresh questions. The active retrieval policy stays
+in use pending fresh hosted evidence.
+
+The comparison files are in `.local/retrieval-hillclimb-20261124/`.
+
+## Hosted comparison, 24 November 2026
+
+The same 40 frozen Indonesian questions ran against the configured hosted
+corpus of 16 passages. Workers AI and Vectorize supplied the embeddings,
+candidates, and reranker scores. Both cutoffs found a supporting passage for
+16 of 28 answerable questions. Each returned two wrong passages for answerable
+questions and one irrelevant passage for the 12 unanswerable questions.
+Precision was 16 of 19. The proposed cutoff gave no gain and failed the
+90% precision gate. The active cutoff stays in use.
+
+The cascade paired saved FastAPI predictions for the same 114 questions with
+fresh hosted retrieval scores. Intent v4 correctly routed 3 of 13 Guidance
+questions with a known supporting passage, compared with zero for v3. Neither
+version returned a supporting passage for those questions. Intent v4 still
+reduced wrong tool routes from 8 to 1. This is the intent and retrieval
+cascade. Native answer generation has a separate check.
+
+Evidence is in `.local/verification/hosted-rag-pi-wisp-20261124/retrieval-report.json`.
+
+## Hosted top-five reranking, 25 November 2026
+
+Two runs used the same 40 questions, active corpus, and score cutoffs. The
+control sent the first passage to BGE. The candidate sent the first five,
+selected the highest BGE score, and applied the active cutoffs.
+
+Of the seven answerable questions with a wrong first passage, five had a
+supporting passage in the first five. The other two had one at rank six.
+BGE selected the supporting passage for one of the five. Both active cutoffs
+rejected it. The candidate also replaced two correct returns with wrong
+passages. Both runs returned 14 of 28 supporting passages with the candidate
+and 16 of 28 with the control. Each returned one irrelevant passage for the
+12 unanswerable questions. Keep the active policy.
+
+The comparison and per-question scores are in
+`.local/verification/hosted-rag-top-five-20261125/`.
+
+## Hosted answer-context comparison, 25 November 2026
+
+Muse Spark 1.3 Contributor answered the same 40 questions with the correct
+area and the same workflow context in three conditions. The model received
+the current hosted retrieval result, all 16 permitted passages, or only the
+fixture's supporting passages. It received no supporting passages in the
+third condition when the guide lacked an answer. The replay kept the Pi skill
+and supplied a fixed context-tool result. It measured answer generation with
+known routing.
+
+Current retrieval produced 20 correct answers, of which 16 cited supporting
+passages. Full context and verified context each produced 28 correct answers
+with supporting citations. All three conditions declined to invent the
+requested details for all 12 questions the guide could not answer.
+
+All 16 hosted passages match the archived guides. The repository's app-help
+guide has since added one-off scheduling, lead time for recurring tasks, and
+updated notification behavior. The comparison measured answers against the
+active guide version. Test multi-passage vector retrieval on fresh questions
+using the updated guide, then verify the native Pi path before activation.
+
+Evidence is in `.local/verification/rag-context-assumption-20261125/`.
+
+## Refreshed guide and multi-passage comparison, 25 November 2026
+
+Indexed 17 passages from the current guides as version `7137c724…`. The
+initial verification ran before Vectorize exposed the new vectors. The retry
+passed the one-passage policy gate with 94.6% precision and 75.7% recall on
+validation, and 100% precision and 75% recall on the test split. Neither split
+returned a passage for a question without guide support. Activated the
+verified version. A fresh database read confirmed that it is active.
+
+In a live Kos De Mansion chat, Pi explained how to set the number of days
+before a recurring task is due. It cited the refreshed app-help section and
+abbreviated its version in the answer. The routing audit recorded the full
+version and supporting passage. The verification chats were removed.
+
+Compared one-passage retrieval with six hybrid-ranked Vectorize matches on
+24 fresh Indonesian questions. Both conditions used the refreshed corpus,
+the same known routing, and Muse Spark with replayed context-tool results.
+The one-passage policy covered 11 of 16 answerable questions. The first three
+hybrid matches covered 15, and the first six covered all 16. Pi gave 11 correct
+answers with complete guide citations with one passage and 16 with six. Both
+conditions declined to invent the requested detail for all eight questions
+without guide support.
+
+Six-passage retrieval met the answer-stage criteria. It forwarded passages
+for all eight questions without guide support, which fails the existing
+retrieval activation requirement. The live service uses the verified
+one-passage policy. The six-passage experiment did not exercise native
+chat orchestration.
+
+Evidence is in `.local/verification/hosted-rag-multi-passage-20261125/`.

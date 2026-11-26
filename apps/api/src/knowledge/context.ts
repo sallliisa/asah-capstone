@@ -14,6 +14,14 @@ const intentSchema = z.object({
   modelVersion: z.string().min(1),
 })
 
+function clarify(question: string) {
+  if (/\b(kas|saldo|pemasukan|pengeluaran|rekap|keuangan)\b/i.test(question)) return 'Rekap untuk periode mana yang ingin Anda lihat?'
+  if (/\b(jadwal|jadwalkan|kapan|berulang)\b/i.test(question)) return 'Kegiatan apa yang jadwalnya ingin Anda cek?'
+  if (/\b(kamar|tenant|penghuni|perbaikan|rusak)\b/i.test(question)) return 'Kamar atau tenant mana yang ingin Anda cek?'
+  if (/\b(cara|prosedur|panduan|langkah)\b/i.test(question)) return 'Tugas apa yang sedang ingin Anda selesaikan?'
+  return 'Detail apa tentang kos yang ingin Anda ketahui?'
+}
+
 async function routeQuestion(question: string) {
   const input = questionSchema.parse({ question })
   let prediction: z.output<typeof intentSchema>
@@ -23,7 +31,7 @@ async function routeQuestion(question: string) {
     return { status: 'unavailable', message: 'Perutean pertanyaan belum tersedia. Gunakan aplikasi atau coba lagi nanti.' }
   }
   if (prediction.status === 'uncertain')
-    return { status: 'uncertain', prediction, message: 'Anda ingin melihat data kamar, jadwal, keuangan, atau petunjuk penggunaan? Mohon sebutkan hasil yang dibutuhkan.' }
+    return { status: 'uncertain', prediction, message: clarify(input.question) }
   if (prediction.status === 'out-of-scope')
     return { status: 'out-of-scope', prediction, message: 'Saya membantu pengelolaan kos dan penggunaan aplikasi. Silakan ajukan pertanyaan dalam lingkup tersebut.' }
   const area = prediction.intent
