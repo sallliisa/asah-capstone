@@ -12,8 +12,9 @@ Use Linux with systemd, Python 3.11, uv, and Node 24. Create a dedicated kos use
 and place the checkout at /opt/kos. From services/models, run uv sync --frozen
 --no-dev. Train offline with the pinned development environment or transfer our
 reviewed artifacts and their checksum files into services/models/artifacts.
-The repository contains reproducible generators and reports; binary artifacts
-and generated raw histories are intentionally ignored.
+The repository contains reproducible generators, reports, a compressed tenant
+dataset, and the presentation tenant model. Other generated artifacts remain
+ignored.
 
 Copy models.env.example to /etc/kos/models.env and fill its private token and
 artifact hashes. Keep that file readable only by root and the kos service user.

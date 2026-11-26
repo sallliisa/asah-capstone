@@ -10,10 +10,17 @@ uv run kos-generate
 uv run kos-train
 ```
 
-Run these commands from services/models. Generated data and model files stay in
-ignored data and artifacts directories. The committed generator, lock file,
-manifest in evaluation.json, and seed reproduce the dataset. No tenant records
-from the app are used. The generated snapshots can be large.
+Run these commands from services/models. The committed `tenant-data.tar.gz`
+contains the generated tenant dataset. To extract it, run:
+
+```sh
+mkdir -p data
+tar -xzf tenant-data.tar.gz -C data
+```
+
+The presentation tenant model and its checksum
+are in `artifacts/`. The generator, lock file, manifest in evaluation.json, and
+seed reproduce the dataset. No tenant records from the app are used.
 
 Read [the data dictionary](data-dictionary.md) for fields and partitions.
 
